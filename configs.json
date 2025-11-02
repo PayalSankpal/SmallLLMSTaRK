@@ -1,0 +1,117 @@
+{
+	"llm": {
+		"llm_max_output_tokens": 4096,
+		"llm_max_output_tokens_reasoning_model": 500000,
+		"llm_temperature": 0.2,
+		"llm_do_sample": false,
+		"llm_top_p": 1,
+		"llm_seed": 42,
+		"llm_default_system_message": "You are a helpful assistant. You give brief, precise answers without explanations. Your answers are in a machine-readable format.",
+		"llm_parallelization_mode": "multiprocessing",
+
+		"llama_3-1_70b_path": "models/Meta-Llama-3.1-70B-Instruct",
+		"llama_3-3_70b_path": "models/Llama-3.3-70B-Instruct",
+		"r1_distill_qwen-7b_path": "models/DeepSeek-R1-Distill-Qwen-7B",
+		"r1_distill_qwen-7b_path_local": "models/DeepSeek-R1-Distill-Qwen-7B",
+		"r1_distill_llama_3-3_70b_path": "models/DeepSeek-R1-Distill-Llama-70B",
+		"add_rel": false,
+		"compact_docs": true
+	},
+
+  "general": {
+    "experiment_name": "cypher",
+	  "reranking_method": 1,
+
+    "llm_model":   "openai/gpt-oss-120b" ,  
+    "emb_model": "text-embedding-ada-002",
+
+    "output_path": "output_rerun",
+    "embeddings_path": "emb",
+    "embedding_model": "ollama_rjmalagon/gte-qwen2-1.5b-instruct-embed-f16:latest",
+
+
+    "skb_path": "skb",
+    "qa_path": "qa",
+
+    "find_closest_nodes_cut_off": null,
+
+    "max_num_path_to_unknowns": null,
+    "max_printed_paths_to_one_target": null,
+
+    "k": 1500000,
+	"llm_activation": false,
+    "k_target_variable": 20,
+    "emb_max_retry": null,
+
+    "vss_cutoff": 0.0,
+    "offline_mode": 0,
+	"alpha": 12
+  },
+  "prime": {
+    "type_of_kb": "medical",
+    "edges_to_exclude": [],
+    "nodes_to_consider": ["effect/phenotype", "disease", "anatomy", "cellular_component","exposure", "gene/protein","drug", "molecular_function", "pathway", "biological_process"],
+    "nodes_to_ignore": [],
+    "edge_type_long2short": {
+      "gene/protein_interacts_with_gene/protein": "ppi",
+      "gene/protein_is_carrier_of_drug": "carrier",
+      "drug_targets_enzyme_gene/protein": "enzyme",
+      "drug_targets_gene/protein": "target",
+      "gene/protein_transports_drug": "transporter",
+      "drug_indicates_disease": "indication",
+      "drug_contraindicates_disease": "contraindication",
+      "drug_has_off-label_use_for_disease": "off-label use",
+      "drug_synergistically_interacts_with_drug": "synergistic interaction",
+      "protein/gene_is_associated_with_effect/phenotype": "associated with",
+      "protein/gene_is_associated_with_disease": "associated with",
+      "is_an_umbrella_term_of": "parent-child",
+      "is_effect/phenotype_of_disease": "phenotype present",
+      "is_not_effect/phenotype_of_disease": "phenotype absent",
+      "effect/phenotype_is_side-effect_of_drug": "side effect",
+      "interacts_with": "interacts with",
+      "exposure_is_linked_to_disease": "linked to",
+      "gene/protein_is_present_in_anatomy": "expression present",
+      "gene/protein_is_not_present_in_anatomy": "expression absent"
+    },
+	"avail_node_properties": {
+		"title": "title",
+		"name": "name"
+	}
+  },
+  "mag": {
+    "type_of_kb": "paper authorship",
+    "edges_to_exclude": [],
+    "nodes_to_consider": ["paper", "author", "institution", "field_of_study"],
+    "nodes_to_ignore": [],
+    "edge_type_long2short": {
+      "author_affiliated_with_institution": "author___affiliated_with___institution",
+      "paper_cites_paper": "paper___cites___paper",
+      "author_writes_paper": "author___writes___paper",
+	  "paper_has_field_of_study": "paper___has_topic___field_of_study"
+    },
+	"avail_node_properties": {
+		"title": "title",
+		"name": "name",
+		"venue": "OriginalVenue",
+		"publication_date": "Date",
+		"publication_year": "Year"
+	}
+  },
+  "amazon": {
+    "type_of_kb": "product recommendation",
+    "edges_to_exclude": [""],
+    "nodes_to_consider": ["product", "brand", "color","category"],
+    "nodes_to_ignore": [],
+    "edge_type_long2short": {
+      "product_also_buy_product": "also_buy",
+      "product_also_view_product": "also_view",
+      "product_has_brand": "has_brand",
+      "product_has_color": "has_color",
+      "product_has_category": "has_category"
+    },
+	"avail_node_properties": {
+		"title": "title",
+		"name": "name"
+	}
+  }
+}

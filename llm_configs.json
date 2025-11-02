@@ -1,0 +1,11 @@
+{
+    "llm": {
+      "llm_temperature": 0.7,
+      "llm_seed": null,
+      "llm_parallelization_mode": "multiprocessing",
+      "llm_default_system_message": "You are a helpful and expertly concise assistant. Your responses are clear and to the point.",
+      "llm_do_sample": true,
+      "llm_top_p": 1.0,
+      "llm_max_output_tokens": 1024
+    }
+  }
