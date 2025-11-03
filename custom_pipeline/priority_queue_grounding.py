@@ -61,8 +61,8 @@ class PriorityQueueGrounding:
         # Add lexical constraints
         lexical = entity_data.get('lexical', {})
         if 'name' in lexical:
-            parts.append(lexical['name'])
-        
+            parts.append(lexical['name']) 
+
         # Add semantic constraints
         semantic = entity_data.get('semantic', [])
         if semantic:
@@ -163,6 +163,8 @@ class PriorityQueueGrounding:
                 existing.add_symbol_candidates(source_entity, source_node, source_score)
                 
                 updated_score = self._update_candidate_score(existing, source_score, self.support_boost)
+
+                # REMOVE OLD ENTRY FROM HEAP, the lazy deletion was causing problems with updating scores correctly
                 self.candidate_queues[entity] = [
                     (s, nid, c) for (s, nid, c) in self.candidate_queues[entity] if nid != node_id
                 ]
