@@ -2,7 +2,7 @@
 	"llm": {
 		"llm_max_output_tokens": 4096,
 		"llm_max_output_tokens_reasoning_model": 500000,
-		"llm_temperature": 0.2,
+		"llm_temperature": 1,
 		"llm_do_sample": false,
 		"llm_top_p": 1,
 		"llm_seed": 42,
