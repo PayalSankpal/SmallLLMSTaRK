@@ -1,0 +1,3516 @@
+[LlmBridge] ask_llm_batch: first query (if exists): ENTITY EXTRACTION TASK
+
+    OBJECTIVE: Extract entities from a natural language query and structure them in JSON format. One entity must be designated as "ANSWER", and others should use placeholder names (A, B, C, etc.).
+
+    EXTRACTION RULES
+
+    Rule 1: Entity Types
+    Only extract entities mentioned in the query.For each entity, provide a list of possible types from this list: paper, author, institution, field_of_study. THE ENTITY TYPE SHOULD NOT BE ANY OTHER THAN THESE. An entity may have multiple types.
+    If a general entity is mentioned in the query , extract it as an entity too and IF there is no semantic information for it, use the entire query as a semantic constraint for it, else use the semantic .
+    DO NOT EVER assign an entity a possible type not in this list.
+
+    Rule 2: Properties
+    If an entity has specific properties mentioned in the query, include them. Properties must be from this list: title, name.
+
+    Rule 3: Lexical Constraints
+    Identify hard lexical constraints where field values must match exactly. Do NOT use general names. Use specific entity names only. for entities that do not have their name mentioned in the query, add the general information in the semantic part.
+
+    Rule 4: Semantic Constraints
+    Provide a general description of the entity. Include ALL relevant information from the query. Can include descriptions, short phrases, and contextual information. Format as a list of descriptive strings.
+
+    Rule 5: Constant Field
+    Boolean field indicating whether the entity is a specific constant entity when it is true, or a general entity type when it is false.
+
+    OUTPUT FORMAT
+
+    CRITICAL: Your response must be a valid JSON object with the following structure:
+
+    {
+    "ENTITY_KEY": {
+        "type": ["type1", "type2"],
+        "lexical": {"property": "value"},
+        "semantic": ["description1", "description2"],
+        "constant": true/false
+    }
+    }
+
+    FORMAT REQUIREMENTS: "type" is an array of strings. "lexical" is an object (can be empty {}). "semantic" is an array of strings (can be empty []). "constant" is a boolean (true or false, not a string).
+
+    EXAMPLES:
+    Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+Response:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Response:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+    CRITICAL REQUIREMENTS
+
+    Your response must be ONLY the JSON object with no additional text. Ensure the JSON is valid and properly formatted. Do NOT leave any fields incomplete or empty when they should contain values. Follow the exact data structure shown in examples. Check that arrays use [], objects use {}, and booleans are true/false (not strings).
+    FOLLOW THE FORMAT EXACTLY.
+
+    YOUR TASK
+
+    Extract entities from the following query:
+
+    Q: Are there any studies from the University of Lausanne focusing on a new frameless stereotactic technology in the context of Ionization chamber? 
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "University of Lausanne"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "Ionization chamber"},
+    "semantic": [],
+    "constant": true
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "frameless stereotactic technology"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper", "author"],
+    "lexical": {},
+    "semantic": ["studies", "new frameless stereotactic technology", "context of Ionization chamber"],
+    "constant": false
+  }
+}
+Entities found: ['A', 'B', 'C', 'ANSWER']
+[TIMING] Step 1 (Entities): 2.2992s
+[LlmBridge] ask_llm_batch: first query (if exists): RELATION EXTRACTION TASK
+        OBJECTIVE: Given a natural language query Q and a set of identified entities from that query, identify all possible relations (edges) between these entities that are implied by the query.
+
+        TASK REQUIREMENTS
+
+        1. Identify all possible edges between entities that can be understood from the query. Consider all entity pairs.
+
+        2. For each identified relation, provide a list of possible edge types. Since edges are undirected, if you think A-rel1->B and A<-rel2-B, include both relations as (A,B): [rel1, rel2] in your answer.
+
+        3. The ANSWER entity must be associated with at least one of the other identified entities.
+
+        EDGE TYPE IDENTIFICATION PROCESS
+
+        Step 1: Consider Initial Edge Types
+        Start by considering all semantically relevant edge types from this list: writes, affiliated_with, cites, has_topic THE RELATION TYPE SHOULD NOT BE ANY OTHER THAN THESE.
+        DO NOT consider any other name for edge as edge type, other than the ones mentioned in the list above. if some other type of connection, say 'abc' is mentioned in the query between two entities, assign all the labels from the above list that are semantically close to 'abc'.
+
+        Step 2: Filter Based on Query Semantics
+        Only remove edge types that are semantically irrelevant or cannot be implied by the given query in any reasonable way.
+
+        Step 3: Validate Against Node Types
+        Consider the node types of the two entities between which the edge exists. Strictly follow the valid triplet patterns listed below.
+
+
+        IMPORTANT: Only use edge types not listed in the triplets above if the query implies a relation that absolutely cannot be represented using the standard triplets.
+
+        VALID TRIPLET PATTERNS
+        author --- affiliated_with ---> institution,
+paper --- cites ---> paper,
+paper --- has_topic ---> field_of_study,
+author --- writes ---> paper
+
+        EXAMPLES
+        Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+
+Entities:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["writes"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Entities:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["affiliated_with"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+
+        OUTPUT FORMAT
+
+        Your response must be a valid JSON object with the following structure:
+
+        {
+        ("ENTITY_KEY_1", "ENTITY_KEY_2"): ["edge_type_1", "edge_type_2"],
+        ("ENTITY_KEY_3", "ENTITY_KEY_4"): ["edge_type_3"]
+        }
+
+        Where ENTITY_KEY_1, ENTITY_KEY_2, etc. are the entity identifiers (A, B, C, ANSWER, etc.) and the edge types are strings from the valid triplet list.
+
+
+        YOUR TASK
+
+        Given the query Q and identified entities below, identify all relations possible between entities and provide them in the JSON format specified above. Do not give any other text in the output, just the required JSON formatted string.FOLLOW THE FORMAT EXACTLY
+        Q :Are there any studies from the University of Lausanne focusing on a new frameless stereotactic technology in the context of Ionization chamber? 
+        Identified Entities: {
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "University of Lausanne"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "Ionization chamber"},
+    "semantic": [],
+    "constant": true
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "frameless stereotactic technology"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper", "author"],
+    "lexical": {},
+    "semantic": ["studies", "new frameless stereotactic technology", "context of Ionization chamber"],
+    "constant": false
+  }
+}
+        
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  ("A", "ANSWER"): ["affiliated_with"],
+  ("ANSWER", "B"): ["has_topic"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+[TIMING] Step 2 (Relations): 0.7346s
+Getting embedding for query:  University of Lausanne using model: text-embedding-ada-002
+Getting embedding for query:  Ionization chamber using model: text-embedding-ada-002
+Getting embedding for query:  frameless stereotactic technology using model: text-embedding-ada-002
+Query(id=793, query='Are there any studies from the University of Lausanne focusing on a new frameless stereotactic technology in the context of Ionization chamber?', status='IN_PROGRESS', ground_truths=[1721325])
+[TIMING] Step 3 (Candidates): 1.4791s
+Getting embedding for query: University of Lausanne using model: text-embedding-ada-002
+Getting embedding for query: Ionization chamber using model: text-embedding-ada-002
+Getting embedding for query: frameless stereotactic technology using model: text-embedding-ada-002
+Getting embedding for query: studies new frameless stereotactic technology context of Ionization chamber using model: text-embedding-ada-002
+
+FATAL ERROR Query 793:
+Traceback (most recent call last):
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 594, in main
+    pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name, use_saved_llm_responses=args.use_saved_llm_responses, llm_response=llm_response, use_saved_vss_candidates=args.use_saved_vss_candidates, vss_candidates = vss_candidates)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 485, in pipeline
+    step4_grounding(query, kb, retriever)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 268, in step4_grounding
+    final_candidates = run_priority_queue_grounding(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 193, in run_priority_queue_grounding
+    return grounder.ground()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 344, in ground
+    added = self._process_candidate(
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 252, in _process_candidate
+    neighbors = self.kb.get_neighbor_nodes(curr_node, relation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/.pyenv/versions/3.11.13/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py", line 257, in get_neighbor_nodes
+    neighbor_nodes = self.sparse_adj_by_type[edge_type][idx].coalesce().indices().view(-1).tolist()
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'affiliated_with'
+
+[LlmBridge] ask_llm_batch: first query (if exists): ENTITY EXTRACTION TASK
+
+    OBJECTIVE: Extract entities from a natural language query and structure them in JSON format. One entity must be designated as "ANSWER", and others should use placeholder names (A, B, C, etc.).
+
+    EXTRACTION RULES
+
+    Rule 1: Entity Types
+    Only extract entities mentioned in the query.For each entity, provide a list of possible types from this list: paper, author, institution, field_of_study. THE ENTITY TYPE SHOULD NOT BE ANY OTHER THAN THESE. An entity may have multiple types.
+    If a general entity is mentioned in the query , extract it as an entity too and IF there is no semantic information for it, use the entire query as a semantic constraint for it, else use the semantic .
+    DO NOT EVER assign an entity a possible type not in this list.
+
+    Rule 2: Properties
+    If an entity has specific properties mentioned in the query, include them. Properties must be from this list: title, name.
+
+    Rule 3: Lexical Constraints
+    Identify hard lexical constraints where field values must match exactly. Do NOT use general names. Use specific entity names only. for entities that do not have their name mentioned in the query, add the general information in the semantic part.
+
+    Rule 4: Semantic Constraints
+    Provide a general description of the entity. Include ALL relevant information from the query. Can include descriptions, short phrases, and contextual information. Format as a list of descriptive strings.
+
+    Rule 5: Constant Field
+    Boolean field indicating whether the entity is a specific constant entity when it is true, or a general entity type when it is false.
+
+    OUTPUT FORMAT
+
+    CRITICAL: Your response must be a valid JSON object with the following structure:
+
+    {
+    "ENTITY_KEY": {
+        "type": ["type1", "type2"],
+        "lexical": {"property": "value"},
+        "semantic": ["description1", "description2"],
+        "constant": true/false
+    }
+    }
+
+    FORMAT REQUIREMENTS: "type" is an array of strings. "lexical" is an object (can be empty {}). "semantic" is an array of strings (can be empty []). "constant" is a boolean (true or false, not a string).
+
+    EXAMPLES:
+    Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+Response:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Response:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+    CRITICAL REQUIREMENTS
+
+    Your response must be ONLY the JSON object with no additional text. Ensure the JSON is valid and properly formatted. Do NOT leave any fields incomplete or empty when they should contain values. Follow the exact data structure shown in examples. Check that arrays use [], objects use {}, and booleans are true/false (not strings).
+    FOLLOW THE FORMAT EXACTLY.
+
+    YOUR TASK
+
+    Extract entities from the following query:
+
+    Q: Can you find more publications from the authors of "Circular dichroism of a tilted U-shaped nanostructure" that introduce novel metamaterials to manipulate optical transmission asymmetry? 
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  "A": {
+    "type": ["paper"],
+    "lexical": {"title": "Circular dichroism of a tilted U-shaped nanostructure"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": ["authors of Circular dichroism of a tilted U-shaped nanostructure"],
+    "constant": false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {},
+    "semantic": ["novel metamaterials", "optical transmission asymmetry"],
+    "constant": false
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["publications from the authors of Circular dichroism of a tilted U-shaped nanostructure", "introduce novel metamaterials to manipulate optical transmission asymmetry"],
+    "constant": false
+  }
+}
+Entities found: ['A', 'B', 'C', 'ANSWER']
+[TIMING] Step 1 (Entities): 2.3952s
+[LlmBridge] ask_llm_batch: first query (if exists): RELATION EXTRACTION TASK
+        OBJECTIVE: Given a natural language query Q and a set of identified entities from that query, identify all possible relations (edges) between these entities that are implied by the query.
+
+        TASK REQUIREMENTS
+
+        1. Identify all possible edges between entities that can be understood from the query. Consider all entity pairs.
+
+        2. For each identified relation, provide a list of possible edge types. Since edges are undirected, if you think A-rel1->B and A<-rel2-B, include both relations as (A,B): [rel1, rel2] in your answer.
+
+        3. The ANSWER entity must be associated with at least one of the other identified entities.
+
+        EDGE TYPE IDENTIFICATION PROCESS
+
+        Step 1: Consider Initial Edge Types
+        Start by considering all semantically relevant edge types from this list: writes, affiliated_with, cites, has_topic THE RELATION TYPE SHOULD NOT BE ANY OTHER THAN THESE.
+        DO NOT consider any other name for edge as edge type, other than the ones mentioned in the list above. if some other type of connection, say 'abc' is mentioned in the query between two entities, assign all the labels from the above list that are semantically close to 'abc'.
+
+        Step 2: Filter Based on Query Semantics
+        Only remove edge types that are semantically irrelevant or cannot be implied by the given query in any reasonable way.
+
+        Step 3: Validate Against Node Types
+        Consider the node types of the two entities between which the edge exists. Strictly follow the valid triplet patterns listed below.
+
+
+        IMPORTANT: Only use edge types not listed in the triplets above if the query implies a relation that absolutely cannot be represented using the standard triplets.
+
+        VALID TRIPLET PATTERNS
+        author --- affiliated_with ---> institution,
+paper --- cites ---> paper,
+paper --- has_topic ---> field_of_study,
+author --- writes ---> paper
+
+        EXAMPLES
+        Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+
+Entities:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["writes"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Entities:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["affiliated_with"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+
+        OUTPUT FORMAT
+
+        Your response must be a valid JSON object with the following structure:
+
+        {
+        ("ENTITY_KEY_1", "ENTITY_KEY_2"): ["edge_type_1", "edge_type_2"],
+        ("ENTITY_KEY_3", "ENTITY_KEY_4"): ["edge_type_3"]
+        }
+
+        Where ENTITY_KEY_1, ENTITY_KEY_2, etc. are the entity identifiers (A, B, C, ANSWER, etc.) and the edge types are strings from the valid triplet list.
+
+
+        YOUR TASK
+
+        Given the query Q and identified entities below, identify all relations possible between entities and provide them in the JSON format specified above. Do not give any other text in the output, just the required JSON formatted string.FOLLOW THE FORMAT EXACTLY
+        Q :Can you find more publications from the authors of "Circular dichroism of a tilted U-shaped nanostructure" that introduce novel metamaterials to manipulate optical transmission asymmetry? 
+        Identified Entities: {
+  "A": {
+    "type": ["paper"],
+    "lexical": {"title": "Circular dichroism of a tilted U-shaped nanostructure"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": ["authors of Circular dichroism of a tilted U-shaped nanostructure"],
+    "constant": false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {},
+    "semantic": ["novel metamaterials", "optical transmission asymmetry"],
+    "constant": false
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["publications from the authors of Circular dichroism of a tilted U-shaped nanostructure", "introduce novel metamaterials to manipulate optical transmission asymmetry"],
+    "constant": false
+  }
+}
+        
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  ("B", "A"): ["writes"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+[TIMING] Step 2 (Relations): 0.7040s
+Getting embedding for query:  Circular dichroism of a tilted U-shaped nanostructure using model: text-embedding-ada-002
+Getting embedding for query: authors of Circular dichroism of a tilted U-shaped nanostructure using model: text-embedding-ada-002
+Getting embedding for query: novel metamaterialsoptical transmission asymmetry using model: text-embedding-ada-002
+Query(id=7777, query='Can you find more publications from the authors of "Circular dichroism of a tilted U-shaped nanostructure" that introduce novel metamaterials to manipulate optical transmission asymmetry?', status='IN_PROGRESS', ground_truths=[1690034, 1802778, 1761399])
+[TIMING] Step 3 (Candidates): 8.5330s
+Getting embedding for query: novel metamaterials optical transmission asymmetry using model: text-embedding-ada-002
+Getting embedding for query: publications from the authors of Circular dichroism of a tilted U-shaped nanostructure introduce novel metamaterials to manipulate optical transmission asymmetry using model: text-embedding-ada-002
+
+FATAL ERROR Query 7777:
+Traceback (most recent call last):
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 594, in main
+    pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name, use_saved_llm_responses=args.use_saved_llm_responses, llm_response=llm_response, use_saved_vss_candidates=args.use_saved_vss_candidates, vss_candidates = vss_candidates)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 485, in pipeline
+    step4_grounding(query, kb, retriever)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 268, in step4_grounding
+    final_candidates = run_priority_queue_grounding(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 193, in run_priority_queue_grounding
+    return grounder.ground()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 344, in ground
+    added = self._process_candidate(
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 252, in _process_candidate
+    neighbors = self.kb.get_neighbor_nodes(curr_node, relation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/.pyenv/versions/3.11.13/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py", line 257, in get_neighbor_nodes
+    neighbor_nodes = self.sparse_adj_by_type[edge_type][idx].coalesce().indices().view(-1).tolist()
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'writes'
+
+[LlmBridge] ask_llm_batch: first query (if exists): ENTITY EXTRACTION TASK
+
+    OBJECTIVE: Extract entities from a natural language query and structure them in JSON format. One entity must be designated as "ANSWER", and others should use placeholder names (A, B, C, etc.).
+
+    EXTRACTION RULES
+
+    Rule 1: Entity Types
+    Only extract entities mentioned in the query.For each entity, provide a list of possible types from this list: paper, author, institution, field_of_study. THE ENTITY TYPE SHOULD NOT BE ANY OTHER THAN THESE. An entity may have multiple types.
+    If a general entity is mentioned in the query , extract it as an entity too and IF there is no semantic information for it, use the entire query as a semantic constraint for it, else use the semantic .
+    DO NOT EVER assign an entity a possible type not in this list.
+
+    Rule 2: Properties
+    If an entity has specific properties mentioned in the query, include them. Properties must be from this list: title, name.
+
+    Rule 3: Lexical Constraints
+    Identify hard lexical constraints where field values must match exactly. Do NOT use general names. Use specific entity names only. for entities that do not have their name mentioned in the query, add the general information in the semantic part.
+
+    Rule 4: Semantic Constraints
+    Provide a general description of the entity. Include ALL relevant information from the query. Can include descriptions, short phrases, and contextual information. Format as a list of descriptive strings.
+
+    Rule 5: Constant Field
+    Boolean field indicating whether the entity is a specific constant entity when it is true, or a general entity type when it is false.
+
+    OUTPUT FORMAT
+
+    CRITICAL: Your response must be a valid JSON object with the following structure:
+
+    {
+    "ENTITY_KEY": {
+        "type": ["type1", "type2"],
+        "lexical": {"property": "value"},
+        "semantic": ["description1", "description2"],
+        "constant": true/false
+    }
+    }
+
+    FORMAT REQUIREMENTS: "type" is an array of strings. "lexical" is an object (can be empty {}). "semantic" is an array of strings (can be empty []). "constant" is a boolean (true or false, not a string).
+
+    EXAMPLES:
+    Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+Response:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Response:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+    CRITICAL REQUIREMENTS
+
+    Your response must be ONLY the JSON object with no additional text. Ensure the JSON is valid and properly formatted. Do NOT leave any fields incomplete or empty when they should contain values. Follow the exact data structure shown in examples. Check that arrays use [], objects use {}, and booleans are true/false (not strings).
+    FOLLOW THE FORMAT EXACTLY.
+
+    YOUR TASK
+
+    Extract entities from the following query:
+
+    Q: Are there any publications by Omsk State Transport University scholars on errors in Kramers' nuclear fission formulas? 
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Omsk State Transport University"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": ["Omsk State Transport University scholars"],
+    "constant": false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "Kramers' nuclear fission formulas"},
+    "semantic": ["errors in Kramers' nuclear fission formulas"],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["publications", "errors in Kramers' nuclear fission formulas", "Omsk State Transport University scholars"],
+    "constant": false
+  }
+}
+Entities found: ['A', 'B', 'C', 'ANSWER']
+[TIMING] Step 1 (Entities): 2.4222s
+[LlmBridge] ask_llm_batch: first query (if exists): RELATION EXTRACTION TASK
+        OBJECTIVE: Given a natural language query Q and a set of identified entities from that query, identify all possible relations (edges) between these entities that are implied by the query.
+
+        TASK REQUIREMENTS
+
+        1. Identify all possible edges between entities that can be understood from the query. Consider all entity pairs.
+
+        2. For each identified relation, provide a list of possible edge types. Since edges are undirected, if you think A-rel1->B and A<-rel2-B, include both relations as (A,B): [rel1, rel2] in your answer.
+
+        3. The ANSWER entity must be associated with at least one of the other identified entities.
+
+        EDGE TYPE IDENTIFICATION PROCESS
+
+        Step 1: Consider Initial Edge Types
+        Start by considering all semantically relevant edge types from this list: writes, affiliated_with, cites, has_topic THE RELATION TYPE SHOULD NOT BE ANY OTHER THAN THESE.
+        DO NOT consider any other name for edge as edge type, other than the ones mentioned in the list above. if some other type of connection, say 'abc' is mentioned in the query between two entities, assign all the labels from the above list that are semantically close to 'abc'.
+
+        Step 2: Filter Based on Query Semantics
+        Only remove edge types that are semantically irrelevant or cannot be implied by the given query in any reasonable way.
+
+        Step 3: Validate Against Node Types
+        Consider the node types of the two entities between which the edge exists. Strictly follow the valid triplet patterns listed below.
+
+
+        IMPORTANT: Only use edge types not listed in the triplets above if the query implies a relation that absolutely cannot be represented using the standard triplets.
+
+        VALID TRIPLET PATTERNS
+        author --- affiliated_with ---> institution,
+paper --- cites ---> paper,
+paper --- has_topic ---> field_of_study,
+author --- writes ---> paper
+
+        EXAMPLES
+        Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+
+Entities:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["writes"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Entities:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["affiliated_with"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+
+        OUTPUT FORMAT
+
+        Your response must be a valid JSON object with the following structure:
+
+        {
+        ("ENTITY_KEY_1", "ENTITY_KEY_2"): ["edge_type_1", "edge_type_2"],
+        ("ENTITY_KEY_3", "ENTITY_KEY_4"): ["edge_type_3"]
+        }
+
+        Where ENTITY_KEY_1, ENTITY_KEY_2, etc. are the entity identifiers (A, B, C, ANSWER, etc.) and the edge types are strings from the valid triplet list.
+
+
+        YOUR TASK
+
+        Given the query Q and identified entities below, identify all relations possible between entities and provide them in the JSON format specified above. Do not give any other text in the output, just the required JSON formatted string.FOLLOW THE FORMAT EXACTLY
+        Q :Are there any publications by Omsk State Transport University scholars on errors in Kramers' nuclear fission formulas? 
+        Identified Entities: {
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Omsk State Transport University"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": ["Omsk State Transport University scholars"],
+    "constant": false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "Kramers' nuclear fission formulas"},
+    "semantic": ["errors in Kramers' nuclear fission formulas"],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["publications", "errors in Kramers' nuclear fission formulas", "Omsk State Transport University scholars"],
+    "constant": false
+  }
+}
+        
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  ("A", "B"): ["affiliated_with"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+[TIMING] Step 2 (Relations): 0.7531s
+Getting embedding for query: Omsk State Transport University scholars using model: text-embedding-ada-002
+Getting embedding for query:  Omsk State Transport University using model: text-embedding-ada-002
+Getting embedding for query: errors in Kramers' nuclear fission formulas Kramers' nuclear fission formulas using model: text-embedding-ada-002
+Query(id=2493, query="Are there any publications by Omsk State Transport University scholars on errors in Kramers' nuclear fission formulas?", status='IN_PROGRESS', ground_truths=[1258081, 1456971, 1242857])
+[TIMING] Step 3 (Candidates): 4.4614s
+Getting embedding for query: Omsk State Transport University using model: text-embedding-ada-002
+Getting embedding for query: Kramers' nuclear fission formulas errors in Kramers' nuclear fission formulas using model: text-embedding-ada-002
+Getting embedding for query: publications errors in Kramers' nuclear fission formulas Omsk State Transport University scholars using model: text-embedding-ada-002
+
+FATAL ERROR Query 2493:
+Traceback (most recent call last):
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 594, in main
+    pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name, use_saved_llm_responses=args.use_saved_llm_responses, llm_response=llm_response, use_saved_vss_candidates=args.use_saved_vss_candidates, vss_candidates = vss_candidates)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 485, in pipeline
+    step4_grounding(query, kb, retriever)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 268, in step4_grounding
+    final_candidates = run_priority_queue_grounding(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 193, in run_priority_queue_grounding
+    return grounder.ground()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 344, in ground
+    added = self._process_candidate(
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 252, in _process_candidate
+    neighbors = self.kb.get_neighbor_nodes(curr_node, relation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/.pyenv/versions/3.11.13/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py", line 257, in get_neighbor_nodes
+    neighbor_nodes = self.sparse_adj_by_type[edge_type][idx].coalesce().indices().view(-1).tolist()
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'affiliated_with'
+
+[LlmBridge] ask_llm_batch: first query (if exists): ENTITY EXTRACTION TASK
+
+    OBJECTIVE: Extract entities from a natural language query and structure them in JSON format. One entity must be designated as "ANSWER", and others should use placeholder names (A, B, C, etc.).
+
+    EXTRACTION RULES
+
+    Rule 1: Entity Types
+    Only extract entities mentioned in the query.For each entity, provide a list of possible types from this list: paper, author, institution, field_of_study. THE ENTITY TYPE SHOULD NOT BE ANY OTHER THAN THESE. An entity may have multiple types.
+    If a general entity is mentioned in the query , extract it as an entity too and IF there is no semantic information for it, use the entire query as a semantic constraint for it, else use the semantic .
+    DO NOT EVER assign an entity a possible type not in this list.
+
+    Rule 2: Properties
+    If an entity has specific properties mentioned in the query, include them. Properties must be from this list: title, name.
+
+    Rule 3: Lexical Constraints
+    Identify hard lexical constraints where field values must match exactly. Do NOT use general names. Use specific entity names only. for entities that do not have their name mentioned in the query, add the general information in the semantic part.
+
+    Rule 4: Semantic Constraints
+    Provide a general description of the entity. Include ALL relevant information from the query. Can include descriptions, short phrases, and contextual information. Format as a list of descriptive strings.
+
+    Rule 5: Constant Field
+    Boolean field indicating whether the entity is a specific constant entity when it is true, or a general entity type when it is false.
+
+    OUTPUT FORMAT
+
+    CRITICAL: Your response must be a valid JSON object with the following structure:
+
+    {
+    "ENTITY_KEY": {
+        "type": ["type1", "type2"],
+        "lexical": {"property": "value"},
+        "semantic": ["description1", "description2"],
+        "constant": true/false
+    }
+    }
+
+    FORMAT REQUIREMENTS: "type" is an array of strings. "lexical" is an object (can be empty {}). "semantic" is an array of strings (can be empty []). "constant" is a boolean (true or false, not a string).
+
+    EXAMPLES:
+    Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+Response:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Response:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+    CRITICAL REQUIREMENTS
+
+    Your response must be ONLY the JSON object with no additional text. Ensure the JSON is valid and properly formatted. Do NOT leave any fields incomplete or empty when they should contain values. Follow the exact data structure shown in examples. Check that arrays use [], objects use {}, and booleans are true/false (not strings).
+    FOLLOW THE FORMAT EXACTLY.
+
+    YOUR TASK
+
+    Extract entities from the following query:
+
+    Q: Find publications by coauthors of "Thompson scattering in high-intensity chirped laser pulses" which also explore the impact of spin on magnetic fields. 
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  "A": {
+    "type": ["paper"],
+    "lexical": {"title": "Thompson scattering in high-intensity chirped laser pulses"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": ["coauthors of Thompson scattering in high-intensity chirped laser pulses"],
+    "constant": false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {},
+    "semantic": ["impact of spin on magnetic fields"],
+    "constant": false
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["publications by coauthors of Thompson scattering in high-intensity chirped laser pulses", "explore the impact of spin on magnetic fields"],
+    "constant": false
+  }
+}
+Entities found: ['A', 'B', 'C', 'ANSWER']
+[TIMING] Step 1 (Entities): 2.2664s
+[LlmBridge] ask_llm_batch: first query (if exists): RELATION EXTRACTION TASK
+        OBJECTIVE: Given a natural language query Q and a set of identified entities from that query, identify all possible relations (edges) between these entities that are implied by the query.
+
+        TASK REQUIREMENTS
+
+        1. Identify all possible edges between entities that can be understood from the query. Consider all entity pairs.
+
+        2. For each identified relation, provide a list of possible edge types. Since edges are undirected, if you think A-rel1->B and A<-rel2-B, include both relations as (A,B): [rel1, rel2] in your answer.
+
+        3. The ANSWER entity must be associated with at least one of the other identified entities.
+
+        EDGE TYPE IDENTIFICATION PROCESS
+
+        Step 1: Consider Initial Edge Types
+        Start by considering all semantically relevant edge types from this list: writes, affiliated_with, cites, has_topic THE RELATION TYPE SHOULD NOT BE ANY OTHER THAN THESE.
+        DO NOT consider any other name for edge as edge type, other than the ones mentioned in the list above. if some other type of connection, say 'abc' is mentioned in the query between two entities, assign all the labels from the above list that are semantically close to 'abc'.
+
+        Step 2: Filter Based on Query Semantics
+        Only remove edge types that are semantically irrelevant or cannot be implied by the given query in any reasonable way.
+
+        Step 3: Validate Against Node Types
+        Consider the node types of the two entities between which the edge exists. Strictly follow the valid triplet patterns listed below.
+
+
+        IMPORTANT: Only use edge types not listed in the triplets above if the query implies a relation that absolutely cannot be represented using the standard triplets.
+
+        VALID TRIPLET PATTERNS
+        author --- affiliated_with ---> institution,
+paper --- cites ---> paper,
+paper --- has_topic ---> field_of_study,
+author --- writes ---> paper
+
+        EXAMPLES
+        Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+
+Entities:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["writes"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Entities:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["affiliated_with"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+
+        OUTPUT FORMAT
+
+        Your response must be a valid JSON object with the following structure:
+
+        {
+        ("ENTITY_KEY_1", "ENTITY_KEY_2"): ["edge_type_1", "edge_type_2"],
+        ("ENTITY_KEY_3", "ENTITY_KEY_4"): ["edge_type_3"]
+        }
+
+        Where ENTITY_KEY_1, ENTITY_KEY_2, etc. are the entity identifiers (A, B, C, ANSWER, etc.) and the edge types are strings from the valid triplet list.
+
+
+        YOUR TASK
+
+        Given the query Q and identified entities below, identify all relations possible between entities and provide them in the JSON format specified above. Do not give any other text in the output, just the required JSON formatted string.FOLLOW THE FORMAT EXACTLY
+        Q :Find publications by coauthors of "Thompson scattering in high-intensity chirped laser pulses" which also explore the impact of spin on magnetic fields. 
+        Identified Entities: {
+  "A": {
+    "type": ["paper"],
+    "lexical": {"title": "Thompson scattering in high-intensity chirped laser pulses"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": ["coauthors of Thompson scattering in high-intensity chirped laser pulses"],
+    "constant": false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {},
+    "semantic": ["impact of spin on magnetic fields"],
+    "constant": false
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["publications by coauthors of Thompson scattering in high-intensity chirped laser pulses", "explore the impact of spin on magnetic fields"],
+    "constant": false
+  }
+}
+        
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  ("B", "A"): ["writes"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+[TIMING] Step 2 (Relations): 0.6959s
+Getting embedding for query:  Thompson scattering in high-intensity chirped laser pulses using model: text-embedding-ada-002
+Getting embedding for query: coauthors of Thompson scattering in high-intensity chirped laser pulses using model: text-embedding-ada-002
+Getting embedding for query: impact of spin on magnetic fields using model: text-embedding-ada-002
+Query(id=1682, query='Find publications by coauthors of "Thompson scattering in high-intensity chirped laser pulses" which also explore the impact of spin on magnetic fields.', status='IN_PROGRESS', ground_truths=[1615103, 1453412, 1604165, 1242825, 1507153, 1187933, 1352251, 1220125, 1269503])
+[TIMING] Step 3 (Candidates): 9.9647s
+Getting embedding for query: publications by coauthors of Thompson scattering in high-intensity chirped laser pulses explore the impact of spin on magnetic fields using model: text-embedding-ada-002
+
+FATAL ERROR Query 1682:
+Traceback (most recent call last):
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 594, in main
+    pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name, use_saved_llm_responses=args.use_saved_llm_responses, llm_response=llm_response, use_saved_vss_candidates=args.use_saved_vss_candidates, vss_candidates = vss_candidates)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 485, in pipeline
+    step4_grounding(query, kb, retriever)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 268, in step4_grounding
+    final_candidates = run_priority_queue_grounding(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 193, in run_priority_queue_grounding
+    return grounder.ground()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 344, in ground
+    added = self._process_candidate(
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 252, in _process_candidate
+    neighbors = self.kb.get_neighbor_nodes(curr_node, relation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/.pyenv/versions/3.11.13/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py", line 257, in get_neighbor_nodes
+    neighbor_nodes = self.sparse_adj_by_type[edge_type][idx].coalesce().indices().view(-1).tolist()
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'writes'
+
+[LlmBridge] ask_llm_batch: first query (if exists): ENTITY EXTRACTION TASK
+
+    OBJECTIVE: Extract entities from a natural language query and structure them in JSON format. One entity must be designated as "ANSWER", and others should use placeholder names (A, B, C, etc.).
+
+    EXTRACTION RULES
+
+    Rule 1: Entity Types
+    Only extract entities mentioned in the query.For each entity, provide a list of possible types from this list: paper, author, institution, field_of_study. THE ENTITY TYPE SHOULD NOT BE ANY OTHER THAN THESE. An entity may have multiple types.
+    If a general entity is mentioned in the query , extract it as an entity too and IF there is no semantic information for it, use the entire query as a semantic constraint for it, else use the semantic .
+    DO NOT EVER assign an entity a possible type not in this list.
+
+    Rule 2: Properties
+    If an entity has specific properties mentioned in the query, include them. Properties must be from this list: title, name.
+
+    Rule 3: Lexical Constraints
+    Identify hard lexical constraints where field values must match exactly. Do NOT use general names. Use specific entity names only. for entities that do not have their name mentioned in the query, add the general information in the semantic part.
+
+    Rule 4: Semantic Constraints
+    Provide a general description of the entity. Include ALL relevant information from the query. Can include descriptions, short phrases, and contextual information. Format as a list of descriptive strings.
+
+    Rule 5: Constant Field
+    Boolean field indicating whether the entity is a specific constant entity when it is true, or a general entity type when it is false.
+
+    OUTPUT FORMAT
+
+    CRITICAL: Your response must be a valid JSON object with the following structure:
+
+    {
+    "ENTITY_KEY": {
+        "type": ["type1", "type2"],
+        "lexical": {"property": "value"},
+        "semantic": ["description1", "description2"],
+        "constant": true/false
+    }
+    }
+
+    FORMAT REQUIREMENTS: "type" is an array of strings. "lexical" is an object (can be empty {}). "semantic" is an array of strings (can be empty []). "constant" is a boolean (true or false, not a string).
+
+    EXAMPLES:
+    Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+Response:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Response:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+    CRITICAL REQUIREMENTS
+
+    Your response must be ONLY the JSON object with no additional text. Ensure the JSON is valid and properly formatted. Do NOT leave any fields incomplete or empty when they should contain values. Follow the exact data structure shown in examples. Check that arrays use [], objects use {}, and booleans are true/false (not strings).
+    FOLLOW THE FORMAT EXACTLY.
+
+    YOUR TASK
+
+    Extract entities from the following query:
+
+    Q: Can you locate 2015 papers that compare photodetectors, which are referenced in "A systematic characterization of the low-energy photon response of plastic scintillation detectors"? 
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  "A": {
+    "type": ["paper"],
+    "lexical": {"title": "A systematic characterization of the low-energy photon response of plastic scintillation detectors"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "photodetectors"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 papers", "compare photodetectors"],
+    "constant": false
+  }
+}
+Entities found: ['A', 'B', 'ANSWER']
+[TIMING] Step 1 (Entities): 1.7522s
+[LlmBridge] ask_llm_batch: first query (if exists): RELATION EXTRACTION TASK
+        OBJECTIVE: Given a natural language query Q and a set of identified entities from that query, identify all possible relations (edges) between these entities that are implied by the query.
+
+        TASK REQUIREMENTS
+
+        1. Identify all possible edges between entities that can be understood from the query. Consider all entity pairs.
+
+        2. For each identified relation, provide a list of possible edge types. Since edges are undirected, if you think A-rel1->B and A<-rel2-B, include both relations as (A,B): [rel1, rel2] in your answer.
+
+        3. The ANSWER entity must be associated with at least one of the other identified entities.
+
+        EDGE TYPE IDENTIFICATION PROCESS
+
+        Step 1: Consider Initial Edge Types
+        Start by considering all semantically relevant edge types from this list: writes, affiliated_with, cites, has_topic THE RELATION TYPE SHOULD NOT BE ANY OTHER THAN THESE.
+        DO NOT consider any other name for edge as edge type, other than the ones mentioned in the list above. if some other type of connection, say 'abc' is mentioned in the query between two entities, assign all the labels from the above list that are semantically close to 'abc'.
+
+        Step 2: Filter Based on Query Semantics
+        Only remove edge types that are semantically irrelevant or cannot be implied by the given query in any reasonable way.
+
+        Step 3: Validate Against Node Types
+        Consider the node types of the two entities between which the edge exists. Strictly follow the valid triplet patterns listed below.
+
+
+        IMPORTANT: Only use edge types not listed in the triplets above if the query implies a relation that absolutely cannot be represented using the standard triplets.
+
+        VALID TRIPLET PATTERNS
+        author --- affiliated_with ---> institution,
+paper --- cites ---> paper,
+paper --- has_topic ---> field_of_study,
+author --- writes ---> paper
+
+        EXAMPLES
+        Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+
+Entities:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["writes"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Entities:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["affiliated_with"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+
+        OUTPUT FORMAT
+
+        Your response must be a valid JSON object with the following structure:
+
+        {
+        ("ENTITY_KEY_1", "ENTITY_KEY_2"): ["edge_type_1", "edge_type_2"],
+        ("ENTITY_KEY_3", "ENTITY_KEY_4"): ["edge_type_3"]
+        }
+
+        Where ENTITY_KEY_1, ENTITY_KEY_2, etc. are the entity identifiers (A, B, C, ANSWER, etc.) and the edge types are strings from the valid triplet list.
+
+
+        YOUR TASK
+
+        Given the query Q and identified entities below, identify all relations possible between entities and provide them in the JSON format specified above. Do not give any other text in the output, just the required JSON formatted string.FOLLOW THE FORMAT EXACTLY
+        Q :Can you locate 2015 papers that compare photodetectors, which are referenced in "A systematic characterization of the low-energy photon response of plastic scintillation detectors"? 
+        Identified Entities: {
+  "A": {
+    "type": ["paper"],
+    "lexical": {"title": "A systematic characterization of the low-energy photon response of plastic scintillation detectors"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "photodetectors"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 papers", "compare photodetectors"],
+    "constant": false
+  }
+}
+        
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  ("A", "B"): ["has_topic"],
+  ("A", "ANSWER"): ["cites"],
+  ("ANSWER", "B"): ["has_topic"]
+}
+[TIMING] Step 2 (Relations): 0.6634s
+Getting embedding for query:  A systematic characterization of the low-energy photon response of plastic scintillation detectors using model: text-embedding-ada-002
+Getting embedding for query:  photodetectors using model: text-embedding-ada-002
+Query(id=7275, query='Can you locate 2015 papers that compare photodetectors, which are referenced in "A systematic characterization of the low-energy photon response of plastic scintillation detectors"?', status='IN_PROGRESS', ground_truths=[1215341])
+[TIMING] Step 3 (Candidates): 3.0427s
+Getting embedding for query: photodetectors using model: text-embedding-ada-002
+Getting embedding for query: 2015 papers compare photodetectors using model: text-embedding-ada-002
+
+FATAL ERROR Query 7275:
+Traceback (most recent call last):
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 594, in main
+    pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name, use_saved_llm_responses=args.use_saved_llm_responses, llm_response=llm_response, use_saved_vss_candidates=args.use_saved_vss_candidates, vss_candidates = vss_candidates)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 485, in pipeline
+    step4_grounding(query, kb, retriever)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 268, in step4_grounding
+    final_candidates = run_priority_queue_grounding(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 193, in run_priority_queue_grounding
+    return grounder.ground()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 344, in ground
+    added = self._process_candidate(
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 252, in _process_candidate
+    neighbors = self.kb.get_neighbor_nodes(curr_node, relation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/.pyenv/versions/3.11.13/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py", line 257, in get_neighbor_nodes
+    neighbor_nodes = self.sparse_adj_by_type[edge_type][idx].coalesce().indices().view(-1).tolist()
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'has_topic'
+
+[LlmBridge] ask_llm_batch: first query (if exists): ENTITY EXTRACTION TASK
+
+    OBJECTIVE: Extract entities from a natural language query and structure them in JSON format. One entity must be designated as "ANSWER", and others should use placeholder names (A, B, C, etc.).
+
+    EXTRACTION RULES
+
+    Rule 1: Entity Types
+    Only extract entities mentioned in the query.For each entity, provide a list of possible types from this list: paper, author, institution, field_of_study. THE ENTITY TYPE SHOULD NOT BE ANY OTHER THAN THESE. An entity may have multiple types.
+    If a general entity is mentioned in the query , extract it as an entity too and IF there is no semantic information for it, use the entire query as a semantic constraint for it, else use the semantic .
+    DO NOT EVER assign an entity a possible type not in this list.
+
+    Rule 2: Properties
+    If an entity has specific properties mentioned in the query, include them. Properties must be from this list: title, name.
+
+    Rule 3: Lexical Constraints
+    Identify hard lexical constraints where field values must match exactly. Do NOT use general names. Use specific entity names only. for entities that do not have their name mentioned in the query, add the general information in the semantic part.
+
+    Rule 4: Semantic Constraints
+    Provide a general description of the entity. Include ALL relevant information from the query. Can include descriptions, short phrases, and contextual information. Format as a list of descriptive strings.
+
+    Rule 5: Constant Field
+    Boolean field indicating whether the entity is a specific constant entity when it is true, or a general entity type when it is false.
+
+    OUTPUT FORMAT
+
+    CRITICAL: Your response must be a valid JSON object with the following structure:
+
+    {
+    "ENTITY_KEY": {
+        "type": ["type1", "type2"],
+        "lexical": {"property": "value"},
+        "semantic": ["description1", "description2"],
+        "constant": true/false
+    }
+    }
+
+    FORMAT REQUIREMENTS: "type" is an array of strings. "lexical" is an object (can be empty {}). "semantic" is an array of strings (can be empty []). "constant" is a boolean (true or false, not a string).
+
+    EXAMPLES:
+    Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+Response:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Response:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+    CRITICAL REQUIREMENTS
+
+    Your response must be ONLY the JSON object with no additional text. Ensure the JSON is valid and properly formatted. Do NOT leave any fields incomplete or empty when they should contain values. Follow the exact data structure shown in examples. Check that arrays use [], objects use {}, and booleans are true/false (not strings).
+    FOLLOW THE FORMAT EXACTLY.
+
+    YOUR TASK
+
+    Extract entities from the following query:
+
+    Q: Show me publications by B. Spruck focusing on hyperon production research. 
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  "A": {
+    "type": ["author"],
+    "lexical": {"name": "B. Spruck"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "hyperon production research"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["publications by B. Spruck", "hyperon production research"],
+    "constant": false
+  }
+}
+Entities found: ['A', 'B', 'ANSWER']
+[TIMING] Step 1 (Entities): 2.0534s
+[LlmBridge] ask_llm_batch: first query (if exists): RELATION EXTRACTION TASK
+        OBJECTIVE: Given a natural language query Q and a set of identified entities from that query, identify all possible relations (edges) between these entities that are implied by the query.
+
+        TASK REQUIREMENTS
+
+        1. Identify all possible edges between entities that can be understood from the query. Consider all entity pairs.
+
+        2. For each identified relation, provide a list of possible edge types. Since edges are undirected, if you think A-rel1->B and A<-rel2-B, include both relations as (A,B): [rel1, rel2] in your answer.
+
+        3. The ANSWER entity must be associated with at least one of the other identified entities.
+
+        EDGE TYPE IDENTIFICATION PROCESS
+
+        Step 1: Consider Initial Edge Types
+        Start by considering all semantically relevant edge types from this list: writes, affiliated_with, cites, has_topic THE RELATION TYPE SHOULD NOT BE ANY OTHER THAN THESE.
+        DO NOT consider any other name for edge as edge type, other than the ones mentioned in the list above. if some other type of connection, say 'abc' is mentioned in the query between two entities, assign all the labels from the above list that are semantically close to 'abc'.
+
+        Step 2: Filter Based on Query Semantics
+        Only remove edge types that are semantically irrelevant or cannot be implied by the given query in any reasonable way.
+
+        Step 3: Validate Against Node Types
+        Consider the node types of the two entities between which the edge exists. Strictly follow the valid triplet patterns listed below.
+
+
+        IMPORTANT: Only use edge types not listed in the triplets above if the query implies a relation that absolutely cannot be represented using the standard triplets.
+
+        VALID TRIPLET PATTERNS
+        author --- affiliated_with ---> institution,
+paper --- cites ---> paper,
+paper --- has_topic ---> field_of_study,
+author --- writes ---> paper
+
+        EXAMPLES
+        Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+
+Entities:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["writes"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Entities:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["affiliated_with"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+
+        OUTPUT FORMAT
+
+        Your response must be a valid JSON object with the following structure:
+
+        {
+        ("ENTITY_KEY_1", "ENTITY_KEY_2"): ["edge_type_1", "edge_type_2"],
+        ("ENTITY_KEY_3", "ENTITY_KEY_4"): ["edge_type_3"]
+        }
+
+        Where ENTITY_KEY_1, ENTITY_KEY_2, etc. are the entity identifiers (A, B, C, ANSWER, etc.) and the edge types are strings from the valid triplet list.
+
+
+        YOUR TASK
+
+        Given the query Q and identified entities below, identify all relations possible between entities and provide them in the JSON format specified above. Do not give any other text in the output, just the required JSON formatted string.FOLLOW THE FORMAT EXACTLY
+        Q :Show me publications by B. Spruck focusing on hyperon production research. 
+        Identified Entities: {
+  "A": {
+    "type": ["author"],
+    "lexical": {"name": "B. Spruck"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "hyperon production research"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["publications by B. Spruck", "hyperon production research"],
+    "constant": false
+  }
+}
+        
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  ("A", "ANSWER"): ["writes"],
+  ("ANSWER", "B"): ["has_topic"]
+}
+[TIMING] Step 2 (Relations): 0.5394s
+Getting embedding for query:  hyperon production research using model: text-embedding-ada-002
+Getting embedding for query:  B. Spruck using model: text-embedding-ada-002
+Query(id=1920, query='Show me publications by B. Spruck focusing on hyperon production research.', status='IN_PROGRESS', ground_truths=[1422385])
+[TIMING] Step 3 (Candidates): 7.2537s
+Getting embedding for query: B. Spruck using model: text-embedding-ada-002
+Getting embedding for query: hyperon production research using model: text-embedding-ada-002
+Getting embedding for query: publications by B. Spruck hyperon production research using model: text-embedding-ada-002
+
+FATAL ERROR Query 1920:
+Traceback (most recent call last):
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 594, in main
+    pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name, use_saved_llm_responses=args.use_saved_llm_responses, llm_response=llm_response, use_saved_vss_candidates=args.use_saved_vss_candidates, vss_candidates = vss_candidates)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 485, in pipeline
+    step4_grounding(query, kb, retriever)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 268, in step4_grounding
+    final_candidates = run_priority_queue_grounding(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 193, in run_priority_queue_grounding
+    return grounder.ground()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 344, in ground
+    added = self._process_candidate(
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 252, in _process_candidate
+    neighbors = self.kb.get_neighbor_nodes(curr_node, relation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/.pyenv/versions/3.11.13/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py", line 257, in get_neighbor_nodes
+    neighbor_nodes = self.sparse_adj_by_type[edge_type][idx].coalesce().indices().view(-1).tolist()
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'writes'
+
+[LlmBridge] ask_llm_batch: first query (if exists): ENTITY EXTRACTION TASK
+
+    OBJECTIVE: Extract entities from a natural language query and structure them in JSON format. One entity must be designated as "ANSWER", and others should use placeholder names (A, B, C, etc.).
+
+    EXTRACTION RULES
+
+    Rule 1: Entity Types
+    Only extract entities mentioned in the query.For each entity, provide a list of possible types from this list: paper, author, institution, field_of_study. THE ENTITY TYPE SHOULD NOT BE ANY OTHER THAN THESE. An entity may have multiple types.
+    If a general entity is mentioned in the query , extract it as an entity too and IF there is no semantic information for it, use the entire query as a semantic constraint for it, else use the semantic .
+    DO NOT EVER assign an entity a possible type not in this list.
+
+    Rule 2: Properties
+    If an entity has specific properties mentioned in the query, include them. Properties must be from this list: title, name.
+
+    Rule 3: Lexical Constraints
+    Identify hard lexical constraints where field values must match exactly. Do NOT use general names. Use specific entity names only. for entities that do not have their name mentioned in the query, add the general information in the semantic part.
+
+    Rule 4: Semantic Constraints
+    Provide a general description of the entity. Include ALL relevant information from the query. Can include descriptions, short phrases, and contextual information. Format as a list of descriptive strings.
+
+    Rule 5: Constant Field
+    Boolean field indicating whether the entity is a specific constant entity when it is true, or a general entity type when it is false.
+
+    OUTPUT FORMAT
+
+    CRITICAL: Your response must be a valid JSON object with the following structure:
+
+    {
+    "ENTITY_KEY": {
+        "type": ["type1", "type2"],
+        "lexical": {"property": "value"},
+        "semantic": ["description1", "description2"],
+        "constant": true/false
+    }
+    }
+
+    FORMAT REQUIREMENTS: "type" is an array of strings. "lexical" is an object (can be empty {}). "semantic" is an array of strings (can be empty []). "constant" is a boolean (true or false, not a string).
+
+    EXAMPLES:
+    Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+Response:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Response:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+    CRITICAL REQUIREMENTS
+
+    Your response must be ONLY the JSON object with no additional text. Ensure the JSON is valid and properly formatted. Do NOT leave any fields incomplete or empty when they should contain values. Follow the exact data structure shown in examples. Check that arrays use [], objects use {}, and booleans are true/false (not strings).
+    FOLLOW THE FORMAT EXACTLY.
+
+    YOUR TASK
+
+    Extract entities from the following query:
+
+    Q: Show me publications by P. A. Khilo related to beam generation. 
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  "A": {
+    "type": ["author"],
+    "lexical": {"name": "P. A. Khilo"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "beam generation"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["publications by P. A. Khilo related to beam generation"],
+    "constant": false
+  }
+}
+Entities found: ['A', 'B', 'ANSWER']
+[TIMING] Step 1 (Entities): 1.6306s
+[LlmBridge] ask_llm_batch: first query (if exists): RELATION EXTRACTION TASK
+        OBJECTIVE: Given a natural language query Q and a set of identified entities from that query, identify all possible relations (edges) between these entities that are implied by the query.
+
+        TASK REQUIREMENTS
+
+        1. Identify all possible edges between entities that can be understood from the query. Consider all entity pairs.
+
+        2. For each identified relation, provide a list of possible edge types. Since edges are undirected, if you think A-rel1->B and A<-rel2-B, include both relations as (A,B): [rel1, rel2] in your answer.
+
+        3. The ANSWER entity must be associated with at least one of the other identified entities.
+
+        EDGE TYPE IDENTIFICATION PROCESS
+
+        Step 1: Consider Initial Edge Types
+        Start by considering all semantically relevant edge types from this list: writes, affiliated_with, cites, has_topic THE RELATION TYPE SHOULD NOT BE ANY OTHER THAN THESE.
+        DO NOT consider any other name for edge as edge type, other than the ones mentioned in the list above. if some other type of connection, say 'abc' is mentioned in the query between two entities, assign all the labels from the above list that are semantically close to 'abc'.
+
+        Step 2: Filter Based on Query Semantics
+        Only remove edge types that are semantically irrelevant or cannot be implied by the given query in any reasonable way.
+
+        Step 3: Validate Against Node Types
+        Consider the node types of the two entities between which the edge exists. Strictly follow the valid triplet patterns listed below.
+
+
+        IMPORTANT: Only use edge types not listed in the triplets above if the query implies a relation that absolutely cannot be represented using the standard triplets.
+
+        VALID TRIPLET PATTERNS
+        author --- affiliated_with ---> institution,
+paper --- cites ---> paper,
+paper --- has_topic ---> field_of_study,
+author --- writes ---> paper
+
+        EXAMPLES
+        Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+
+Entities:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["writes"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Entities:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["affiliated_with"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+
+        OUTPUT FORMAT
+
+        Your response must be a valid JSON object with the following structure:
+
+        {
+        ("ENTITY_KEY_1", "ENTITY_KEY_2"): ["edge_type_1", "edge_type_2"],
+        ("ENTITY_KEY_3", "ENTITY_KEY_4"): ["edge_type_3"]
+        }
+
+        Where ENTITY_KEY_1, ENTITY_KEY_2, etc. are the entity identifiers (A, B, C, ANSWER, etc.) and the edge types are strings from the valid triplet list.
+
+
+        YOUR TASK
+
+        Given the query Q and identified entities below, identify all relations possible between entities and provide them in the JSON format specified above. Do not give any other text in the output, just the required JSON formatted string.FOLLOW THE FORMAT EXACTLY
+        Q :Show me publications by P. A. Khilo related to beam generation. 
+        Identified Entities: {
+  "A": {
+    "type": ["author"],
+    "lexical": {"name": "P. A. Khilo"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "beam generation"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["publications by P. A. Khilo related to beam generation"],
+    "constant": false
+  }
+}
+        
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  ("A", "ANSWER"): ["writes"],
+  ("ANSWER", "B"): ["has_topic"]
+}
+[TIMING] Step 2 (Relations): 0.5404s
+Getting embedding for query:  beam generation using model: text-embedding-ada-002
+Getting embedding for query:  P. A. Khilo using model: text-embedding-ada-002
+Query(id=3587, query='Show me publications by P. A. Khilo related to beam generation.', status='IN_PROGRESS', ground_truths=[1684106, 1478797])
+[TIMING] Step 3 (Candidates): 7.1755s
+Getting embedding for query: P. A. Khilo using model: text-embedding-ada-002
+Getting embedding for query: beam generation using model: text-embedding-ada-002
+Getting embedding for query: publications by P. A. Khilo related to beam generation using model: text-embedding-ada-002
+
+FATAL ERROR Query 3587:
+Traceback (most recent call last):
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 594, in main
+    pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name, use_saved_llm_responses=args.use_saved_llm_responses, llm_response=llm_response, use_saved_vss_candidates=args.use_saved_vss_candidates, vss_candidates = vss_candidates)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 485, in pipeline
+    step4_grounding(query, kb, retriever)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 268, in step4_grounding
+    final_candidates = run_priority_queue_grounding(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 193, in run_priority_queue_grounding
+    return grounder.ground()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 344, in ground
+    added = self._process_candidate(
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 252, in _process_candidate
+    neighbors = self.kb.get_neighbor_nodes(curr_node, relation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/.pyenv/versions/3.11.13/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py", line 257, in get_neighbor_nodes
+    neighbor_nodes = self.sparse_adj_by_type[edge_type][idx].coalesce().indices().view(-1).tolist()
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'writes'
+
+[LlmBridge] ask_llm_batch: first query (if exists): ENTITY EXTRACTION TASK
+
+    OBJECTIVE: Extract entities from a natural language query and structure them in JSON format. One entity must be designated as "ANSWER", and others should use placeholder names (A, B, C, etc.).
+
+    EXTRACTION RULES
+
+    Rule 1: Entity Types
+    Only extract entities mentioned in the query.For each entity, provide a list of possible types from this list: paper, author, institution, field_of_study. THE ENTITY TYPE SHOULD NOT BE ANY OTHER THAN THESE. An entity may have multiple types.
+    If a general entity is mentioned in the query , extract it as an entity too and IF there is no semantic information for it, use the entire query as a semantic constraint for it, else use the semantic .
+    DO NOT EVER assign an entity a possible type not in this list.
+
+    Rule 2: Properties
+    If an entity has specific properties mentioned in the query, include them. Properties must be from this list: title, name.
+
+    Rule 3: Lexical Constraints
+    Identify hard lexical constraints where field values must match exactly. Do NOT use general names. Use specific entity names only. for entities that do not have their name mentioned in the query, add the general information in the semantic part.
+
+    Rule 4: Semantic Constraints
+    Provide a general description of the entity. Include ALL relevant information from the query. Can include descriptions, short phrases, and contextual information. Format as a list of descriptive strings.
+
+    Rule 5: Constant Field
+    Boolean field indicating whether the entity is a specific constant entity when it is true, or a general entity type when it is false.
+
+    OUTPUT FORMAT
+
+    CRITICAL: Your response must be a valid JSON object with the following structure:
+
+    {
+    "ENTITY_KEY": {
+        "type": ["type1", "type2"],
+        "lexical": {"property": "value"},
+        "semantic": ["description1", "description2"],
+        "constant": true/false
+    }
+    }
+
+    FORMAT REQUIREMENTS: "type" is an array of strings. "lexical" is an object (can be empty {}). "semantic" is an array of strings (can be empty []). "constant" is a boolean (true or false, not a string).
+
+    EXAMPLES:
+    Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+Response:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Response:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+    CRITICAL REQUIREMENTS
+
+    Your response must be ONLY the JSON object with no additional text. Ensure the JSON is valid and properly formatted. Do NOT leave any fields incomplete or empty when they should contain values. Follow the exact data structure shown in examples. Check that arrays use [], objects use {}, and booleans are true/false (not strings).
+    FOLLOW THE FORMAT EXACTLY.
+
+    YOUR TASK
+
+    Extract entities from the following query:
+
+    Q: Does any Optics literature from Yokogawa Electric talk about a record-breaking breakdown voltage for diamond field-effect transistors when they were published? 
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Yokogawa Electric"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "Optics"},
+    "semantic": [],
+    "constant": true
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "diamond field-effect transistors"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["record-breaking breakdown voltage", "Optics literature", "published"],
+    "constant": false
+  }
+}
+Entities found: ['A', 'B', 'C', 'ANSWER']
+[TIMING] Step 1 (Entities): 2.0902s
+[LlmBridge] ask_llm_batch: first query (if exists): RELATION EXTRACTION TASK
+        OBJECTIVE: Given a natural language query Q and a set of identified entities from that query, identify all possible relations (edges) between these entities that are implied by the query.
+
+        TASK REQUIREMENTS
+
+        1. Identify all possible edges between entities that can be understood from the query. Consider all entity pairs.
+
+        2. For each identified relation, provide a list of possible edge types. Since edges are undirected, if you think A-rel1->B and A<-rel2-B, include both relations as (A,B): [rel1, rel2] in your answer.
+
+        3. The ANSWER entity must be associated with at least one of the other identified entities.
+
+        EDGE TYPE IDENTIFICATION PROCESS
+
+        Step 1: Consider Initial Edge Types
+        Start by considering all semantically relevant edge types from this list: writes, affiliated_with, cites, has_topic THE RELATION TYPE SHOULD NOT BE ANY OTHER THAN THESE.
+        DO NOT consider any other name for edge as edge type, other than the ones mentioned in the list above. if some other type of connection, say 'abc' is mentioned in the query between two entities, assign all the labels from the above list that are semantically close to 'abc'.
+
+        Step 2: Filter Based on Query Semantics
+        Only remove edge types that are semantically irrelevant or cannot be implied by the given query in any reasonable way.
+
+        Step 3: Validate Against Node Types
+        Consider the node types of the two entities between which the edge exists. Strictly follow the valid triplet patterns listed below.
+
+
+        IMPORTANT: Only use edge types not listed in the triplets above if the query implies a relation that absolutely cannot be represented using the standard triplets.
+
+        VALID TRIPLET PATTERNS
+        author --- affiliated_with ---> institution,
+paper --- cites ---> paper,
+paper --- has_topic ---> field_of_study,
+author --- writes ---> paper
+
+        EXAMPLES
+        Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+
+Entities:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["writes"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Entities:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["affiliated_with"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+
+        OUTPUT FORMAT
+
+        Your response must be a valid JSON object with the following structure:
+
+        {
+        ("ENTITY_KEY_1", "ENTITY_KEY_2"): ["edge_type_1", "edge_type_2"],
+        ("ENTITY_KEY_3", "ENTITY_KEY_4"): ["edge_type_3"]
+        }
+
+        Where ENTITY_KEY_1, ENTITY_KEY_2, etc. are the entity identifiers (A, B, C, ANSWER, etc.) and the edge types are strings from the valid triplet list.
+
+
+        YOUR TASK
+
+        Given the query Q and identified entities below, identify all relations possible between entities and provide them in the JSON format specified above. Do not give any other text in the output, just the required JSON formatted string.FOLLOW THE FORMAT EXACTLY
+        Q :Does any Optics literature from Yokogawa Electric talk about a record-breaking breakdown voltage for diamond field-effect transistors when they were published? 
+        Identified Entities: {
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Yokogawa Electric"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "Optics"},
+    "semantic": [],
+    "constant": true
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "diamond field-effect transistors"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["record-breaking breakdown voltage", "Optics literature", "published"],
+    "constant": false
+  }
+}
+        
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  ("A", "ANSWER"): ["affiliated_with"],
+  ("B", "ANSWER"): ["has_topic"],
+  ("C", "ANSWER"): ["has_topic"]
+}
+[TIMING] Step 2 (Relations): 0.7569s
+Getting embedding for query:  Yokogawa Electric using model: text-embedding-ada-002
+Getting embedding for query:  diamond field-effect transistors using model: text-embedding-ada-002
+Getting embedding for query:  Optics using model: text-embedding-ada-002
+Query(id=4318, query='Does any Optics literature from Yokogawa Electric talk about a record-breaking breakdown voltage for diamond field-effect transistors when they were published?', status='IN_PROGRESS', ground_truths=[1718820])
+[TIMING] Step 3 (Candidates): 1.1667s
+Getting embedding for query: Yokogawa Electric using model: text-embedding-ada-002
+Getting embedding for query: Optics using model: text-embedding-ada-002
+Getting embedding for query: diamond field-effect transistors using model: text-embedding-ada-002
+Getting embedding for query: record-breaking breakdown voltage Optics literature published using model: text-embedding-ada-002
+
+FATAL ERROR Query 4318:
+Traceback (most recent call last):
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 594, in main
+    pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name, use_saved_llm_responses=args.use_saved_llm_responses, llm_response=llm_response, use_saved_vss_candidates=args.use_saved_vss_candidates, vss_candidates = vss_candidates)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 485, in pipeline
+    step4_grounding(query, kb, retriever)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 268, in step4_grounding
+    final_candidates = run_priority_queue_grounding(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 193, in run_priority_queue_grounding
+    return grounder.ground()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 344, in ground
+    added = self._process_candidate(
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 252, in _process_candidate
+    neighbors = self.kb.get_neighbor_nodes(curr_node, relation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/.pyenv/versions/3.11.13/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py", line 257, in get_neighbor_nodes
+    neighbor_nodes = self.sparse_adj_by_type[edge_type][idx].coalesce().indices().view(-1).tolist()
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'affiliated_with'
+
+[LlmBridge] ask_llm_batch: first query (if exists): ENTITY EXTRACTION TASK
+
+    OBJECTIVE: Extract entities from a natural language query and structure them in JSON format. One entity must be designated as "ANSWER", and others should use placeholder names (A, B, C, etc.).
+
+    EXTRACTION RULES
+
+    Rule 1: Entity Types
+    Only extract entities mentioned in the query.For each entity, provide a list of possible types from this list: paper, author, institution, field_of_study. THE ENTITY TYPE SHOULD NOT BE ANY OTHER THAN THESE. An entity may have multiple types.
+    If a general entity is mentioned in the query , extract it as an entity too and IF there is no semantic information for it, use the entire query as a semantic constraint for it, else use the semantic .
+    DO NOT EVER assign an entity a possible type not in this list.
+
+    Rule 2: Properties
+    If an entity has specific properties mentioned in the query, include them. Properties must be from this list: title, name.
+
+    Rule 3: Lexical Constraints
+    Identify hard lexical constraints where field values must match exactly. Do NOT use general names. Use specific entity names only. for entities that do not have their name mentioned in the query, add the general information in the semantic part.
+
+    Rule 4: Semantic Constraints
+    Provide a general description of the entity. Include ALL relevant information from the query. Can include descriptions, short phrases, and contextual information. Format as a list of descriptive strings.
+
+    Rule 5: Constant Field
+    Boolean field indicating whether the entity is a specific constant entity when it is true, or a general entity type when it is false.
+
+    OUTPUT FORMAT
+
+    CRITICAL: Your response must be a valid JSON object with the following structure:
+
+    {
+    "ENTITY_KEY": {
+        "type": ["type1", "type2"],
+        "lexical": {"property": "value"},
+        "semantic": ["description1", "description2"],
+        "constant": true/false
+    }
+    }
+
+    FORMAT REQUIREMENTS: "type" is an array of strings. "lexical" is an object (can be empty {}). "semantic" is an array of strings (can be empty []). "constant" is a boolean (true or false, not a string).
+
+    EXAMPLES:
+    Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+Response:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Response:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+    CRITICAL REQUIREMENTS
+
+    Your response must be ONLY the JSON object with no additional text. Ensure the JSON is valid and properly formatted. Do NOT leave any fields incomplete or empty when they should contain values. Follow the exact data structure shown in examples. Check that arrays use [], objects use {}, and booleans are true/false (not strings).
+    FOLLOW THE FORMAT EXACTLY.
+
+    YOUR TASK
+
+    Extract entities from the following query:
+
+    Q: Does any research from Wheelock College delve into the study of offset bars in late-type galaxies in the discipline of Astrophysics? 
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Wheelock College"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "Astrophysics"},
+    "semantic": [],
+    "constant": true
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "offset bars in late-type galaxies"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper", "research"],
+    "lexical": {},
+    "semantic": ["study of offset bars in late-type galaxies", "discipline of Astrophysics", "research from Wheelock College"],
+    "constant": false
+  }
+}
+Entities found: ['A', 'B', 'C', 'ANSWER']
+[TIMING] Step 1 (Entities): 2.2618s
+[LlmBridge] ask_llm_batch: first query (if exists): RELATION EXTRACTION TASK
+        OBJECTIVE: Given a natural language query Q and a set of identified entities from that query, identify all possible relations (edges) between these entities that are implied by the query.
+
+        TASK REQUIREMENTS
+
+        1. Identify all possible edges between entities that can be understood from the query. Consider all entity pairs.
+
+        2. For each identified relation, provide a list of possible edge types. Since edges are undirected, if you think A-rel1->B and A<-rel2-B, include both relations as (A,B): [rel1, rel2] in your answer.
+
+        3. The ANSWER entity must be associated with at least one of the other identified entities.
+
+        EDGE TYPE IDENTIFICATION PROCESS
+
+        Step 1: Consider Initial Edge Types
+        Start by considering all semantically relevant edge types from this list: writes, affiliated_with, cites, has_topic THE RELATION TYPE SHOULD NOT BE ANY OTHER THAN THESE.
+        DO NOT consider any other name for edge as edge type, other than the ones mentioned in the list above. if some other type of connection, say 'abc' is mentioned in the query between two entities, assign all the labels from the above list that are semantically close to 'abc'.
+
+        Step 2: Filter Based on Query Semantics
+        Only remove edge types that are semantically irrelevant or cannot be implied by the given query in any reasonable way.
+
+        Step 3: Validate Against Node Types
+        Consider the node types of the two entities between which the edge exists. Strictly follow the valid triplet patterns listed below.
+
+
+        IMPORTANT: Only use edge types not listed in the triplets above if the query implies a relation that absolutely cannot be represented using the standard triplets.
+
+        VALID TRIPLET PATTERNS
+        author --- affiliated_with ---> institution,
+paper --- cites ---> paper,
+paper --- has_topic ---> field_of_study,
+author --- writes ---> paper
+
+        EXAMPLES
+        Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+
+Entities:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["writes"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Entities:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["affiliated_with"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+
+        OUTPUT FORMAT
+
+        Your response must be a valid JSON object with the following structure:
+
+        {
+        ("ENTITY_KEY_1", "ENTITY_KEY_2"): ["edge_type_1", "edge_type_2"],
+        ("ENTITY_KEY_3", "ENTITY_KEY_4"): ["edge_type_3"]
+        }
+
+        Where ENTITY_KEY_1, ENTITY_KEY_2, etc. are the entity identifiers (A, B, C, ANSWER, etc.) and the edge types are strings from the valid triplet list.
+
+
+        YOUR TASK
+
+        Given the query Q and identified entities below, identify all relations possible between entities and provide them in the JSON format specified above. Do not give any other text in the output, just the required JSON formatted string.FOLLOW THE FORMAT EXACTLY
+        Q :Does any research from Wheelock College delve into the study of offset bars in late-type galaxies in the discipline of Astrophysics? 
+        Identified Entities: {
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Wheelock College"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "Astrophysics"},
+    "semantic": [],
+    "constant": true
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "offset bars in late-type galaxies"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper", "research"],
+    "lexical": {},
+    "semantic": ["study of offset bars in late-type galaxies", "discipline of Astrophysics", "research from Wheelock College"],
+    "constant": false
+  }
+}
+        
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  ("A", "ANSWER"): ["affiliated_with"],
+  ("ANSWER", "B"): ["has_topic"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+[TIMING] Step 2 (Relations): 0.6662s
+Getting embedding for query:  Wheelock College using model: text-embedding-ada-002
+Getting embedding for query:  Astrophysics using model: text-embedding-ada-002
+Getting embedding for query:  offset bars in late-type galaxies using model: text-embedding-ada-002
+Query(id=4412, query='Does any research from Wheelock College delve into the study of offset bars in late-type galaxies in the discipline of Astrophysics?', status='IN_PROGRESS', ground_truths=[1748850])
+[TIMING] Step 3 (Candidates): 0.8614s
+Getting embedding for query: Wheelock College using model: text-embedding-ada-002
+Getting embedding for query: Astrophysics using model: text-embedding-ada-002
+Getting embedding for query: offset bars in late-type galaxies using model: text-embedding-ada-002
+Getting embedding for query: study of offset bars in late-type galaxies discipline of Astrophysics research from Wheelock College using model: text-embedding-ada-002
+
+FATAL ERROR Query 4412:
+Traceback (most recent call last):
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 594, in main
+    pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name, use_saved_llm_responses=args.use_saved_llm_responses, llm_response=llm_response, use_saved_vss_candidates=args.use_saved_vss_candidates, vss_candidates = vss_candidates)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 485, in pipeline
+    step4_grounding(query, kb, retriever)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 268, in step4_grounding
+    final_candidates = run_priority_queue_grounding(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 193, in run_priority_queue_grounding
+    return grounder.ground()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 344, in ground
+    added = self._process_candidate(
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 252, in _process_candidate
+    neighbors = self.kb.get_neighbor_nodes(curr_node, relation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/.pyenv/versions/3.11.13/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py", line 257, in get_neighbor_nodes
+    neighbor_nodes = self.sparse_adj_by_type[edge_type][idx].coalesce().indices().view(-1).tolist()
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'affiliated_with'
+
+[LlmBridge] ask_llm_batch: first query (if exists): ENTITY EXTRACTION TASK
+
+    OBJECTIVE: Extract entities from a natural language query and structure them in JSON format. One entity must be designated as "ANSWER", and others should use placeholder names (A, B, C, etc.).
+
+    EXTRACTION RULES
+
+    Rule 1: Entity Types
+    Only extract entities mentioned in the query.For each entity, provide a list of possible types from this list: paper, author, institution, field_of_study. THE ENTITY TYPE SHOULD NOT BE ANY OTHER THAN THESE. An entity may have multiple types.
+    If a general entity is mentioned in the query , extract it as an entity too and IF there is no semantic information for it, use the entire query as a semantic constraint for it, else use the semantic .
+    DO NOT EVER assign an entity a possible type not in this list.
+
+    Rule 2: Properties
+    If an entity has specific properties mentioned in the query, include them. Properties must be from this list: title, name.
+
+    Rule 3: Lexical Constraints
+    Identify hard lexical constraints where field values must match exactly. Do NOT use general names. Use specific entity names only. for entities that do not have their name mentioned in the query, add the general information in the semantic part.
+
+    Rule 4: Semantic Constraints
+    Provide a general description of the entity. Include ALL relevant information from the query. Can include descriptions, short phrases, and contextual information. Format as a list of descriptive strings.
+
+    Rule 5: Constant Field
+    Boolean field indicating whether the entity is a specific constant entity when it is true, or a general entity type when it is false.
+
+    OUTPUT FORMAT
+
+    CRITICAL: Your response must be a valid JSON object with the following structure:
+
+    {
+    "ENTITY_KEY": {
+        "type": ["type1", "type2"],
+        "lexical": {"property": "value"},
+        "semantic": ["description1", "description2"],
+        "constant": true/false
+    }
+    }
+
+    FORMAT REQUIREMENTS: "type" is an array of strings. "lexical" is an object (can be empty {}). "semantic" is an array of strings (can be empty []). "constant" is a boolean (true or false, not a string).
+
+    EXAMPLES:
+    Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+Response:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Response:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+    CRITICAL REQUIREMENTS
+
+    Your response must be ONLY the JSON object with no additional text. Ensure the JSON is valid and properly formatted. Do NOT leave any fields incomplete or empty when they should contain values. Follow the exact data structure shown in examples. Check that arrays use [], objects use {}, and booleans are true/false (not strings).
+    FOLLOW THE FORMAT EXACTLY.
+
+    YOUR TASK
+
+    Extract entities from the following query:
+
+    Q: Show me papers published by co-authors of 'Will organic thermoelectrics get hot' that also explore the subject of magnetoplasmonic systems. 
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  "A": {
+    "type": ["paper"],
+    "lexical": {"title": "Will organic thermoelectrics get hot"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": ["co-authors of 'Will organic thermoelectrics get hot'"],
+    "constant": false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "magnetoplasmonic systems"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["published by co-authors of 'Will organic thermoelectrics get hot'", "explore the subject of magnetoplasmonic systems"],
+    "constant": false
+  }
+}
+Entities found: ['A', 'B', 'C', 'ANSWER']
+[TIMING] Step 1 (Entities): 2.4007s
+[LlmBridge] ask_llm_batch: first query (if exists): RELATION EXTRACTION TASK
+        OBJECTIVE: Given a natural language query Q and a set of identified entities from that query, identify all possible relations (edges) between these entities that are implied by the query.
+
+        TASK REQUIREMENTS
+
+        1. Identify all possible edges between entities that can be understood from the query. Consider all entity pairs.
+
+        2. For each identified relation, provide a list of possible edge types. Since edges are undirected, if you think A-rel1->B and A<-rel2-B, include both relations as (A,B): [rel1, rel2] in your answer.
+
+        3. The ANSWER entity must be associated with at least one of the other identified entities.
+
+        EDGE TYPE IDENTIFICATION PROCESS
+
+        Step 1: Consider Initial Edge Types
+        Start by considering all semantically relevant edge types from this list: writes, affiliated_with, cites, has_topic THE RELATION TYPE SHOULD NOT BE ANY OTHER THAN THESE.
+        DO NOT consider any other name for edge as edge type, other than the ones mentioned in the list above. if some other type of connection, say 'abc' is mentioned in the query between two entities, assign all the labels from the above list that are semantically close to 'abc'.
+
+        Step 2: Filter Based on Query Semantics
+        Only remove edge types that are semantically irrelevant or cannot be implied by the given query in any reasonable way.
+
+        Step 3: Validate Against Node Types
+        Consider the node types of the two entities between which the edge exists. Strictly follow the valid triplet patterns listed below.
+
+
+        IMPORTANT: Only use edge types not listed in the triplets above if the query implies a relation that absolutely cannot be represented using the standard triplets.
+
+        VALID TRIPLET PATTERNS
+        author --- affiliated_with ---> institution,
+paper --- cites ---> paper,
+paper --- has_topic ---> field_of_study,
+author --- writes ---> paper
+
+        EXAMPLES
+        Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+
+Entities:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["writes"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Entities:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["affiliated_with"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+
+        OUTPUT FORMAT
+
+        Your response must be a valid JSON object with the following structure:
+
+        {
+        ("ENTITY_KEY_1", "ENTITY_KEY_2"): ["edge_type_1", "edge_type_2"],
+        ("ENTITY_KEY_3", "ENTITY_KEY_4"): ["edge_type_3"]
+        }
+
+        Where ENTITY_KEY_1, ENTITY_KEY_2, etc. are the entity identifiers (A, B, C, ANSWER, etc.) and the edge types are strings from the valid triplet list.
+
+
+        YOUR TASK
+
+        Given the query Q and identified entities below, identify all relations possible between entities and provide them in the JSON format specified above. Do not give any other text in the output, just the required JSON formatted string.FOLLOW THE FORMAT EXACTLY
+        Q :Show me papers published by co-authors of 'Will organic thermoelectrics get hot' that also explore the subject of magnetoplasmonic systems. 
+        Identified Entities: {
+  "A": {
+    "type": ["paper"],
+    "lexical": {"title": "Will organic thermoelectrics get hot"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": ["co-authors of 'Will organic thermoelectrics get hot'"],
+    "constant": false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "magnetoplasmonic systems"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["published by co-authors of 'Will organic thermoelectrics get hot'", "explore the subject of magnetoplasmonic systems"],
+    "constant": false
+  }
+}
+        
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  ("B", "A"): ["writes"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+[TIMING] Step 2 (Relations): 0.6226s
+Getting embedding for query:  Will organic thermoelectrics get hot using model: text-embedding-ada-002
+Getting embedding for query: co-authors of 'Will organic thermoelectrics get hot' using model: text-embedding-ada-002
+Getting embedding for query:  magnetoplasmonic systems using model: text-embedding-ada-002
+Query(id=7989, query="Show me papers published by co-authors of 'Will organic thermoelectrics get hot' that also explore the subject of magnetoplasmonic systems.", status='IN_PROGRESS', ground_truths=[1843745])
+[TIMING] Step 3 (Candidates): 10.2493s
+Getting embedding for query: magnetoplasmonic systems using model: text-embedding-ada-002
+Getting embedding for query: published by co-authors of 'Will organic thermoelectrics get hot' explore the subject of magnetoplasmonic systems using model: text-embedding-ada-002
+
+FATAL ERROR Query 7989:
+Traceback (most recent call last):
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 594, in main
+    pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name, use_saved_llm_responses=args.use_saved_llm_responses, llm_response=llm_response, use_saved_vss_candidates=args.use_saved_vss_candidates, vss_candidates = vss_candidates)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 485, in pipeline
+    step4_grounding(query, kb, retriever)
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 268, in step4_grounding
+    final_candidates = run_priority_queue_grounding(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/run_pipeline.py", line 193, in run_priority_queue_grounding
+    return grounder.ground()
+           ^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 344, in ground
+    added = self._process_candidate(
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/BTechProject/custom_pipeline/grounders/grounder3.py", line 252, in _process_candidate
+    neighbors = self.kb.get_neighbor_nodes(curr_node, relation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/.pyenv/versions/3.11.13/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py", line 257, in get_neighbor_nodes
+    neighbor_nodes = self.sparse_adj_by_type[edge_type][idx].coalesce().indices().view(-1).tolist()
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'writes'
+
+[LlmBridge] ask_llm_batch: first query (if exists): ENTITY EXTRACTION TASK
+
+    OBJECTIVE: Extract entities from a natural language query and structure them in JSON format. One entity must be designated as "ANSWER", and others should use placeholder names (A, B, C, etc.).
+
+    EXTRACTION RULES
+
+    Rule 1: Entity Types
+    Only extract entities mentioned in the query.For each entity, provide a list of possible types from this list: paper, author, institution, field_of_study. THE ENTITY TYPE SHOULD NOT BE ANY OTHER THAN THESE. An entity may have multiple types.
+    If a general entity is mentioned in the query , extract it as an entity too and IF there is no semantic information for it, use the entire query as a semantic constraint for it, else use the semantic .
+    DO NOT EVER assign an entity a possible type not in this list.
+
+    Rule 2: Properties
+    If an entity has specific properties mentioned in the query, include them. Properties must be from this list: title, name.
+
+    Rule 3: Lexical Constraints
+    Identify hard lexical constraints where field values must match exactly. Do NOT use general names. Use specific entity names only. for entities that do not have their name mentioned in the query, add the general information in the semantic part.
+
+    Rule 4: Semantic Constraints
+    Provide a general description of the entity. Include ALL relevant information from the query. Can include descriptions, short phrases, and contextual information. Format as a list of descriptive strings.
+
+    Rule 5: Constant Field
+    Boolean field indicating whether the entity is a specific constant entity when it is true, or a general entity type when it is false.
+
+    OUTPUT FORMAT
+
+    CRITICAL: Your response must be a valid JSON object with the following structure:
+
+    {
+    "ENTITY_KEY": {
+        "type": ["type1", "type2"],
+        "lexical": {"property": "value"},
+        "semantic": ["description1", "description2"],
+        "constant": true/false
+    }
+    }
+
+    FORMAT REQUIREMENTS: "type" is an array of strings. "lexical" is an object (can be empty {}). "semantic" is an array of strings (can be empty []). "constant" is a boolean (true or false, not a string).
+
+    EXAMPLES:
+    Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+Response:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Response:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+    CRITICAL REQUIREMENTS
+
+    Your response must be ONLY the JSON object with no additional text. Ensure the JSON is valid and properly formatted. Do NOT leave any fields incomplete or empty when they should contain values. Follow the exact data structure shown in examples. Check that arrays use [], objects use {}, and booleans are true/false (not strings).
+    FOLLOW THE FORMAT EXACTLY.
+
+    YOUR TASK
+
+    Extract entities from the following query:
+
+    Q: Looking for papers that have either been referenced in "Study on power coupling of annular vortex beam propagating through a two-Cassegrain-telescope optical system in turbulent atmosphere" or explore similar features and uses of vortex electron beams in turbulent conditions. 
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  "A": {
+    "type": ["paper"],
+    "lexical": {"title": "Study on power coupling of annular vortex beam propagating through a two-Cassegrain-telescope optical system in turbulent atmosphere"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {},
+    "semantic": ["vortex electron beams", "turbulent conditions"],
+    "constant": false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "vortex electron beams"},
+    "semantic": ["turbulent conditions"],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["similar features and uses of vortex electron beams", "referenced in Study on power coupling of annular vortex beam propagating through a two-Cassegrain-telescope optical system in turbulent atmosphere"],
+    "constant": false
+  }
+}
+Entities found: ['A', 'B', 'C', 'ANSWER']
+[TIMING] Step 1 (Entities): 2.7069s
+[LlmBridge] ask_llm_batch: first query (if exists): RELATION EXTRACTION TASK
+        OBJECTIVE: Given a natural language query Q and a set of identified entities from that query, identify all possible relations (edges) between these entities that are implied by the query.
+
+        TASK REQUIREMENTS
+
+        1. Identify all possible edges between entities that can be understood from the query. Consider all entity pairs.
+
+        2. For each identified relation, provide a list of possible edge types. Since edges are undirected, if you think A-rel1->B and A<-rel2-B, include both relations as (A,B): [rel1, rel2] in your answer.
+
+        3. The ANSWER entity must be associated with at least one of the other identified entities.
+
+        EDGE TYPE IDENTIFICATION PROCESS
+
+        Step 1: Consider Initial Edge Types
+        Start by considering all semantically relevant edge types from this list: writes, affiliated_with, cites, has_topic THE RELATION TYPE SHOULD NOT BE ANY OTHER THAN THESE.
+        DO NOT consider any other name for edge as edge type, other than the ones mentioned in the list above. if some other type of connection, say 'abc' is mentioned in the query between two entities, assign all the labels from the above list that are semantically close to 'abc'.
+
+        Step 2: Filter Based on Query Semantics
+        Only remove edge types that are semantically irrelevant or cannot be implied by the given query in any reasonable way.
+
+        Step 3: Validate Against Node Types
+        Consider the node types of the two entities between which the edge exists. Strictly follow the valid triplet patterns listed below.
+
+
+        IMPORTANT: Only use edge types not listed in the triplets above if the query implies a relation that absolutely cannot be represented using the standard triplets.
+
+        VALID TRIPLET PATTERNS
+        author --- affiliated_with ---> institution,
+paper --- cites ---> paper,
+paper --- has_topic ---> field_of_study,
+author --- writes ---> paper
+
+        EXAMPLES
+        Example 1
+Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
+
+Entities:
+{
+  "A": {
+    "type": ["paper"],
+    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "nucleon-nucleon resonance states"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["writes"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+Example 2
+Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
+Entities:
+{
+  "A": {
+    "type": ["institution"],
+    "lexical": {"name": "Loyola University New Orleans"},
+    "semantic": [],
+    "constant: true
+  },
+  "B": {
+    "type": ["author"],
+    "lexical": {},
+    "semantic": [],
+    "constant" : false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fermions"},
+    "semantic": [],
+    "constant" : true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2015 Physics papers"],
+    "constant" : false
+  }
+}
+
+Identified Relations:
+{
+  ("B", "A"): ["affiliated_with"],
+  ("B", "ANSWER"): ["writes"],
+  ("ANSWER", "C"): ["has_topic"]
+}
+
+
+        OUTPUT FORMAT
+
+        Your response must be a valid JSON object with the following structure:
+
+        {
+        ("ENTITY_KEY_1", "ENTITY_KEY_2"): ["edge_type_1", "edge_type_2"],
+        ("ENTITY_KEY_3", "ENTITY_KEY_4"): ["edge_type_3"]
+        }
+
+        Where ENTITY_KEY_1, ENTITY_KEY_2, etc. are the entity identifiers (A, B, C, ANSWER, etc.) and the edge types are strings from the valid triplet list.
+
+
+        YOUR TASK
+
+        Given the query Q and identified entities below, identify all relations possible between entities and provide them in the JSON format specified above. Do not give any other text in the output, just the required JSON formatted string.FOLLOW THE FORMAT EXACTLY
+        Q :Looking for papers that have either been referenced in "Study on power coupling of annular vortex beam propagating through a two-Cassegrain-telescope optical system in turbulent atmosphere" or explore similar features and uses of vortex electron beams in turbulent conditions. 
+        Identified Entities: {
+  "A": {
+    "type": ["paper"],
+    "lexical": {"title": "Study on power coupling of annular vortex beam propagating through a two-Cassegrain-telescope optical system in turbulent atmosphere"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {},
+    "semantic": ["vortex electron beams", "turbulent conditions"],
+    "constant": false
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "vortex electron beams"},
+    "semantic": ["turbulent conditions"],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["similar features and uses of vortex electron beams", "referenced in Study on power coupling of annular vortex beam propagating through a two-Cassegrain-telescope optical system in turbulent atmosphere"],
+    "constant": false
+  }
+}
+        
