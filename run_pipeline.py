@@ -35,10 +35,19 @@ from custom_pipeline.priority_queue_grounding import PriorityQueueGrounding
 import json
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import signal
 
 # --- OPTIMIZATION CONFIG ---
 MAX_WORKERS = 4 
+QUERY_TIMEOUT_SECONDS = 300  # 5 minutes timeout per query
 # ---------------------------
+
+class TimeoutException(Exception):
+    pass
+
+def timeout_handler(signum, frame):
+    raise TimeoutException("Query execution timed out")
+
 
 def get_llm_response(prompt, llm_bridge):
     response = llm_bridge.ask_llm_batch([prompt])
@@ -364,7 +373,7 @@ def main(args):
     
     test_queries = [qa_dataset[i] for i in qa]
     if args.test_run:
-        test_queries = test_queries[:]
+        test_queries = test_queries[28:]
 
     print("Loading Knowledge Base...")
     kb = load_skb(dataset_name, download_processed=True)
@@ -380,7 +389,7 @@ def main(args):
         qa_dataset=qa_dataset,
         dataset_name=data_split,
         use_vss=True,
-        use_gpu=False
+        use_gpu=True
     )
 
     create_experiment_dir(exp_name=exp_name, base_dir='./output/')
@@ -396,10 +405,33 @@ def main(args):
             try:
                 with contextlib.redirect_stdout(temp_file):
                     current_query = Query(id=query[1], query=query[0], ground_truths=query[2])
-                    pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name)
+                    
+                    # Set timeout alarm
+                    signal.signal(signal.SIGALRM, timeout_handler)
+                    signal.alarm(QUERY_TIMEOUT_SECONDS)
+                    
+                    try:
+                        pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name)
+                        signal.alarm(0)  # Cancel the alarm
+                    except TimeoutException:
+                        signal.alarm(0)  # Cancel the alarm
+                        current_query.status = "TIMEOUT"
+                        raise TimeoutException(f"Query exceeded {QUERY_TIMEOUT_SECONDS}s timeout")
+                    
                 results.append(current_query)
                 
+            except TimeoutException as e:
+                failed_queries.append({
+                    'query_id': query[1], 
+                    'error': f'TIMEOUT: {str(e)}', 
+                    'traceback': f'Query exceeded {QUERY_TIMEOUT_SECONDS} second timeout'
+                })
+                tqdm.write(f"⏱ Query {query[1]} timed out after {QUERY_TIMEOUT_SECONDS}s")
+                temp_file.write(f"\nTIMEOUT Query {query[1]}: Exceeded {QUERY_TIMEOUT_SECONDS}s\n")
+                continue
+                
             except Exception as e:
+                signal.alarm(0)  # Cancel alarm in case of other exceptions
                 tb = traceback.format_exc()
                 failed_queries.append({
                     'query_id': query[1], 
@@ -430,9 +462,12 @@ if __name__ == "__main__":
     parser.add_argument("--split", type=str, required=True, help="Data split (e.g., train, test, val)")
     parser.add_argument("--test-run", action='store_true', help="Run on subset of 50 queries")
     parser.add_argument("--exp-name", type=str, default=None, help="Name of the experiment for saving outputs")
+    parser.add_argument("--timeout", type=int, default=300, help="Timeout per query in seconds (default: 300)")
     
     args = parser.parse_args()
     if args.exp_name is None:
         args.exp_name = f"{args.dataset}_{args.split}_results"
+    
+    QUERY_TIMEOUT_SECONDS = args.timeout
     
     main(args)

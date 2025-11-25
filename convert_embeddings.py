@@ -7,17 +7,19 @@ def parse_args():
     parser = ArgumentParser()
     parser.add_argument("--emb_model", default="text-embedding-ada-002",
                         help="Embedding model to use")
+    parser.add_argument("--dataset", default="mag")
     return parser.parse_args()
 
 args = parse_args()
 model_name = args.emb_model
+dataset = args.dataset
 
 # Load the original candidate embeddings
-candidate_emb_dict = torch.load(f"emb/prime/{model_name}/doc/candidate_emb_dict.pt")
+candidate_emb_dict = torch.load(f"emb/{dataset}/{model_name}/doc/candidate_emb_dict.pt")
 
 # Assuming you have access to your kb object and node_ids_by_type
 # If not, you'll need to determine node types from the candidate_emb_dict keys
-nodes_emb_dir = Path(f"emb/prime/{model_name}/nodes/")
+nodes_emb_dir = Path(f"emb/{dataset}/{model_name}/nodes/")
 nodes_emb_dir.mkdir(parents=True, exist_ok=True)
 
 # Method 1: If you have kb and node_ids_by_type available
@@ -33,6 +35,8 @@ def convert_with_kb(candidate_emb_dict, kb, node_ids_by_type, nodes_emb_dir):
         for node_id in node_ids:
             if node_id in candidate_emb_dict:
                 type_embeddings.append(candidate_emb_dict[node_id])
+            elif str(node_id) in candidate_emb_dict:
+                type_embeddings.append(candidate_emb_dict[str(node_id)])
             else:
                 print(f"Warning: Node ID {node_id} not found in candidate_emb_dict")
         
@@ -54,7 +58,7 @@ def convert_with_kb(candidate_emb_dict, kb, node_ids_by_type, nodes_emb_dir):
     print(f'Converted and saved embeddings of nodes to {nodes_emb_dir}!')
     return node_emb_dict
 
-dataset_name = 'prime'
+dataset_name = f'{dataset}'
 kb = load_skb(dataset_name, download_processed=True)
 
 node_ids_by_type = {}
@@ -62,3 +66,4 @@ for node_type in kb.node_type_lst():
     # Get node IDs for this type
     node_ids_by_type[node_type] = kb.get_node_ids_by_type(node_type)
 convert_with_kb(candidate_emb_dict, kb, node_ids_by_type, nodes_emb_dir)
+
