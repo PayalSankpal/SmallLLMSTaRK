@@ -193,58 +193,6 @@ def run_priority_queue_grounding(
     return grounder.ground()
     
 
-def step4_grounding(query: Query, kb, retriever):
-    final_candidates = run_priority_queue_grounding(
-        query_obj=query,
-        kb=kb,
-        vss_retriever=retriever,
-        max_candidates_per_symbol=100,
-        max_answer_candidates=20,
-        top_k_neighbors=15,
-        support_boost=0,
-        score_decay=0.9,
-        verbose=False
-    )
-    answers = [cc.node_id for cc in sorted(
-        final_candidates["ANSWER"], key=lambda x: (x.score, -x.support), reverse=True
-    )]
-    query.grounding_candidates = answers
-        # print(query)
-
-    return final_candidates
-
-def step5_merge_vss_candidates(query: Query, retriever: VSSRetriever, kb, querywise_vss_candidates, use_saved_vss_candidates: bool = False,alpha:int = 12):
-    vss_candidates = []
-    if not use_saved_vss_candidates:
-        
-        possible_node_types = query.entities["ANSWER"]["type"].copy()
-        for node_type in possible_node_types:
-            print("\n\n\nSEARCHING VSS FOR NODE TYPE:", node_type,"\n\n")
-            print(query.query)
-            top_canididates = retriever.get_top_k_nodes(
-                search_str=query.query, k=20, node_type=node_type, cutoff=0.6
-            )
-            print("\n\n\nTOP CANDIDATES FROM VSS\n\n\n", top_canididates,"\n\n")
-            vss_candidates.extend(list(zip(top_canididates[0], top_canididates[1])))
-    else:
-        vss_candidates = querywise_vss_candidates.get(query.id, [])
-
-    print("\n\n\nVSS CANDIDATES\n\n\n", vss_candidates,"\n\n")
-    vss_candidates.sort(key=lambda x: x[1], reverse=True)
-
-    existing_candidate_ids = query.grounding_candidates[:alpha]
-
-    new_vss_candidates = []
-    for node, score in vss_candidates:
-        if node not in existing_candidate_ids:
-            new_vss_candidates.append(node)
-        if len(new_vss_candidates) == 20 - alpha:
-            break
-    
-    merged_candidates = existing_candidate_ids + new_vss_candidates
-    query.vss_merged_candidates = merged_candidates
-    evaluate_results_after_merging_vss_candidates(query)
-    return merged_candidates
 
 
 def evaluate_results_after_merging_vss_candidates(query: Query):
@@ -254,20 +202,29 @@ def evaluate_results_after_merging_vss_candidates(query: Query):
     return results
 
 def evaluate_results(predicted_nodes, ground_truth_nodes):
+    """Evaluate prediction results against ground truth."""
     ground_truth_set = set(ground_truth_nodes)
     
     if not predicted_nodes:
         return {
+            "answer_list": [],
             "answer_set": set(),
             "ground_truth_set": ground_truth_set,
+            "retrieved_ground_truths": set(),
+            "missed_ground_truths": ground_truth_set,
             "metrics": {
                 "total_answers": len(ground_truth_set),
                 "retrieved_count": 0,
                 "missed_count": len(ground_truth_set),
-                "recall@50": 0.0, "hit_at_1": 0.0, "hit_at_5": 0.0, "mrr": 0.0,
+                "recall@50": 0.0,
+                "recall@20": 0.0,
+                "hit_at_1": 0.0,
+                "hit_at_5": 0.0,
+                "mrr": 0.0,
             }
         }
     
+    # Calculate metrics
     hit_at_1 = 1.0 if predicted_nodes[0] in ground_truth_set else 0.0
     hit_at_5 = 1.0 if any(node in ground_truth_set for node in predicted_nodes[:5]) else 0.0
     
@@ -278,23 +235,26 @@ def evaluate_results(predicted_nodes, ground_truth_nodes):
             break
     
     answer_set = set(predicted_nodes)
-    retieved_ground_truths = answer_set.intersection(ground_truth_set)
-    missed_ground_truths = ground_truth_set.difference(retieved_ground_truths)
+    retrieved_ground_truths = answer_set.intersection(ground_truth_set)
+    missed_ground_truths = ground_truth_set.difference(retrieved_ground_truths)
     
-    recall = len(retieved_ground_truths) / len(ground_truth_set) if len(ground_truth_set) > 0 else 0.0
+    recall_50 = len(retrieved_ground_truths) / len(ground_truth_set) if ground_truth_set else 0.0
     
     top_20 = set(predicted_nodes[:20]).intersection(ground_truth_set)
-    recall_20 = len(top_20) / len(ground_truth_set) if len(ground_truth_set) > 0 else 0.0
+    recall_20 = len(top_20) / len(ground_truth_set) if ground_truth_set else 0.0
 
     return {
         "answer_list": predicted_nodes,
+        "answer_set": answer_set,
         "ground_truth_set": ground_truth_set,
+        "retrieved_ground_truths": retrieved_ground_truths,
+        "missed_ground_truths": missed_ground_truths,
         "metrics": {
             "total_answers": len(ground_truth_set),
-            "retrieved_count": len(retieved_ground_truths),
+            "retrieved_count": len(retrieved_ground_truths),
             "missed_count": len(missed_ground_truths),
-            "recall@50": recall,        
-            "recall@20": recall_20, 
+            "recall@50": recall_50,
+            "recall@20": recall_20,
             'hit_at_1': hit_at_1,
             'hit_at_5': hit_at_5,
             'mrr': mrr,
@@ -310,9 +270,9 @@ def step4_grounding(query: Query, kb, retriever):
         kb=kb,
         vss_retriever=retriever,
         max_candidates_per_symbol=3000, # <--- CHANGED FROM 1000 to 100
-        max_answer_candidates=50,      
-        top_k_neighbors=10,            
-        support_boost=0.35,
+        max_answer_candidates=20,      
+        top_k_neighbors=15,            
+        support_boost=0,
         score_decay=0.9,
         verbose=False 
     )
@@ -323,28 +283,92 @@ def step4_grounding(query: Query, kb, retriever):
         )]
     else:
         answers = []
-        
+    query.grounding_candidates = answers  # ✅ ADD THIS LINE
 
     return final_candidates
+def step5_merge_vss_candidates(query: Query, retriever: VSSRetriever, kb,
+                                use_saved_vss_candidates: bool = False,
+                                alpha: int = 12,
+                                vss_candidates: dict = {}):
+    """
+    Step 5: Merge grounding candidates with VSS candidates.
+    """
+    vss_candidates_list = []
+    print(f"[Step 5] Merging VSS candidates with alpha={alpha} USE_SAVED={use_saved_vss_candidates} \n\n VSS CANDIDATES: {vss_candidates}\n\n")
+    if not use_saved_vss_candidates:
+        all_candidates = []
+        possible_node_types = query.entities["ANSWER"]["type"].copy()
+        for node_type in possible_node_types:
+            print(f"[Step 5] Searching VSS for node type: {node_type}")
+            top_candidates = retriever.get_top_k_nodes(
+                search_str=query.query, k=20, node_type=node_type, cutoff=0.6
+            )
+            all_candidates.extend(list(zip(top_candidates[0], top_candidates[1])))
+        vss_candidates_list = list(map (lambda x: x[0], sorted(all_candidates, key=lambda x: x[1], reverse=True)))
+    else:
+        vss_candidates_list = vss_candidates.get(str(query.id), [])
+        print("READ VSS CANDIDATES FROM FILE:", vss_candidates_list)
 
-
-def save_results(query: Query, csv_path: str = "pipeline_results.csv", append: bool = True):
-    csv_file = Path(csv_path)
-    file_exists = csv_file.exists()
-    write_headers = not file_exists or not append
-    mode = 'a' if append else 'w'
     
-    # 1. Ensure metrics are calculated without wiping existing data
-    grounding_results = evaluate_results(query.grounding_candidates, query.ground_truths)
-    vss_results = evaluate_results(query.vss_merged_candidates, query.ground_truths)
-
-    # 2. Update the query object safely
+    # Take top alpha candidates from grounding
+    existing_candidate_ids = query.grounding_candidates[:alpha]
+    
+    # Add new VSS candidates not in grounding top-alpha
+    new_vss_candidates = []
+    for node in vss_candidates_list:
+        if node not in existing_candidate_ids:
+            new_vss_candidates.append(node)
+        if len(new_vss_candidates) == 20 - alpha:
+            break
+    
+    # Merge: top alpha from grounding + remaining from VSS
+    merged_candidates = existing_candidate_ids + new_vss_candidates
+    query.vss_merged_candidates = merged_candidates
+    
+    # ✅ Initialize results dict if needed
     if query.results is None:
         query.results = {}
     
-    query.results.update(grounding_results) # Updates 'metrics', 'answer_list', etc.
-    query.results['vss_merged_metrics'] = vss_results['metrics'] # Explicitly save VSS metrics
+    # Evaluate grounding-only metrics (if not already done)
+    if 'metrics' not in query.results:
+        grounding_results = evaluate_results(query.grounding_candidates, query.ground_truths)
+        query.results.update(grounding_results)
+        print(f"[Step 5] Grounding Recall@20: {query.results['metrics']['recall@20']:.3f}")
     
+    # Evaluate VSS-merged metrics
+    vss_merged_results = evaluate_results(query.vss_merged_candidates, query.ground_truths)
+    query.results['vss_merged_metrics'] = vss_merged_results['metrics']
+    
+    print(f"[Step 5] VSS Merged Recall@20: {query.results['vss_merged_metrics']['recall@20']:.3f}")
+    
+    return merged_candidates
+
+
+def save_results(query: Query, csv_path: str = "pipeline_results.csv", append: bool = True):
+    """
+    Save query results to CSV.
+    Assumes metrics are already calculated in step5.
+    """
+    csv_file = Path(csv_path)
+    file_exists = csv_file.exists()
+    mode = 'a' if append else 'w'
+    
+    # Safety check: Initialize if missing
+    if query.results is None:
+        print(f"[WARNING] Query {query.id} has no results, calculating now...")
+        query.results = {}
+        
+        # Calculate grounding metrics
+        if hasattr(query, 'grounding_candidates') and query.grounding_candidates:
+            grounding_results = evaluate_results(query.grounding_candidates, query.ground_truths)
+            query.results.update(grounding_results)
+        
+        # Calculate VSS merged metrics
+        if hasattr(query, 'vss_merged_candidates') and query.vss_merged_candidates:
+            vss_results = evaluate_results(query.vss_merged_candidates, query.ground_truths)
+            query.results['vss_merged_metrics'] = vss_results['metrics']
+    
+    # Extract metrics for CSV
     metrics = query.results.get('metrics', {})
     vss_metrics = query.results.get('vss_merged_metrics', {})
     
@@ -359,8 +383,7 @@ def save_results(query: Query, csv_path: str = "pipeline_results.csv", append: b
         'hit@1': metrics.get('hit_at_1', 0.0),
         'hit@5': metrics.get('hit_at_5', 0.0),
         'mrr': metrics.get('mrr', 0.0),
-        # Retrieve 'recall@20' from the VSS dictionary
-        'recall@20_vss_merged': vss_metrics.get('recall@20', 0.0) 
+        'recall@20_vss_merged': vss_metrics.get('recall@20', 0.0)
     }
     
     fieldnames = [
@@ -370,11 +393,9 @@ def save_results(query: Query, csv_path: str = "pipeline_results.csv", append: b
     
     with open(csv_file, mode, newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
-        if write_headers:
+        if not file_exists:
             writer.writeheader()
         writer.writerow(row_data)
-
-
 def save_aggregate_results(queries: list, csv_path: str = "aggregate_results.csv"):
     if not queries:
         return
@@ -432,17 +453,29 @@ def create_experiment_dir(exp_name: str = "test_run", base_dir: str = './output/
         print(f"Error creating directory: {e}")
 
 
-def pipeline(query, llm_bridge, kb, retriever, dataset_name: str, exp_name: str, use_saved_llm_responses: bool = False, llm_response: Optional[dict] = None,alpha:int = 12,use_saved_vss_candidates : bool = False):
-
+def pipeline(query, llm_bridge, kb, retriever, dataset_name: str, exp_name: str, 
+             use_saved_llm_responses: bool = False, llm_response: Optional[dict] = None,
+             alpha: int = 12, use_saved_vss_candidates: bool = False, vss_candidates: dict = {}):
+    """
+    Execute full pipeline with timing information.
+    """
     pipeline_start = time.time()
     
     t0 = time.time()
-    step1_identify_entities(query, llm_bridge, dataset_name,use_saved_llm_responses, llm_response)
+    step1_identify_entities(query, llm_bridge, dataset_name, use_saved_llm_responses, llm_response)
     print(f"[TIMING] Step 1 (Entities): {time.time() - t0:.4f}s")
     
+    if query.status == "FAILED":
+        print(f"[ERROR] Query {query.id} failed at Step 1")
+        return
+    
     t0 = time.time()
-    step2_identify_relations(query, llm_bridge, dataset_name,use_saved_llm_responses, llm_response)
+    step2_identify_relations(query, llm_bridge, dataset_name, use_saved_llm_responses, llm_response)
     print(f"[TIMING] Step 2 (Relations): {time.time() - t0:.4f}s")
+    
+    if query.status == "FAILED":
+        print(f"[ERROR] Query {query.id} failed at Step 2")
+        return
     
     t0 = time.time()
     step3_get_initial_candidates(query, kb, retriever)
@@ -450,16 +483,19 @@ def pipeline(query, llm_bridge, kb, retriever, dataset_name: str, exp_name: str,
     
     t0 = time.time()
     step4_grounding(query, kb, retriever)
-    step5_merge_vss_candidates(query, retriever, kb, {}, use_saved_vss_candidates= use_saved_vss_candidates,alpha=alpha)
     print(f"[TIMING] Step 4 (Grounding): {time.time() - t0:.4f}s")
+    
+    t0 = time.time()
+    step5_merge_vss_candidates(query, retriever, kb,  
+                               use_saved_vss_candidates=use_saved_vss_candidates, vss_candidates=vss_candidates,
+                               alpha=alpha)
+    print(f"[TIMING] Step 5 (VSS Merge): {time.time() - t0:.4f}s")
     
     t0 = time.time()
     save_results(query, csv_path=f"./output/{exp_name}/pipeline_results.csv")
     print(f"[TIMING] Save Results: {time.time() - t0:.4f}s")
     
     print(f"[TIMING] TOTAL: {time.time() - pipeline_start:.4f}s")
-
-
 def save_data_dump(results, csv_path="aggregate_results.csv"):
     if not results:
         return
@@ -492,6 +528,8 @@ def main(args):
     exp_name = args.exp_name
     use_saved_llm_responses = args.use_saved_llm_responses
     llm_responses_file = args.llm_responses_file
+    use_saved_vss_candidates = args.use_saved_vss_candidates
+    vss_candidates_json_path = args.vss_candidates_json_path
 
     emb_model = 'text-embedding-ada-002'
     configs_path = 'configs.json'
@@ -500,9 +538,15 @@ def main(args):
     qa = qa_dataset.split_indices[data_split].reshape(-1).tolist()
     qa = qa[:int(len(qa) * 0.1)] 
     
+    vss_candidates = {}
+    if use_saved_vss_candidates:
+        with open(vss_candidates_json_path, 'r', encoding='utf-8') as f:
+            vss_candidates = json.load(f)
+
+
     test_queries = [qa_dataset[i] for i in qa]
     if args.test_run:
-        test_queries = test_queries[:15]
+        test_queries = test_queries[:50]
 
     print("Loading Knowledge Base...")
     kb = load_skb(dataset_name, download_processed=True)
@@ -547,7 +591,7 @@ def main(args):
                             llm_response = llm_response[0]
                         else:
                             llm_response = None
-                        pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name, use_saved_llm_responses=args.use_saved_llm_responses, llm_response=llm_response)
+                        pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name, use_saved_llm_responses=args.use_saved_llm_responses, llm_response=llm_response, use_saved_vss_candidates=args.use_saved_vss_candidates, vss_candidates = vss_candidates)
                         signal.alarm(0)  # Cancel the alarm
                     except TimeoutException:
                         signal.alarm(0)  # Cancel the alarm
@@ -646,7 +690,18 @@ if __name__ == "__main__":
         action='store_true',
         help="use pre saved VSS candidates instead of querying the VSS retriever"
     )
-    
+    parser.add_argument(
+        "--timeout",
+        type=int,
+        default=300,
+        help="Timeout in seconds for each query"
+    )
+    parser.add_argument(
+        "--vss-candidates-json-path",
+        type=str,
+        default="vss_candidates.json",
+        help="Path to the JSON file containing saved VSS candidates"
+    )
     args = parser.parse_args()
     if args.exp_name is None:
         args.exp_name = f"{args.dataset}_{args.split}_results"
