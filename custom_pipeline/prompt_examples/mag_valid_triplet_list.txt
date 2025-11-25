@@ -1,0 +1,4 @@
+author --- affiliated_with ---> institution,
+paper --- cites ---> paper,
+paper --- has_topic ---> field_of_study,
+author --- writes ---> paper

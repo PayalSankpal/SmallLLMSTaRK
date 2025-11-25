@@ -1,0 +1,59 @@
+Example 1
+Query: "What are some running socks with color-coded size markings for easy pairing after washing? Price isn't an issue for me."
+Response:
+{
+  "A": {
+    "type": ["category"],
+    "lexical": {"name": ""socks"},
+    "semantic": [],
+    "constant: true
+  },
+  "ANSWER": {
+    "type": ["product"],
+    "lexical": {"name":"running socks"},
+    "semantic": ["running socks with color-coded size markings for easy pairing after washing"],
+    "constant" : false
+  }
+}
+
+Example 2
+Query: Is there a colorful wine bottle holder available that can also display whiskey, beer, and other beverages?
+Response:
+{
+  "A": {
+    "type": ["category"],
+    "lexical": {"name": "wine bottle holder"},
+    "semantic": ["colorful wine bottle holder"],
+    "constant: true
+  },
+  "ANSWER": {
+    "type": ["product"],
+    "lexical": {},
+    "semantic": ["colorful wine bottle holder" , "can also display whiskey, beer, and other beverages"],
+    "constant" : false
+  }
+}
+
+Example 3
+Query: Can you recommend an NFL knit beanie with a blend of neutral, oatmeal-like shades and my favorite team's colors, featuring an embroidered team logo?
+Response:
+{
+  "A": {
+    "type": ["brand"],
+    "lexical": {"name": "NFL"},
+    "semantic": ["colorful wine bottle holder"],
+    "constant: true
+  },
+  "B": {
+    "type": ["color"],
+    "lexical": {},
+    "semantic": ["blend of neutral, oatmeal-like shades"],
+    "constant: true
+  },
+  "ANSWER": {
+    "type": ["product"],
+    "lexical": {},
+    "semantic": ["NFL knit beanie" , "a blend of neutral, oatmeal-like shades", "featuring an embroidered team logo"],
+    "constant" : false
+  }
+}
