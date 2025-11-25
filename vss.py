@@ -80,6 +80,8 @@ class VSS:
         #         torch.save(self.query_emb_dict, query_emb_dict_path)
         self.query_str_to_emb = {}
         for qid, embedding in self.query_emb_dict.items():
+            if qid not in eval_data:
+                continue
             query_text = eval_data[qid][0]
             if query_text is not None:
                 self.query_str_to_emb[query_text] = embedding
