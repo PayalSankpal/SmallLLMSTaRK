@@ -18,7 +18,8 @@ class VSSRetriever:
         qa_dataset: Optional[Any] = None,
         dataset_name: str = "test",
         use_vss: bool = True,
-        use_embedding_cache: bool = True  # NEW: Enable embedding cache
+        use_embedding_cache: bool = True,  # Enable embedding cache
+        use_gpu: bool = True  # NEW: Enable GPU if available
     ):
         """
         Initialize the VSSRetriever.
@@ -31,6 +32,7 @@ class VSSRetriever:
             dataset_name: Name of the dataset (default: "test")
             use_vss: Whether to initialize VSS object (default: False)
             use_embedding_cache: Whether to cache generated embeddings (default: True)
+            use_gpu: Whether to use GPU if available (default: True)
         """
         self.kb = kb
         self.emb_base_path = Path(emb_base_path)
@@ -38,6 +40,14 @@ class VSSRetriever:
         self.qa_dataset = qa_dataset
         self.dataset_name = dataset_name
         self.use_embedding_cache = use_embedding_cache
+        
+        # NEW: Setup device (GPU if available and requested, else CPU)
+        if use_gpu and torch.cuda.is_available():
+            self.device = torch.device('cuda')
+            print(f"[VSSRetriever] Using GPU: {torch.cuda.get_device_name(0)}")
+        else:
+            self.device = torch.device('cpu')
+            print(f"[VSSRetriever] Using CPU")
         
         # NEW: Embedding cache for runtime-generated embeddings
         self.embedding_cache = {} if use_embedding_cache else None
@@ -62,26 +72,42 @@ class VSSRetriever:
             )
     
     def _load_embeddings(self) -> None:
-        """Load all embedding dictionaries from disk."""
+        """Load all embedding dictionaries from disk and move to device."""
         emb_dir = self.emb_base_path / self.emb_model
         
         # Load entity embeddings
         entity_emb_path = emb_dir / "entities" / "entity_emb_dict.pt"
-        self.entity_emb_dict = torch.load(entity_emb_path) if entity_emb_path.exists() else {}
+        if entity_emb_path.exists():
+            self.entity_emb_dict = torch.load(entity_emb_path, map_location=self.device)
+            # Ensure all tensors are on the correct device
+            self.entity_emb_dict = {k: v.to(self.device) if isinstance(v, torch.Tensor) else v 
+                                    for k, v in self.entity_emb_dict.items()}
+        else:
+            self.entity_emb_dict = {}
         
         # Load query embeddings
         query_emb_path = emb_dir / "query" / "query_emb_dict.pt"
-        self.query_emb_dict = torch.load(query_emb_path) if query_emb_path.exists() else {}
+        if query_emb_path.exists():
+            self.query_emb_dict = torch.load(query_emb_path, map_location=self.device)
+            self.query_emb_dict = {k: v.to(self.device) if isinstance(v, torch.Tensor) else v 
+                                   for k, v in self.query_emb_dict.items()}
+        else:
+            self.query_emb_dict = {}
         
         # Load candidate embeddings
         candidate_emb_path = emb_dir / "doc" / "candidate_emb_dict.pt"
-        self.candidate_emb_dict = torch.load(candidate_emb_path) if candidate_emb_path.exists() else {}
+        if candidate_emb_path.exists():
+            self.candidate_emb_dict = torch.load(candidate_emb_path, map_location=self.device)
+            self.candidate_emb_dict = {k: v.to(self.device) if isinstance(v, torch.Tensor) else v 
+                                       for k, v in self.candidate_emb_dict.items()}
+        else:
+            self.candidate_emb_dict = {}
         
         # Load node embeddings by type
         self.node_emb_dict = self._load_node_embeddings()
     
     def _load_node_embeddings(self) -> Dict[str, torch.Tensor]:
-        """Load node embeddings for all node types."""
+        """Load node embeddings for all node types and move to device."""
         nodes_emb_dir = self.emb_base_path / self.emb_model / "nodes"
         node_emb_dict = {}
         
@@ -95,7 +121,9 @@ class VSSRetriever:
             elif type_name == "effectphenotype":
                 type_name = "effect/phenotype"
             
-            node_emb_dict[type_name] = torch.load(file)
+            # Load and move to device
+            embeddings = torch.load(file, map_location=self.device)
+            node_emb_dict[type_name] = embeddings.to(self.device)
         
         return node_emb_dict
     
@@ -110,7 +138,7 @@ class VSSRetriever:
         self, 
         query: str, 
         query_id: Optional[Any] = None,
-        use_cache: bool = True  # NEW: Control cache usage per call
+        use_cache: bool = True  # Control cache usage per call
     ) -> Optional[torch.Tensor]:
         """
         Get embedding for a query string.
@@ -121,13 +149,15 @@ class VSSRetriever:
             use_cache: Whether to use/store in cache (default: True)
             
         Returns:
-            Query embedding tensor or None if not founda
+            Query embedding tensor or None if not found (on correct device)
         """
         # Check pre-loaded embeddings first
         if query in self.entity_emb_dict:
-            return self.entity_emb_dict[query]
+            emb = self.entity_emb_dict[query]
+            return emb.to(self.device) if isinstance(emb, torch.Tensor) else emb
         elif query_id is not None and query_id in self.query_emb_dict:
-            return self.query_emb_dict[query_id]
+            emb = self.query_emb_dict[query_id]
+            return emb.to(self.device) if isinstance(emb, torch.Tensor) else emb
         
         # Check cache if enabled
         if use_cache and self.use_embedding_cache and self.embedding_cache is not None:
@@ -138,6 +168,10 @@ class VSSRetriever:
         # Generate new embedding via VSS
         if self.vss is not None:
             embedding = self.vss.get_openai_embedding(query, model=self.emb_model)
+            
+            # Move to device if tensor
+            if isinstance(embedding, torch.Tensor):
+                embedding = embedding.to(self.device)
             
             # Store in cache if enabled
             if use_cache and self.use_embedding_cache and self.embedding_cache is not None and embedding is not None:
@@ -159,6 +193,9 @@ class VSSRetriever:
         """
         if self.use_embedding_cache and self.embedding_cache is not None:
             cache_key = f"{query}_{query_id}" if query_id else query
+            # Ensure embedding is on correct device before caching
+            if isinstance(embedding, torch.Tensor):
+                embedding = embedding.to(self.device)
             self.embedding_cache[cache_key] = embedding
     
     def get_cached_embedding(self, query: str, query_id: Optional[Any] = None) -> Optional[torch.Tensor]:
@@ -196,6 +233,7 @@ class VSSRetriever:
     ) -> Dict[int, float]:
         """
         Compute similarity scores between query embedding and nodes of a specific type.
+        Uses GPU acceleration if available.
         
         Args:
             query_emb: Query embedding tensor
@@ -206,10 +244,18 @@ class VSSRetriever:
         Returns:
             Dictionary mapping node IDs to similarity scores
         """
+        # Ensure query embedding is on correct device
+        if isinstance(query_emb, torch.Tensor):
+            query_emb = query_emb.to(self.device)
+        
+        # Compute similarity on GPU/CPU
         similarity = torch.matmul(self.node_emb_dict[node_type], query_emb.T)
         
         node_ids = self.kb.get_node_ids_by_type(node_type)
-        score_dict = {node_ids[i]: similarity[i].item() for i in range(len(similarity))}
+        
+        # Move results to CPU for dictionary creation (more efficient)
+        similarity_cpu = similarity.cpu()
+        score_dict = {node_ids[i]: similarity_cpu[i].item() for i in range(len(similarity_cpu))}
         
         # Apply node ID mask filter
         if node_id_mask is not None:
@@ -242,6 +288,7 @@ class VSSRetriever:
     ) -> Tuple[List[int], List[float]]:
         """
         Retrieve top-k most similar nodes for a given search string.
+        Uses GPU acceleration if available.
         
         Args:
             search_str: Search query string
@@ -301,13 +348,16 @@ class VSSRetriever:
         
         # Get top k node IDs based on similarity
         node_scores = list(score_dict.values())
+        
+        # Use GPU for topk if beneficial (move to device, compute, move back)
+        scores_tensor = torch.FloatTensor(node_scores).to(self.device)
         top_k_idx = torch.topk(
-            torch.FloatTensor(node_scores),
+            scores_tensor,
             min(k, len(node_scores)),
             dim=-1,
             largest=True,
             sorted=True
-        ).indices.tolist()
+        ).indices.cpu().tolist()  # Move back to CPU for list conversion
         
         # Get scores and node IDs
         vss_scores = torch.tensor(node_scores)[top_k_idx].tolist()
@@ -346,3 +396,10 @@ class VSSRetriever:
     def get_node_count_by_type(self, node_type: str) -> int:
         """Get count of nodes for a specific type."""
         return len(self.node_ids_by_type.get(node_type, []))
+    
+    def get_device_info(self) -> str:
+        """Get information about the device being used."""
+        if self.device.type == 'cuda':
+            return f"GPU: {torch.cuda.get_device_name(0)} (Memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.2f} GB)"
+        else:
+            return "CPU"
