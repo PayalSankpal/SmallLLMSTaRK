@@ -1,0 +1,58 @@
+anatomy --- expression absent ---> gene/protein
+anatomy --- expression present ---> gene/protein
+biological_process --- interacts with ---> exposure
+biological_process --- interacts with ---> gene/protein
+biological_process --- parent-child ---> biological_process
+cellular_component --- interacts with ---> exposure
+cellular_component --- interacts with ---> gene/protein
+cellular_component --- parent-child ---> cellular_component
+disease --- associated with ---> gene/protein
+disease --- contraindication ---> drug
+disease --- indication ---> drug
+disease --- linked to ---> exposure
+disease --- off-label use ---> drug
+disease --- parent-child ---> disease
+disease --- phenotype absent ---> effect/phenotype
+disease --- phenotype present ---> effect/phenotype
+drug --- carrier ---> gene/protein
+drug --- contraindication ---> disease
+drug --- enzyme ---> gene/protein
+drug --- indication ---> disease
+drug --- off-label use ---> disease
+drug --- side effect ---> effect/phenotype
+drug --- synergistic interaction ---> drug
+drug --- target ---> gene/protein
+drug --- transporter ---> gene/protein
+effect/phenotype --- associated with ---> gene/protein
+effect/phenotype --- parent-child ---> effect/phenotype
+effect/phenotype --- phenotype absent ---> disease
+effect/phenotype --- phenotype present ---> disease
+effect/phenotype --- side effect ---> drug
+exposure --- interacts with ---> biological_process
+exposure --- interacts with ---> cellular_component
+exposure --- interacts with ---> gene/protein
+exposure --- interacts with ---> molecular_function
+exposure --- linked to ---> disease
+exposure --- parent-child ---> exposure
+gene/protein --- associated with ---> disease
+gene/protein --- associated with ---> effect/phenotype
+gene/protein --- carrier ---> drug
+gene/protein --- enzyme ---> drug
+gene/protein --- expression absent ---> anatomy
+gene/protein --- expression present ---> anatomy
+gene/protein --- interacts with ---> biological_process
+gene/protein --- interacts with ---> cellular_component
+gene/protein --- interacts with ---> exposure
+gene/protein --- interacts with ---> molecular_function
+gene/protein --- interacts with ---> pathway
+gene/protein --- ppi ---> gene/protein
+gene/protein --- target ---> drug
+gene/protein --- transporter ---> drug
+molecular_function --- interacts with ---> exposure
+molecular_function --- interacts with ---> gene/protein
+molecular_function --- parent-child ---> S-adenosyl-L-methionine
+molecular_function --- parent-child ---> acetyl CoA
+molecular_function --- parent-child ---> molecular_function
+molecular_function --- parent-child ---> succinyl-CoA
+pathway --- interacts with ---> gene/protein
+pathway --- parent-child ---> pathway

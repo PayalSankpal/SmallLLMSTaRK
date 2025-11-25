@@ -1,0 +1,5 @@
+product --- also_buy ---> product,
+product --- also_view ---> product,
+product --- has_brand ---> brand,
+product --- has_color ---> color,
+product --- has_category ---> category

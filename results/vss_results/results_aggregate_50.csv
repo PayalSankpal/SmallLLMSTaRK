@@ -1,0 +1,10 @@
+metric,value
+total_queries,164
+avg_total_answers,5.51
+avg_retrieved_count,3.07
+avg_missed_count,2.43
+avg_recall@20,0.6476
+avg_recall@50,0.6476
+avg_hit@1,0.4329
+avg_hit@5,0.6524
+avg_mrr,0.5343

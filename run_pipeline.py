@@ -33,6 +33,20 @@ from typing import Dict, Set, List, Tuple
 from collections import defaultdict
 from custom_pipeline.candidate_context import CandidateContext
 import json
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import signal
+
+# --- OPTIMIZATION CONFIG ---
+MAX_WORKERS = 4 
+QUERY_TIMEOUT_SECONDS = 300  # 5 minutes timeout per query
+# ---------------------------
+
+class TimeoutException(Exception):
+    pass
+
+def timeout_handler(signum, frame):
+    raise TimeoutException("Query execution timed out")
 
 
 def get_llm_response(prompt, llm_bridge):
@@ -57,10 +71,9 @@ def step1_identify_entities(query: Query, llm_bridge: LlmBridge, dataset_name: s
         try:
             identified_entities = parse_entity_response(response_string)
             query.entities = identified_entities
-            print(f"\n✅ STEP 1 SUCCESS - Entities: {list(query.entities.keys())}")  # ADD THIS
-            print(query)  # ADD THIS
+            print(f"Entities found: {list(query.entities.keys())}") 
         except ValueError as e:
-            print(f"\n❌ STEP 1 FAILED - Error: {e}")  # ADD THIS
+            print(f"Error parsing entities: {e}")
             query.status = "FAILED"
             return
         
@@ -72,61 +85,82 @@ def step2_identify_relations(query: Query, llm_bridge: LlmBridge, dataset_name: 
         response_string = get_llm_response(prompt, llm_bridge)
     query.relations_id_response = response_string
 
-    if response_string == '' or response_string == '{}':  # Also check for empty dict
+    if response_string == '' or response_string == '{}':
         query.status = "FAILED"
-        query.relations = {}  # Set empty dict as default
+        query.relations = {}
         return
     else:
         try:
             identified_relations = parse_relation_string(response_string)
-            print("\n\n\n\nIDENTIFIED RELATIONS\n\n\n", identified_relations,"\n\n")
             query.relations = identified_relations
-            print(query)
         except ValueError as e:
             query.status = "FAILED"
-            query.relations = {}  # Set empty dict as default
+            query.relations = {}
             return
 
 def get_initial_candidates_for_entity(entity_info, entity_key, kb, retriever):
     candidates = []
     entity_types = entity_info.get("type", [])
     name_constraint = entity_info.get("lexical", {}).get("name", None)
-    semantic_constraints = entity_info.get("semantic", []).copy()
     
-    for key in entity_info.get("lexical", {}):
-        semantic_constraints.append(f" {entity_info['lexical'][key]}")
-   
-    nodes_by_name = []
+    semantic_parts = entity_info.get("semantic", []).copy()
+    lexical_info = entity_info.get("lexical", {})
+    if lexical_info:
+        semantic_parts.extend([f" {val}" for val in lexical_info.values()])
+    
+    search_sem = "".join(semantic_parts)
+    nodes_by_name = set() 
 
     if name_constraint:
         for etype in entity_types:
-            nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key="name", value=name_constraint)
-            candidates.extend([CandidateContext(node_id=x, entity=entity_key, score=1) for x in nodes_by_name])
+            exact_matches = kb.get_node_ids_by_value(node_type=etype, key="name", value=name_constraint)
+            if exact_matches:
+                nodes_by_name.update(exact_matches)
+                candidates.extend([CandidateContext(node_id=x, entity=entity_key, score=1.0) for x in exact_matches])
 
-    vss_candidates_count = 25 - len(candidates)
+    existing_ids = nodes_by_name
 
-    for etype in entity_types:
-        sem = "".join(semantic_constraints)
-        nodes_by_desc_ids, vss_scores = retriever.get_top_k_nodes(
-            search_str=sem, k=vss_candidates_count, node_type=etype, cutoff=0.65
-        )
-        candidates.extend([
-            CandidateContext(node_id=nodes_by_desc_ids[x], entity=entity_key, score=vss_scores[x])
-            for x in range(len(nodes_by_desc_ids)) if nodes_by_desc_ids[x] not in nodes_by_name
-        ])
-    
-    return candidates
+    current_count = len(candidates)
+    if current_count < 25:
+        vss_needed = 25 - current_count
+        for etype in entity_types:
+            nodes_by_desc_ids, vss_scores = retriever.get_top_k_nodes(
+                search_str=search_sem, k=vss_needed, node_type=etype, cutoff=0.65
+            )
+            
+            for i, node_id in enumerate(nodes_by_desc_ids):
+                if node_id not in existing_ids:
+                    candidates.append(CandidateContext(node_id=node_id, entity=entity_key, score=vss_scores[i]))
+
+    return entity_key, candidates
 
 
 def step3_get_initial_candidates(current_query, kb, retriever):
     initial_candidates = {}
     
-    for entity in current_query.entities:
-        if entity == "ANSWER":
-            continue
-        initial_candidates[entity] = get_initial_candidates_for_entity(
-            current_query.entities[entity], entity_key=entity, kb=kb, retriever=retriever
-        )
+    entities_to_process = {
+        k: v for k, v in current_query.entities.items() if k != "ANSWER"
+    }
+
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        future_to_entity = {
+            executor.submit(
+                get_initial_candidates_for_entity, 
+                entity_info, 
+                entity_key, 
+                kb, 
+                retriever
+            ): entity_key 
+            for entity_key, entity_info in entities_to_process.items()
+        }
+
+        for future in as_completed(future_to_entity):
+            try:
+                e_key, candidates = future.result()
+                initial_candidates[e_key] = candidates
+            except Exception as exc:
+                print(f"Entity generation generated an exception for {future_to_entity[future]}: {exc}")
+
     current_query.initial_symbol_candidates = initial_candidates
 
     print(current_query)
@@ -226,16 +260,11 @@ def evaluate_results(predicted_nodes, ground_truth_nodes):
         return {
             "answer_set": set(),
             "ground_truth_set": ground_truth_set,
-            "retrieved_ground_truths": set(),
-            "missed_ground_truths": ground_truth_set,
             "metrics": {
                 "total_answers": len(ground_truth_set),
                 "retrieved_count": 0,
                 "missed_count": len(ground_truth_set),
-                "recall@50": 0.0,
-                "hit_at_1": 0.0,
-                "hit_at_5": 0.0,
-                "mrr": 0.0,
+                "recall@50": 0.0, "hit_at_1": 0.0, "hit_at_5": 0.0, "mrr": 0.0,
             }
         }
     
@@ -251,23 +280,19 @@ def evaluate_results(predicted_nodes, ground_truth_nodes):
     answer_set = set(predicted_nodes)
     retieved_ground_truths = answer_set.intersection(ground_truth_set)
     missed_ground_truths = ground_truth_set.difference(retieved_ground_truths)
-    retieved_ground_truths_count = len(retieved_ground_truths)
-    missed_ground_truths_count = len(missed_ground_truths)
-    recall = retieved_ground_truths_count / len(ground_truth_set) if len(ground_truth_set) > 0 else 0.0
     
-    top_20_predictions = predicted_nodes[:20]
-    retrieved_20 = set(top_20_predictions).intersection(ground_truth_set)
-    recall_20 = len(retrieved_20) / len(ground_truth_set) if len(ground_truth_set) > 0 else 0.0
+    recall = len(retieved_ground_truths) / len(ground_truth_set) if len(ground_truth_set) > 0 else 0.0
+    
+    top_20 = set(predicted_nodes[:20]).intersection(ground_truth_set)
+    recall_20 = len(top_20) / len(ground_truth_set) if len(ground_truth_set) > 0 else 0.0
 
-    results = {
+    return {
         "answer_list": predicted_nodes,
         "ground_truth_set": ground_truth_set,
-        "retrieved_ground_truths": retieved_ground_truths,
-        "missed_ground_truths": missed_ground_truths,
         "metrics": {
             "total_answers": len(ground_truth_set),
-            "retrieved_count": retieved_ground_truths_count,
-            "missed_count": missed_ground_truths_count,
+            "retrieved_count": len(retieved_ground_truths),
+            "missed_count": len(missed_ground_truths),
             "recall@50": recall,        
             "recall@20": recall_20, 
             'hit_at_1': hit_at_1,
@@ -275,7 +300,32 @@ def evaluate_results(predicted_nodes, ground_truth_nodes):
             'mrr': mrr,
         }
     }
-    return results
+
+
+def step4_grounding(query: Query, kb, retriever):
+    # --- PERFORMANCE CONFIG ---
+    # max_candidates_per_symbol REDUCED TO 100 as requested
+    final_candidates = run_priority_queue_grounding(
+        query_obj=query,
+        kb=kb,
+        vss_retriever=retriever,
+        max_candidates_per_symbol=3000, # <--- CHANGED FROM 1000 to 100
+        max_answer_candidates=50,      
+        top_k_neighbors=10,            
+        support_boost=0.35,
+        score_decay=0.9,
+        verbose=False 
+    )
+    
+    if "ANSWER" in final_candidates:
+        answers = [cc.node_id for cc in sorted(
+            final_candidates["ANSWER"], key=lambda x: (x.score, -x.support), reverse=True
+        )]
+    else:
+        answers = []
+        
+
+    return final_candidates
 
 
 def save_results(query: Query, csv_path: str = "pipeline_results.csv", append: bool = True):
@@ -374,27 +424,40 @@ def save_aggregate_results(queries: list, csv_path: str = "aggregate_results.csv
         writer.writerow(avg_metrics)
     
     print(f"\n[SAVED] Aggregate results saved to {csv_path}")
-    print(f"\nAggregate Metrics:")
-    for key, value in avg_metrics.items():
-        print(f"  {key}: {value:.4f}" if isinstance(value, float) else f"  {key}: {value}")
 
 def create_experiment_dir(exp_name: str = "test_run", base_dir: str = './output/'):
     try:
-        os.mkdir(f"{base_dir}/{exp_name}")
-    except FileExistsError:
-        pass
+        os.makedirs(f"{base_dir}/{exp_name}", exist_ok=True)
     except Exception as e:
         print(f"Error creating directory: {e}")
 
 
 def pipeline(query, llm_bridge, kb, retriever, dataset_name: str, exp_name: str, use_saved_llm_responses: bool = False, llm_response: Optional[dict] = None,alpha:int = 12,use_saved_vss_candidates : bool = False):
 
+    pipeline_start = time.time()
+    
+    t0 = time.time()
     step1_identify_entities(query, llm_bridge, dataset_name,use_saved_llm_responses, llm_response)
+    print(f"[TIMING] Step 1 (Entities): {time.time() - t0:.4f}s")
+    
+    t0 = time.time()
     step2_identify_relations(query, llm_bridge, dataset_name,use_saved_llm_responses, llm_response)
+    print(f"[TIMING] Step 2 (Relations): {time.time() - t0:.4f}s")
+    
+    t0 = time.time()
     step3_get_initial_candidates(query, kb, retriever)
+    print(f"[TIMING] Step 3 (Candidates): {time.time() - t0:.4f}s")
+    
+    t0 = time.time()
     step4_grounding(query, kb, retriever)
     step5_merge_vss_candidates(query, retriever, kb, {}, use_saved_vss_candidates= use_saved_vss_candidates,alpha=alpha)
+    print(f"[TIMING] Step 4 (Grounding): {time.time() - t0:.4f}s")
+    
+    t0 = time.time()
     save_results(query, csv_path=f"./output/{exp_name}/pipeline_results.csv")
+    print(f"[TIMING] Save Results: {time.time() - t0:.4f}s")
+    
+    print(f"[TIMING] TOTAL: {time.time() - pipeline_start:.4f}s")
 
 
 def save_data_dump(results, csv_path="aggregate_results.csv"):
@@ -402,16 +465,10 @@ def save_data_dump(results, csv_path="aggregate_results.csv"):
         return
     
     def serialize_value(value):
-        if value is None:
-            return ""
-        elif isinstance(value, (str, int, float, bool)):
-            return value
-        elif isinstance(value, dict):
-            return {k: serialize_value(v) for k, v in value.items()}
-        elif isinstance(value, (list, tuple)):
-            return [serialize_value(item) for item in value]
-        else:
-            return str(value)
+        if value is None: return ""
+        if isinstance(value, (str, int, float, bool)): return value
+        try: return json.dumps(value)
+        except: return str(value)
     
     fieldnames = [
         'id', 'query', 'ground_truths', 'status', 
@@ -422,29 +479,8 @@ def save_data_dump(results, csv_path="aggregate_results.csv"):
     with open(csv_path, 'w', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
-        
         for query_obj in results:
-            row = {}
-            for field in fieldnames:
-                value = getattr(query_obj, field, "")
-                
-                if value is None:
-                    row[field] = ""
-                elif isinstance(value, dict):
-                    try:
-                        serialized = serialize_value(value)
-                        row[field] = json.dumps(serialized) if serialized else ""
-                    except Exception:
-                        row[field] = str(value)
-                elif isinstance(value, (list, tuple)):
-                    try:
-                        serialized = serialize_value(value)
-                        row[field] = json.dumps(serialized) if serialized else ""
-                    except Exception:
-                        row[field] = str(value)
-                else:
-                    row[field] = str(value)
-            
+            row = {field: serialize_value(getattr(query_obj, field, "")) for field in fieldnames}
             writer.writerow(row)
     
     print(f"✓ Successfully saved {len(results)} results to {csv_path}")
@@ -453,7 +489,6 @@ def save_data_dump(results, csv_path="aggregate_results.csv"):
 def main(args):
     data_split = args.split
     dataset_name = args.dataset
-    embedding_dir = args.embedding_dir
     exp_name = args.exp_name
     use_saved_llm_responses = args.use_saved_llm_responses
     llm_responses_file = args.llm_responses_file
@@ -463,77 +498,97 @@ def main(args):
 
     qa_dataset = load_qa(dataset_name)
     qa = qa_dataset.split_indices[data_split].reshape(-1).tolist()
-    qa = qa[:int(len(qa) * 0.1)]
-
+    qa = qa[:int(len(qa) * 0.1)] 
+    
     test_queries = [qa_dataset[i] for i in qa]
     if args.test_run:
         test_queries = test_queries[:15]
 
+    print("Loading Knowledge Base...")
     kb = load_skb(dataset_name, download_processed=True)
-
-    model_name = 'meta/llama-3.3-70b-instruct'
-    llm_bridge = LlmBridge(model_name=model_name, configs_path="configs.json")
-
+    
+    print("Loading LLM Bridge...")
+    llm_bridge = LlmBridge(model_name='meta/llama-3.3-70b-instruct', configs_path="configs.json")
+    
+    print("Loading Retriever...")
     retriever = VSSRetriever(
         kb=kb,
         emb_base_path=f"./emb/{dataset_name}/",
         emb_model="text-embedding-ada-002",
         qa_dataset=qa_dataset,
         dataset_name=data_split,
-        use_vss=True
+        use_vss=True,
+        use_gpu=True
     )
 
     create_experiment_dir(exp_name=exp_name, base_dir='./output/')
-
+    
     failed_queries = []
     results = []
     if use_saved_llm_responses:
         llm_respose_df = pd.read_csv(llm_responses_file)
 
-    with open(f"./output/{exp_name}/temp.txt", 'w', encoding='utf-8') as temp_file:
-            for query in tqdm(test_queries, desc="Processing queries", unit="query"):
-                try:
-                    with contextlib.redirect_stdout(temp_file), contextlib.redirect_stderr(temp_file):
-                        current_query = Query(id=query[1], query=query[0], ground_truths=query[2])
+    log_file_path = f"./output/{exp_name}/temp.txt"
+    print(f"Processing queries (Logs: {log_file_path})...")
+    
+    with open(log_file_path, 'w', encoding='utf-8') as temp_file:
+        for query in tqdm(test_queries, desc="Pipeline", unit="query"):
+            try:
+                with contextlib.redirect_stdout(temp_file):
+                    current_query = Query(id=query[1], query=query[0], ground_truths=query[2])
+                    
+                    # Set timeout alarm
+                    signal.signal(signal.SIGALRM, timeout_handler)
+                    signal.alarm(QUERY_TIMEOUT_SECONDS)
+                    
+                    try:
                         if use_saved_llm_responses:
                             llm_response = llm_respose_df[llm_respose_df['query_id'] == current_query.id].to_dict(orient='records')
                             llm_response = llm_response[0]
                         else:
                             llm_response = None
                         pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name, use_saved_llm_responses=args.use_saved_llm_responses, llm_response=llm_response)
-                    results.append(current_query)
+                        signal.alarm(0)  # Cancel the alarm
+                    except TimeoutException:
+                        signal.alarm(0)  # Cancel the alarm
+                        current_query.status = "TIMEOUT"
+                        raise TimeoutException(f"Query exceeded {QUERY_TIMEOUT_SECONDS}s timeout")
                     
-                except Exception as e:
-                    tb = traceback.format_exc()
-                    failed_queries.append({
-                        'query_id': query[1],
-                        'query_text': query[0][:100],
-                        'error': str(e),
-                        'error_type': type(e).__name__,
-                        'traceback': tb
-                    })
-                    tqdm.write(f"✗ Query {query[1]} failed: {type(e).__name__}: {str(e)}")
-                    continue
+                results.append(current_query)
+                
+            except TimeoutException as e:
+                failed_queries.append({
+                    'query_id': query[1], 
+                    'error': f'TIMEOUT: {str(e)}', 
+                    'traceback': f'Query exceeded {QUERY_TIMEOUT_SECONDS} second timeout'
+                })
+                tqdm.write(f"⏱ Query {query[1]} timed out after {QUERY_TIMEOUT_SECONDS}s")
+                temp_file.write(f"\nTIMEOUT Query {query[1]}: Exceeded {QUERY_TIMEOUT_SECONDS}s\n")
+                continue
+                
+            except Exception as e:
+                signal.alarm(0)  # Cancel alarm in case of other exceptions
+                tb = traceback.format_exc()
+                failed_queries.append({
+                    'query_id': query[1], 
+                    'error': str(e), 
+                    'traceback': tb
+                })
+                tqdm.write(f"✗ Query {query[1]} failed: {e}")
+                temp_file.write(f"\nFATAL ERROR Query {query[1]}:\n{tb}\n")
+                continue
+
     save_aggregate_results(results, csv_path=f"./output/{exp_name}/aggregate_results.csv")
+    save_data_dump(results, csv_path=f"./output/{exp_name}/full_data_dump.csv")
 
     if failed_queries:
         with open(f"./output/{exp_name}/failed_queries.csv", 'w', newline='', encoding='utf-8') as f:
-            writer = csv.DictWriter(f, fieldnames=['query_id', 'query_text', 'error_type', 'error', 'traceback'])
+            writer = csv.DictWriter(f, fieldnames=['query_id', 'error', 'traceback'])
             writer.writeheader()
             writer.writerows(failed_queries)
-        
-        print(f"\n⚠ {len(failed_queries)} queries failed. See ./output/{exp_name}/failed_queries.csv for details.")
-        
-        from collections import Counter
-        error_counts = Counter(fq['error_type'] for fq in failed_queries)
-        print(f"\nError breakdown:")
-        for error_type, count in error_counts.items():
-            print(f"  {error_type}: {count}")
+        print(f"\n⚠ {len(failed_queries)} queries failed.")
     else:
         print(f"\n✓ All {len(results)} queries processed successfully!")
-
-    print(f"\n📊 Successfully processed: {len(results)} queries")
-    save_data_dump(results, csv_path=f"./output/{exp_name}/full_data_dump.csv")
 
 
 if __name__ == "__main__":
@@ -593,10 +648,9 @@ if __name__ == "__main__":
     )
     
     args = parser.parse_args()
-    
     if args.exp_name is None:
         args.exp_name = f"{args.dataset}_{args.split}_results"
     
-    main(args)
+    QUERY_TIMEOUT_SECONDS = args.timeout
     
-    print(f"\nScript completed successfully!")
+    main(args)

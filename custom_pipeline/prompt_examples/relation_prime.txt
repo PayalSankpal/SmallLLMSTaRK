@@ -1,0 +1,61 @@
+xample 1
+Query: Which cellular structures or organelles are associated with the interaction of genes or proteins affected by Thonzonium Bromide?
+
+Entities:
+{
+  "A": {
+    "type": ["drug"],
+    "lexical": {"name": "Thonzonium Bromide"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["gene/protein"],
+    "lexical": {},
+    "semantic": ["affected by Thonzonium Bromide"],
+    "constant": false
+  },
+  "ANSWER": {
+    "type": ["cellular_component"],
+    "lexical": {},
+    "semantic": [],
+    "constant": false
+  }
+}
+
+Identified Relations:
+{
+  ("A", "B"): ["target", "transporter"],
+  ("B", "ANSWER"): ["interacts with"]
+}
+
+Example 2
+Query: Identify the common genetic targets that interact with both 3',5'-Dinitro-N-Acetyl-L-Thyronine and 3-({[(1Z)-(2-methoxyphenyl)methylidene]amino}oxy)propanoic acid.
+
+Entities:
+{
+  "A": {
+    "type": ["drug"],
+    "lexical": {"name": "3',5'-Dinitro-N-Acetyl-L-Thyronine"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["drug"],
+    "lexical": {"name": "3-({[(1Z)-(2-methoxyphenyl)methylidene]amino}oxy)propanoic acid"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["gene/protein"],
+    "lexical": {},
+    "semantic": [],
+    "constant": false
+  }
+}
+
+Identified Relations:
+{
+  ("A", "ANSWER"): ["target","carrier" , "transporter"],
+  ("B", "ANSWER"):["target","carrier" , "transporter"]
+}

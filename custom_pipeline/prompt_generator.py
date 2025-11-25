@@ -38,6 +38,8 @@ def get_entity_extraction_prompt(query: str, dataset_name: str) -> str:
 
     FORMAT REQUIREMENTS: "type" is an array of strings. "lexical" is an object (can be empty {{}}). "semantic" is an array of strings (can be empty []). "constant" is a boolean (true or false, not a string).
 
+    EXAMPLES:
+    {examples}
 
     CRITICAL REQUIREMENTS
 
@@ -60,10 +62,13 @@ def get_entity_extraction_prompt(query: str, dataset_name: str) -> str:
         entity_types_list = ["product", "brand", "color","category"]
     else:
             raise ValueError(f"Unsupported dataset name: {dataset_name}")
+
+    with open(f"custom_pipeline/prompt_examples/entity_{dataset_name}.txt", "r") as file:
+        example_string = file.read() 
     
     # 3. Format the base prompt by replacing the placeholder with the generated string.
     entity_types_string = ", ".join(entity_types_list)
-    formatted_prompt = base_prompt.format(entity_types_placeholder=entity_types_string,query=query)
+    formatted_prompt = base_prompt.format(entity_types_placeholder=entity_types_string,examples=example_string,query=query)
     
     return formatted_prompt
 
@@ -95,6 +100,12 @@ def get_relation_extraction_prompt(dataset_name: str , natural_language_query: s
 
         IMPORTANT: Only use edge types not listed in the triplets above if the query implies a relation that absolutely cannot be represented using the standard triplets.
 
+        VALID TRIPLET PATTERNS
+        {valid_triplet_list}
+
+        EXAMPLES
+        {examples}
+
         OUTPUT FORMAT
 
         Your response must be a valid JSON object with the following structure:
@@ -123,9 +134,17 @@ def get_relation_extraction_prompt(dataset_name: str , natural_language_query: s
         relation_types = ['also_buy', 'also_view', 'has_brand', 'has_category', 'has_color']
     else:
         raise ValueError(f"Unsupported dataset name: {dataset_name}")
+    
+    with open(f"custom_pipeline/prompt_examples/relation_{dataset_name}.txt", "r") as file:
+        example_string = file.read() 
+    
+    with open(f"custom_pipeline/prompt_examples/{dataset_name}_valid_triplet_list.txt", "r") as file:
+        valid_triplet_list = file.read()
      
     relation_types_string = ", ".join(relation_types)
     formatted_prompt = base_prompt.format(relation_types_placeholder=relation_types_string,
+                                            valid_triplet_list=valid_triplet_list,
+                                            examples=example_string,
                                             natural_language_query=natural_language_query,
                                             identified_entities_string=identified_entities_string)
         
