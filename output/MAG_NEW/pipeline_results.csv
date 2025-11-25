@@ -1,0 +1,11 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+7777,"Can you find more publications from the authors of ""Circular dichroism of a tilted U-shaped nanostructure"" that introduce novel metamaterials to manipulate optical transmission asymmetry?",3,2,1,0.6666666666666666,0.6666666666666666,0.0,1.0,0.3333333333333333,1.0
+1682,"Find publications by coauthors of ""Thompson scattering in high-intensity chirped laser pulses"" which also explore the impact of spin on magnetic fields.",9,0,9,0.0,0.0,0.0,0.0,0.0,0.0
+7275,"Can you locate 2015 papers that compare photodetectors, which are referenced in ""A systematic characterization of the low-energy photon response of plastic scintillation detectors""?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1920,Show me publications by B. Spruck focusing on hyperon production research.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3587,Show me publications by P. A. Khilo related to beam generation.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+7989,Show me papers published by co-authors of 'Will organic thermoelectrics get hot' that also explore the subject of magnetoplasmonic systems.,1,1,0,1.0,1.0,0.0,0.0,0.1111111111111111,1.0
+580,"Looking for papers that have either been referenced in ""Study on power coupling of annular vortex beam propagating through a two-Cassegrain-telescope optical system in turbulent atmosphere"" or explore similar features and uses of vortex electron beams in turbulent conditions.",2,2,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+249,"Find papers related to surface plasmons that cite or are cited by ""Conventional and acoustic surface plasmons on noble metal surfaces: a time-dependent density functional theory study"".",2,2,0,1.0,1.0,0.0,0.0,0.09090909090909091,0.5
+9732,Could you show me some papers that delve into the study of fractional order equations within the context of the Hunter-Saxton equation?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+12873,"What are the other studies about restraining dark matter using 21-cm cosmology that are also referenced in the ""Bounds on Dark Matter decay from 21 cm line"" paper?",10,9,1,0.9,0.9,1.0,1.0,1.0,0.7
