@@ -129,7 +129,7 @@ def evaluate_vss_parallel(vss, queries: List[Tuple], output_csv: str, k: int = 2
     print(f"Using device: {device}")
     
     # Get product node type embeddings and IDs
-    node_type = 'product'
+    node_type = 'paper'
     if node_type not in vss.node_emb_dict:
         raise ValueError(f"Node type '{node_type}' not found in embeddings")
     
@@ -390,15 +390,15 @@ if __name__ == "__main__":
     # from your_module import VSS, load_queries
     
     # vss = VSS(...)  # Your initialized VSS object
-    kb = load_skb("amazon")
-    qa_dataset = load_qa('amazon')
+    kb = load_skb("mag")
+    qa_dataset = load_qa('mag')
     qa = qa_dataset.split_indices["test"].reshape(-1).tolist()
 
     qa = qa[:int(len(qa) * 0.1)]
     queries = [qa_dataset[i] for i in qa]
     emb_model = 'text-embedding-ada-002'
 
-    dataset = "amazon"
+    dataset = "mag"
     node_ids_by_type = {}
     for n_type in kb.node_type_lst():
         node_ids_by_type[n_type] = kb.get_node_ids_by_type(n_type)

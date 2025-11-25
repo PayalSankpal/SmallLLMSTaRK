@@ -28,6 +28,8 @@ class Query:
         self.initial_symbol_candidates = symbol_candidates if symbol_candidates is not None else {}
         self.relations = entities if entities is not None else {}
         self.results = {}
+        self.grounding_candidates = []
+        self.vss_merged_candidates = []
 
     def __repr__(self) -> str:
         """Provides a clean string representation for the object."""
