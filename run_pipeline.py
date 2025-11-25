@@ -1,3 +1,4 @@
+import pandas as pd
 from stark_qa import load_skb
 import regex as re
 import ast
@@ -16,9 +17,9 @@ from custom_pipeline.relation_parsing import *
 from custom_pipeline.llm_bridge import LlmBridge
 from custom_pipeline.query import Query
 from custom_pipeline.prompt_generator import get_entity_extraction_prompt, get_relation_extraction_prompt
-from custom_pipeline.vss_retreiver import VSSRetriever
+from custom_pipeline.vss_retriever_gpu import VSSRetriever
 from custom_pipeline.candidate_context import CandidateContext
-from custom_pipeline.priority_queue_grounding import PriorityQueueGrounding
+from custom_pipeline.grounders.grounder3 import PriorityQueueGrounding
 import os
 import contextlib
 import io
@@ -31,7 +32,6 @@ import heapq
 from typing import Dict, Set, List, Tuple
 from collections import defaultdict
 from custom_pipeline.candidate_context import CandidateContext
-from custom_pipeline.priority_queue_grounding import PriorityQueueGrounding
 import json
 
 
@@ -40,9 +40,14 @@ def get_llm_response(prompt, llm_bridge):
     return response[0][0]
 
 
-def step1_identify_entities(query: Query, llm_bridge: LlmBridge, dataset_name: str):
-    prompt = get_entity_extraction_prompt(query.query, dataset_name)
-    response_string = get_llm_response(prompt, llm_bridge)
+def step1_identify_entities(query: Query, llm_bridge: LlmBridge, dataset_name: str,use_saved_llm_responses: bool = False, llm_response: Optional[Dict] = None):
+    
+    if use_saved_llm_responses and llm_response is not None:
+        response_string = llm_response.get('entities', "")
+    else:
+        prompt = get_entity_extraction_prompt(query.query, dataset_name)
+        response_string = get_llm_response(prompt, llm_bridge)
+
     query.entity_id_response = response_string
     
     if response_string == '':
@@ -59,11 +64,12 @@ def step1_identify_entities(query: Query, llm_bridge: LlmBridge, dataset_name: s
             query.status = "FAILED"
             return
         
-def step2_identify_relations(query: Query, llm_bridge: LlmBridge, dataset_name: str):
-    print("\n\n\n\nIN STEP 2\n\n\n")
-    print(query.entity_id_response)
-    prompt = get_relation_extraction_prompt(dataset_name , query.query, query.entity_id_response)  # Pass query.entities directly, not str(query.entities)
-    response_string = get_llm_response(prompt, llm_bridge)
+def step2_identify_relations(query: Query, llm_bridge: LlmBridge, dataset_name: str,use_saved_llm_responses: bool = False, llm_response: Optional[Dict] = None):
+    if use_saved_llm_responses and llm_response is not None:
+        response_string = llm_response.get("relations", "")
+    else:
+        prompt = get_relation_extraction_prompt(dataset_name , query.query, query.entity_id_response)  # Pass query.entities directly, not str(query.entities)
+        response_string = get_llm_response(prompt, llm_bridge)
     query.relations_id_response = response_string
 
     if response_string == '' or response_string == '{}':  # Also check for empty dict
@@ -127,6 +133,7 @@ def step3_get_initial_candidates(current_query, kb, retriever):
 
 
 def run_priority_queue_grounding(
+        
     query_obj,
     kb,
     vss_retriever,
@@ -152,7 +159,67 @@ def run_priority_queue_grounding(
     return grounder.ground()
     
 
-def evaluate_result(predicted_nodes, ground_truth_nodes):
+def step4_grounding(query: Query, kb, retriever):
+    final_candidates = run_priority_queue_grounding(
+        query_obj=query,
+        kb=kb,
+        vss_retriever=retriever,
+        max_candidates_per_symbol=100,
+        max_answer_candidates=20,
+        top_k_neighbors=15,
+        support_boost=0,
+        score_decay=0.9,
+        verbose=False
+    )
+    answers = [cc.node_id for cc in sorted(
+        final_candidates["ANSWER"], key=lambda x: (x.score, -x.support), reverse=True
+    )]
+    query.grounding_candidates = answers
+        # print(query)
+
+    return final_candidates
+
+def step5_merge_vss_candidates(query: Query, retriever: VSSRetriever, kb, querywise_vss_candidates, use_saved_vss_candidates: bool = False,alpha:int = 12):
+    vss_candidates = []
+    if not use_saved_vss_candidates:
+        
+        possible_node_types = query.entities["ANSWER"]["type"].copy()
+        for node_type in possible_node_types:
+            print("\n\n\nSEARCHING VSS FOR NODE TYPE:", node_type,"\n\n")
+            print(query.query)
+            top_canididates = retriever.get_top_k_nodes(
+                search_str=query.query, k=20, node_type=node_type, cutoff=0.6
+            )
+            print("\n\n\nTOP CANDIDATES FROM VSS\n\n\n", top_canididates,"\n\n")
+            vss_candidates.extend(list(zip(top_canididates[0], top_canididates[1])))
+    else:
+        vss_candidates = querywise_vss_candidates.get(query.id, [])
+
+    print("\n\n\nVSS CANDIDATES\n\n\n", vss_candidates,"\n\n")
+    vss_candidates.sort(key=lambda x: x[1], reverse=True)
+
+    existing_candidate_ids = query.grounding_candidates[:alpha]
+
+    new_vss_candidates = []
+    for node, score in vss_candidates:
+        if node not in existing_candidate_ids:
+            new_vss_candidates.append(node)
+        if len(new_vss_candidates) == 20 - alpha:
+            break
+    
+    merged_candidates = existing_candidate_ids + new_vss_candidates
+    query.vss_merged_candidates = merged_candidates
+    evaluate_results_after_merging_vss_candidates(query)
+    return merged_candidates
+
+
+def evaluate_results_after_merging_vss_candidates(query: Query):
+    results = evaluate_results(query.vss_merged_candidates, query.ground_truths)
+    query.results['vss_merged_metrics'] = results['metrics']
+    print("\n\nRESULTS AFTER MERGING VSS CANDIDATES\n\n", results,"\n\n")
+    return results
+
+def evaluate_results(predicted_nodes, ground_truth_nodes):
     ground_truth_set = set(ground_truth_nodes)
     
     if not predicted_nodes:
@@ -211,38 +278,25 @@ def evaluate_result(predicted_nodes, ground_truth_nodes):
     return results
 
 
-def step4_grounding(query: Query, kb, retriever):
-    final_candidates = run_priority_queue_grounding(
-        query_obj=query,
-        kb=kb,
-        vss_retriever=retriever,
-        max_candidates_per_symbol=3000,
-        max_answer_candidates=100,
-        top_k_neighbors=20,
-        support_boost=0.35,
-        score_decay=0.9,
-        verbose=True
-    )
-    answers = [cc.node_id for cc in sorted(
-        final_candidates["ANSWER"], key=lambda x: (x.score, -x.support), reverse=True
-    )]
-    results = evaluate_result(answers, query.ground_truths)
-    query.results = results
-    print(query)
-
-    return final_candidates
-
-
 def save_results(query: Query, csv_path: str = "pipeline_results.csv", append: bool = True):
     csv_file = Path(csv_path)
     file_exists = csv_file.exists()
     write_headers = not file_exists or not append
     mode = 'a' if append else 'w'
     
-    if not hasattr(query, 'results') or query.results is None:
-        return
+    # 1. Ensure metrics are calculated without wiping existing data
+    grounding_results = evaluate_results(query.grounding_candidates, query.ground_truths)
+    vss_results = evaluate_results(query.vss_merged_candidates, query.ground_truths)
+
+    # 2. Update the query object safely
+    if query.results is None:
+        query.results = {}
+    
+    query.results.update(grounding_results) # Updates 'metrics', 'answer_list', etc.
+    query.results['vss_merged_metrics'] = vss_results['metrics'] # Explicitly save VSS metrics
     
     metrics = query.results.get('metrics', {})
+    vss_metrics = query.results.get('vss_merged_metrics', {})
     
     row_data = {
         'query_id': query.id,
@@ -255,11 +309,13 @@ def save_results(query: Query, csv_path: str = "pipeline_results.csv", append: b
         'hit@1': metrics.get('hit_at_1', 0.0),
         'hit@5': metrics.get('hit_at_5', 0.0),
         'mrr': metrics.get('mrr', 0.0),
+        # Retrieve 'recall@20' from the VSS dictionary
+        'recall@20_vss_merged': vss_metrics.get('recall@20', 0.0) 
     }
     
     fieldnames = [
         'query_id', 'query_text', 'total_answers', 'retrieved_count', 'missed_count',
-        'recall@50', 'recall@20', 'hit@1', 'hit@5', 'mrr'
+        'recall@50', 'recall@20', 'hit@1', 'hit@5', 'mrr', 'recall@20_vss_merged'
     ]
     
     with open(csv_file, mode, newline='', encoding='utf-8') as f:
@@ -273,25 +329,41 @@ def save_aggregate_results(queries: list, csv_path: str = "aggregate_results.csv
     if not queries:
         return
     
-    all_metrics = []
+    # SEPARATE lists for grounding and VSS metrics
+    grounding_metrics_list = []
+    vss_metrics_list = []
+
     for query in queries:
+        # 1. Collect Grounding Metrics
         if hasattr(query, 'results') and query.results is not None:
-            all_metrics.append(query.results.get('metrics', {}))
-    
-    if not all_metrics:
+            grounding_metrics_list.append(query.results.get('metrics', {}))
+        
+        # 2. Collect VSS Metrics
+        if hasattr(query, 'results') and 'vss_merged_metrics' in query.results:
+            vss_metrics_list.append(query.results.get('vss_merged_metrics', {}))
+
+    if not grounding_metrics_list:
         return
     
-    num_queries = len(all_metrics)
+    num_queries = len(grounding_metrics_list)
+    
+    # Calculate averages using the distinct lists
     avg_metrics = {
         'total_queries': num_queries,
-        'avg_total_answers': sum(m.get('total_answers', 0) for m in all_metrics) / num_queries,
-        'avg_retrieved_count': sum(m.get('retrieved_count', 0) for m in all_metrics) / num_queries,
-        'avg_missed_count': sum(m.get('missed_count', 0) for m in all_metrics) / num_queries,
-        'avg_recall@20': sum(m.get('recall@20', 0.0) for m in all_metrics) / num_queries,
-        'avg_recall@50': sum(m.get('recall@50', 0.0) for m in all_metrics) / num_queries,
-        'avg_hit@1': sum(m.get('hit_at_1', 0.0) for m in all_metrics) / num_queries,
-        'avg_hit@5': sum(m.get('hit_at_5', 0.0) for m in all_metrics) / num_queries,
-        'avg_mrr': sum(m.get('mrr', 0.0) for m in all_metrics) / num_queries,
+        
+        # --- Grounding Metrics (Standard) ---
+        'avg_total_answers': sum(m.get('total_answers', 0) for m in grounding_metrics_list) / num_queries,
+        'avg_retrieved_count': sum(m.get('retrieved_count', 0) for m in grounding_metrics_list) / num_queries,
+        'avg_missed_count': sum(m.get('missed_count', 0) for m in grounding_metrics_list) / num_queries,
+        'avg_recall@20': sum(m.get('recall@20', 0.0) for m in grounding_metrics_list) / num_queries,
+        'avg_recall@50': sum(m.get('recall@50', 0.0) for m in grounding_metrics_list) / num_queries,
+        'avg_hit@1': sum(m.get('hit_at_1', 0.0) for m in grounding_metrics_list) / num_queries,
+        'avg_hit@5': sum(m.get('hit_at_5', 0.0) for m in grounding_metrics_list) / num_queries,
+        'avg_mrr': sum(m.get('mrr', 0.0) for m in grounding_metrics_list) / num_queries,
+        
+        # --- VSS Merged Metrics ---
+        # Note: We look for 'recall@20' INSIDE the vss list, not 'recall@20_vss_merged'
+        'recall@20_vss_merged': sum(m.get('recall@20', 0.0) for m in vss_metrics_list) / num_queries if vss_metrics_list else 0.0,        
     }
     
     fieldnames = list(avg_metrics.keys())
@@ -306,7 +378,6 @@ def save_aggregate_results(queries: list, csv_path: str = "aggregate_results.csv
     for key, value in avg_metrics.items():
         print(f"  {key}: {value:.4f}" if isinstance(value, float) else f"  {key}: {value}")
 
-
 def create_experiment_dir(exp_name: str = "test_run", base_dir: str = './output/'):
     try:
         os.mkdir(f"{base_dir}/{exp_name}")
@@ -316,11 +387,13 @@ def create_experiment_dir(exp_name: str = "test_run", base_dir: str = './output/
         print(f"Error creating directory: {e}")
 
 
-def pipeline(query, llm_bridge, kb, retriever, dataset_name: str, exp_name: str):
-    step1_identify_entities(query, llm_bridge, dataset_name)
-    step2_identify_relations(query, llm_bridge, dataset_name)
+def pipeline(query, llm_bridge, kb, retriever, dataset_name: str, exp_name: str, use_saved_llm_responses: bool = False, llm_response: Optional[dict] = None,alpha:int = 12,use_saved_vss_candidates : bool = False):
+
+    step1_identify_entities(query, llm_bridge, dataset_name,use_saved_llm_responses, llm_response)
+    step2_identify_relations(query, llm_bridge, dataset_name,use_saved_llm_responses, llm_response)
     step3_get_initial_candidates(query, kb, retriever)
     step4_grounding(query, kb, retriever)
+    step5_merge_vss_candidates(query, retriever, kb, {}, use_saved_vss_candidates= use_saved_vss_candidates,alpha=alpha)
     save_results(query, csv_path=f"./output/{exp_name}/pipeline_results.csv")
 
 
@@ -341,9 +414,9 @@ def save_data_dump(results, csv_path="aggregate_results.csv"):
             return str(value)
     
     fieldnames = [
-        'id', 'query', 'ground_truths', 'status', 'entity_id_response',
-        'relations_id_response', 'entities', 'initial_symbol_candidates',
-        'relations', 'results'
+        'id', 'query', 'ground_truths', 'status', 
+        'entities',
+        'relations', 'results','grounding_candidates','vss_merged_candidates'
     ]
     
     with open(csv_path, 'w', newline='', encoding='utf-8') as f:
@@ -382,6 +455,8 @@ def main(args):
     dataset_name = args.dataset
     embedding_dir = args.embedding_dir
     exp_name = args.exp_name
+    use_saved_llm_responses = args.use_saved_llm_responses
+    llm_responses_file = args.llm_responses_file
 
     emb_model = 'text-embedding-ada-002'
     configs_path = 'configs.json'
@@ -392,7 +467,7 @@ def main(args):
 
     test_queries = [qa_dataset[i] for i in qa]
     if args.test_run:
-        test_queries = test_queries[:50]
+        test_queries = test_queries[:15]
 
     kb = load_skb(dataset_name, download_processed=True)
 
@@ -412,13 +487,20 @@ def main(args):
 
     failed_queries = []
     results = []
+    if use_saved_llm_responses:
+        llm_respose_df = pd.read_csv(llm_responses_file)
 
     with open(f"./output/{exp_name}/temp.txt", 'w', encoding='utf-8') as temp_file:
             for query in tqdm(test_queries, desc="Processing queries", unit="query"):
                 try:
                     with contextlib.redirect_stdout(temp_file), contextlib.redirect_stderr(temp_file):
                         current_query = Query(id=query[1], query=query[0], ground_truths=query[2])
-                        pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name)
+                        if use_saved_llm_responses:
+                            llm_response = llm_respose_df[llm_respose_df['query_id'] == current_query.id].to_dict(orient='records')
+                            llm_response = llm_response[0]
+                        else:
+                            llm_response = None
+                        pipeline(current_query, llm_bridge, kb, retriever, dataset_name, exp_name, use_saved_llm_responses=args.use_saved_llm_responses, llm_response=llm_response)
                     results.append(current_query)
                     
                 except Exception as e:
@@ -489,6 +571,25 @@ if __name__ == "__main__":
         type=str,
         default=None,
         help="Name of the experiment for saving outputs"
+    )
+
+    parser.add_argument(
+        "--use-saved-llm-responses",
+        action='store_true',
+        help="use pre saved LLM responses from file instead of querying the LLM"
+    )
+
+    parser.add_argument(
+        "--llm-responses-file",
+        type=str,
+        default="llm_responses.csv",
+        help="Path to the CSV file containing saved LLM responses"
+    )
+
+    parser.add_argument(
+        "--use-saved-vss-candidates",
+        action='store_true',
+        help="use pre saved VSS candidates instead of querying the VSS retriever"
     )
     
     args = parser.parse_args()
