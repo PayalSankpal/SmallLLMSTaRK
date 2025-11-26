@@ -17,7 +17,7 @@ from custom_pipeline.relation_parsing import *
 from custom_pipeline.llm_bridge import LlmBridge
 from custom_pipeline.query import Query
 from custom_pipeline.prompt_generator import get_entity_extraction_prompt, get_relation_extraction_prompt
-from custom_pipeline.vss_retriever_gpu import VSSRetriever
+from custom_pipeline.vss_retreiver import VSSRetriever
 from custom_pipeline.candidate_context import CandidateContext
 from custom_pipeline.grounders.grounder3 import PriorityQueueGrounding
 import os
@@ -105,8 +105,6 @@ def step2_identify_relations(query: Query, llm_bridge: LlmBridge, dataset_name: 
                     if rels[i] in edge_type_dict:
                         rels[i] = edge_type_dict[rels[i]]
             print(f"Relations found: {query.relations}")
-            
-
         except ValueError as e:
             query.status = "FAILED"
             query.relations = {}
@@ -560,7 +558,7 @@ def main(args):
 
     test_queries = [qa_dataset[i] for i in qa]
     if args.test_run:
-        test_queries = test_queries[:50]
+        test_queries = test_queries[:]
 
     print("Loading Knowledge Base...")
     kb = load_skb(dataset_name, download_processed=True)
