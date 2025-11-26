@@ -154,3 +154,27 @@ def get_relation_extraction_prompt(dataset_name: str , natural_language_query: s
 # res = get_relation_extraction_prompt("mag","AAAAAAAA" , "BBBBBBBBBBB")
 
 # print(res)
+
+def get_query_expansion_prompt(query: str, dataset_name: str, docs_list: list) -> str:
+    prompt = """You are a precision-focused search optimization assistant for the {dataset_name} domain.
+    
+    Input Query: "{query}"
+    
+    Task: Generate a comma-separated list of expansion terms to improve retrieval recall.
+    
+    Strict Guidelines:
+    1. DO NOT be creative. Avoid abstract associations or broad generalizations.
+    2. ONLY include direct synonyms, acronyms, or strictly technical terms used in this specific domain.
+    3. Use the provided sample documents below to ground your vocabulary choice.
+    4. Return valid search terms only. No conversational text, no explanations, no labels.
+    
+    Reference Context (Sample Documents from {dataset_name}):
+    {sample_docs_placeholder}
+    
+    Output (comma-separated terms only):"""
+ 
+    sample_docs_string = "\n".join([f"- {doc}" for doc in docs_list])
+
+    print("\n\n [PROMPT GEN]Sample Docs String:\n\n", sample_docs_string)  # Debugging line
+    formatted_prompt = prompt.format(sample_docs_placeholder=sample_docs_string, query=query, dataset_name=dataset_name)
+    return formatted_prompt

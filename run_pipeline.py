@@ -16,7 +16,7 @@ from custom_pipeline.entity_parsing import *
 from custom_pipeline.relation_parsing import *
 from custom_pipeline.llm_bridge import LlmBridge
 from custom_pipeline.query import Query
-from custom_pipeline.prompt_generator import get_entity_extraction_prompt, get_relation_extraction_prompt
+from custom_pipeline.prompt_generator import get_entity_extraction_prompt, get_relation_extraction_prompt,get_query_expansion_prompt
 from custom_pipeline.vss_retreiver import VSSRetriever
 from custom_pipeline.candidate_context import CandidateContext
 from custom_pipeline.grounders.grounder3 import PriorityQueueGrounding
@@ -296,12 +296,29 @@ def step4_grounding(query: Query, kb, retriever):
     else:
         answers = []
     query.grounding_candidates = answers  # ✅ ADD THIS LINE
-
+    query.final_candidates = final_candidates
     return final_candidates
+
+
+def get_expanded_query(query,  dataset_name: str,kb, llm_bridge) -> str:
+    docs_list = []
+    print(query.grounding_candidates)
+    if not hasattr(query, 'grounding_candidates') :
+        return query.query
+    
+    for candidate in query.grounding_candidates[:3]:
+        print(f"Candidate: {candidate} ")
+        print(kb.get_doc_info(candidate))
+        docs_list.append(kb.get_doc_info(candidate))
+    expanded_prompt = get_query_expansion_prompt(query, dataset_name, docs_list)
+    expanded_query = get_llm_response(expanded_prompt, llm_bridge)
+    print("[EXPANED QUERY]: ", expanded_query)
+    return expanded_query
+
 def step5_merge_vss_candidates(query: Query, retriever: VSSRetriever, kb,
                                 use_saved_vss_candidates: bool = False,
                                 alpha: int = 12,
-                                vss_candidates: dict = {}):
+                                vss_candidates: dict = {},llm_bridge: LlmBridge=None,dataset_name: str = "") -> List[int]:
     """
     Step 5: Merge grounding candidates with VSS candidates.
     """
@@ -309,11 +326,15 @@ def step5_merge_vss_candidates(query: Query, retriever: VSSRetriever, kb,
     print(f"[Step 5] Merging VSS candidates with alpha={alpha} USE_SAVED={use_saved_vss_candidates} \n\n VSS CANDIDATES: {vss_candidates}\n\n")
     if not use_saved_vss_candidates:
         all_candidates = []
+        
+        expanded_query = get_expanded_query(query, dataset_name=dataset_name,kb=kb,llm_bridge=llm_bridge)
+        print(query)
+        print("[Step 5] Expanded Query for VSS:", expanded_query)
         possible_node_types = query.entities["ANSWER"]["type"].copy()
         for node_type in possible_node_types:
             print(f"[Step 5] Searching VSS for node type: {node_type}")
             top_candidates = retriever.get_top_k_nodes(
-                search_str=query.query, k=20, node_type=node_type, cutoff=0.6
+                search_str=expanded_query, k=20, node_type=node_type, cutoff=0.6
             )
             all_candidates.extend(list(zip(top_candidates[0], top_candidates[1])))
         vss_candidates_list = list(map (lambda x: x[0], sorted(all_candidates, key=lambda x: x[1], reverse=True)))
@@ -500,7 +521,7 @@ def pipeline(query, llm_bridge, kb, retriever, dataset_name: str, exp_name: str,
     t0 = time.time()
     step5_merge_vss_candidates(query, retriever, kb,  
                                use_saved_vss_candidates=use_saved_vss_candidates, vss_candidates=vss_candidates,
-                               alpha=alpha)
+                               alpha=alpha,llm_bridge=llm_bridge,dataset_name=dataset_name)
     print(f"[TIMING] Step 5 (VSS Merge): {time.time() - t0:.4f}s")
     
     t0 = time.time()
@@ -558,7 +579,7 @@ def main(args):
 
     test_queries = [qa_dataset[i] for i in qa]
     if args.test_run:
-        test_queries = test_queries[:]
+        test_queries = test_queries[:10]
 
     print("Loading Knowledge Base...")
     kb = load_skb(dataset_name, download_processed=True)
@@ -599,7 +620,8 @@ def main(args):
                     
                     try:
                         if use_saved_llm_responses:
-                            llm_response = llm_respose_df[llm_respose_df['query_id'] == current_query.id].to_dict(orient='records')
+                            llm_response = llm_respose_df[llm_respose_df['id'] == current_query.id].to_dict(orient='records')
+                            print("LOADED SAVED LLM RESPONSE:", llm_response)
                             llm_response = llm_response[0]
                         else:
                             llm_response = None

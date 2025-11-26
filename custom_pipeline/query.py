@@ -30,6 +30,7 @@ class Query:
         self.results = {}
         self.grounding_candidates = []
         self.vss_merged_candidates = []
+        self.final_candidates  = {}
 
     def __repr__(self) -> str:
         """Provides a clean string representation for the object."""
