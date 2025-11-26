@@ -1,75 +1,55 @@
 Example 1
-Query: What drugs target the CYP3A4 enzyme and are used to treat strongyloidiasis?
-
+Query: What conditions are associated with hyperalphalipoproteinemia, which causes elevated triglycerides and cholesterol levels in the blood?
 Response:
 {
   "A": {
-    "type": ["gene/protein"],
-    "lexical": {"name": "CYP3A4"},
+    "type": ["disease"],
+    "lexical": {"name": "hyperalphalipoproteinemia"},
     "semantic": [],
     "constant": true
   },
   "B": {
-    "type": ["disease"],
-    "lexical": {"name": "strongyloidiasis"},
+    "type": ["effect/phenotype"],
+    "lexical": {"name": "elevated triglycerides"},
     "semantic": [],
+    "constant": true
+  },
+  "C": {
+    "type": ["effect/phenotype"],
+    "semantic": ["elevated cholesterol levels in the blood"],
     "constant": true
   },
   "ANSWER": {
     "type": ["drug"],
     "lexical": {},
-    "semantic": ["used to treat strongyloidiasis"],
+    "semantic": ["associated with hyperalphalipoproteinemia", "elevated cholesterol levels in the blood", "elevated triglycerides"],
     "constant": false
   }
 }
 
 Example 2
-Query: What drugs are used to treat epithelioid sarcoma and also affect the EZH2 gene product?
-
+Query: Please find the genes and proteins that interact with manganese ion binding and participate in the KSRP-mediated mRNA binding and destabilization pathway.
 Response:
 {
   "A": {
-    "type": ["disease"],
-    "lexical": {"name": "epithelioid sarcoma"},
+    "type": ["molecular_function"],
+    "lexical": {"name": "manganese ion binding"},
     "semantic": [],
     "constant": true
   },
   "B": {
-    "type": ["gene/protein"],
-    "lexical": {"name": "EZH2"},
-    "semantic": [],
-    "constant": true
+    "type": ["pathway"],
+    "lexical": {},
+    "semantic": ["KSRP-mediated mRNA binding and destabilization"],
+    "constant": false
   },
   "ANSWER": {
-    "type": ["drug"],
+    "type": ["gene/protein"],
     "lexical": {},
     "semantic": [],
     "constant": false
   }
 }
 
-Example 3
-Query: What is the medical diagnosis for a disorder associated with the FOSB gene, characterized by extreme aggressive episodes and destructive behavior due to poor impulse control, usually beginning after age 6 or during teenage years, with exaggerated verbal and physical reactions to environmental triggers?
 
-Response:
-{
-  "ANSWER": {
-    "type": ["disease"],
-    "lexical": {},
-    "semantic": [
-      "disorder associated with the FOSB gene",
-      "characterized by extreme aggressive episodes",
-      "characterized by destructive behavior",
-      "due to poor impulse control",
-      "usually beginning after age 6 or during teenage years",
-      "with exaggerated verbal and physical reactions to environmental triggers"
-    ],
-    "constant": false
-  },
-  "A": {
-    "type": ["gene/protein"],
-    "lexical": {"name": "FOSB"},
-    "semantic": ["gene"],
-    "constant": true
-  }
-}
+

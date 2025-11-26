@@ -1,0 +1,4240 @@
+id,query,entities,relations
+2905,Can you recommend a high-quality carabiner clip keychain that's around 7 inches long?,"{
+  ""A"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""carabiner clip keychain""},
+    ""semantic"": [""high-quality"", ""around 7 inches long""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""high-quality carabiner clip keychain"", ""around 7 inches long""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""also_buy"", ""also_view""]
+}"
+3863,"Looking for a lightweight Outerstuff brand Boston Bruins youth T-shirt from the NHL, with a shipping weight around 6.4 ounces.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Outerstuff""},
+    ""semantic"": [""Outerstuff brand""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""T-shirt""},
+    ""semantic"": [""youth T-shirt"", ""NHL""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""brand"", ""category""],
+    ""lexical"": {""name"": ""NHL""},
+    ""semantic"": [""NHL""],
+    ""constant"": true
+  },
+  ""D"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Boston Bruins""},
+    ""semantic"": [""Boston Bruins""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""lightweight Outerstuff brand Boston Bruins youth T-shirt from the NHL"", ""with a shipping weight around 6.4 ounces""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""has_brand"", ""has_category""],
+  (""ANSWER"", ""D""): [""has_brand""]
+}"
+4651,What is a good Outlander internal frame camping backpack with multiple internal and external pockets for convenient access to accessories? I'm not particular about the color.,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Outlander""},
+    ""semantic"": [""Outlander internal frame camping backpack""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""backpack""},
+    ""semantic"": [""internal frame camping backpack""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""not particular about the color""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Outlander internal frame camping backpack""},
+    ""semantic"": [""Outlander internal frame camping backpack"", ""multiple internal and external pockets"", ""convenient access to accessories""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""has_color""]
+}"
+8633,I'm looking for a swim training snorkel that has a noticeable difference in fit with and without a swimming cap. The one I currently have always needs tape to keep it steady. Any suggestions?,"{
+  ""A"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""swim training snorkel""},
+    ""semantic"": [""swim training snorkel that has a noticeable difference in fit with and without a swimming cap""],
+    ""constant"": false
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""swimming cap""},
+    ""semantic"": [""swimming cap""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""swim training snorkel that has a noticeable difference in fit with and without a swimming cap"", ""does not need tape to keep it steady""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""B""): [""also_buy"", ""also_view""]
+}"
+8973,Can you recommend any UP100 marine hardware suitable for a 25.4mm pipe to use on my boat?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""UP100""},
+    ""semantic"": [""UP100 marine hardware""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""marine hardware""},
+    ""semantic"": [""marine hardware for a boat""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""suitable for a 25.4mm pipe"", ""for use on a boat""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""UP100 marine hardware"", ""suitable for a 25.4mm pipe"", ""for use on a boat""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""C"", ""A""): [""has_brand""],
+  (""C"", ""B""): [""has_category""]
+}"
+3478,"What are some lightweight running socks suitable for a St. Patrick's Day marathon, weighing around 2.4 ounces for shipping?","{
+  ""A"": {
+    ""type"": [""category"", ""product""],
+    ""lexical"": {""name"": ""running socks""},
+    ""semantic"": [""lightweight"", ""for a St. Patrick's Day marathon""],
+    ""constant"": false
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {},
+    ""semantic"": [""St. Patrick's Day""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""lightweight running socks""},
+    ""semantic"": [""suitable for a St. Patrick's Day marathon"", ""weighing around 2.4 ounces for shipping""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""also_buy"", ""also_view"", ""has_category""],
+(""ANSWER"", ""B""): [""has_brand""]
+}"
+3370,Where can I find Beyond Yoga leggings for women?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Beyond Yoga""},
+    ""semantic"": [""Beyond Yoga""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""leggings""},
+    ""semantic"": [""leggings for women""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Beyond Yoga leggings for women""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""],
+(""ANSWER"", ""B""): [""has_category""]
+}"
+2135,"Can you suggest a CHAMPRO basketball rack that's easy to assemble? I already own the BSN Compact Ball Locker and the Baden Steel rack, so I'm not interested in similar items.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""CHAMPRO""},
+    ""semantic"": [""CHAMPRO basketball rack""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand"", ""product""],
+    ""lexical"": {""name"": ""BSN Compact Ball Locker""},
+    ""semantic"": [""similar items to BSN Compact Ball Locker""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""brand"", ""product""],
+    ""lexical"": {""name"": ""Baden Steel rack""},
+    ""semantic"": [""similar items to Baden Steel rack""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""CHAMPRO basketball rack""},
+    ""semantic"": [""CHAMPRO basketball rack that's easy to assemble"", ""not similar to BSN Compact Ball Locker"", ""not similar to Baden Steel rack""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""also_buy""],
+  (""ANSWER"", ""C""): [""also_buy""]
+}"
+291,Can you suggest a digital compass with dual alarms available on Amazon?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Amazon""},
+    ""semantic"": [""available on Amazon""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""digital compass""},
+    ""semantic"": [""digital compass with dual alarms"", ""available on Amazon""],
+    ""constant"": false
+  }
+}","{""(""ANSWER"", ""A"")"": [""has_brand""]}"
+8215,"What are some lightweight, around 7 ounces, Red Plume men's compression sports shirts suitable for various types of workouts?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Red Plume""},
+    ""semantic"": [""Red Plume""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""Red""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""men's compression sports shirts""},
+    ""semantic"": [""lightweight"", ""around 7 ounces"", ""Red Plume men's compression sports shirts"", ""suitable for various types of workouts""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_color""]
+}"
+1570,Does Amazon have any mountain bikes available from Realm Cycles?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Amazon""},
+    ""semantic"": [""online retailer""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Realm Cycles""},
+    ""semantic"": [""bike manufacturer""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""mountain bikes""},
+    ""semantic"": [""mountain bikes available from Realm Cycles on Amazon""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""B""): [""has_brand""]
+}"
+567,Can you recommend a SPRI balance board suitable for physical therapy and workout routines?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""SPRI""},
+    ""semantic"": [""SPRI""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""balance board""},
+    ""semantic"": [""balance board""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""SPRI balance board"", ""suitable for physical therapy"", ""suitable for workout routines""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+8764,Is there a Clicks brand automatic open/close umbrella made with pongee fabric and an 8 ribs construction?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Clicks""},
+    ""semantic"": [""Clicks brand""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""umbrella""},
+    ""semantic"": [""automatic open/close umbrella""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""pongEE fabric""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Clicks brand automatic open/close umbrella"", ""made with pongee fabric"", ""an 8 ribs construction""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""has_color""]
+}"
+6784,Looking for a men's field jacket with strong elbows and adjustable cuffs. Would love if it has lots of storage like vertical zippered pockets on the chest and additional button flap pockets. Any recommendations?,"{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""men's field jacket""},
+    ""semantic"": [""men's field jacket""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""strong elbows"", ""adjustable cuffs"", ""vertical zippered pockets on the chest"", ""additional button flap pockets""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""men's field jacket with strong elbows and adjustable cuffs"", ""lots of storage like vertical zippered pockets on the chest and additional button flap pockets""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""B""): [""also_view""]
+}"
+711,Looking for a hands-free fitness watch with reliable satellite connectivity and accurate tracking for running sessions. Can you suggest one?,"{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""fitness watch""},
+    ""semantic"": [""hands-free fitness watch""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""hands-free fitness watch"", ""reliable satellite connectivity"", ""accurate tracking for running sessions""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_category""]
+}"
+4957,Can you recommend a NFL Seattle Seahawks twin sheet set that matches well with my Northwest Company NFL Seahawks Curtain Panel Pair and also complements my Seattle Seahawks Full Sheet Set?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""NFL""},
+    ""semantic"": [""NFL""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Northwest Company""},
+    ""semantic"": [""Northwest Company""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""brand"", ""category""],
+    ""lexical"": {""name"": ""Seattle Seahawks""},
+    ""semantic"": [""Seattle Seahawks team""],
+    ""constant"": true
+  },
+  ""D"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""NFL Seahawks Curtain Panel Pair""},
+    ""semantic"": [""NFL Seahawks Curtain Panel Pair""],
+    ""constant"": true
+  },
+  ""E"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Seattle Seahawks Full Sheet Set""},
+    ""semantic"": [""Seattle Seahawks Full Sheet Set""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""NFL Seattle Seahawks twin sheet set""},
+    ""semantic"": [""NFL Seattle Seahawks twin sheet set"", ""matches well with NFL Seahawks Curtain Panel Pair"", ""complements Seattle Seahawks Full Sheet Set""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""C""): [""has_brand"", ""has_category""],
+  (""ANSWER"", ""D""): [""also_view"", ""also_buy""],
+  (""ANSWER"", ""E""): [""also_view"", ""also_buy""],
+  (""D"", ""A""): [""has_brand""],
+  (""D"", ""C""): [""has_brand"", ""has_category""],
+  (""E"", ""C""): [""has_brand"", ""has_category""]
+}"
+8288,"What are some recommended morale patches from Neo Tactical Gear that come with a reliable satisfaction guarantee, as I'm looking to add to my collection?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Neo Tactical Gear""},
+    ""semantic"": [""Neo Tactical Gear""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""morale patches""},
+    ""semantic"": [""morale patches""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""recommended morale patches"", ""come with a reliable satisfaction guarantee"", ""add to my collection""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+4508,What are some affordable balance cap systems for a Beretta A400 Xcel that weigh around 4 ounces?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Beretta""},
+    ""semantic"": [""Beretta A400 Xcel""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""A400 Xcel""},
+    ""semantic"": [""Beretta A400 Xcel""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""balance cap systems""},
+    ""semantic"": [""affordable balance cap systems"", ""for a Beretta A400 Xcel"", ""weigh around 4 ounces""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""also_buy""]
+}"
+7548,Could you recommend an adjustable '47 brand cap that would fit my head size perfectly?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""'47""},
+    ""semantic"": [""'47 brand""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""adjustable '47 brand cap""},
+    ""semantic"": [""adjustable '47 brand cap"", ""fit my head size perfectly""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""]
+}"
+5166,What type of bow wrist sling would pair well with my Trophy Ridge Dart Stabilizer?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Trophy Ridge""},
+    ""semantic"": [""Trophy Ridge Dart Stabilizer""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Dart Stabilizer""},
+    ""semantic"": [""Trophy Ridge Dart Stabilizer""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""bow wrist sling""},
+    ""semantic"": [""bow wrist sling"", ""pair well with Trophy Ridge Dart Stabilizer""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""also_buy""]
+}"
+1742,"What are some models of dive wrist computers with a digital scuba compass and large, clear numeric displays for primary dive information available at the authorized seller, House Of Scuba?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""House Of Scuba""},
+    ""semantic"": [""authorized seller""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""dive wrist computers""},
+    ""semantic"": [],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {},
+    ""semantic"": [""digital scuba compass"", ""large, clear numeric displays for primary dive information""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""dive wrist computers""},
+    ""semantic"": [""models of dive wrist computers with a digital scuba compass and large, clear numeric displays for primary dive information available at the authorized seller, House Of Scuba""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""also_buy"", ""also_view""]
+}"
+2746,"Are there any fun wristbands available that reflect my love for riding, specifically with a knobby or sand paddle tire design? It would be cool if it could also make a 'BRAAWAP!!' sound. Any recommendations?","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""wristbands""},
+    ""semantic"": [""fun wristbands""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {},
+    ""semantic"": [""riding""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""category""],
+    ""lexical"": {},
+    ""semantic"": [""knobby or sand paddle tire design""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""fun wristbands"", ""reflect love for riding"", ""knobby or sand paddle tire design"", ""make a 'BRAAWAP!!' sound""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_category""],
+(""ANSWER"", ""B""): [""has_brand""],
+(""ANSWER"", ""C""): [""has_category""]
+}"
+3214,"I'm in search of a classy hunting knife that's roughly 13.5 inches in length. I've previously purchased and enjoyed the Best.Buy.Damascus1 Red Wood 12"" Fixed Blade Custom 440c Stainless Steel Hunting Knife. Any recommendations for a similar style or something that would pair well with this knife would be appreciated.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Best.Buy.Damascus1""},
+    ""semantic"": [""Best.Buy.Damascus1 Red Wood 12\"" Fixed Blade Custom 440c Stainless Steel Hunting Knife""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Red Wood 12\"" Fixed Blade Custom 440c Stainless Steel Hunting Knife""},
+    ""semantic"": [""Best.Buy.Damascus1 Red Wood 12\"" Fixed Blade Custom 440c Stainless Steel Hunting Knife"", ""12\"" Fixed Blade"", ""440c Stainless Steel"", ""Hunting Knife""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""hunting knife""},
+    ""semantic"": [""classy hunting knife"", ""roughly 13.5 inches in length""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""classy hunting knife"", ""roughly 13.5 inches in length"", ""similar style to Best.Buy.Damascus1 Red Wood 12\"" Fixed Blade Custom 440c Stainless Steel Hunting Knife""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""C""): [""has_category""],
+  (""ANSWER"", ""A""): [""also_buy"", ""also_view""],
+  (""B"", ""A""): [""has_brand""]
+}"
+7375,What are some recommended aminco branded lanyard key chains?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""aminco""},
+    ""semantic"": [""aminco branded""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""lanyard key chains""},
+    ""semantic"": [""lanyard key chains""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""recommended aminco branded lanyard key chains""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+3523,Looking for a Michigan Wolverines t-shirt with a comfortable rib-knit collar and a screen printed graphic. Any suggestions for ones that are also soft to the touch?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Michigan Wolverines""},
+    ""semantic"": [""Michigan Wolverines""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""t-shirt""},
+    ""semantic"": [""t-shirt""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Michigan Wolverines t-shirt"", ""comfortable rib-knit collar"", ""screen printed graphic"", ""soft to the touch""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+8198,Looking for a gun and cell phone holster that is safer and more convenient than carrying a pistol in a pocket. I currently have a brown Roma Leather Belt Pistol Concealed Carry Pack and need a product that works well with it. Any suggestions?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Roma Leather""},
+    ""semantic"": [""Roma Leather Belt Pistol Concealed Carry Pack"", ""brown""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""Roma Leather Belt Pistol Concealed Carry Pack""},
+    ""semantic"": [""brown"", ""pistol concealed carry pack""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""brown""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""gun and cell phone holster""},
+    ""semantic"": [""safer and more convenient than carrying a pistol in a pocket"", ""works well with Roma Leather Belt Pistol Concealed Carry Pack""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""C""): [""has_color""],
+  (""B"", ""A""): [""has_brand""],
+  (""B"", ""C""): [""has_color""]
+}"
+4505,"Do you carry the DT Swiss replacement hub axle that is compatible with a DT Swiss 350 non-boost hub? I'm also thinking of pairing it with a DT Swiss Mountain Freehub Body. In addition, I'm considering purchasing DT Swiss 240S Conversion End Caps. Are these items a good fit together?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""DT Swiss""},
+    ""semantic"": [""DT Swiss""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""DT Swiss 350 non-boost hub""},
+    ""semantic"": [""DT Swiss 350 non-boost hub"", ""compatible with DT Swiss replacement hub axle""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""DT Swiss Mountain Freehub Body""},
+    ""semantic"": [""DT Swiss Mountain Freehub Body"", ""pairing with DT Swiss replacement hub axle""],
+    ""constant"": true
+  },
+  ""D"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""DT Swiss 240S Conversion End Caps""},
+    ""semantic"": [""DT Swiss 240S Conversion End Caps"", ""considering purchasing with DT Swiss replacement hub axle and DT Swiss Mountain Freehub Body""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""DT Swiss replacement hub axle""},
+    ""semantic"": [""DT Swiss replacement hub axle"", ""compatible with DT Swiss 350 non-boost hub"", ""pairing with DT Swiss Mountain Freehub Body"", ""considering purchasing with DT Swiss 240S Conversion End Caps""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""also_buy""],
+  (""ANSWER"", ""C""): [""also_buy""],
+  (""ANSWER"", ""D""): [""also_buy""],
+  (""B"", ""A""): [""has_brand""],
+  (""C"", ""A""): [""has_brand""],
+  (""D"", ""A""): [""has_brand""]
+}"
+8050,"Is there a pair of Under Armour adult batting gloves with a unique Striker Camo design? I currently own an Under Armour UA Motive Neon Yellow in X-Large, and I'm keen on matching it with gloves from the same brand.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Under Armour""},
+    ""semantic"": [""Under Armour""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""UA Motive Neon Yellow""},
+    ""semantic"": [""Under Armour UA Motive Neon Yellow"", ""X-Large""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""Neon Yellow""],
+    ""constant"": true
+  },
+  ""D"": {
+    ""type"": [""category"", ""product""],
+    ""lexical"": {""name"": ""batting gloves""},
+    ""semantic"": [""adult batting gloves"", ""unique Striker Camo design""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Under Armour adult batting gloves""},
+    ""semantic"": [""Under Armour adult batting gloves with a unique Striker Camo design"", ""matching with Under Armour UA Motive Neon Yellow""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""],
+(""ANSWER"", ""D""): [""has_category""],
+(""B"", ""A""): [""has_brand""],
+(""B"", ""C""): [""has_color""]
+}"
+2614,What sports team logo pillowcases would pair well with a recently purchased NCAA Georgia Bulldogs Micro Fiber Pillow Case? It should be soft and ideal for sprucing up a boy's room. Any recommendations?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""NCAA""},
+    ""semantic"": [""NCAA Georgia Bulldogs""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand"", ""category""],
+    ""lexical"": {""name"": ""Georgia Bulldogs""},
+    ""semantic"": [""Georgia Bulldogs Micro Fiber Pillow Case"", ""sports team""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Micro Fiber Pillow Case""},
+    ""semantic"": [""recently purchased"", ""soft"", ""ideal for sprucing up a boy's room""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""sports team logo pillowcases""},
+    ""semantic"": [""pair well with NCAA Georgia Bulldogs Micro Fiber Pillow Case"", ""soft"", ""ideal for sprucing up a boy's room""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_brand"", ""has_category""],
+  (""ANSWER"", ""C""): [""also_buy""]
+}"
+4722,"Looking for a high quality batting glove with a neoprene wristband that's redesigned for comfort. It should include technology to stop the leather from bunching and offer a smooth, flexible fit. We had issues earlier with gloves being small and wearing out rapidly, so are there any high-grade alternatives available?","{
+  ""A"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""batting glove""},
+    ""semantic"": [""high quality"", ""neoprene wristband"", ""redesigned for comfort""],
+    ""constant"": false
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {},
+    ""semantic"": [""sports equipment""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""material""],
+    ""lexical"": {""name"": ""leather""},
+    ""semantic"": [""bunching"", ""smooth, flexible fit""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""high-grade batting glove"", ""neoprene wristband"", ""technology to stop leather from bunching"", ""smooth, flexible fit"", ""high quality"", ""alternatives to small and rapidly worn out gloves""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""has_category""],
+  (""A"", ""B""): [""has_category""],
+  (""A"", ""C""): [""has_category""]
+}"
+8291,Can you suggest a pair of comfortable shoes that come in a standard shoe box of around 14 x 9 x 5 inches?,"{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""shoes""},
+    ""semantic"": [""comfortable shoes""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""come in a standard shoe box of around 14 x 9 x 5 inches""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""comfortable shoes""},
+    ""semantic"": [""pair of comfortable shoes"", ""come in a standard shoe box of around 14 x 9 x 5 inches""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""B""): [""also_buy"", ""also_view""]
+}"
+614,"What's a recommended Coleman catalytic heater known for being safe, efficient and reliable, without a focus on features like adjustability or instant starting systems?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Coleman""},
+    ""semantic"": [""Coleman""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""catalytic heater""},
+    ""semantic"": [""catalytic heater""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""recommended Coleman catalytic heater"", ""safe, efficient and reliable"", ""without a focus on features like adjustability or instant starting systems""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+2235,"Can you recommend a set of long sleeve t-shirts for Chicago Bulls that provides versatility, giving three distinct style options from the combination of two shirts?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Chicago Bulls""},
+    ""semantic"": [""Chicago Bulls""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""long sleeve t-shirts""},
+    ""semantic"": [""long sleeve t-shirts for Chicago Bulls"", ""provides versatility"", ""giving three distinct style options from the combination of two shirts""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""]
+}"
+8903,Can you suggest a comfortable and health-promoting bicycle back seat cushion? I've heard that those with honeycomb design surfaces are good.,"{
+  ""A"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""bicycle back seat cushion""},
+    ""semantic"": [""comfortable and health-promoting""],
+    ""constant"": false
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""honeycomb design surfaces""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""comfortable and health-promoting bicycle back seat cushion"", ""honeycomb design surfaces""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""B""): [""also_buy"", ""also_view""]
+}"
+3889,"Can you find a lightweight women's v-neck tee, made mostly of cotton and rayon and having a shipping weight of approximately 5.6 ounces?","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""tee""},
+    ""semantic"": [""women's v-neck tee""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""brand""],
+    ""lexical"": {},
+    ""semantic"": [],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""women's v-neck tee""},
+    ""semantic"": [""lightweight"", ""made mostly of cotton and rayon"", ""having a shipping weight of approximately 5.6 ounces""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_category""],
+(""ANSWER"", ""B""): [""has_color""],
+(""ANSWER"", ""C""): [""has_brand""]
+}"
+8925,Where can I find durable and supportive shoelaces from HICKIES?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""HICKIES""},
+    ""semantic"": [""HICKIES""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""shoelaces""},
+    ""semantic"": [""durable and supportive shoelaces"", ""from HICKIES""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""]
+}"
+2241,"Looking for Nike swimming goggles with a silicone double strap for comfort. They should ideally have wrap-around, optically polished lenses for a clear underwater view.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Nike""},
+    ""semantic"": [""Nike""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""goggles""},
+    ""semantic"": [""swimming goggles""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""silicone""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Nike swimming goggles""},
+    ""semantic"": [""Nike swimming goggles"", ""silicone double strap for comfort"", ""wrap-around, optically polished lenses for a clear underwater view""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""has_color""]
+}"
+2288,What are some wireless optical mouse options from Tribeca?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Tribeca""},
+    ""semantic"": [""Tribeca""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""wireless optical mouse""},
+    ""semantic"": [""wireless optical mouse options from Tribeca""],
+    ""constant"": false
+  }
+}","{""(""ANSWER"", ""A"")"": [""has_brand""]}"
+6528,Does Amazon have any Green Bay brand light-up ornaments in stock?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Green Bay""},
+    ""semantic"": [""Green Bay""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Amazon""},
+    ""semantic"": [""Amazon""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""Green""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""light-up ornaments""},
+    ""semantic"": [""Green Bay brand light-up ornaments"", ""in stock""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""also_buy""],
+  (""ANSWER"", ""C""): [""has_color""]
+}"
+1671,"I'm on the hunt for a portable travel spinning rod ideal for air travel. I've had positive experiences with the Okuma Nomad Inshore Saltwater Multi Action Travel Rods-NTi-S-703ML-M (Blue/Black, 7-Feet) and Okuma NOMAD Travel Casting Rod (15-40 Lbs, 7-Feet, Medium-Light), which I found perfect for my travels. I'm also interested in finding something similar to the DAIWA TRIPLE B B.B.B 666TLFS by Daiwa spinning rod.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Okuma""},
+    ""semantic"": [""Okuma Nomad Inshore Saltwater Multi Action Travel Rods-NTi-S-703ML-M"", ""Okuma NOMAD Travel Casting Rod""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Okuma Nomad Inshore Saltwater Multi Action Travel Rods-NTi-S-703ML-M""},
+    ""semantic"": [""Blue/Black, 7-Feet"", ""perfect for travels""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Okuma NOMAD Travel Casting Rod""},
+    ""semantic"": [""15-40 Lbs, 7-Feet, Medium-Light"", ""perfect for travels""],
+    ""constant"": true
+  },
+  ""D"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""DAIWA""},
+    ""semantic"": [""DAIWA TRIPLE B B.B.B 666TLFS""],
+    ""constant"": true
+  },
+  ""E"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""DAIWA TRIPLE B B.B.B 666TLFS""},
+    ""semantic"": [""by Daiwa spinning rod""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""portable travel spinning rod"", ""ideal for air travel"", ""similar to Okuma Nomad Inshore Saltwater Multi Action Travel Rods-NTi-S-703ML-M"", ""similar to Okuma NOMAD Travel Casting Rod"", ""similar to DAIWA TRIPLE B B.B.B 666TLFS""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""B""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""C""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""E""): [""also_buy"", ""also_view""],
+  (""B"", ""A""): [""has_brand""],
+  (""C"", ""A""): [""has_brand""],
+  (""E"", ""D""): [""has_brand""]
+}"
+597,What are some recommended Glock shooting sports caps with adjustable straps suitable for larger head sizes?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Glock""},
+    ""semantic"": [""Glock shooting sports caps""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""shooting sports caps""},
+    ""semantic"": [""shooting sports caps with adjustable straps""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Glock shooting sports caps"", ""adjustable straps"", ""suitable for larger head sizes""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+5716,Are there any metal hangers suitable for hanging clay pigeons during shooting practice that are compatible with a TyCa Industries target stand?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""TyCa Industries""},
+    ""semantic"": [""TyCa Industries target stand""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""hangers""},
+    ""semantic"": [""metal hangers""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""clay pigeons""},
+    ""semantic"": [""clay pigeons for shooting practice""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""metal hangers""},
+    ""semantic"": [""metal hangers suitable for hanging clay pigeons during shooting practice"", ""compatible with a TyCa Industries target stand""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+572,"Is there a well-constructed leather sheath with durable stitching available for my Woodman's Pal 284? Ideally, it would come with a matching concave axe blade for chopping wood.","{
+  ""A"": {
+    ""type"": [""brand"", ""product""],
+    ""lexical"": {""name"": ""Woodman's Pal 284""},
+    ""semantic"": [""Woodman's Pal 284""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""leather sheath""},
+    ""semantic"": [""well-constructed leather sheath"", ""with durable stitching""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""concave axe blade""},
+    ""semantic"": [""matching concave axe blade"", ""for chopping wood""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""well-constructed leather sheath with durable stitching"", ""for Woodman's Pal 284"", ""with a matching concave axe blade for chopping wood""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy""],
+  (""ANSWER"", ""B""): [""also_buy"", ""has_category""],
+  (""ANSWER"", ""C""): [""also_buy""]
+}"
+8970,"Are there any hiking pants primarily made of nylon mixed with a bit of elastane? I'm in search of pairs that are not only lightweight and comfortable but are also equipped with advanced repellency technologies such as Omni-Shield. My main focus is not on the fit, but rather on the materials and features that cater to my needs.","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""hiking pants""},
+    ""semantic"": [""hiking pants""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""material""],
+    ""lexical"": {},
+    ""semantic"": [""nylon"", ""elastane""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Omni-Shield""},
+    ""semantic"": [""advanced repellency technologies""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""hiking pants primarily made of nylon mixed with a bit of elastane"", ""lightweight and comfortable"", ""equipped with advanced repellency technologies such as Omni-Shield""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""B""): [""has_category"", ""has_color"", ""also_buy"", ""also_view"", ""has_brand""],
+  (""ANSWER"", ""C""): [""has_brand""]
+}"
+2044,Can you suggest a durable Berkley brand boat spinning rod made from solid glass blanks?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Berkley""},
+    ""semantic"": [""Berkley brand""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""boat spinning rod""},
+    ""semantic"": [""boat spinning rod""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""durable boat spinning rod"", ""made from solid glass blanks""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Berkley boat spinning rod""},
+    ""semantic"": [""durable Berkley brand boat spinning rod made from solid glass blanks""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+4842,What's the best cover for a 3000-5000 size spinning reel?,"{
+  ""A"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""spinning reel""},
+    ""semantic"": [""spinning reel""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""cover""},
+    ""semantic"": [""cover for spinning reel""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""best cover for a 3000-5000 size spinning reel""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""B""): [""also_buy""],
+  (""ANSWER"", ""A""): [""also_buy""]
+}"
+2173,"Looking for a 6V LED bulb for my flashlight that has a built-in reflector and various lighting modes, preferably 5. Any recommendations?","{
+  ""A"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""flashlight""},
+    ""semantic"": [""for my flashlight""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""LED bulb""},
+    ""semantic"": [""6V LED bulb""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""category"", ""product""],
+    ""lexical"": {},
+    ""semantic"": [""has a built-in reflector and various lighting modes""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""6V LED bulb for my flashlight"", ""has a built-in reflector and various lighting modes"", ""preferably 5""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""also_buy""],
+(""ANSWER"", ""B""): [""also_buy""],
+(""ANSWER"", ""C""): [""also_buy""]
+}"
+8890,Looking for a cowboy-styled hat that would complement the Metalab Santa Fe Coll Flower Twist Dog Bone Pony Bit. It's for my daughter's upcoming birthday - she loves horse riding and I want to enhance her equestrian fashion.,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Metalab""},
+    ""semantic"": [""Metalab Santa Fe Coll Flower Twist Dog Bone Pony Bit""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Metalab Santa Fe Coll Flower Twist Dog Bone Pony Bit""},
+    ""semantic"": [""equestrian fashion""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""hat""},
+    ""semantic"": [""cowboy-styled"", ""equestrian fashion""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""cowboy-styled hat""},
+    ""semantic"": [""complement Metalab Santa Fe Coll Flower Twist Dog Bone Pony Bit"", ""for horse riding"", ""equestrian fashion""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""C""): [""has_category""],
+  (""ANSWER"", ""B""): [""also_view""],
+  (""ANSWER"", ""A""): [""also_view""]
+}"
+5916,"What are some lightweight fastpitch gloves suitable for kids and pitchers? Ideally, something that offers a good balance between softness and control with a design specifically tailored for fastpitch.","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""gloves""},
+    ""semantic"": [""lightweight fastpitch gloves""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""fastpitch""},
+    ""semantic"": [""fastpitch""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""lightweight fastpitch gloves""},
+    ""semantic"": [""lightweight fastpitch gloves suitable for kids and pitchers"", ""offers a good balance between softness and control"", ""design specifically tailored for fastpitch""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_category""],
+(""ANSWER"", ""B""): [""has_category""]
+}"
+1901,Can you recommend an overstable gummy putter that grips the chains well and stops quickly? It should also be effective for both backhand and sidearm throws.,"{
+  ""A"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""gummy putter""},
+    ""semantic"": [""overstable"", ""grips the chains well"", ""stops quickly""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {},
+    ""semantic"": [""disc golf""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""overstable gummy putter"", ""grips the chains well"", ""stops quickly"", ""effective for both backhand and sidearm throws""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+5495,"I'm looking for deep water floats to provide more stability for my kayak. I'm considering getting the KUFA 400' ø1/4"" Non-leaded Sinking Line SL4 as well and it's important that they are compatible. I've also been browsing the KUFA 15"" Inflatable Prawn shrimp Pot Float Buoys F15Y. Do you have any other products like these that you can recommend?","{
+  ""A"": {
+    ""type"": [""product"", ""brand""],
+    ""lexical"": {""name"": ""KUFA 400' ø1/4\"" Non-leaded Sinking Line SL4""},
+    ""semantic"": [""compatible with deep water floats"", ""for kayak stability""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""brand""],
+    ""lexical"": {""name"": ""KUFA 15\"" Inflatable Prawn shrimp Pot Float Buoys F15Y""},
+    ""semantic"": [""compatible with deep water floats"", ""for kayak stability""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""KUFA""},
+    ""semantic"": [""compatible with deep water floats"", ""for kayak stability""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""deep water floats""},
+    ""semantic"": [""provide more stability for kayak"", ""compatible with KUFA 400' ø1/4\"" Non-leaded Sinking Line SL4"", ""compatible with KUFA 15\"" Inflatable Prawn shrimp Pot Float Buoys F15Y""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy""],
+  (""ANSWER"", ""B""): [""also_buy""],
+  (""A"", ""C""): [""has_brand""],
+  (""B"", ""C""): [""has_brand""]
+}"
+978,"Looking for a dependable 700 x 19 / 23 inner tube for my road bike. Does Vittoria, or any prominent brand, offer such a product?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Vittoria""},
+    ""semantic"": [""prominent brand""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""inner tube""},
+    ""semantic"": [""for road bike""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""road bike""},
+    ""semantic"": [],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""700 x 19 / 23 inner tube""},
+    ""semantic"": [""dependable 700 x 19 / 23 inner tube for road bike"", ""offered by prominent brand""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""],
+(""ANSWER"", ""B""): [""has_category""],
+(""ANSWER"", ""C""): [""has_category""]
+}"
+5106,Is there any men's tank top available from Under Armour?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Under Armour""},
+    ""semantic"": [""Under Armour""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""tank top""},
+    ""semantic"": [""men's tank top""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""men's tank top"", ""available from Under Armour""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+6900,Are there any hoodies available where the stitching matches the color of the actual garment?,"{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""hoodies""},
+    ""semantic"": [""hoodies with stitching matching the color of the garment""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""color of the actual garment"", ""stitching color""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""hoodies"", ""stitching matches the color of the actual garment""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""B""): [""has_color""]
+}"
+8595,Can you suggest any fishing flies that would pair well with the Piscifun Sword Fly Fishing Line with Welded Loop Weight Forward Floating Fly Line WF1 2 3 4 5 6 7 8 9 10wt 90 100FT for my upcoming fishing trip in August?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Piscifun""},
+    ""semantic"": [""Piscifun Sword Fly Fishing Line""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Piscifun Sword Fly Fishing Line""},
+    ""semantic"": [""Welded Loop Weight Forward Floating Fly Line"", ""WF1 2 3 4 5 6 7 8 9 10wt"", ""90 100FT""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""fishing flies""},
+    ""semantic"": [],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""fishing flies that would pair well with the Piscifun Sword Fly Fishing Line"", ""for upcoming fishing trip in August""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""C""): [""also_buy""],
+  (""ANSWER"", ""B""): [""also_buy""],
+  (""B"", ""A""): [""has_brand""]
+}"
+8169,Looking for a soft and breathable ballet leotard dress for a baby girl in multiple color options. Can you suggest one?,"{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""ballet leotard dress""},
+    ""semantic"": [""ballet leotard dress for a baby girl""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""multiple color options""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""ballet leotard dress""},
+    ""semantic"": [""soft and breathable"", ""for a baby girl"", ""in multiple color options""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""B""): [""has_color""]
+}"
+6126,"Looking for Heckmann brand tent stakes suitable for outdoor use, specifically ones made of stainless steel for rust-resistance.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Heckmann""},
+    ""semantic"": [""Heckmann brand""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""tent stakes""},
+    ""semantic"": [""tent stakes for outdoor use""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""stainless steel""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Heckmann brand tent stakes"", ""suitable for outdoor use"", ""made of stainless steel"", ""for rust-resistance""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""has_color""]
+}"
+1991,Looking for an athlete-specific headband made from P.R.O. Transfer Lite fabric with Minerale. Does Amazon have one with approximately 52% Minerale polyester and 48% regular polyester composition? Effective moisture management and quick drying are essential features I’m looking for.,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Amazon""},
+    ""semantic"": [""online retailer""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""headband""},
+    ""semantic"": [""athlete-specific""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""P.R.O. Transfer Lite fabric""},
+    ""semantic"": [""made from P.R.O. Transfer Lite fabric with Minerale""],
+    ""constant"": true
+  },
+  ""D"": {
+    ""type"": [""color"", ""category""],
+    ""lexical"": {},
+    ""semantic"": [""Minerale polyester"", ""regular polyester""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""athlete-specific headband made from P.R.O. Transfer Lite fabric with Minerale"", ""approximately 52% Minerale polyester and 48% regular polyester composition"", ""effective moisture management"", ""quick drying""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""also_view""],
+  (""ANSWER"", ""D""): [""has_color""]
+}"
+7829,What are some good quality New Era labeled Gucci hats made from cotton?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""New Era""},
+    ""semantic"": [""hat label""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Gucci""},
+    ""semantic"": [""hat brand""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [],
+    ""constant"": false
+  },
+  ""D"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""hats""},
+    ""semantic"": [""headwear""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Gucci hats""},
+    ""semantic"": [""good quality"", ""New Era labeled"", ""made from cotton""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_brand""],
+  (""ANSWER"", ""D""): [""has_category""]
+}"
+5764,Do you have any recommendations for a MLB team themed lapel pin that also features Hello Kitty? I'm a big fan and thought it would make an excellent gift.,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""MLB""},
+    ""semantic"": [""MLB team""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Hello Kitty""},
+    ""semantic"": [""Hello Kitty""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""MLB team themed lapel pin""},
+    ""semantic"": [""MLB team themed lapel pin"", ""features Hello Kitty"", ""excellent gift""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_brand""]
+}"
+2054,"Is there an OMP crossbow string available in varying shades of sand, sage and brown Dacron?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""OMP""},
+    ""semantic"": [""OMP""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""shades of sand"", ""sage"", ""brown""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""category"", ""product""],
+    ""lexical"": {""name"": ""crossbow string""},
+    ""semantic"": [""crossbow string""],
+    ""constant"": true
+  },
+  ""D"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Dacron""},
+    ""semantic"": [""Dacron crossbow string""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""OMP crossbow string"", ""available in varying shades of sand, sage and brown Dacron""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_color""],
+  (""ANSWER"", ""C""): [""has_category""],
+  (""ANSWER"", ""D""): [""also_buy"", ""also_view""]
+}"
+8423,Where can I find a Majestic brand men's polo shirt with a perfect fit and a beautiful print design on the front?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Majestic""},
+    ""semantic"": [""Majestic brand""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""men's polo shirt""},
+    ""semantic"": [""men's polo shirt""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""beautiful print design""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Majestic brand men's polo shirt""},
+    ""semantic"": [""Majestic brand men's polo shirt"", ""perfect fit"", ""beautiful print design on the front""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""has_color""]
+}"
+8948,Looking for an authentic Adidas bucket hat made of 100% polyester. Can you help me find one?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Adidas""},
+    ""semantic"": [""authentic Adidas""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Adidas bucket hat""},
+    ""semantic"": [""authentic Adidas bucket hat"", ""made of 100% polyester""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_color""]
+}"
+1872,I'm looking for a new flag pole clip that's compatible with the Taylor Made Products 57926 Charlevoix Boat Flag Clip I recently purchased. Can you help me maintain order with this?,"{
+  ""A"": {
+    ""type"": [""brand"", ""product""],
+    ""lexical"": {""name"": ""Taylor Made Products""},
+    ""semantic"": [""Taylor Made Products""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""57926 Charlevoix Boat Flag Clip""},
+    ""semantic"": [""57926 Charlevoix Boat Flag Clip""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""flag pole clip""},
+    ""semantic"": [""new flag pole clip"", ""compatible with the Taylor Made Products 57926 Charlevoix Boat Flag Clip""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""also_buy""],
+(""ANSWER"", ""B""): [""also_buy""]
+}"
+2638,"Does Amazon carry Golf Pride's wrap style golf grips, specifically something similar to their Full Cord Grips series?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Amazon""},
+    ""semantic"": [""online retailer""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Golf Pride""},
+    ""semantic"": [""golf accessories manufacturer""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""golf grips""},
+    ""semantic"": [""golf equipment""],
+    ""constant"": false
+  },
+  ""D"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Full Cord Grips""},
+    ""semantic"": [""series of golf grips""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Golf Pride's wrap style golf grips"", ""similar to Full Cord Grips series""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy""],
+  (""ANSWER"", ""B""): [""has_brand""],
+  (""ANSWER"", ""C""): [""has_category""],
+  (""ANSWER"", ""D""): [""also_view""]
+}"
+8187,"What would be a good complementary golf ball pack to gift alongside the Titleist Pro V1 2015 AAAAA Recycled Like New Golf Balls, 24-Pack, Latest Version for a golf lover?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Titleist""},
+    ""semantic"": [""golf ball brand""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Titleist Pro V1 2015 AAAAA Recycled Like New Golf Balls""},
+    ""semantic"": [""golf balls"", ""24-Pack"", ""Latest Version""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""complementary golf ball pack"", ""to gift alongside Titleist Pro V1 2015"", ""for a golf lover""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""B""): [""also_buy""],
+(""B"", ""A""): [""has_brand""]
+}"
+4225,"Looking for a yarmulke featuring a team logo that is made from polyester mesh with a cotton lining. Preferably, I want one that is made in the USA. Can you assist?","{
+  ""A"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""yarmulke""},
+    ""semantic"": [""yarmulke featuring a team logo""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {},
+    ""semantic"": [""team logo""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""category"", ""product""],
+    ""lexical"": {},
+    ""semantic"": [""made from polyester mesh with a cotton lining""],
+    ""constant"": false
+  },
+  ""D"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""yarmulke featuring a team logo"", ""made from polyester mesh with a cotton lining"", ""made in the USA""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""B""): [""has_brand""],
+  (""ANSWER"", ""C""): [""has_category""],
+  (""ANSWER"", ""D""): [""has_color""]
+}"
+2154,"Looking for a lightweight youth baseball bat, approximately 15 oz, with a handle designed for rapid swings. Color is not a factor in my search.","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""youth baseball bat""},
+    ""semantic"": [""youth baseball bat""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""baseball bat""},
+    ""semantic"": [""lightweight"", ""approximately 15 oz"", ""handle designed for rapid swings""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""lightweight youth baseball bat"", ""approximately 15 oz"", ""handle designed for rapid swings""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""B""): [""also_buy"", ""also_view""]
+}"
+7715,Looking for a realistic shrimp-mimicking fishing lure with Eagle Claw Lazer Sharp hooks. Any suggestions?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Eagle Claw""},
+    ""semantic"": [""Eagle Claw""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Lazer Sharp hooks""},
+    ""semantic"": [""Lazer Sharp hooks""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""realistic shrimp-mimicking fishing lure"", ""with Eagle Claw Lazer Sharp hooks""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""also_buy"", ""also_view""]
+}"
+488,Is there a Star Line Baton Co. baton case that matches its advertised image and comes with an included strap so I don't have to purchase it separately?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Star Line Baton Co.""},
+    ""semantic"": [""Star Line Baton Co.""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""baton case""},
+    ""semantic"": [""baton case that matches its advertised image""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Star Line Baton Co. baton case"", ""matches its advertised image"", ""comes with an included strap""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""],
+(""ANSWER"", ""B""): [""also_buy"", ""also_view""]
+}"
+8738,"Can you help me find a Vortex Optics riflescope that is versatile, has high resolution, vivid color fidelity and uses extra-low dispersion glass?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Vortex Optics""},
+    ""semantic"": [""Vortex Optics""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""riflescope""},
+    ""semantic"": [""riflescope""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""vivid color fidelity""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Vortex Optics riflescope"", ""versatile"", ""high resolution"", ""vivid color fidelity"", ""uses extra-low dispersion glass""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""],
+(""ANSWER"", ""B""): [""has_category""],
+(""ANSWER"", ""C""): [""has_color""]
+}"
+8928,"Looking for a trampoline similar to the Blossomz' Skywalker Bounce-N-Learn Trampoline, that includes safety features such as rail padding and a netted enclosure, with a width of approximately 55 inches. This is meant to complement the existing trampoline that my kids really enjoy.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Blossomz""},
+    ""semantic"": [""Blossomz' Skywalker Bounce-N-Learn Trampoline""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Skywalker Bounce-N-Learn Trampoline""},
+    ""semantic"": [""Blossomz' Skywalker Bounce-N-Learn Trampoline""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""trampoline""},
+    ""semantic"": [""trampoline with safety features""],
+    ""constant"": true
+  },
+  ""D"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""trampoline""},
+    ""semantic"": [""trampoline similar to Blossomz' Skywalker Bounce-N-Learn Trampoline"", ""includes safety features such as rail padding and a netted enclosure"", ""width of approximately 55 inches""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""],
+(""ANSWER"", ""B""): [""also_buy"", ""also_view""],
+(""ANSWER"", ""C""): [""has_category""]
+}"
+464,"What back support belt for weightlifting is commonly bought with the Wrist Wraps + Lifting Straps Bundle and the Valeo VA4688SM Lifting Belt? It doesn't have to be top of the line, just something often paired with these products.","{
+  ""A"": {
+    ""type"": [""product"", ""brand""],
+    ""lexical"": {""name"": ""Wrist Wraps + Lifting Straps Bundle""},
+    ""semantic"": [""Wrist Wraps + Lifting Straps Bundle""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""brand""],
+    ""lexical"": {""name"": ""Valeo VA4688SM Lifting Belt""},
+    ""semantic"": [""Valeo VA4688SM Lifting Belt""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""back support belt for weightlifting""},
+    ""semantic"": [""back support belt for weightlifting"", ""commonly bought with the Wrist Wraps + Lifting Straps Bundle and the Valeo VA4688SM Lifting Belt""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy""],
+  (""ANSWER"", ""B""): [""also_buy""]
+}"
+4022,"Where can I find a martial arts medallion necklace, about 1.5 inches in diameter, suitable for daily wear? Chain length is not a concern.","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""martial arts medallion necklace""},
+    ""semantic"": [""martial arts medallion necklace"", ""about 1.5 inches in diameter"", ""suitable for daily wear""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""martial arts medallion necklace""},
+    ""semantic"": [""martial arts medallion necklace"", ""about 1.5 inches in diameter"", ""suitable for daily wear"", ""Chain length is not a concern""],
+    ""constant"": false
+  }
+}","{""(ANSWER, A)"": [""has_category""]}"
+6973,What are some comfortable Champion men's athletic shorts suitable for a hot and humid climate?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Champion""},
+    ""semantic"": [""Champion""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""athletic shorts""},
+    ""semantic"": [""men's athletic shorts""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Champion men's athletic shorts""},
+    ""semantic"": [""comfortable"", ""suitable for a hot and humid climate""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+518,"Can you suggest a 26-inch mountain bike with a sports saddle seat, specifically designed for women?","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""mountain bike""},
+    ""semantic"": [""26-inch mountain bike""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""sports saddle seat""},
+    ""semantic"": [""sports saddle seat""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""26-inch mountain bike"", ""sports saddle seat"", ""specifically designed for women""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+3315,Can you help me find a Ping golf hat clip with practical ball markers?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Ping""},
+    ""semantic"": [""golf""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""golf hat clip""},
+    ""semantic"": [""golf accessories""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Ping golf hat clip""},
+    ""semantic"": [""Ping golf hat clip"", ""practical ball markers""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+175,Are there any good alternatives to the South Bend Removable Split Shot Sinker for fishing sinkers that stay in place on my line?,"{
+  ""A"": {
+    ""type"": [""brand"", ""product""],
+    ""lexical"": {""name"": ""South Bend Removable Split Shot Sinker""},
+    ""semantic"": [""fishing sinkers""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""fishing sinkers""},
+    ""semantic"": [""stay in place on line""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""alternatives to South Bend Removable Split Shot Sinker"", ""stay in place on line"", ""for fishing""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+1949,Is Crosman a reputable brand for BB ammo that you would recommend?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Crosman""},
+    ""semantic"": [""reputable brand for BB ammo""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""BB ammo""},
+    ""semantic"": [""BB ammo""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""brand""],
+    ""lexical"": {},
+    ""semantic"": [""reputable brand for BB ammo"", ""recommendation for BB ammo brand""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""],
+(""ANSWER"", ""B""): [""has_category"", ""also_buy""]
+}"
+756,Does Pro-Tec manufacture skate knee pads with a 1-year warranty that are also machine washable for easy cleaning?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Pro-Tec""},
+    ""semantic"": [""Pro-Tec""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""skate knee pads""},
+    ""semantic"": [""skate knee pads""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""skate knee pads with a 1-year warranty"", ""machine washable for easy cleaning""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+3687,"Can you recommend a versatile ASU laptop bag suitable for academics, travel, and work, with plenty of compartments for accessories?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""ASU""},
+    ""semantic"": [""ASU""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""laptop bag""},
+    ""semantic"": [""laptop bag""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""versatile ASU laptop bag"", ""suitable for academics, travel, and work"", ""with plenty of compartments for accessories""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""],
+(""ANSWER"", ""B""): [""has_category""]
+}"
+5576,"Looking for recommendations for a slim, warm men's jacket that pairs well with my Spyder Men's Outbound Half-Zip Sweatshirt. Any suggestions?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Spyder""},
+    ""semantic"": [""Spyder Men's Outbound Half-Zip Sweatshirt""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Spyder Men's Outbound Half-Zip Sweatshirt""},
+    ""semantic"": [""men's sweatshirt""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""slim, warm men's jacket"", ""pairs well with Spyder Men's Outbound Half-Zip Sweatshirt""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""B""): [""also_buy""],
+  (""ANSWER"", ""A""): [""also_buy""],
+  (""B"", ""A""): [""has_brand""]
+}"
+2548,"Can you help me find a men's jacket with a unique logo at the back of the neck, set-in sleeves, and made entirely of polyester doeskin?","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""jacket""},
+    ""semantic"": [""men's jacket""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""polyester doeskin""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""brand""],
+    ""lexical"": {},
+    ""semantic"": [""unique logo""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""men's jacket""},
+    ""semantic"": [""men's jacket with a unique logo at the back of the neck"", ""set-in sleeves"", ""made entirely of polyester doeskin""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""B""): [""has_color""],
+  (""ANSWER"", ""C""): [""has_brand""]
+}"
+1256,"As a seasoned kneeboarder, I'm on the lookout for a top-notch marine kneeboard boasting a 3-inch padded Shock Strap and a parabolic design. It would be great to have a strong board equipped with retractable fins for improved agility. It would also be a plus if it included a HydroHook tow feature. Can you recommend any such product?","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""kneeboard""},
+    ""semantic"": [""marine kneeboard""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {},
+    ""semantic"": [""top-notch marine kneeboard"", ""3-inch padded Shock Strap"", ""parabolic design""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""brand""],
+    ""lexical"": {},
+    ""semantic"": [""strong board"", ""retractable fins"", ""improved agility""],
+    ""constant"": false
+  },
+  ""D"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""HydroHook""},
+    ""semantic"": [""HydroHook tow feature""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""top-notch marine kneeboard"", ""3-inch padded Shock Strap"", ""parabolic design"", ""strong board"", ""retractable fins"", ""improved agility"", ""HydroHook tow feature""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_category""],
+(""ANSWER"", ""D""): [""also_buy"", ""also_view""],
+(""ANSWER"", ""B""): [""also_buy"", ""also_view""],
+(""B"", ""A""): [""has_category""]
+}"
+6418,Looking for recommendations on a Terramar men's pullover jacket that would be ideal for layering.,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Terramar""},
+    ""semantic"": [""Terramar""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""jacket""},
+    ""semantic"": [""men's pullover jacket""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Terramar men's pullover jacket""},
+    ""semantic"": [""ideal for layering"", ""Terramar men's pullover jacket""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+514,What tennis string set can I try that feels like the classic synthetic gut but has new features such as enhanced stringbed responsiveness?,"{
+  ""A"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""synthetic gut""},
+    ""semantic"": [""classic synthetic gut""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""tennis string set"", ""feels like the classic synthetic gut"", ""has new features such as enhanced stringbed responsiveness""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy"", ""also_view""]
+}"
+166,Can you suggest an Australian saddle with a rawhide braided horn suitable for a quarterhorse with a wider tree?,"{
+  ""A"": {
+    ""type"": [""brand"", ""category""],
+    ""lexical"": {""name"": ""Australian""},
+    ""semantic"": [""Australian saddle""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""quarterhorse""},
+    ""semantic"": [""quarterhorse""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""rawhide""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Australian saddle"", ""rawhide braided horn"", ""suitable for a quarterhorse"", ""wider tree""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand"", ""has_category""],
+  (""ANSWER"", ""B""): [""also_buy""],
+  (""ANSWER"", ""C""): [""has_color""]
+}"
+6604,"Is there an adjustable, comfortable cotton twill cap available that commemorates the San Francisco Giants' 2014 World Series victory?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""San Francisco Giants""},
+    ""semantic"": [""San Francisco Giants""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""cap""},
+    ""semantic"": [""cotton twill cap""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""cotton twill""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""adjustable, comfortable cotton twill cap"", ""commemorates the San Francisco Giants' 2014 World Series victory""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""has_color""]
+}"
+3525,"Looking for large basketball crew socks similar to Nike Lebron Elite Basketball Crew Socks, suitable for someone with sensory issues. Any recommendations?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Nike""},
+    ""semantic"": [""Nike""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Nike Lebron Elite Basketball Crew Socks""},
+    ""semantic"": [""Nike Lebron Elite Basketball Crew Socks""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""basketball crew socks""},
+    ""semantic"": [""large basketball crew socks"", ""similar to Nike Lebron Elite Basketball Crew Socks"", ""suitable for someone with sensory issues""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""],
+(""ANSWER"", ""B""): [""also_buy"", ""also_view""]
+}"
+1899,"Looking for a Flair Hair novelty visor that's both hilarious and easy to maintain. It should be fun to wear at concerts and festivals, but not uncomfortable.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Flair Hair""},
+    ""semantic"": [""Flair Hair novelty visor""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""visor""},
+    ""semantic"": [""novelty visor""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Flair Hair novelty visor"", ""hilarious"", ""easy to maintain"", ""fun to wear at concerts and festivals"", ""not uncomfortable""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+4166,"Can you find me a top-rated bike trailer that's easy to assemble, has a sturdy parking brake, and ideally comes with a water-resistant all-weather cover?","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""bike trailer""},
+    ""semantic"": [""bike trailer""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""top-rated bike trailer"", ""easy to assemble"", ""has a sturdy parking brake"", ""comes with a water-resistant all-weather cover""],
+    ""constant"": false
+  }
+}","{""(ANSWER, A)"": [""has_category""]}"
+3122,What other swimming goggles can I pair with my Arena Cobra Ultra Swim Goggles for indoor swimming? I need to find an alternative as the current pair isn't meeting my needs. Any recommendations?,"{
+  ""A"": {
+    ""type"": [""brand"", ""product""],
+    ""lexical"": {""name"": ""Arena Cobra Ultra Swim Goggles""},
+    ""semantic"": [""current pair"", ""not meeting my needs""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""swimming goggles""},
+    ""semantic"": [""alternative to Arena Cobra Ultra Swim Goggles"", ""for indoor swimming""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy""]
+}"
+5800,Looking for high-end PU material boxing gloves with a comfortable fit and excellent performance. Should they also have triple density foam for optimal shock absorption?,"{
+  ""A"": {
+    ""type"": [""material""],
+    ""lexical"": {""name"": ""PU""},
+    ""semantic"": [""high-end PU material""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""boxing gloves""},
+    ""semantic"": [""boxing gloves""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""high-end PU material boxing gloves"", ""comfortable fit"", ""excellent performance"", ""triple density foam for optimal shock absorption""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""boxing gloves""},
+    ""semantic"": [""high-end PU material boxing gloves with a comfortable fit and excellent performance"", ""triple density foam for optimal shock absorption""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""C"", ""A""): [""has_category""],
+  (""C"", ""B""): [""has_category""]
+}"
+3211,Are there any all-mountain Blue House skis known for their exceptional turning capability?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Blue House""},
+    ""semantic"": [""Blue House""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""skis""},
+    ""semantic"": [""all-mountain skis""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""all-mountain Blue House skis"", ""known for their exceptional turning capability""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+161,Are there any javelins designed by elite athletes that meet the 2006 NFHS & IAAF standards?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""NFHS""},
+    ""semantic"": [""2006 NFHS & IAAF standards""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""IAAF""},
+    ""semantic"": [""2006 NFHS & IAAF standards""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""javelins""},
+    ""semantic"": [""javelins designed by elite athletes"", ""meet the 2006 NFHS & IAAF standards""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""],
+(""ANSWER"", ""B""): [""has_brand""]
+}"
+1330,Is there a Health Hoop hula hoop that is suitable for both adults and children?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Health Hoop""},
+    ""semantic"": [""Health Hoop""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""hula hoop""},
+    ""semantic"": [""hula hoop""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Health Hoop hula hoop"", ""suitable for both adults and children""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+265,What's a good medium-sized camouflage rucksack suitable for hiking and camping activities?,"{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""rucksack""},
+    ""semantic"": [""medium-sized"", ""camouflage"", ""suitable for hiking and camping activities""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""camouflage""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""camouflage rucksack""},
+    ""semantic"": [""medium-sized"", ""suitable for hiking and camping activities""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""B""): [""has_color""]
+}"
+2590,"Looking for Simms fishing shoes that are completely waterproof and suitable for party wear. They must have a bigger toe box, as I had issues with tight toe areas in the past.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Simms""},
+    ""semantic"": [""Simms fishing shoes""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""fishing shoes""},
+    ""semantic"": [""fishing shoes"", ""party wear""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Simms fishing shoes"", ""completely waterproof"", ""suitable for party wear"", ""bigger toe box""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""has_color""]
+}"
+4664,"Are there any easy-to-use EWG weighted fishing hooks that are suitable for both experienced and beginner anglers? Ideally, they should come in a pack of 5.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""EWG""},
+    ""semantic"": [""EWG weighted fishing hooks""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""fishing hooks""},
+    ""semantic"": [""weighted fishing hooks""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""EWG weighted fishing hooks""},
+    ""semantic"": [""easy-to-use"", ""suitable for both experienced and beginner anglers"", ""come in a pack of 5""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+2099,"Can you help me find a retro-styled handbag with an MLB team theme, made from sporty, perforated PVC fabric?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""MLB""},
+    ""semantic"": [""MLB team theme""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category"", ""product""],
+    ""lexical"": {""name"": ""handbag""},
+    ""semantic"": [""retro-styled handbag""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""sporty"", ""perforated PVC fabric""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""retro-styled handbag"", ""MLB team theme"", ""made from sporty, perforated PVC fabric""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""has_color""]
+}"
+402,Is there a gun lubricant similar to the Slip 2000 Gun Lube 16oz. Trigger Spray that also performs well in various environments?,"{
+  ""A"": {
+    ""type"": [""brand"", ""product""],
+    ""lexical"": {""name"": ""Slip 2000 Gun Lube""},
+    ""semantic"": [""gun lubricant"", ""16oz"", ""Trigger Spray""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""gun lubricant""},
+    ""semantic"": [""similar to Slip 2000 Gun Lube 16oz""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""gun lubricant similar to Slip 2000 Gun Lube 16oz"", ""performs well in various environments""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""also_buy"", ""also_view""],
+(""ANSWER"", ""B""): [""has_category""]
+}"
+7366,"Looking for customizable silicone pint glasses in multiple sizes and designs. They need to be dishwasher and microwave safe, as I am considering these as potential presents for friends.","{
+  ""A"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""silicone pint glasses""},
+    ""semantic"": [""customizable"", ""multiple sizes"", ""multiple designs"", ""dishwasher safe"", ""microwave safe""],
+    ""constant"": false
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {},
+    ""semantic"": [""pint glasses"", ""potential presents for friends""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""customizable silicone pint glasses"", ""multiple sizes"", ""multiple designs"", ""dishwasher and microwave safe"", ""potential presents for friends""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""also_buy"", ""also_view""],
+(""ANSWER"", ""B""): [""has_category""]
+}"
+8534,"Sure, I need a pool, billiards, and snooker cue rest set with a smooth finish to protect both cues and the table cloth. It should have a threaded end to attach to a pole. Can you recommend one?","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""cue rest set""},
+    ""semantic"": [""pool, billiards, and snooker cue rest set""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""pool, billiards, and snooker cue rest set"", ""smooth finish to protect both cues and the table cloth"", ""threaded end to attach to a pole""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""pool, billiards, and snooker cue rest set with a smooth finish"", ""protect both cues and the table cloth"", ""have a threaded end to attach to a pole""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_category""],
+(""B"", ""A""): [""has_category""]
+}"
+4556,"Is there a Traser watch model that's durable, less bulky, and comes with a scratch-resistant sapphire crystal face and a minimum 3-year warranty?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Traser""},
+    ""semantic"": [""Traser watch model""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""watch model""},
+    ""semantic"": [""durable"", ""less bulky"", ""comes with a scratch-resistant sapphire crystal face"", ""minimum 3-year warranty""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""watch""},
+    ""semantic"": [""watch with scratch-resistant sapphire crystal face and warranty""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Traser watch model"", ""durable"", ""less bulky"", ""scratch-resistant sapphire crystal face"", ""minimum 3-year warranty""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""C""): [""has_category""]
+}"
+1846,Searching for an MLB team logo crystal ring set with combined width of approximately half an inch. It's important that the rings prominently feature my preferred team's logo. Can you assist?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""MLB""},
+    ""semantic"": [""MLB team""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""crystal ring set""},
+    ""semantic"": [""crystal ring set with combined width of approximately half an inch""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""MLB team logo crystal ring set"", ""combined width of approximately half an inch"", ""rings prominently feature my preferred team's logo""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""also_buy"", ""also_view"", ""has_category""]
+}"
+6793,Looking for a Baleaf cycling jersey with UPF sun protection to shield my skin from harmful sun rays during my rides.,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Baleaf""},
+    ""semantic"": [""Baleaf""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""cycling jersey""},
+    ""semantic"": [""cycling jersey""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Baleaf cycling jersey with UPF sun protection""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Baleaf cycling jersey with UPF sun protection to shield skin from harmful sun rays during rides""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""],
+(""ANSWER"", ""B""): [""has_category""]
+}"
+1279,Could you recommend a bamboo longboard skateboard from Blank Skateboards?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Blank Skateboards""},
+    ""semantic"": [""Blank Skateboards""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category"", ""product""],
+    ""lexical"": {""name"": ""longboard skateboard""},
+    ""semantic"": [""longboard skateboard""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color"", ""category""],
+    ""lexical"": {},
+    ""semantic"": [""bamboo""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""bamboo longboard skateboard""},
+    ""semantic"": [""bamboo longboard skateboard"", ""from Blank Skateboards""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""],
+(""ANSWER"", ""B""): [""has_category""],
+(""ANSWER"", ""C""): [""has_color""]
+}"
+4646,"Looking for a premium leather gun holster that offers a snug fit, comfort for carrying, and is often viewed alongside the Holster with Magazine Pouch Fits Bersa Thunder 380 & Concealed Carry?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Bersa""},
+    ""semantic"": [""Bersa Thunder 380""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Holster with Magazine Pouch Fits Bersa Thunder 380 & Concealed Carry""},
+    ""semantic"": [""Holster with Magazine Pouch"", ""Fits Bersa Thunder 380"", ""Concealed Carry""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""leather gun holster""},
+    ""semantic"": [""premium leather gun holster"", ""offers a snug fit"", ""comfort for carrying""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""B""): [""also_view""],
+  (""B"", ""A""): [""has_brand""]
+}"
+2061,Can you suggest some high-quality badminton racquets with a BOX frame design?,"{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""badminton racquets""},
+    ""semantic"": [""high-quality badminton racquets""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""high-quality badminton racquets with a BOX frame design""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""badminton racquets""},
+    ""semantic"": [""high-quality badminton racquets with a BOX frame design""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""B"", ""A""): [""has_category""]
+}"
+5623,"What's the best summer hoof gel that dries quickly and doesn't attract dirt? I typically pair this with Effol Winter Hoof Gel, so any similar recommendations would be appreciated.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Effol""},
+    ""semantic"": [""Effol Winter Hoof Gel""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Effol Winter Hoof Gel""},
+    ""semantic"": [""winter hoof gel""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""summer hoof gel""},
+    ""semantic"": [""summer hoof gel"", ""dries quickly"", ""doesn't attract dirt"", ""similar to Effol Winter Hoof Gel""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""also_buy""]
+}"
+6295,"I'm looking for a bike frame pannier bag that comes with a headphone jack. My needs include it being able to securely hold my phone while also providing room for other items like wallet and keys. Size-wise, I'm aiming for something around 19.5 * 10 * 9cm. Ideally, the bag should have a sizable opening to ensure there's no hassle inserting and removing items, even when there's a headphone plugged in. Can you help me find such a product?","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""bike frame pannier bag""},
+    ""semantic"": [""bike frame pannier bag with a headphone jack""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""securely hold phone"", ""room for wallet and keys""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""headphone jack""},
+    ""semantic"": [""headphone jack""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""bike frame pannier bag with a headphone jack"", ""securely hold phone"", ""room for wallet and keys"", ""size around 19.5 * 10 * 9cm"", ""sizable opening for easy insertion and removal""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""C""): [""has_category""]
+}"
+1236,Can you suggest some scope rings compatible with a 7MM Leupold scope? I'm interested in something similar to the high blue-gloss finish of the Ruger 90271 Scope Mount Ring.,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Leupold""},
+    ""semantic"": [""7MM Leupold scope""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Ruger""},
+    ""semantic"": [""Ruger 90271 Scope Mount Ring""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Ruger 90271 Scope Mount Ring""},
+    ""semantic"": [""high blue-gloss finish""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""scope rings""},
+    ""semantic"": [""compatible with a 7MM Leupold scope"", ""similar to the high blue-gloss finish of the Ruger 90271 Scope Mount Ring""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy""],
+  (""ANSWER"", ""B""): [""also_buy""],
+  (""ANSWER"", ""C""): [""also_buy"", ""also_view""]
+}"
+1944,Can you suggest an alkaline water cup that includes a shoulder bag and helps maintain the right body pH balance?,"{
+  ""A"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""alkaline water cup""},
+    ""semantic"": [""alkaline water cup that includes a shoulder bag""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {},
+    ""semantic"": [""shoulder bag""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""alkaline water cup"", ""includes a shoulder bag"", ""helps maintain the right body pH balance""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+7778,Looking for similar options to the Rubbermaid 14 oz. reusable refillable water bottles in pink and green that I've loved for my hiking trips. They should be handy and come with a finger loop for easy carrying. Any recommendations for a Rubbermaid water bottle set that's suitable for hiking?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Rubbermaid""},
+    ""semantic"": [""Rubbermaid water bottle""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""pink"", ""green""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""water bottles""},
+    ""semantic"": [""reusable refillable water bottles"", ""handy"", ""come with a finger loop for easy carrying""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""similar options to the Rubbermaid 14 oz. reusable refillable water bottles"", ""suitable for hiking"", ""handy"", ""come with a finger loop for easy carrying""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_color""],
+  (""ANSWER"", ""C""): [""also_buy"", ""also_view""]
+}"
+2029,"Can you suggest a durable, premium plastic key holder that includes a keyring and comes in individual packaging?","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""key holder""},
+    ""semantic"": [""key holder""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""material""],
+    ""lexical"": {},
+    ""semantic"": [""premium plastic""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""durable, premium plastic key holder"", ""includes a keyring"", ""comes in individual packaging""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""B""): [""has_brand"", ""has_category"", ""has_color""]
+}"
+668,What other fishing lures are frequently viewed by customers who purchased the Rapala Ultra Lite Lure Kit?,"{
+  ""A"": {
+    ""type"": [""brand"", ""product""],
+    ""lexical"": {""name"": ""Rapala Ultra Lite Lure Kit""},
+    ""semantic"": [""Rapala Ultra Lite Lure Kit"", ""fishing lures""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""fishing lures"", ""frequently viewed by customers who purchased the Rapala Ultra Lite Lure Kit""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""also_view""]
+}"
+2200,"Looking for a Tioga brand bicycle tire, can you assist?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Tioga""},
+    ""semantic"": [""Tioga brand""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""bicycle tire""},
+    ""semantic"": [""bicycle tire""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Tioga brand bicycle tire""},
+    ""semantic"": [""Tioga brand bicycle tire""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""],
+(""ANSWER"", ""B""): [""has_category""]
+}"
+144,Can you suggest any golf swing trainers by ProActive Sports that are good for improving swing techniques and can be used indoors and outdoors? I've had positive past experiences with their products.,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""ProActive Sports""},
+    ""semantic"": [""ProActive Sports""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""golf swing trainers""},
+    ""semantic"": [""golf swing trainers""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""golf swing trainers by ProActive Sports"", ""good for improving swing techniques"", ""can be used indoors and outdoors""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+5998,Looking for a standout NCAA Arkansas Razorbacks Car Tag. It should have laser-cut acrylic detailing. Any suggestions?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""NCAA""},
+    ""semantic"": [""NCAA Arkansas Razorbacks""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Arkansas Razorbacks""},
+    ""semantic"": [""Arkansas Razorbacks""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""Car Tag""},
+    ""semantic"": [""Car Tag""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""standout NCAA Arkansas Razorbacks Car Tag"", ""laser-cut acrylic detailing""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_brand""],
+  (""ANSWER"", ""C""): [""has_category""]
+}"
+8468,Looking for Zhun Gao outdoor climbing carabiners set with versatile functionality to be used as a handle or hanger. Need to ensure it's a set and not a single piece.,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Zhun Gao""},
+    ""semantic"": [""Zhun Gao outdoor climbing carabiners set""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""carabiners""},
+    ""semantic"": [""outdoor climbing carabiners""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Zhun Gao outdoor climbing carabiners set""},
+    ""semantic"": [""Zhun Gao outdoor climbing carabiners set"", ""with versatile functionality"", ""to be used as a handle or hanger"", ""a set and not a single piece""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+3229,"Looking for a high-quality, easy to assemble sword stand about 14 inches in height and 3 inches wide. Not interested in low-quality or inexpensive options.","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""sword stand""},
+    ""semantic"": [""high-quality"", ""easy to assemble""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""about 14 inches in height"", ""3 inches wide""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""high-quality"", ""easy to assemble"", ""sword stand"", ""about 14 inches in height"", ""3 inches wide"", ""not low-quality"", ""not inexpensive""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""B""): [""also_view"", ""also_buy""]
+}"
+3382,"Is the NFL Men's New England Patriots Wes Welker #83 2011 Super Bowl XLVI Participant Jersey constructed with high standards and does it have a true to size fit? Also, are its dimensions roughly around 10 x 5 x 5 inches?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""NFL""},
+    ""semantic"": [""NFL""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""Jersey""},
+    ""semantic"": [""Jersey""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""NFL Men's New England Patriots Wes Welker #83 2011 Super Bowl XLVI Participant Jersey""},
+    ""semantic"": [""constructed with high standards"", ""true to size fit"", ""dimensions roughly around 10 x 5 x 5 inches""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+1336,"Is there a sturdy, flat Nalgene flask that can easily fit in a bag or backpack?","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Nalgene""},
+    ""semantic"": [""sturdy"", ""flat""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""flask""},
+    ""semantic"": [""can easily fit in a bag or backpack""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""sturdy, flat Nalgene flask"", ""can easily fit in a bag or backpack""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+4447,What is a highly recommended daypack that is frequently purchased with the Condor Recon Chest Rig?,"{
+  ""A"": {
+    ""type"": [""product"", ""brand""],
+    ""lexical"": {""name"": ""Condor Recon Chest Rig""},
+    ""semantic"": [""frequently purchased with""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""daypack""},
+    ""semantic"": [""highly recommended"", ""frequently purchased with the Condor Recon Chest Rig""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy""]
+}"
+4491,Can I find the AYURVITAL FITNESS STEP AEROBIC III aerobic fitness step? I have a specific preference for this make.,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""AYURVITAL""},
+    ""semantic"": [""AYURVITAL FITNESS STEP AEROBIC III""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""AYURVITAL FITNESS STEP AEROBIC III aerobic fitness step""},
+    ""semantic"": [""aerobic fitness step"", ""specific preference for this make""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""]
+}"
+7362,Can I find an affordable Mauser C96 Broomhandle Pistol Leather Holster that includes a compartment for the cleaning rod and offers effective protection for my valuable firearms?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Mauser""},
+    ""semantic"": [""Mauser C96 Broomhandle Pistol""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""C96 Broomhandle Pistol""},
+    ""semantic"": [""Mauser C96 Broomhandle Pistol"", ""firearms""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Leather Holster""},
+    ""semantic"": [""Leather Holster for Mauser C96 Broomhandle Pistol""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""affordable Mauser C96 Broomhandle Pistol Leather Holster"", ""includes a compartment for the cleaning rod"", ""offers effective protection for valuable firearms""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""C""): [""also_buy"", ""also_view""]
+}"
+3881,Can you recommend a men's short with pockets and a 9-inch inseam that ships within the U.S.?,"{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""men's short""},
+    ""semantic"": [""men's short with pockets and a 9-inch inseam""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {},
+    ""semantic"": [""men's short with pockets and a 9-inch inseam that ships within the U.S.""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""men's short""},
+    ""semantic"": [""men's short with pockets"", ""9-inch inseam"", ""ships within the U.S.""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_category""],
+(""ANSWER"", ""B""): [""has_brand""]
+}"
+7157,"Can you suggest an easy-to-use trap setter? I had some issues with the previous one I purchased, and now I'm looking for something simple to operate.","{
+  ""A"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""trap setter""},
+    ""semantic"": [""easy-to-use"", ""simple to operate""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""easy-to-use trap setter"", ""something simple to operate""],
+    ""constant"": false
+  }
+}","{""(ANSWER, A)"": [""also_buy"", ""also_view""]}"
+3552,Are there any cycling shorts that have a D-lock loop for convenience and also feature stylish front pockets similar to everyday jeans?,"{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""cycling shorts""},
+    ""semantic"": [""cycling shorts with a D-lock loop for convenience""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""jeans""},
+    ""semantic"": [""everyday jeans""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""cycling shorts with a D-lock loop for convenience"", ""stylish front pockets similar to everyday jeans""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""B""): [""also_view""]
+}"
+2609,"Looking for a reliable performance wristband that is favored by global athletes. Ideally, it should be from the Power Balance brand and importantly, it should include a yotta mark code for authenticity verification.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Power Balance""},
+    ""semantic"": [""Power Balance brand""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""wristband""},
+    ""semantic"": [""performance wristband"", ""reliable""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""category""],
+    ""lexical"": {},
+    ""semantic"": [""global athletes""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""reliable performance wristband"", ""favored by global athletes"", ""from the Power Balance brand"", ""includes a yotta mark code for authenticity verification""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""also_buy""]
+}"
+873,Can you help me find a JBL manufactured spear gun shaft?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""JBL""},
+    ""semantic"": [""JBL manufactured""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""spear gun shaft""},
+    ""semantic"": [""JBL manufactured spear gun shaft""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""]
+}"
+2261,Looking for an easy to store and transport UCLA tent with at least 6 feet in height clearance. Can you help?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""UCLA""},
+    ""semantic"": [""UCLA""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""tent""},
+    ""semantic"": [""easy to store and transport""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""UCLA tent"", ""easy to store and transport"", ""at least 6 feet in height clearance""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+7335,Looking for a women's long-sleeved NFL hoodie that is 100% cotton. Want one featuring team colors striped on the sleeves and an oversized distressed logo and team name on the chest.,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""NFL""},
+    ""semantic"": [""NFL""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category"", ""product""],
+    ""lexical"": {""name"": ""hoodie""},
+    ""semantic"": [""women's long-sleeved hoodie""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""team colors""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""women's long-sleeved NFL hoodie"", ""100% cotton"", ""team colors striped on the sleeves"", ""oversized distressed logo and team name on the chest""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""has_color""]
+}"
+4650,Can you suggest a sporty quartz wristwatch for men with model number AS8058TTG? I need it to come with a protection plan that can be emailed to me within 2 days.,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""AS8058TTG""},
+    ""semantic"": [""model number""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""wristwatch""},
+    ""semantic"": [""sporty quartz wristwatch for men""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""sporty quartz wristwatch for men"", ""model number AS8058TTG"", ""protection plan"", ""can be emailed to me within 2 days""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""sporty quartz wristwatch for men"", ""model number AS8058TTG"", ""protection plan"", ""can be emailed to me within 2 days""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""B""): [""has_category""],
+(""ANSWER"", ""A""): [""has_brand""]
+}"
+1320,Can you help me find a comfortable shoulder bag with around an 8.5-inch drop and a cushioned bottom for added protection of items?,"{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""shoulder bag""},
+    ""semantic"": [""comfortable shoulder bag""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""comfortable shoulder bag""},
+    ""semantic"": [""comfortable shoulder bag"", ""around an 8.5-inch drop"", ""cushioned bottom for added protection of items""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""]
+}"
+6206,Will the Player's Choice OUTDOOR Inline Skate Wheels 76MM 89a BLACK x8 W/ABEC 9 BEARINGS and Rollerblade 8mm Core axles I've added to my cart be compatible with OUTDOOR Inline Skate Wheels designed for a 608 bearing hub?,"{
+  ""A"": {
+    ""type"": [""brand"", ""product""],
+    ""lexical"": {""name"": ""Player's Choice""},
+    ""semantic"": [""Player's Choice OUTDOOR Inline Skate Wheels""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Rollerblade 8mm Core axles""},
+    ""semantic"": [""Rollerblade 8mm Core axles""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""OUTDOOR Inline Skate Wheels""},
+    ""semantic"": [""OUTDOOR Inline Skate Wheels designed for a 608 bearing hub""],
+    ""constant"": true
+  },
+  ""D"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""BLACK""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Player's Choice OUTDOOR Inline Skate Wheels 76MM 89a BLACK x8 W/ABEC 9 BEARINGS"", ""Rollerblade 8mm Core axles"", ""compatibility with OUTDOOR Inline Skate Wheels designed for a 608 bearing hub""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""also_buy""],
+  (""ANSWER"", ""C""): [""also_buy""],
+  (""ANSWER"", ""D""): [""has_color""]
+}"
+2331,Where can I find a high-quality Nebraska Cornhuskers Blackshirts football jersey made by Adidas?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Adidas""},
+    ""semantic"": [""made by Adidas""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Nebraska Cornhuskers""},
+    ""semantic"": [""Nebraska Cornhuskers Blackshirts football jersey""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""football jersey""},
+    ""semantic"": [""high-quality football jersey""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Nebraska Cornhuskers Blackshirts football jersey""},
+    ""semantic"": [""high-quality Nebraska Cornhuskers Blackshirts football jersey made by Adidas""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_brand""],
+  (""ANSWER"", ""C""): [""has_category""]
+}"
+8642,What's the best fishing spinning reel with smooth operation and premium performance? I recently used a very durable one on the first try. It should also be able to handle a 6 lb test reel with a 9.5 lb carp. Any suggestions?,"{
+  ""A"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""fishing spinning reel""},
+    ""semantic"": [""smooth operation"", ""premium performance""],
+    ""constant"": false
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {},
+    ""semantic"": [""fishing""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""durable fishing spinning reel""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""best fishing spinning reel"", ""smooth operation"", ""premium performance"", ""handle a 6 lb test reel"", ""handle a 9.5 lb carp""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""A""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""C""): [""also_buy"", ""also_view""]
+}"
+7700,"Is there a 1/2"" polyester rope that is tightly braided, has low stretch, and features a unique color combination, such as white with a vibrant red tracer, available?","{
+  ""A"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""rope""},
+    ""semantic"": [""1/2\"" polyester rope"", ""tightly braided"", ""low stretch""],
+    ""constant"": false
+  },
+  ""B"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""white"", ""vibrant red""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""material"", ""product""],
+    ""lexical"": {""name"": ""polyester rope""},
+    ""semantic"": [""polyester""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""1/2\"" polyester rope""},
+    ""semantic"": [""1/2\"" polyester rope"", ""tightly braided"", ""low stretch"", ""unique color combination"", ""white with a vibrant red tracer""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_category""],
+(""ANSWER"", ""B""): [""has_color""],
+(""ANSWER"", ""C""): [""also_buy"", ""also_view""]
+}"
+765,"Looking for a real stone stadium replica and display case that is about 5 inches wide? Prefer a highly detailed, textured finish?","{
+  ""A"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""stadium replica""},
+    ""semantic"": [""real stone stadium replica"", ""about 5 inches wide""],
+    ""constant"": false
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""display case""},
+    ""semantic"": [""display case"", ""about 5 inches wide""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""category""],
+    ""lexical"": {},
+    ""semantic"": [""highly detailed"", ""textured finish""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""real stone stadium replica"", ""display case"", ""about 5 inches wide"", ""highly detailed"", ""textured finish""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""also_buy"", ""also_view""],
+(""ANSWER"", ""B""): [""also_buy"", ""also_view""],
+(""ANSWER"", ""C""): [""has_category""]
+}"
+8525,"Looking for a high-quality cotton flannel shirt made of thick twill weave. It would be great if it has features like underarm ventilation holes, contrasting borders, and unique buttons. Any suggestions?","{
+  ""A"": {
+    ""type"": [""category"", ""product""],
+    ""lexical"": {""name"": ""cotton flannel shirt""},
+    ""semantic"": [""high-quality"", ""thick twill weave""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""contrasting borders""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""unique buttons""},
+    ""semantic"": [""unique buttons""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""high-quality cotton flannel shirt"", ""thick twill weave"", ""underarm ventilation holes"", ""contrasting borders"", ""unique buttons""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""also_buy"", ""also_view"", ""has_category""],
+(""ANSWER"", ""B""): [""has_color""],
+(""ANSWER"", ""C""): [""also_buy"", ""also_view""]
+}"
+3809,Can you suggest any unique screen print designed infant onesies that offer faster delivery?,"{
+  ""A"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""infant onesies""},
+    ""semantic"": [""unique screen print designed infant onesies""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""unique screen print designed infant onesies"", ""offer faster delivery""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_category""]
+}"
+847,Can you recommend a highly durable shooting rest with an integrated gun vise and a modern paint finish? I'd like it to be compatible with a varmint rifle and allow for full 360-degree rotation.,"{
+  ""A"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""shooting rest""},
+    ""semantic"": [""shooting rest with an integrated gun vise and a modern paint finish""],
+    ""constant"": false
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {},
+    ""semantic"": [""varmint rifle accessories""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""varmint rifle""},
+    ""semantic"": [""varmint rifle""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""highly durable shooting rest"", ""integrated gun vise"", ""modern paint finish"", ""compatible with a varmint rifle"", ""allow for full 360-degree rotation""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""also_buy"", ""also_view""]
+}"
+5571,Looking for an affordable NHL 2007 Stanley Cup Champions sweater featuring team player names on the back. What are some good options to represent my favorite sports team?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""NHL""},
+    ""semantic"": [""NHL 2007 Stanley Cup Champions""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""sweater""},
+    ""semantic"": [""sweater featuring team player names on the back""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""affordable NHL 2007 Stanley Cup Champions sweater"", ""featuring team player names on the back"", ""represent my favorite sports team""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+2027,"Can I find any boys' tennis shorts made of polyester that are approximately 10x7x1.5 inches in size, suitable for an average build kid? Any suggestions?","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""tennis shorts""},
+    ""semantic"": [""boys' tennis shorts""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""brand""],
+    ""lexical"": {},
+    ""semantic"": [],
+    ""constant"": false
+  },
+  ""D"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""polyester""},
+    ""semantic"": [""made of polyester""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""boys' tennis shorts""},
+    ""semantic"": [""boys' tennis shorts made of polyester"", ""approximately 10x7x1.5 inches in size"", ""suitable for an average build kid""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""D""): [""has_category""],
+  (""ANSWER"", ""B""): [""has_color""]
+}"
+6876,"Looking for a women's NFL Green Bay Packers t-shirt with a crew neck and 3/4 sleeves, preferably from the Victoria's Secret collection. Shipping time isn't a major concern for me.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""NFL""},
+    ""semantic"": [""NFL""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Green Bay Packers""},
+    ""semantic"": [""Green Bay Packers""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Victoria's Secret""},
+    ""semantic"": [""Victoria's Secret collection""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""women's NFL Green Bay Packers t-shirt""},
+    ""semantic"": [""women's NFL Green Bay Packers t-shirt"", ""with a crew neck"", ""with 3/4 sleeves"", ""from the Victoria's Secret collection""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_brand""],
+  (""ANSWER"", ""C""): [""has_brand""]
+}"
+2404,Can you recommend a headwrap with a hook and loop fastening mechanism that's effective at preventing sweat from getting into my eyes during exercise?,"{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""headwrap""},
+    ""semantic"": [""headwrap with a hook and loop fastening mechanism""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""headwrap with a hook and loop fastening mechanism"", ""effective at preventing sweat from getting into my eyes during exercise""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_category""]
+}"
+2538,I'm in the market for a lightweight hunting knife with a blade around 2.25 inches long that's comfortable to grip. I've checked out the Suunto MC-2G In Global Compass - any recommendations for a knife that complements it well? The sheath isn't a priority for me.,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Suunto""},
+    ""semantic"": [""Suunto MC-2G In Global Compass""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Suunto MC-2G In Global Compass""},
+    ""semantic"": [""compass""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""knife""},
+    ""semantic"": [""lightweight hunting knife""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""lightweight hunting knife""},
+    ""semantic"": [""lightweight hunting knife"", ""blade around 2.25 inches long"", ""comfortable to grip"", ""complements Suunto MC-2G In Global Compass well""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""C""): [""has_category""],
+  (""ANSWER"", ""A""): [""also_buy""],
+  (""B"", ""A""): [""has_brand""]
+}"
+788,I have been using a Satori SOLO Bike Bicycle Suspension Seatpost 27.2x350mm. Can you suggest a similar Comfort Suspension Seat Post?,"{
+  ""A"": {
+    ""type"": [""brand"", ""product""],
+    ""lexical"": {""name"": ""Satori SOLO Bike Bicycle Suspension Seatpost""},
+    ""semantic"": [""Satori SOLO Bike Bicycle Suspension Seatpost 27.2x350mm""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {},
+    ""semantic"": [""Bicycle Suspension Seatpost""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Comfort Suspension Seat Post""},
+    ""semantic"": [""similar to Satori SOLO Bike Bicycle Suspension Seatpost 27.2x350mm"", ""Comfort Suspension Seat Post""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+4323,What's the best compact wall mount bottle opener that measures roughly 2.75 x 3.25 x 1.25 inches? I'm thinking of gifting it to a friend.,"{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""bottle opener""},
+    ""semantic"": [""compact wall mount bottle opener""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""compact wall mount bottle opener""},
+    ""semantic"": [""measures roughly 2.75 x 3.25 x 1.25 inches"", ""for gifting to a friend""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_category""]
+}"
+7923,"Can you suggest any holiday ornaments featuring my favorite team's logo that can help show my team pride during the festive season? Preferably, it should be around 4.5 inches in diameter. I'd love to add more team spirit to my holiday décor.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""team""},
+    ""semantic"": [""favorite team""],
+    ""constant"": false
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""holiday ornaments""},
+    ""semantic"": [""holiday ornaments"", ""holiday décor""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""holiday ornaments featuring team's logo"", ""around 4.5 inches in diameter""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""holiday ornaments featuring favorite team's logo"", ""around 4.5 inches in diameter"", ""show team pride during the festive season"", ""add team spirit to holiday décor""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+8231,What are the best reflective armbands made by Red Feather Sporting Goods for running visibility at any time of the day?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Red Feather Sporting Goods""},
+    ""semantic"": [""Red Feather Sporting Goods""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""armbands""},
+    ""semantic"": [""reflective armbands""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""reflective armbands""},
+    ""semantic"": [""best reflective armbands"", ""made by Red Feather Sporting Goods"", ""for running visibility at any time of the day""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+970,"Can anyone recommend a lightweight gear loft for camping that's easy to transport? Ideally, it should be compatible with my AGPTEK 2-in-1 18 LED Camping Fan Lantern for Outdoor and Emergencies and my Platypus Platy 2-Liter Ultralight Collapsible Water Bottle.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""AGPTEK""},
+    ""semantic"": [""AGPTEK 2-in-1 18 LED Camping Fan Lantern for Outdoor and Emergencies""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Platypus""},
+    ""semantic"": [""Platypus Platy 2-Liter Ultralight Collapsible Water Bottle""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""2-in-1 18 LED Camping Fan Lantern for Outdoor and Emergencies""},
+    ""semantic"": [""AGPTEK 2-in-1 18 LED Camping Fan Lantern for Outdoor and Emergencies"", ""compatible with gear loft""],
+    ""constant"": true
+  },
+  ""D"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Platy 2-Liter Ultralight Collapsible Water Bottle""},
+    ""semantic"": [""Platypus Platy 2-Liter Ultralight Collapsible Water Bottle"", ""compatible with gear loft""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""gear loft""},
+    ""semantic"": [""lightweight gear loft for camping"", ""easy to transport"", ""compatible with AGPTEK 2-in-1 18 LED Camping Fan Lantern for Outdoor and Emergencies"", ""compatible with Platypus Platy 2-Liter Ultralight Collapsible Water Bottle""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy""],
+  (""ANSWER"", ""B""): [""also_buy""],
+  (""ANSWER"", ""C""): [""also_buy""],
+  (""ANSWER"", ""D""): [""also_buy""]
+}"
+8746,Looking for an LED camping lantern with a built-in battery that can provide high-intensity lighting for at least 2 hours. Is there one with a 3 month money back guarantee included?,"{
+  ""A"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""LED camping lantern""},
+    ""semantic"": [""LED camping lantern with a built-in battery"", ""provide high-intensity lighting for at least 2 hours""],
+    ""constant"": false
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {},
+    ""semantic"": [""camping lantern""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""brand""],
+    ""lexical"": {},
+    ""semantic"": [""with a 3 month money back guarantee""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""LED camping lantern with a built-in battery"", ""provide high-intensity lighting for at least 2 hours"", ""with a 3 month money back guarantee included""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""has_brand""]
+}"
+8164,"Looking for a Microtech fixed blade knife with a black, serrated, partially spear-shaped blade. The blade length should ideally be around 4-7/8 inches, and it's okay if the blade is a bit on the thicker side.","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Microtech""},
+    ""semantic"": [""Microtech""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""black""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""knife""},
+    ""semantic"": [""fixed blade knife""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Microtech fixed blade knife""},
+    ""semantic"": [""Microtech fixed blade knife"", ""black, serrated, partially spear-shaped blade"", ""blade length around 4-7/8 inches"", ""thicker blade""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_color""],
+  (""ANSWER"", ""C""): [""has_category""]
+}"
+6953,"Can you suggest a durable self-defense keychain made from lightweight aircraft aluminum, about 5.75 inches long and around 1.4 oz in weight?","{
+  ""A"": {
+    ""type"": [""material""],
+    ""lexical"": {""name"": ""aircraft aluminum""},
+    ""semantic"": [""lightweight"", ""durable""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""keychain""},
+    ""semantic"": [""self-defense""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""self-defense keychain""},
+    ""semantic"": [""durable"", ""made from lightweight aircraft aluminum"", ""about 5.75 inches long"", ""around 1.4 oz in weight""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
+3421,"Looking for a Unique Sports hand grip strengthener suitable for regular exercises, with high functionality, regardless of the material used.","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""hand grip strengthener""},
+    ""semantic"": [""for regular exercises"", ""high functionality""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""Unique Sports hand grip strengthener"", ""suitable for regular exercises"", ""with high functionality"", ""regardless of the material used""],
+    ""constant"": false
+  }
+}","{""(""ANSWER"", ""A"")"": [""has_category""]}"
+8448,What is a popular women's headband that is frequently purchased along with the NIKE Dri-Fit Head Tie 2.0?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""NIKE""},
+    ""semantic"": [""NIKE Dri-Fit Head Tie 2.0""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""NIKE Dri-Fit Head Tie 2.0""},
+    ""semantic"": [""frequently purchased""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""women's headband""},
+    ""semantic"": [""popular women's headband"", ""frequently purchased along with the NIKE Dri-Fit Head Tie 2.0""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""B""): [""also_buy""],
+  (""B"", ""A""): [""has_brand""]
+}"
+5389,"Looking for a crush washer set that matches its advertised description. Ideally, I would need a set that includes two pieces each to go with my Mechforce Variable Timing Crush Washers for Muzzle Device Alignment. Any recommendations are welcomed!","{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Mechforce""},
+    ""semantic"": [""Mechforce Variable Timing Crush Washers for Muzzle Device Alignment""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Mechforce Variable Timing Crush Washers for Muzzle Device Alignment""},
+    ""semantic"": [""for Muzzle Device Alignment""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""crush washer set""},
+    ""semantic"": [""crush washer set that matches its advertised description"", ""includes two pieces"", ""to go with Mechforce Variable Timing Crush Washers for Muzzle Device Alignment""],
+    ""constant"": false
+  }
+}","{
+(""ANSWER"", ""A""): [""has_brand""],
+(""ANSWER"", ""B""): [""also_buy""]
+}"
+4799,"Looking for a spacious SUV tent that can function as a lounge area during camping trips, and is designed for easy detachment and closure allowing for the vehicle to be driven away while leaving the tent set up. Any suggestions?","{
+  ""A"": {
+    ""type"": [""category""],
+    ""lexical"": {""name"": ""SUV tent""},
+    ""semantic"": [""spacious"", ""for camping trips""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {},
+    ""semantic"": [""spacious SUV tent"", ""can function as a lounge area during camping trips"", ""designed for easy detachment and closure"", ""allowing for the vehicle to be driven away while leaving the tent set up""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_category""]
+}"
+5545,What are some high-quality ski goggles that would complement my recently purchased Dragon Alliance Goggle DX_Violet_Purple Ion?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Dragon Alliance""},
+    ""semantic"": [""Dragon Alliance Goggle""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product"", ""category""],
+    ""lexical"": {""name"": ""goggles""},
+    ""semantic"": [""ski goggles""],
+    ""constant"": false
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""Violet"", ""Purple""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""ski goggles""},
+    ""semantic"": [""high-quality ski goggles"", ""complement Dragon Alliance Goggle DX_Violet_Purple Ion""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_category""],
+  (""ANSWER"", ""C""): [""has_color""]
+}"
+125,Are there any high-quality blue anchor chains similar to the Greenfield 2116-R PVC Coated Anchor Chain? My last one was from Greenfield and I would like something similar.,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Greenfield""},
+    ""semantic"": [""Greenfield""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Greenfield 2116-R PVC Coated Anchor Chain""},
+    ""semantic"": [""Greenfield 2116-R PVC Coated Anchor Chain""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""color""],
+    ""lexical"": {},
+    ""semantic"": [""blue""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""blue anchor chains""},
+    ""semantic"": [""high-quality blue anchor chains"", ""similar to the Greenfield 2116-R PVC Coated Anchor Chain""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""C""): [""has_color""],
+  (""B"", ""A""): [""has_brand""]
+}"
+2254,Can you recommend an easy-to-install rear roller brake that is compatible with a Nuvinci hub and typically used with a 100g pot of Shimano Roller Brake Grease?,"{
+  ""A"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Nuvinci""},
+    ""semantic"": [""compatible with Nuvinci hub""],
+    ""constant"": true
+  },
+  ""B"": {
+    ""type"": [""brand""],
+    ""lexical"": {""name"": ""Shimano""},
+    ""semantic"": [""Shimano Roller Brake Grease""],
+    ""constant"": true
+  },
+  ""C"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""Shimano Roller Brake Grease""},
+    ""semantic"": [""100g pot of Shimano Roller Brake Grease""],
+    ""constant"": true
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""rear roller brake""},
+    ""semantic"": [""easy-to-install rear roller brake"", ""compatible with a Nuvinci hub"", ""typically used with a 100g pot of Shimano Roller Brake Grease""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""has_brand""],
+  (""ANSWER"", ""B""): [""has_brand""],
+  (""ANSWER"", ""C""): [""also_buy""]
+}"
+6408,"I'm in search of adjustable fishing pole ties that can accommodate different pole sizes. Ideally, they should also have the ability to float in the event they are dropped in water.","{
+  ""A"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""fishing pole ties""},
+    ""semantic"": [""adjustable"", ""accommodate different pole sizes""],
+    ""constant"": false
+  },
+  ""B"": {
+    ""type"": [""category""],
+    ""lexical"": {},
+    ""semantic"": [""fishing equipment""],
+    ""constant"": false
+  },
+  ""ANSWER"": {
+    ""type"": [""product""],
+    ""lexical"": {""name"": ""adjustable fishing pole ties""},
+    ""semantic"": [""adjustable fishing pole ties"", ""accommodate different pole sizes"", ""have the ability to float in water""],
+    ""constant"": false
+  }
+}","{
+  (""ANSWER"", ""A""): [""also_buy"", ""also_view""],
+  (""ANSWER"", ""B""): [""has_category""]
+}"
