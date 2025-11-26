@@ -30,7 +30,6 @@ Identified Relations:
 
 Example 2
 Query: Identify common gene targets associated with both Etofenamate and Heparin.
-
 Entities:
 {
   "A": {

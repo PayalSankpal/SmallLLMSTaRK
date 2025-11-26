@@ -1,6 +1,5 @@
 Example 1
 Query: What conditions are associated with hyperalphalipoproteinemia, which causes elevated triglycerides and cholesterol levels in the blood?
-
 Response:
 {
   "A": {
