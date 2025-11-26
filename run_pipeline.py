@@ -93,6 +93,20 @@ def step2_identify_relations(query: Query, llm_bridge: LlmBridge, dataset_name: 
         try:
             identified_relations = parse_relation_string(response_string)
             query.relations = identified_relations
+            edge_type_dict = {
+                'affiliated_with': 'author___affiliated_with___institution',
+                'cites': 'paper___cites___paper', 
+                'has_topic': 'paper___has_topic___field_of_study',
+                'writes': 'author___writes___paper'
+            }
+            for pair in query.relations:
+                rels = query.relations[pair]
+                for i in range(len(rels)):
+                    if rels[i] in edge_type_dict:
+                        rels[i] = edge_type_dict[rels[i]]
+            print(f"Relations found: {query.relations}")
+            
+
         except ValueError as e:
             query.status = "FAILED"
             query.relations = {}
