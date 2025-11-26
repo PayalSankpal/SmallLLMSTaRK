@@ -1,22 +1,21 @@
-xample 1
-Query: Which cellular structures or organelles are associated with the interaction of genes or proteins affected by Thonzonium Bromide?
-
+Example 1
+Query: Which genes or proteins are expressed exclusively in the gallbladder but not in both dorsal and ventral regions of the thalamus?
 Entities:
 {
   "A": {
-    "type": ["drug"],
-    "lexical": {"name": "Thonzonium Bromide"},
+    "type": ["cellular_component"],
+    "lexical": {"name": "gallbladder"},
     "semantic": [],
     "constant": true
   },
   "B": {
-    "type": ["gene/protein"],
-    "lexical": {},
-    "semantic": ["affected by Thonzonium Bromide"],
-    "constant": false
+    "type": ["cellular_component"],
+    "lexical": {"name": "dorsal and ventral regions of the thalamus"},
+    "semantic": [],
+    "constant": true
   },
   "ANSWER": {
-    "type": ["cellular_component"],
+    "type": ["gene/protein"],
     "lexical": {},
     "semantic": [],
     "constant": false
@@ -25,24 +24,24 @@ Entities:
 
 Identified Relations:
 {
-  ("A", "B"): ["target", "transporter"],
-  ("B", "ANSWER"): ["interacts with"]
+  ("ANSWER", "A"): ["expression_present"],
+  ("ANSWER", "B"): ["expression_absent"]
 }
 
 Example 2
-Query: Identify the common genetic targets that interact with both 3',5'-Dinitro-N-Acetyl-L-Thyronine and 3-({[(1Z)-(2-methoxyphenyl)methylidene]amino}oxy)propanoic acid.
+Query: Identify common gene targets associated with both Etofenamate and Heparin.
 
 Entities:
 {
   "A": {
     "type": ["drug"],
-    "lexical": {"name": "3',5'-Dinitro-N-Acetyl-L-Thyronine"},
+    "lexical": {"name": "Etofenamate"},
     "semantic": [],
     "constant": true
   },
   "B": {
     "type": ["drug"],
-    "lexical": {"name": "3-({[(1Z)-(2-methoxyphenyl)methylidene]amino}oxy)propanoic acid"},
+    "lexical": {"name": "Heparin"},
     "semantic": [],
     "constant": true
   },
