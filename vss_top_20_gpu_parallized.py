@@ -4,6 +4,7 @@ import numpy as np
 from pathlib import Path
 from typing import List, Tuple
 from stark_qa import load_skb, load_qa
+
 from vss import VSS
 
 def compute_metrics(ground_truths: List[int], retrieved_ids: List[int], retrieved_scores: List[float]) -> dict:
@@ -129,7 +130,7 @@ def evaluate_vss_parallel(vss, queries: List[Tuple], output_csv: str, k: int = 2
     print(f"Using device: {device}")
     
     # Get product node type embeddings and IDs
-    node_type = 'product'
+    node_type = 'paper'
     if node_type not in vss.node_emb_dict:
         raise ValueError(f"Node type '{node_type}' not found in embeddings")
     
@@ -137,7 +138,20 @@ def evaluate_vss_parallel(vss, queries: List[Tuple], output_csv: str, k: int = 2
     product_embs_cpu = vss.node_emb_dict[node_type]  # Shape: [num_products, emb_dim]
     product_ids = vss.node_ids_by_type[node_type]
     
-    num_products = len(product_ids)
+    # Check and fix product embedding dimensions
+    print(f"Original product embeddings shape: {product_embs_cpu.shape}")
+    
+    if product_embs_cpu.dim() == 3:
+        # Shape is [num_products, 1, emb_dim] - squeeze the middle dimension
+        product_embs_cpu = product_embs_cpu.squeeze(1)
+        print(f"Squeezed product embeddings to shape: {product_embs_cpu.shape}")
+    elif product_embs_cpu.dim() > 3:
+        # Flatten to 2D
+        num_products = product_embs_cpu.shape[0]
+        product_embs_cpu = product_embs_cpu.reshape(num_products, -1)
+        print(f"Reshaped product embeddings to: {product_embs_cpu.shape}")
+    
+    num_products = product_embs_cpu.shape[0]
     emb_dim = product_embs_cpu.shape[1]
     
     print(f"Total {num_products} product embeddings of dimension {emb_dim}")
@@ -201,20 +215,12 @@ def evaluate_vss_parallel(vss, queries: List[Tuple], output_csv: str, k: int = 2
         print(f"{'='*80}")
         
         # Get batch of query embeddings and move to GPU
-        batch_query_embs = torch.stack(query_embs_list[batch_start:batch_end])
+        batch_query_embs = torch.stack(query_embs_list[batch_start:batch_end]).to(device)
         
-        # Debug: print shape before moving to GPU
-        print(f"Query batch shape (CPU): {batch_query_embs.shape}")
+        print(f"Query batch shape: {batch_query_embs.shape}")
         
-        batch_query_embs = batch_query_embs.to(device)
-        
-        # Normalize - ensure we're normalizing along the embedding dimension (dim=1)
-        if batch_query_embs.dim() == 2:
-            batch_query_embs = torch.nn.functional.normalize(batch_query_embs, p=2, dim=1)
-        else:
-            print(f"WARNING: Unexpected query batch dimensions: {batch_query_embs.shape}")
-            batch_query_embs = batch_query_embs.reshape(current_batch_size, -1)
-            batch_query_embs = torch.nn.functional.normalize(batch_query_embs, p=2, dim=1)
+        # Normalize along the embedding dimension (dim=1)
+        batch_query_embs = torch.nn.functional.normalize(batch_query_embs, p=2, dim=1)
         
         print(f"Query batch shape: {batch_query_embs.shape}")
         
@@ -231,20 +237,15 @@ def evaluate_vss_parallel(vss, queries: List[Tuple], output_csv: str, k: int = 2
             print(f"\n  Product Chunk {prod_chunk_idx + 1}/{num_product_chunks}: products {prod_start}-{prod_end}")
             
             # Load this chunk of products to GPU
-            product_chunk = product_embs_cpu[prod_start:prod_end]
+            product_chunk = product_embs_cpu[prod_start:prod_end].to(device)
             
-            # Debug: print shape before moving to GPU
-            print(f"  Product chunk shape (CPU): {product_chunk.shape}")
+            print(f"  Product chunk shape: {product_chunk.shape}")
             
-            product_chunk = product_chunk.to(device)
-            
-            # Normalize - ensure correct dimensions
+            # Normalize - should be 2D [chunk_size, emb_dim]
             if product_chunk.dim() == 2:
                 product_chunk = torch.nn.functional.normalize(product_chunk, p=2, dim=1)
             else:
-                print(f"  WARNING: Unexpected product chunk dimensions: {product_chunk.shape}")
-                product_chunk = product_chunk.reshape(-1, emb_dim)
-                product_chunk = torch.nn.functional.normalize(product_chunk, p=2, dim=1)
+                raise ValueError(f"Product chunk has unexpected dimensions: {product_chunk.shape}")
             
             print(f"  Product chunk shape: {product_chunk.shape}")
             
@@ -390,15 +391,15 @@ if __name__ == "__main__":
     # from your_module import VSS, load_queries
     
     # vss = VSS(...)  # Your initialized VSS object
-    kb = load_skb("amazon")
-    qa_dataset = load_qa('amazon')
+    kb = load_skb("mag")
+    qa_dataset = load_qa('mag')
     qa = qa_dataset.split_indices["test"].reshape(-1).tolist()
 
     qa = qa[:int(len(qa) * 0.1)]
     queries = [qa_dataset[i] for i in qa]
     emb_model = 'text-embedding-ada-002'
 
-    dataset = "amazon"
+    dataset = "mag"
     node_ids_by_type = {}
     for n_type in kb.node_type_lst():
         node_ids_by_type[n_type] = kb.get_node_ids_by_type(n_type)

@@ -1,8 +1,23 @@
 import torch
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple, Any
-from vss import VSS
+from dotenv import load_dotenv
+from openai import OpenAI
+import os
 
+# from vss import VSS
+
+
+def load_emb_model(offline_mode: bool, model_name: str):
+    if offline_mode:
+        return None
+    else:
+        
+        if model_name == "text-embedding-ada-002":
+            load_dotenv()
+            return OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+        else:
+            raise ValueError(f"Invalid embedding model name: {model_name}.")
 
 class VSSRetriever:
     """
@@ -40,6 +55,8 @@ class VSSRetriever:
         self.qa_dataset = qa_dataset
         self.dataset_name = dataset_name
         self.use_embedding_cache = use_embedding_cache
+        offline_mode = False
+        self.emb_client = load_emb_model(offline_mode, emb_model)
         
         # NEW: Setup device (GPU if available and requested, else CPU)
         if use_gpu and torch.cuda.is_available():
@@ -60,16 +77,7 @@ class VSSRetriever:
         
         # Initialize VSS if needed
         self.vss = None
-        if use_vss:
-            self.vss = VSS(
-                kb,
-                self.emb_base_path,
-                dataset_name,
-                qa_dataset,
-                emb_model,
-                self.node_ids_by_type,
-                False
-            )
+
     
     def _load_embeddings(self) -> None:
         """Load all embedding dictionaries from disk and move to device."""
@@ -95,13 +103,7 @@ class VSSRetriever:
             self.query_emb_dict = {}
         
         # Load candidate embeddings
-        candidate_emb_path = emb_dir / "doc" / "candidate_emb_dict.pt"
-        if candidate_emb_path.exists():
-            self.candidate_emb_dict = torch.load(candidate_emb_path, map_location=self.device)
-            self.candidate_emb_dict = {k: v.to(self.device) if isinstance(v, torch.Tensor) else v 
-                                       for k, v in self.candidate_emb_dict.items()}
-        else:
-            self.candidate_emb_dict = {}
+        self.candidate_emb_dict = {}
         
         # Load node embeddings by type
         self.node_emb_dict = self._load_node_embeddings()
@@ -134,6 +136,14 @@ class VSSRetriever:
             node_ids_by_type[n_type] = self.kb.get_node_ids_by_type(n_type)
         return node_ids_by_type
     
+    def get_openai_embedding(self, query: str, model: str):
+        """Get embedding using OpenAI client."""
+        print(f"Getting embedding for query: {query} using model: {model}")
+        emb = self.emb_client.embeddings.create(input=query, model=model, timeout=120)
+        return torch.FloatTensor(emb.data[0].embedding)
+
+
+
     def get_query_emb(
         self, 
         query: str, 
@@ -166,22 +176,19 @@ class VSSRetriever:
                 return self.embedding_cache[cache_key]
         
         # Generate new embedding via VSS
-        if self.vss is not None:
-            embedding = self.vss.get_openai_embedding(query, model=self.emb_model)
-            
-            # Move to device if tensor
-            if isinstance(embedding, torch.Tensor):
-                embedding = embedding.to(self.device)
-            
-            # Store in cache if enabled
-            if use_cache and self.use_embedding_cache and self.embedding_cache is not None and embedding is not None:
-                cache_key = f"{query}_{query_id}" if query_id else query
-                self.embedding_cache[cache_key] = embedding
-            
-            return embedding
+        embedding = self.get_openai_embedding(query, model=self.emb_model)
         
-        return None
-    
+        # Move to device if tensor
+        if isinstance(embedding, torch.Tensor):
+            embedding = embedding.to(self.device)
+        
+        # Store in cache if enabled
+        if use_cache and self.use_embedding_cache and self.embedding_cache is not None and embedding is not None:
+            cache_key = f"{query}_{query_id}" if query_id else query
+            self.embedding_cache[cache_key] = embedding
+        
+        return embedding
+            
     def cache_embedding(self, query: str, embedding: torch.Tensor, query_id: Optional[Any] = None):
         """
         Manually cache an embedding.
@@ -403,3 +410,4 @@ class VSSRetriever:
             return f"GPU: {torch.cuda.get_device_name(0)} (Memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.2f} GB)"
         else:
             return "CPU"
+

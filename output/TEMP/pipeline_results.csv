@@ -1,0 +1,4 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr
+2905,Can you recommend a high-quality carabiner clip keychain that's around 7 inches long?,13,0,13,0.0,0.0,0.0,0.0,0.0
+3863,"Looking for a lightweight Outerstuff brand Boston Bruins youth T-shirt from the NHL, with a shipping weight around 6.4 ounces.",3,1,2,0.3333333333333333,0.3333333333333333,0.0,1.0,0.25
+4651,What is a good Outlander internal frame camping backpack with multiple internal and external pockets for convenient access to accessories? I'm not particular about the color.,2,2,0,1.0,1.0,0.0,0.0,0.05555555555555555

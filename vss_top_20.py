@@ -237,5 +237,5 @@ if __name__ == "__main__":
     
     results, metrics = evaluate_vss_gpu(vss, queries, 'vss_evaluation_results.csv', k=20)
     
-    
     print("Script ready. Call evaluate_vss_gpu(vss, queries, output_csv) to run evaluation.")
+

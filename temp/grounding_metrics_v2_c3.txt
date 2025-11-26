@@ -1,0 +1,10 @@
+
+Aggregate Metrics:
+num_queries:    277
+total_ground_truths: 694
+total_retrieved: 398
+  Avg Recall@50: 0.640
+  Avg Recall@20: 0.598
+  Avg Hit@1: 0.332
+  Avg Hit@5: 0.505
+  Avg MRR: 0.410
