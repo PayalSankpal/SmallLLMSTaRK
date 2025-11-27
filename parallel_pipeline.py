@@ -4,25 +4,25 @@ import csv
 import functools
 from pathlib import Path
 import pandas as pd
-from stark_qa import load_skb
+from stark_qa import load_skb, load_qa
 import regex as re
 import ast
-from custom_pipeline import llm_bridge
 import vss
-from stark_qa import load_qa
 import sys
 import os
 import time
 import traceback
 import logging
 from tqdm import tqdm
-from concurrent.futures import ThreadPoolExecutor
-import sys
 from urllib import response
-import os
 from dotenv import load_dotenv
 import argparse
 from typing import List, Dict, Any, Optional
+import json
+import signal
+import warnings
+
+# Custom imports (assumed available in environment)
 from custom_pipeline.entity_parsing import *
 from custom_pipeline.relation_parsing import *
 from custom_pipeline.llm_bridge import LlmBridge
@@ -32,22 +32,6 @@ from custom_pipeline.vss_retreiver import VSSRetriever
 from custom_pipeline.candidate_context import CandidateContext
 from custom_pipeline.grounders.grounder3 import PriorityQueueGrounding
 from custom_pipeline.thread_safe_writers import ThreadSafeCSVWriter
-import contextlib
-import io
-import traceback
-from tqdm import tqdm
-import heapq
-from collections import defaultdict
-import json
-import time
-import signal
-import logging
-import warnings
-
-# --- OPTIMIZATION CONFIG ---
-MAX_WORKERS = 4
-QUERY_TIMEOUT_SECONDS = 300 
-# ---------------------------
 
 class TimeoutException(Exception):
     pass
@@ -56,9 +40,9 @@ def get_llm_response(prompt, llm_bridge):
     response = llm_bridge.ask_llm_batch([prompt])
     return response[0][0]
 
-def step1_identify_entities(query: Query, llm_bridge: LlmBridge, dataset_name: str, use_saved_llm_responses: bool = False, llm_response: Optional[Dict] = None):
-    if use_saved_llm_responses and llm_response is not None:
-        response_string = llm_response.get('entities', "")
+def step1_identify_entities(query: Query, llm_bridge: LlmBridge, dataset_name: str, use_saved: bool = False, saved_response: Optional[Dict] = None):
+    if use_saved and saved_response is not None:
+        response_string = saved_response.get('entities', "")
     else:
         prompt = get_entity_extraction_prompt(query.query, dataset_name)
         response_string = get_llm_response(prompt, llm_bridge)
@@ -78,9 +62,9 @@ def step1_identify_entities(query: Query, llm_bridge: LlmBridge, dataset_name: s
             query.status = "FAILED"
             return
         
-def step2_identify_relations(query: Query, llm_bridge: LlmBridge, dataset_name: str, use_saved_llm_responses: bool = False, llm_response: Optional[Dict] = None):
-    if use_saved_llm_responses and llm_response is not None:
-        response_string = llm_response.get("relations", "")
+def step2_identify_relations(query: Query, llm_bridge: LlmBridge, dataset_name: str, use_saved: bool = False, saved_response: Optional[Dict] = None):
+    if use_saved and saved_response is not None:
+        response_string = saved_response.get("relations", "")
     else:
         prompt = get_relation_extraction_prompt(dataset_name , query.query, query.entity_id_response)
         response_string = get_llm_response(prompt, llm_bridge)
@@ -111,7 +95,7 @@ def step2_identify_relations(query: Query, llm_bridge: LlmBridge, dataset_name: 
             query.relations = {}
             return
 
-def get_initial_candidates_for_entity(entity_info, entity_key, kb, retriever):
+def get_initial_candidates_for_entity(entity_info, entity_key, kb, retriever, limit=25, cutoff=0.65):
     candidates = []
     entity_types = entity_info.get("type", [])
     name_constraint = entity_info.get("lexical", {}).get("name", None)
@@ -134,11 +118,11 @@ def get_initial_candidates_for_entity(entity_info, entity_key, kb, retriever):
     existing_ids = nodes_by_name
 
     current_count = len(candidates)
-    if current_count < 25:
-        vss_needed = 25 - current_count
+    if current_count < limit:
+        vss_needed = limit - current_count
         for etype in entity_types:
             nodes_by_desc_ids, vss_scores = retriever.get_top_k_nodes(
-                search_str=search_sem, k=vss_needed, node_type=etype, cutoff=0.65
+                search_str=search_sem, k=vss_needed, node_type=etype, cutoff=cutoff
             )
             
             for i, node_id in enumerate(nodes_by_desc_ids):
@@ -148,21 +132,25 @@ def get_initial_candidates_for_entity(entity_info, entity_key, kb, retriever):
     return entity_key, candidates
 
 
-def step3_get_initial_candidates(current_query, kb, retriever):
+def step3_get_initial_candidates(current_query, kb, retriever, config):
     initial_candidates = {}
-    
     entities_to_process = {
         k: v for k, v in current_query.entities.items() if k != "ANSWER"
     }
 
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+    step3_config = config['retrieval_params']['step3_candidate_generation']
+    max_workers = config['pipeline']['max_workers']
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
         future_to_entity = {
             executor.submit(
                 get_initial_candidates_for_entity, 
                 entity_info, 
                 entity_key, 
                 kb, 
-                retriever
+                retriever,
+                step3_config['initial_limit'],
+                step3_config['vss_cutoff']
             ): entity_key 
             for entity_key, entity_info in entities_to_process.items()
         }
@@ -178,18 +166,21 @@ def step3_get_initial_candidates(current_query, kb, retriever):
     print(current_query)
 
 
-def run_priority_queue_grounding(query_obj, kb, vss_retriever, max_candidates_per_symbol: int = 1000, max_answer_candidates: int = 50, top_k_neighbors: int = 10, score_decay: float = 0.9, support_boost: float = 0.15, verbose: bool = False) -> Dict[str, List[CandidateContext]]:
+def run_priority_queue_grounding(query_obj, kb, vss_retriever, params, verbose: bool = False) -> Dict[str, List[CandidateContext]]:
     grounder = PriorityQueueGrounding(
         query_obj=query_obj,
         kb=kb,
         vss_retriever=vss_retriever,
-        max_candidates_per_symbol=max_candidates_per_symbol,
-        max_answer_candidates=max_answer_candidates,
-        top_k_neighbors=top_k_neighbors,
-        score_decay=score_decay,
-        support_boost=support_boost,
+        max_candidates_per_symbol=params['max_candidates_per_symbol'],
+        max_answer_candidates=params['max_answer_candidates'],
+        top_k_neighbors=params['top_k_neighbors'],
+        score_decay=params['score_decay'],
+        support_boost=params['support_boost'],
         verbose=verbose
     )
+    print(f"[Grounding] Running grounding for Query ID: {query_obj.id}")
+    print(f"[Grounding] Relations: { query_obj.relations } ")
+    print(f"[Grounding] Initial Entities: { query_obj.entities } ")
     return grounder.ground()
     
 def evaluate_results(predicted_nodes, ground_truth_nodes):
@@ -225,16 +216,14 @@ def evaluate_results(predicted_nodes, ground_truth_nodes):
     }
 
 
-def step4_grounding(query: Query, kb, retriever):
+def step4_grounding(query: Query, kb, retriever, config):
+    g_params = config['grounding_params']
+    
     final_candidates = run_priority_queue_grounding(
         query_obj=query,
         kb=kb,
         vss_retriever=retriever,
-        max_candidates_per_symbol=3000, 
-        max_answer_candidates=20,      
-        top_k_neighbors=15,            
-        support_boost=0,
-        score_decay=0.9,
+        params=g_params,
         verbose=False 
     )
     
@@ -255,7 +244,7 @@ def get_expanded_query(query, dataset_name: str, kb, llm_bridge) -> str:
     if not hasattr(query, 'grounding_candidates') :
         return query.query
     
-    for candidate in query.grounding_candidates[:3]:
+    for candidate in query.grounding_candidates[:4]:
         print(f"Candidate: {candidate} ")
         print(kb.get_doc_info(candidate))
         docs_list.append(kb.get_doc_info(candidate))
@@ -264,10 +253,16 @@ def get_expanded_query(query, dataset_name: str, kb, llm_bridge) -> str:
     print("[EXPANED QUERY]: ", expanded_query)
     return expanded_query
 
-def step5_merge_vss_candidates(query: Query, retriever: VSSRetriever, kb, use_saved_vss_candidates: bool = False, alpha: int = 12, vss_candidates: dict = {}, llm_bridge: LlmBridge=None, dataset_name: str = "") -> List[int]:
+def step5_merge_vss_candidates(query: Query, retriever: VSSRetriever, kb, config, use_saved: bool = False, vss_candidates: dict = {}, llm_bridge: LlmBridge=None, dataset_name: str = "") -> List[int]:
+    
+    step5_params = config['retrieval_params']['step5_vss_merge']
+    alpha = min(step5_params['alpha'], len(query.grounding_candidates)) # if grounding returns less than aplha candidates
+    k_val = step5_params['top_k']
+    cutoff_val = step5_params['cutoff']
+    
     vss_candidates_list = []
-    print(f"[Step 5] Merging VSS candidates with alpha={alpha} USE_SAVED={use_saved_vss_candidates} \n\n VSS CANDIDATES: {vss_candidates}\n\n")
-    if not use_saved_vss_candidates:
+    print(f"[Step 5] Merging VSS candidates with alpha={alpha} USE_SAVED={use_saved} \n\n VSS CANDIDATES: {vss_candidates}\n\n")
+    if not use_saved:
         all_candidates = []
         expanded_query = get_expanded_query(query, dataset_name=dataset_name, kb=kb, llm_bridge=llm_bridge)
         print(query)
@@ -276,7 +271,7 @@ def step5_merge_vss_candidates(query: Query, retriever: VSSRetriever, kb, use_sa
         for node_type in possible_node_types:
             print(f"[Step 5] Searching VSS for node type: {node_type}")
             top_candidates = retriever.get_top_k_nodes(
-                search_str=expanded_query, k=20, node_type=node_type, cutoff=0.6
+                search_str=expanded_query, k=k_val, node_type=node_type, cutoff=cutoff_val
             )
             all_candidates.extend(list(zip(top_candidates[0], top_candidates[1])))
         vss_candidates_list = list(map (lambda x: x[0], sorted(all_candidates, key=lambda x: x[1], reverse=True)))
@@ -287,7 +282,7 @@ def step5_merge_vss_candidates(query: Query, retriever: VSSRetriever, kb, use_sa
     existing_candidate_ids = query.grounding_candidates[:alpha]
     new_vss_candidates = []
     for node in vss_candidates_list:
-        if node not in existing_candidate_ids:
+        if node not in existing_candidate_ids[:20-alpha] :
             new_vss_candidates.append(node)
         if len(new_vss_candidates) == 20 - alpha:
             break
@@ -375,136 +370,158 @@ def save_aggregate_results(queries: list, csv_path: str = "aggregate_results.csv
 
 def save_data_dump(results, csv_path="aggregate_results.csv"):
     if not results: return
+
     def serialize_value(value):
         if value is None: return ""
         if isinstance(value, (str, int, float, bool)): return value
-        try: return json.dumps(value)
-        except: return str(value)
+        try:
+            return json.dumps(value, default=lambda o: o.__dict__ if hasattr(o, '__dict__') else str(o))
+        except Exception as e:
+            return str(value)
     
-    fieldnames = ['id', 'query', 'ground_truths', 'status', 'entities', 'relations','initial_symbol_candidates' ,'final_candidates' ,'results','grounding_candidates','vss_merged_candidates' ]
+    fieldnames = ['id', 'query', 'ground_truths', 'status', 'entities', 'relations',
+                  'initial_symbol_candidates', 'final_candidates', 'results',
+                  'grounding_candidates', 'vss_merged_candidates']
+                  
     with open(csv_path, 'w', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         for query_obj in results:
             row = {field: serialize_value(getattr(query_obj, field, "")) for field in fieldnames}
             writer.writerow(row)
+            
     print(f"✓ Successfully saved {len(results)} results to {csv_path}")
 
 
-def pipeline_threadsafe(query, llm_bridge, kb, retriever, dataset_name: str, 
-                       csv_writer: ThreadSafeCSVWriter,
-                       use_saved_llm_responses: bool = False, llm_response: Optional[dict] = None,
-                       alpha: int = 12, use_saved_vss_candidates: bool = False, 
-                       vss_candidates: dict = {}):
+def pipeline_threadsafe(query, llm_bridge, kb, retriever, dataset_name, 
+                       csv_writer, config,
+                       use_saved: bool = False, saved_response: Optional[dict] = None,
+                       use_saved_vss: bool = False, vss_candidates: dict = {}):
     
-    # Just print normally. Main function handles capturing this to file.
     print(f"--- Processing Query {query.id} ---")
     
-    step1_identify_entities(query, llm_bridge, dataset_name, use_saved_llm_responses, llm_response)
+    step1_identify_entities(query, llm_bridge, dataset_name, use_saved, saved_response)
     if query.status == "FAILED":
         print(f"FAILED at Step 1")
         return query
     
-    step2_identify_relations(query, llm_bridge, dataset_name, use_saved_llm_responses, llm_response)
+    step2_identify_relations(query, llm_bridge, dataset_name, use_saved, saved_response)
     if query.status == "FAILED":
         print(f"FAILED at Step 2")
         return query
     
-    step3_get_initial_candidates(query, kb, retriever)
-    step4_grounding(query, kb, retriever)
-    step5_merge_vss_candidates(query, retriever, kb,  
-                               use_saved_vss_candidates=use_saved_vss_candidates, 
+    step3_get_initial_candidates(query, kb, retriever, config)
+    step4_grounding(query, kb, retriever, config)
+    step5_merge_vss_candidates(query, retriever, kb, config,
+                               use_saved=use_saved_vss, 
                                vss_candidates=vss_candidates,
-                               alpha=alpha, llm_bridge=llm_bridge, dataset_name=dataset_name)
+                               llm_bridge=llm_bridge, 
+                               dataset_name=dataset_name)
     
     save_results_threadsafe(query, csv_writer)
     print(f"Finished Query {query.id}")
     
     return query
-def create_experiment_dir(exp_name: str = "test_run", base_dir: str = './output/'):
+
+def create_experiment_dir(exp_name: str, base_dir: str):
     try: os.makedirs(f"{base_dir}/{exp_name}", exist_ok=True)
     except Exception as e: pass
 
 # ============================================
 # MAIN FUNCTION
 # ============================================
-def main(args):
+def main(config_path):
+    # 0. LOAD CONFIG
+    with open(config_path, 'r') as f:
+        config = json.load(f)
+        
+    exp_config = config['experiment']
+    pipe_config = config['pipeline']
+    data_config = config['data_paths']
+    model_config = config['models']
+
     # 1. SETUP LOGGING
-    if args.exp_name is None:
-        args.exp_name = f"{args.dataset}_{args.split}_results"
-    create_experiment_dir(exp_name=args.exp_name, base_dir='./output/')
+    dataset_name = exp_config['dataset']
+    split_name = exp_config['split']
     
-    log_path = f"./output/{args.exp_name}/full_debug_log.txt"
+    exp_name = exp_config.get('exp_name')
+    if not exp_name:
+        exp_name = f"{dataset_name}_{split_name}_results"
+        
+    output_base = exp_config.get('output_base_dir', './output/')
+    create_experiment_dir(exp_name=exp_name, base_dir=output_base)
     
-    # Save the original console streams so we can still see the progress bar
+    log_path = f"{output_base}/{exp_name}/full_debug_log.txt"
+    
     console_out = sys.stdout
     console_err = sys.stderr
-    
-    # Open the log file
     log_file = open(log_path, 'w', encoding='utf-8')
     
-    # 2. GLOBAL REDIRECTION
-    # Redirect standard python prints
     sys.stdout = log_file
     sys.stderr = log_file
     
-    # Redirect library logs (HuggingFace, Faiss, etc use logging module)
-    # We remove existing handlers and add our file handler
     root_logger = logging.getLogger()
     for handler in root_logger.handlers[:]:
         root_logger.removeHandler(handler)
-    logging.basicConfig(stream=log_file, level=logging.INFO, force=True)
+    logging.basicConfig(stream=log_file, level=getattr(logging, exp_config.get('logging_level', 'INFO')), force=True)
 
     try:
-        # --- FROM HERE ON, ALL PRINTS GO TO FILE ---
-        
-        # (Load your data/models here as usual)
-        # ... 
-        # For brevity, I assume kb, llm_bridge, retriever, test_queries are loaded here
-        # ...
-        # <PASTE YOUR DATA LOADING CODE HERE>
-        data_split = args.split
-        dataset_name = args.dataset
         qa_dataset = load_qa(dataset_name)
-        qa = qa_dataset.split_indices[data_split].reshape(-1).tolist()
+        qa = qa_dataset.split_indices[split_name].reshape(-1).tolist()
         qa = qa[:int(len(qa) * 0.1)] 
         test_queries = [qa_dataset[i] for i in qa]
-        if args.test_run: test_queries = test_queries[:10]
+        
+        if exp_config.get('test_run', False):
+            limit = pipe_config.get('max_queries_test_run', 100)
+            test_queries = test_queries[:limit]
         
         kb = load_skb(dataset_name, download_processed=True)
-        llm_bridge = LlmBridge(model_name='meta/llama-3.3-70b-instruct', configs_path="configs.json")
-        retriever = VSSRetriever(kb=kb, emb_base_path=f"./emb/{dataset_name}/", emb_model="text-embedding-ada-002", qa_dataset=qa_dataset, dataset_name=data_split, use_vss=True, use_gpu=True)
+        llm_bridge = LlmBridge(model_name=model_config['llm_name'], configs_path=model_config['llm_config_path'])
+        
+        retriever = VSSRetriever(
+            kb=kb, 
+            emb_base_path=f"{model_config['embedding_base_path']}/{dataset_name}/", 
+            emb_model=model_config['embedding_model'], 
+            qa_dataset=qa_dataset, 
+            dataset_name=split_name, 
+            use_vss=True, 
+            use_gpu=True
+        )
         
         vss_candidates = {}
-        if args.use_saved_vss_candidates:
-             with open(args.vss_candidates_json_path, 'r', encoding='utf-8') as f:
+        if data_config['use_saved_vss_candidates']:
+             with open(data_config['vss_candidates_json_path'], 'r', encoding='utf-8') as f:
                 vss_candidates = json.load(f)
-        llm_respose_df = pd.read_csv(args.llm_responses_file) if args.use_saved_llm_responses else None
+        
+        llm_respose_df = None
+        if data_config['use_saved_llm_responses']:
+            llm_respose_df = pd.read_csv(data_config['llm_responses_file'])
 
         csv_fieldnames = [
             'query_id', 'query_text', 'total_answers', 'retrieved_count', 'missed_count',
             'recall@50', 'recall@20', 'hit@1', 'hit@5', 'mrr', 'recall@20_vss_merged'
         ]
         csv_writer = ThreadSafeCSVWriter(
-            csv_path=f"./output/{args.exp_name}/pipeline_results.csv",
+            csv_path=f"{output_base}/{exp_name}/pipeline_results.csv",
             fieldnames=csv_fieldnames
         )
 
-        # 3. EXECUTION
-        # Write start message to CONSOLE explicitly
         console_out.write(f"Starting {len(test_queries)} queries. Logs: {log_path}\n")
         
         failed_queries = []
         results = []
         futures_list = []
         
-        executor = ThreadPoolExecutor(max_workers=MAX_WORKERS)
+        max_workers = pipe_config['max_workers']
+        timeout_sec = pipe_config['timeout_seconds']
+        
+        executor = ThreadPoolExecutor(max_workers=max_workers)
         
         for query_data in test_queries:
             current_query = Query(id=query_data[1], query=query_data[0], ground_truths=query_data[2])
             
             llm_response = None
-            if args.use_saved_llm_responses and llm_respose_df is not None:
+            if data_config['use_saved_llm_responses'] and llm_respose_df is not None:
                 llm_response_rows = llm_respose_df[llm_respose_df['id'] == current_query.id].to_dict(orient='records')
                 if llm_response_rows: llm_response = llm_response_rows[0]
             
@@ -516,64 +533,53 @@ def main(args):
                 retriever,
                 dataset_name,
                 csv_writer,
-                args.use_saved_llm_responses,
+                config,
+                data_config['use_saved_llm_responses'],
                 llm_response,
-                args.alpha if hasattr(args, 'alpha') else 12,
-                args.use_saved_vss_candidates,
+                data_config['use_saved_vss_candidates'],
                 vss_candidates
             )
             futures_list.append((future, current_query.id))
 
-        # 4. LOOP WITH TIMEOUTS
-        # IMPORTANT: We pass file=console_out to tqdm so it bypasses our file redirection
         with tqdm(total=len(test_queries), desc="Pipeline", unit="query", file=console_out) as pbar:
             for future, q_id in futures_list:
                 try:
-                    result = future.result(timeout=QUERY_TIMEOUT_SECONDS)
+                    result = future.result(timeout=timeout_sec)
                     if result:
                         results.append(result)
                     pbar.update(1)
                     
                 except TimeoutError:
-                    # Log failure to FILE
-                    print(f"[TIMEOUT] Query {q_id} exceeded {QUERY_TIMEOUT_SECONDS}s")
-                    # Log failure to CONSOLE
+                    print(f"[TIMEOUT] Query {q_id} exceeded {timeout_sec}s")
                     console_out.write(f"\n[FAIL] Query {q_id} Timed Out\n")
-                    
                     failed_queries.append({'query_id': q_id, 'error': 'TIMEOUT', 'traceback': 'Thread abandoned'})
                     pbar.update(1)
                     
                 except Exception as e:
-                    # Log failure to FILE
                     print(f"[ERROR] Query {q_id}: {e}\n{traceback.format_exc()}")
-                    # Log failure to CONSOLE
                     console_out.write(f"\n[FAIL] Query {q_id} Error: {str(e)[:50]}...\n")
-                    
                     failed_queries.append({'query_id': q_id, 'error': str(e), 'traceback': traceback.format_exc()})
                     pbar.update(1)
 
-        # 5. CLEANUP
         print("Pipeline finished. Shutting down executor...")
-        executor.shutdown(wait=False) # Don't wait for zombies
+        executor.shutdown(wait=False) 
         
-        save_aggregate_results(results, csv_path=f"./output/{args.exp_name}/aggregate_results.csv")
-        save_data_dump(results, csv_path=f"./output/{args.exp_name}/full_data_dump.csv")
+        save_aggregate_results(results, csv_path=f"{output_base}/{exp_name}/aggregate_results.csv")
+        save_data_dump(results, csv_path=f"{output_base}/{exp_name}/full_data_dump.csv")
         
         if failed_queries:
-             with open(f"./output/{args.exp_name}/failed_queries.csv", 'w', newline='', encoding='utf-8') as f:
+             with open(f"{output_base}/{exp_name}/failed_queries.csv", 'w', newline='', encoding='utf-8') as f:
                 writer = csv.DictWriter(f, fieldnames=['query_id', 'error', 'traceback'])
                 writer.writeheader()
                 writer.writerows(failed_queries)
 
     except Exception as e:
-        # Restoration is handled in finally, but we print to console here
         sys.stdout = console_out
         sys.stderr = console_err
         print(f"CRITICAL MAIN ERROR: {e}")
         traceback.print_exc()
 
     finally:
-        # 6. RESTORE STREAMS & EXIT
         sys.stdout = console_out
         sys.stderr = console_err
         try:
@@ -583,21 +589,10 @@ def main(args):
         
         print("Run complete. Forcing exit to kill zombie threads.")
         os._exit(0)
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Run QA pipeline on knowledge base")
-    
-    parser.add_argument("--embedding-dir", type=str, required=True)
-    parser.add_argument("--dataset", type=str, required=True)
-    parser.add_argument("--split", type=str, required=True)
-    parser.add_argument("--test-run", action='store_true')
-    parser.add_argument("--exp-name", type=str, default=None)
-    parser.add_argument("--use-saved-llm-responses", action='store_true')
-    parser.add_argument("--llm-responses-file", type=str, default="llm_responses.csv")
-    parser.add_argument("--use-saved-vss-candidates", action='store_true')
-    parser.add_argument("--timeout", type=int, default=300)
-    parser.add_argument("--vss-candidates-json-path", type=str, default="vss_candidates.json")
-    parser.add_argument("--alpha", type=int, default=12)
-    
-    args = parser.parse_args()
-    QUERY_TIMEOUT_SECONDS = args.timeout
-    main(args)
+    if len(sys.argv) < 2:
+        print("Usage: python script.py <path_to_config.json>")
+        sys.exit(1)
+        
+    main(sys.argv[1])

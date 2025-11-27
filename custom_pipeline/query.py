@@ -26,7 +26,7 @@ class Query:
         # and initialize to empty dict if None is passed.
         self.entities = entities if entities is not None else {}
         self.initial_symbol_candidates = symbol_candidates if symbol_candidates is not None else {}
-        self.relations = entities if entities is not None else {}
+        self.relations = relations if relations is not None else {}
         self.results = {}
         self.grounding_candidates = []
         self.vss_merged_candidates = []
