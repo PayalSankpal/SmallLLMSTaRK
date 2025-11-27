@@ -6,7 +6,7 @@
 		"llm_do_sample": false,
 		"llm_top_p": 1,
 		"llm_seed": 42,
-		"llm_default_system_message": "You are a helpful assistant. You give brief, precise answers without explanations. Your answers are in a machine-readable format.",
+		"llm_default_system_message": "You are a helpful assistant. You give brief, precise answers without explanations. Your answers are in a machine-readable format.follow instructions given exactly.",
 		"llm_parallelization_mode": "multiprocessing",
 
 		"llama_3-1_70b_path": "models/Meta-Llama-3.1-70B-Instruct",
