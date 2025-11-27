@@ -1,55 +1,266 @@
-Example 1
-Query: What conditions are associated with hyperalphalipoproteinemia, which causes elevated triglycerides and cholesterol levels in the blood?
-Response:
-{
+Example 1:
+Query: Which anatomical structures lack the expression of genes or proteins involved in the interaction with the fucose metabolism pathway?
+Entities:{
   "A": {
-    "type": ["disease"],
-    "lexical": {"name": "hyperalphalipoproteinemia"},
+    "type": ["pathway"],
+    "lexical": {"name": "fucose metabolism pathway"},
     "semantic": [],
     "constant": true
   },
   "B": {
-    "type": ["effect/phenotype"],
-    "lexical": {"name": "elevated triglycerides"},
+    "type": ["gene/protein"],
+    "lexical": {},
+    "semantic": ["involved in the interaction with the fucose metabolism pathway"],
+    "constant": false
+  },
+  "ANSWER": {
+    "type": ["anatomy"],
+    "lexical": {},
+    "semantic": [
+      "lack the expression of genes or proteins",
+      "involved in the interaction with the fucose metabolism pathway"
+    ],
+    "constant": false
+  }
+}
+Example 2:
+Query: What liquid drugs target the A2M gene/protein and bind to the PDGFR-beta receptor?
+Entities: {
+  "A": {
+    "type": ["gene/protein"],
+    "lexical": {"name": "A2M"},
     "semantic": [],
     "constant": true
   },
-  "C": {
-    "type": ["effect/phenotype"],
-    "semantic": ["elevated cholesterol levels in the blood"],
+  "B": {
+    "type": ["molecular_function"],
+    "lexical": {"name": "binding to PDGFR-beta receptor"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["drug"],
+    "lexical": {"name": "liquid drugs"},
+    "semantic": [
+      "target the A2M gene/protein",
+      "bind to the PDGFR-beta receptor"
+    ],
+    "constant": false
+  }
+}
+Example 3:
+Query: What diseases are linked to the NSMCE3 gene or its corresponding protein?
+Entities: {
+  "A": {
+    "type": ["gene/protein"],
+    "lexical": {"name": "NSMCE3"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["disease"],
+    "lexical": {},
+    "semantic": ["linked to the NSMCE3 gene or its corresponding protein"],
+    "constant": false
+  }
+}
+Example 4:
+Query: Identify a gene or protein that interacts with SLC4A10 and is linked to a similar effect or phenotype.
+Entities: {
+  "A": {
+    "type": ["gene/protein"],
+    "lexical": {"name": "SLC4A10"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["gene/protein"],
+    "lexical": {},
+    "semantic": [
+      "interacts with SLC4A10",
+      "linked to a similar effect or phenotype"
+    ],
+    "constant": false
+  }
+}
+Example 5:
+Query: What drug should be avoided for focal hand dystonia and also targets the ORM2 gene/protein?
+Entities: {
+  "A": {
+    "type": ["disease"],
+    "lexical": {"name": "focal hand dystonia"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["gene/protein"],
+    "lexical": {"name": "ORM2"},
+    "semantic": [],
     "constant": true
   },
   "ANSWER": {
     "type": ["drug"],
     "lexical": {},
-    "semantic": ["associated with hyperalphalipoproteinemia", "elevated cholesterol levels in the blood", "elevated triglycerides"],
+    "semantic": [
+      "should be avoided for focal hand dystonia",
+      "targets the ORM2 gene/protein"
+    ],
     "constant": false
   }
 }
-
-Example 2
-Query: Please find the genes and proteins that interact with manganese ion binding and participate in the KSRP-mediated mRNA binding and destabilization pathway.
-Response:
-{
+Example 6:
+Query: What solid-state drugs currently target the ATP5F1C gene/protein as their main biological interaction?
+Entities: {
   "A": {
-    "type": ["molecular_function"],
-    "lexical": {"name": "manganese ion binding"},
+    "type": ["gene/protein"],
+    "lexical": {"name": "ATP5F1C"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["drug"],
+    "lexical": {},
+    "semantic": [
+      "solid-state",
+      "target the ATP5F1C gene/protein",
+      "main biological interaction"
+    ],
+    "constant": false
+  }
+}
+Example 7:
+Query: Identify proteins that interact with ATXN1L and are linked to the same medical condition.
+Entities: {
+  "A": {
+    "type": ["gene/protein"],
+    "lexical": {"name": "ATXN1L"},
     "semantic": [],
     "constant": true
   },
   "B": {
-    "type": ["pathway"],
+    "type": ["disease"],
     "lexical": {},
-    "semantic": ["KSRP-mediated mRNA binding and destabilization"],
+    "semantic": ["same medical condition"],
     "constant": false
   },
   "ANSWER": {
     "type": ["gene/protein"],
     "lexical": {},
-    "semantic": [],
+    "semantic": [
+      "interact with ATXN1L",
+      "linked to the same medical condition"
+    ],
     "constant": false
   }
 }
-
-
-
+Example 8:
+Query: Can you identify any medications that exhibit a synergistic effect when taken concomitantly with Simvastatin for treating the same medical condition and additionally act by reversibly and selectively blocking the angiotensin II AT1 receptors in vascular smooth muscle and adrenal tissues?
+Entities: {
+  "A": {
+    "type": ["drug"],
+    "lexical": {"name": "Simvastatin"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["effect/phenotype"],
+    "lexical": {},
+    "semantic": ["synergistic effect when taken concomitantly with Simvastatin"],
+    "constant": false
+  },
+  "C": {
+    "type": ["anatomy"],
+    "lexical": {},
+    "semantic": [
+      "vascular smooth muscle",
+      "adrenal tissues"
+    ],
+    "constant": false
+  },
+  "D": {
+    "type": ["molecular_function"],
+    "lexical": {},
+    "semantic": ["reversibly and selectively blocking the angiotensin II AT1 receptors"],
+    "constant": false
+  },
+  "ANSWER": {
+    "type": ["drug"],
+    "lexical": {},
+    "semantic": [
+      "medications that exhibit a synergistic effect when taken concomitantly with Simvastatin",
+      "act by reversibly and selectively blocking the angiotensin II AT1 receptors in vascular smooth muscle and adrenal tissues",
+      "for treating the same medical condition as Simvastatin"
+    ],
+    "constant": false
+  }
+}
+Example 9:
+Query: Find a gene or protein that interacts with protease binding, is associated with hepatocellular carcinoma progression, is significantly elevated in the blood during late pregnancy, and inhibits multiple proteinases by trapping them after enzymatic cleavage.
+Entities: {
+  "A": {
+    "type": ["molecular_function"],
+    "lexical": {"name": "protease binding"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["disease"],
+    "lexical": {"name": "hepatocellular carcinoma"},
+    "semantic": ["hepatocellular carcinoma progression"],
+    "constant": true
+  },
+  "C": {
+    "type": ["effect/phenotype"],
+    "lexical": {},
+    "semantic": ["elevated in the blood during late pregnancy"],
+    "constant": false
+  },
+  "D": {
+    "type": ["molecular_function"],
+    "lexical": {},
+    "semantic": ["inhibits multiple proteinases by trapping them after enzymatic cleavage"],
+    "constant": false
+  },
+  "ANSWER": {
+    "type": ["gene/protein"],
+    "lexical": {},
+    "semantic": [
+      "interacts with protease binding",
+      "associated with hepatocellular carcinoma progression",
+      "elevated in the blood during late pregnancy",
+      "inhibits multiple proteinases by trapping them after enzymatic cleavage"
+    ],
+    "constant": false
+  }
+}
+Example 10:
+Query: Identify the biological pathway that enables FGFR4 and PLCG1 to engage and subsequently activates phospholipase C.
+Entities: {
+  "A": {
+    "type": ["gene/protein"],
+    "lexical": {"name": "FGFR4"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["gene/protein"],
+    "lexical": {"name": "PLCG1"},
+    "semantic": [],
+    "constant": true
+  },
+  "C": {
+    "type": ["gene/protein"],
+    "lexical": {"name": "phospholipase C"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["pathway"],
+    "lexical": {},
+    "semantic": [
+      "enables FGFR4 and PLCG1 to engage",
+      "activates phospholipase C"
+    ],
+    "constant": false
+  }
+}

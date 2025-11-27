@@ -17,20 +17,48 @@ def parse_relation_string(response_string):
     
     try:
         # Try using ast.literal_eval instead of json.loads
-        # This can parse Python dict syntax with tuple keys
         parsed = ast.literal_eval(response_string)
         
-        # If keys are already tuples, we're good
         result = {}
         for key, value in parsed.items():
             if isinstance(key, tuple):
                 result[key] = value
-            elif isinstance(key, str) and key.startswith('(') and key.endswith(')'):
-                # Handle string representation of tuples
-                entities = re.findall(r'"([^"]+)"', key)
-                if len(entities) == 2:
-                    tuple_key = tuple(entities)
-                    result[tuple_key] = value
+            elif isinstance(key, str):
+                # Clean the string key
+                clean_key = key.strip()
+                
+                # Check if it looks like a tuple: starts with ( and ends with )
+                if clean_key.startswith('(') and clean_key.endswith(')'):
+                    try:
+                        # Attempt 1: Try safe evaluation (works for "('A', 'B')")
+                        potential_tuple = ast.literal_eval(clean_key)
+                        if isinstance(potential_tuple, tuple):
+                            result[potential_tuple] = value
+                            continue
+                    except (ValueError, SyntaxError):
+                        pass
+
+                    # Attempt 2: Regex for quoted strings inside parens (works for "('A', 'B')")
+                    # NEW: handle cases where quotes might be mixed
+                    entities_quoted = re.findall(r'[\'"]([^\'"]+)[\'"]', clean_key)
+                    if len(entities_quoted) == 2:
+                        result[tuple(entities_quoted)] = value
+                        continue
+
+                    # Attempt 3: Regex for unquoted strings inside parens (works for "(A, ANSWER)")
+                    # NEW: Robust fallback for missing quotes
+                    inner_content = clean_key[1:-1] # Remove ( and )
+                    if ',' in inner_content:
+                        # Split by comma and strip whitespace
+                        parts = [p.strip() for p in inner_content.split(',', 1)]
+                        if len(parts) == 2:
+                            # Remove any lingering quotes just in case
+                            clean_parts = [p.strip("'\"") for p in parts]
+                            result[tuple(clean_parts)] = value
+                            continue
+                    
+                    # If all parsing fails, keep original string key
+                    result[key] = value
                 else:
                     result[key] = value
             else:
