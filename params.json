@@ -2,15 +2,15 @@
   "experiment": {
     "dataset": "prime",
     "split": "test",
-    "exp_name": "EXPERIMENT_007",
-    "test_run": false,
+    "exp_name": "PARALLEL_RETRIEVAL_TEST_RUN",
+    "test_run": true,
     "output_base_dir": "./output/",
     "logging_level": "INFO"
   },
   "pipeline": {
-    "max_workers": 8,
+    "max_workers": 4,
     "timeout_seconds": 300,
-    "max_queries_test_run": 50
+    "max_queries_test_run": 20
   },
   "models": {
     "llm_name": "meta/llama-3.3-70b-instruct",
@@ -20,8 +20,8 @@
   },
   "retrieval_params": {
     "step3_candidate_generation": {
-      "initial_limit": 20,
-      "vss_cutoff": 0.75
+      "initial_limit": 25,
+      "vss_cutoff": 0.70
     },
     "step5_vss_merge": {
       "alpha": 14,
@@ -30,7 +30,7 @@
     }
   },
   "grounding_params": {
-    "max_candidates_per_symbol": 3000,
+    "max_candidates_per_symbol": 2000,
     "max_answer_candidates": 20,
     "top_k_neighbors": 20,
     "support_boost": 0.0,

@@ -400,23 +400,42 @@ def pipeline_threadsafe(query, llm_bridge, kb, retriever, dataset_name,
     
     print(f"--- Processing Query {query.id} ---")
     
+    start_time_s1 = time.time()
     step1_identify_entities(query, llm_bridge, dataset_name, use_saved, saved_response)
+    end_time_s1 = time.time()
+    print(f"[TIMING] Query {query.id} - Step 1 took {end_time_s1 - start_time_s1:.4f} seconds")
+
     if query.status == "FAILED":
         print(f"FAILED at Step 1")
         return query
     
+    start_time_s2 = time.time()
     step2_identify_relations(query, llm_bridge, dataset_name, use_saved, saved_response)
+    end_time_s2 = time.time()
+    print(f"[TIMING] Query {query.id} - Step 2 took {end_time_s2 - start_time_s2:.4f} seconds")
+
     if query.status == "FAILED":
         print(f"FAILED at Step 2")
         return query
     
+    start_time_s3 = time.time()
     step3_get_initial_candidates(query, kb, retriever, config)
+    end_time_s3 = time.time()
+    print(f"[TIMING] Query {query.id} - Step 3 took {end_time_s3 - start_time_s3:.4f} seconds")
+
+    start_time_s4 = time.time()
     step4_grounding(query, kb, retriever, config)
+    end_time_s4 = time.time()
+    print(f"[TIMING] Query {query.id} - Step 4 took {end_time_s4 - start_time_s4:.4f} seconds")
+
+    start_time_s5 = time.time()
     step5_merge_vss_candidates(query, retriever, kb, config,
                                use_saved=use_saved_vss, 
                                vss_candidates=vss_candidates,
                                llm_bridge=llm_bridge, 
                                dataset_name=dataset_name)
+    end_time_s5 = time.time()
+    print(f"[TIMING] Query {query.id} - Step 5 took {end_time_s5 - start_time_s5:.4f} seconds")
     
     save_results_threadsafe(query, csv_writer)
     print(f"Finished Query {query.id}")
