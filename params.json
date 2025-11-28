@@ -1,6 +1,6 @@
 {
   "experiment": {
-    "dataset": "prime",
+    "dataset": "mag",
     "split": "test",
     "exp_name": "PARALLEL_RETRIEVAL_TEST_RUN",
     "test_run": true,
