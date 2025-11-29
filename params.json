@@ -2,18 +2,18 @@
   "experiment": {
     "dataset": "mag",
     "split": "test",
-    "exp_name": "PARALLEL_RETRIEVAL_TEST_RUN",
-    "test_run": true,
+    "exp_name": "RECALL@50_RERANK_TOP10",
+    "test_run": false,
     "output_base_dir": "./output/",
     "logging_level": "INFO"
   },
   "pipeline": {
-    "max_workers": 4,
+    "max_workers": 12,
     "timeout_seconds": 300,
     "max_queries_test_run": 20
   },
   "models": {
-    "llm_name": "meta/llama-3.3-70b-instruct",
+    "llm_name": "openai/gpt-oss-120b",
     "llm_config_path": "configs.json",
     "embedding_model": "text-embedding-ada-002",
     "embedding_base_path": "./emb/"
@@ -24,14 +24,14 @@
       "vss_cutoff": 0.70
     },
     "step5_vss_merge": {
-      "alpha": 14,
+      "alpha": 20,
       "top_k": 20,
       "cutoff": 0.6
     }
   },
   "grounding_params": {
     "max_candidates_per_symbol": 2000,
-    "max_answer_candidates": 20,
+    "max_answer_candidates": 50,
     "top_k_neighbors": 20,
     "support_boost": 0.0,
     "score_decay": 0.9

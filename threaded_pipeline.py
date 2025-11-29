@@ -1,5 +1,5 @@
-import multiprocessing as mp
-from multiprocessing import Process, Queue, Manager
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import csv
 import functools
 from pathlib import Path
@@ -111,6 +111,7 @@ def get_initial_candidates_for_entity(entity_info, entity_key, kb, retriever, li
     if name_constraint:
         for etype in entity_types:
             exact_matches = kb.get_node_ids_by_value(node_type=etype, key="name", value=name_constraint)
+            
             if exact_matches:
                 nodes_by_name.update(exact_matches)
                 candidates.extend([CandidateContext(node_id=x, entity=entity_key, score=1.0) for x in exact_matches])
@@ -139,20 +140,28 @@ def step3_get_initial_candidates(current_query, kb, retriever, config):
     }
 
     step3_config = config['retrieval_params']['step3_candidate_generation']
+    max_workers = config['pipeline']['max_workers']
 
-    for entity_key, entity_info in entities_to_process.items():
-        try:
-            e_key, candidates = get_initial_candidates_for_entity(
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_entity = {
+            executor.submit(
+                get_initial_candidates_for_entity, 
                 entity_info, 
                 entity_key, 
                 kb, 
                 retriever,
                 step3_config['initial_limit'],
                 step3_config['vss_cutoff']
-            )
-            initial_candidates[e_key] = candidates
-        except Exception as exc:
-            print(f"Entity generation generated an exception for {entity_key}: {exc}")
+            ): entity_key 
+            for entity_key, entity_info in entities_to_process.items()
+        }
+
+        for future in as_completed(future_to_entity):
+            try:
+                e_key, candidates = future.result()
+                initial_candidates[e_key] = candidates
+            except Exception as exc:
+                print(f"Entity generation generated an exception for {future_to_entity[future]}: {exc}")
 
     current_query.initial_symbol_candidates = initial_candidates
     print(current_query)
@@ -235,6 +244,7 @@ def step4_grounding(query: Query, kb, retriever, config):
     query.grounding_candidates = top_beta_candidates + reranked_candidates
     query.final_candidates = final_candidates
     return final_candidates
+
 
 def get_expanded_query(query, dataset_name: str, kb, llm_bridge) -> str:
     docs_list = []
@@ -391,10 +401,10 @@ def save_data_dump(results, csv_path="aggregate_results.csv"):
     print(f"✓ Successfully saved {len(results)} results to {csv_path}")
 
 
-def pipeline_worker(query, llm_bridge, kb, retriever, dataset_name, 
-                    csv_writer, config,
-                    use_saved: bool = False, saved_response: Optional[dict] = None,
-                    use_saved_vss: bool = False, vss_candidates: dict = {}):
+def pipeline_threadsafe(query, llm_bridge, kb, retriever, dataset_name, 
+                       csv_writer, config,
+                       use_saved: bool = False, saved_response: Optional[dict] = None,
+                       use_saved_vss: bool = False, vss_candidates: dict = {}):
     
     print(f"--- Processing Query {query.id} ---")
     
@@ -444,95 +454,6 @@ def create_experiment_dir(exp_name: str, base_dir: str):
     try: os.makedirs(f"{base_dir}/{exp_name}", exist_ok=True)
     except Exception as e: pass
 
-
-def process_batch(batch_queries, config, dataset_name, model_config, data_config, 
-                  result_queue, failed_queue, progress_queue):
-    """
-    Process a batch of queries in a separate process.
-    """
-    try:
-        # Initialize resources for this process
-        kb = load_skb(dataset_name, download_processed=True)
-        llm_bridge = LlmBridge(model_name=model_config['llm_name'], 
-                              configs_path=model_config['llm_config_path'])
-        
-        qa_dataset = load_qa(dataset_name)
-        retriever = VSSRetriever(
-            kb=kb, 
-            emb_base_path=f"{model_config['embedding_base_path']}/{dataset_name}/", 
-            emb_model=model_config['embedding_model'], 
-            qa_dataset=qa_dataset, 
-            dataset_name=config['experiment']['split'], 
-            use_vss=True, 
-            use_gpu=True
-        )
-        
-        vss_candidates = {}
-        if data_config['use_saved_vss_candidates']:
-            with open(data_config['vss_candidates_json_path'], 'r', encoding='utf-8') as f:
-                vss_candidates = json.load(f)
-        
-        llm_respose_df = None
-        if data_config['use_saved_llm_responses']:
-            llm_respose_df = pd.read_csv(data_config['llm_responses_file'])
-
-        csv_fieldnames = [
-            'query_id', 'query_text', 'total_answers', 'retrieved_count', 'missed_count',
-            'recall@50', 'recall@20', 'hit@1', 'hit@5', 'mrr', 'recall@20_vss_merged'
-        ]
-        
-        # Each process writes to its own CSV file
-        process_id = mp.current_process().pid
-        exp_name = config['experiment'].get('exp_name', f"{dataset_name}_results")
-        output_base = config['experiment'].get('output_base_dir', './output/')
-        csv_writer = ThreadSafeCSVWriter(
-            csv_path=f"{output_base}/{exp_name}/pipeline_results_process_{process_id}.csv",
-            fieldnames=csv_fieldnames
-        )
-        
-        # Process each query in the batch
-        for query_data in batch_queries:
-            try:
-                current_query = Query(id=query_data[1], query=query_data[0], 
-                                     ground_truths=query_data[2])
-                
-                llm_response = None
-                if data_config['use_saved_llm_responses'] and llm_respose_df is not None:
-                    llm_response_rows = llm_respose_df[llm_respose_df['id'] == current_query.id].to_dict(orient='records')
-                    if llm_response_rows: 
-                        llm_response = llm_response_rows[0]
-                
-                result = pipeline_worker(
-                    current_query,
-                    llm_bridge,
-                    kb,
-                    retriever,
-                    dataset_name,
-                    csv_writer,
-                    config,
-                    data_config['use_saved_llm_responses'],
-                    llm_response,
-                    data_config['use_saved_vss_candidates'],
-                    vss_candidates
-                )
-                
-                if result:
-                    result_queue.put(result)
-                progress_queue.put(1)
-                
-            except Exception as e:
-                print(f"[ERROR] Query {query_data[1]}: {e}\n{traceback.format_exc()}")
-                failed_queue.put({
-                    'query_id': query_data[1], 
-                    'error': str(e), 
-                    'traceback': traceback.format_exc()
-                })
-                progress_queue.put(1)
-                
-    except Exception as e:
-        print(f"[CRITICAL] Batch process error: {e}\n{traceback.format_exc()}")
-
-
 # ============================================
 # MAIN FUNCTION
 # ============================================
@@ -581,94 +502,101 @@ def main(config_path):
             limit = pipe_config.get('max_queries_test_run', 100)
             test_queries = test_queries[:limit]
         
-        console_out.write(f"Starting {len(test_queries)} queries. Logs: {log_path}\n")
+        kb = load_skb(dataset_name, download_processed=True)
         
-        # Split queries into batches for multiprocessing
-        num_workers = pipe_config['max_workers']
-        batch_size = len(test_queries) // num_workers
-        if len(test_queries) % num_workers != 0:
-            batch_size += 1
+        llm_bridge = LlmBridge(model_name=model_config['llm_name'], configs_path=model_config['llm_config_path'])
         
-        query_batches = [
-            test_queries[i:i + batch_size] 
-            for i in range(0, len(test_queries), batch_size)
-        ]
+        retriever = VSSRetriever(
+            kb=kb, 
+            emb_base_path=f"{model_config['embedding_base_path']}/{dataset_name}/", 
+            emb_model=model_config['embedding_model'], 
+            qa_dataset=qa_dataset, 
+            dataset_name=split_name, 
+            use_vss=True, 
+            use_gpu=True
+        )
         
-        console_out.write(f"Split into {len(query_batches)} batches for {num_workers} workers\n")
+        vss_candidates = {}
+        if data_config['use_saved_vss_candidates']:
+             with open(data_config['vss_candidates_json_path'], 'r', encoding='utf-8') as f:
+                vss_candidates = json.load(f)
         
-        # Create queues for communication between processes
-        manager = Manager()
-        result_queue = manager.Queue()
-        failed_queue = manager.Queue()
-        progress_queue = manager.Queue()
-        
-        # Create and start processes
-        processes = []
-        for batch in query_batches:
-            p = Process(
-                target=process_batch,
-                args=(batch, config, dataset_name, model_config, data_config,
-                      result_queue, failed_queue, progress_queue)
-            )
-            p.start()
-            processes.append(p)
-        
-        # Monitor progress
-        results = []
-        failed_queries = []
-        completed = 0
-        total = len(test_queries)
-        
-        with tqdm(total=total, desc="Pipeline", unit="query", file=console_out) as pbar:
-            while completed < total:
-                try:
-                    progress_queue.get(timeout=1)
-                    completed += 1
-                    pbar.update(1)
-                except:
-                    pass
-        
-        # Wait for all processes to complete
-        for p in processes:
-            p.join()
-        
-        # Collect results from queues
-        while not result_queue.empty():
-            results.append(result_queue.get())
-        
-        while not failed_queue.empty():
-            failed_queries.append(failed_queue.get())
-        
-        console_out.write(f"\nProcessed {len(results)} queries successfully\n")
-        console_out.write(f"Failed queries: {len(failed_queries)}\n")
-        
-        # Merge results from all process-specific CSV files
+        llm_respose_df = None
+        if data_config['use_saved_llm_responses']:
+            llm_respose_df = pd.read_csv(data_config['llm_responses_file'])
+
         csv_fieldnames = [
             'query_id', 'query_text', 'total_answers', 'retrieved_count', 'missed_count',
             'recall@50', 'recall@20', 'hit@1', 'hit@5', 'mrr', 'recall@20_vss_merged'
         ]
+        csv_writer = ThreadSafeCSVWriter(
+            csv_path=f"{output_base}/{exp_name}/pipeline_results.csv",
+            fieldnames=csv_fieldnames
+        )
+
+        console_out.write(f"Starting {len(test_queries)} queries. Logs: {log_path}\n")
         
-        merged_csv_path = f"{output_base}/{exp_name}/pipeline_results.csv"
-        with open(merged_csv_path, 'w', newline='', encoding='utf-8') as merged_file:
-            writer = csv.DictWriter(merged_file, fieldnames=csv_fieldnames)
-            writer.writeheader()
+        failed_queries = []
+        results = []
+        futures_list = []
+        
+        max_workers = pipe_config['max_workers']
+        timeout_sec = pipe_config['timeout_seconds']
+        
+        executor = ThreadPoolExecutor(max_workers=max_workers)
+        
+        for query_data in test_queries:
+            current_query = Query(id=query_data[1], query=query_data[0], ground_truths=query_data[2])
             
-            # Read and merge all process-specific CSV files
-            for p in processes:
-                process_csv = f"{output_base}/{exp_name}/pipeline_results_process_{p.pid}.csv"
-                if os.path.exists(process_csv):
-                    with open(process_csv, 'r', encoding='utf-8') as f:
-                        reader = csv.DictReader(f)
-                        for row in reader:
-                            writer.writerow(row)
-                    # Optionally remove process-specific CSV
-                    # os.remove(process_csv)
+            llm_response = None
+            if data_config['use_saved_llm_responses'] and llm_respose_df is not None:
+                llm_response_rows = llm_respose_df[llm_respose_df['id'] == current_query.id].to_dict(orient='records')
+                if llm_response_rows: llm_response = llm_response_rows[0]
+            
+            future = executor.submit(
+                pipeline_threadsafe,
+                current_query,
+                llm_bridge,
+                kb,
+                retriever,
+                dataset_name,
+                csv_writer,
+                config,
+                data_config['use_saved_llm_responses'],
+                llm_response,
+                data_config['use_saved_vss_candidates'],
+                vss_candidates
+            )
+            futures_list.append((future, current_query.id))
+
+        with tqdm(total=len(test_queries), desc="Pipeline", unit="query", file=console_out) as pbar:
+            for future, q_id in futures_list:
+                try:
+                    result = future.result(timeout=timeout_sec)
+                    if result:
+                        results.append(result)
+                    pbar.update(1)
+                    
+                except TimeoutError:
+                    print(f"[TIMEOUT] Query {q_id} exceeded {timeout_sec}s")
+                    console_out.write(f"\n[FAIL] Query {q_id} Timed Out\n")
+                    failed_queries.append({'query_id': q_id, 'error': 'TIMEOUT', 'traceback': 'Thread abandoned'})
+                    pbar.update(1)
+                    
+                except Exception as e:
+                    print(f"[ERROR] Query {q_id}: {e}\n{traceback.format_exc()}")
+                    console_out.write(f"\n[FAIL] Query {q_id} Error: {str(e)[:50]}...\n")
+                    failed_queries.append({'query_id': q_id, 'error': str(e), 'traceback': traceback.format_exc()})
+                    pbar.update(1)
+
+        print("Pipeline finished. Shutting down executor...")
+        executor.shutdown(wait=False) 
         
         save_aggregate_results(results, csv_path=f"{output_base}/{exp_name}/aggregate_results.csv")
         save_data_dump(results, csv_path=f"{output_base}/{exp_name}/full_data_dump.csv")
         
         if failed_queries:
-            with open(f"{output_base}/{exp_name}/failed_queries.csv", 'w', newline='', encoding='utf-8') as f:
+             with open(f"{output_base}/{exp_name}/failed_queries.csv", 'w', newline='', encoding='utf-8') as f:
                 writer = csv.DictWriter(f, fieldnames=['query_id', 'error', 'traceback'])
                 writer.writeheader()
                 writer.writerows(failed_queries)
@@ -687,12 +615,10 @@ def main(config_path):
         except:
             pass
         
-        console_out.write("Run complete.\n")
+        print("Run complete. Forcing exit to kill zombie threads.")
+        os._exit(0)
 
 if __name__ == "__main__":
-    # Required for multiprocessing on Windows and to avoid recursion
-    mp.set_start_method('spawn', force=True)
-    
     if len(sys.argv) < 2:
         print("Usage: python script.py <path_to_config.json>")
         sys.exit(1)
