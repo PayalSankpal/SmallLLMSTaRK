@@ -1,14 +1,14 @@
 {
   "experiment": {
-    "dataset": "prime",
+    "dataset": "mag",
     "split": "test",
     "exp_name": "RECALL@50_RERANK_TOP10",
-    "test_run": true,
+    "test_run": false,
     "output_base_dir": "./output/",
     "logging_level": "INFO"
   },
   "pipeline": {
-    "max_workers": 4,
+    "max_workers": 12,
     "timeout_seconds": 300,
     "max_queries_test_run": 20
   },

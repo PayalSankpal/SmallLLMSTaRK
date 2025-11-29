@@ -225,10 +225,16 @@ def step4_grounding(query: Query, kb, retriever, config):
         )]
     else:
         answers = []
-    query.grounding_candidates = answers
+    beta = 10 
+    top_beta_candidates = answers[:beta].copy()
+    candidates_to_rerank = answers[beta:].copy()
+    reranked_candidates = retriever.rerank_nodes_by_similarity(
+        node_ids = candidates_to_rerank,
+        query = query.query,
+    )[0]
+    query.grounding_candidates = top_beta_candidates + reranked_candidates
     query.final_candidates = final_candidates
     return final_candidates
-
 
 def get_expanded_query(query, dataset_name: str, kb, llm_bridge) -> str:
     docs_list = []

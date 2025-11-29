@@ -240,7 +240,7 @@ def step4_grounding(query: Query, kb, retriever, config):
     reranked_candidates = retriever.rerank_nodes_by_similarity(
         node_ids = candidates_to_rerank,
         query = query.query,
-    )
+    )[0]
     query.grounding_candidates = top_beta_candidates + reranked_candidates
     query.final_candidates = final_candidates
     return final_candidates
