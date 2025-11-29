@@ -111,6 +111,7 @@ def get_initial_candidates_for_entity(entity_info, entity_key, kb, retriever, li
     if name_constraint:
         for etype in entity_types:
             exact_matches = kb.get_node_ids_by_value(node_type=etype, key="name", value=name_constraint)
+            
             if exact_matches:
                 nodes_by_name.update(exact_matches)
                 candidates.extend([CandidateContext(node_id=x, entity=entity_key, score=1.0) for x in exact_matches])
@@ -233,7 +234,14 @@ def step4_grounding(query: Query, kb, retriever, config):
         )]
     else:
         answers = []
-    query.grounding_candidates = answers
+    beta = 10 
+    top_beta_candidates = answers[:beta].copy()
+    candidates_to_rerank = answers[beta:].copy()
+    reranked_candidates = retriever.rerank_nodes_by_similarity(
+        node_ids = candidates_to_rerank,
+        query = query.query,
+    )
+    query.grounding_candidates = top_beta_candidates + reranked_candidates
     query.final_candidates = final_candidates
     return final_candidates
 
@@ -495,6 +503,7 @@ def main(config_path):
             test_queries = test_queries[:limit]
         
         kb = load_skb(dataset_name, download_processed=True)
+        
         llm_bridge = LlmBridge(model_name=model_config['llm_name'], configs_path=model_config['llm_config_path'])
         
         retriever = VSSRetriever(

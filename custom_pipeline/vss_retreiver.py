@@ -410,4 +410,66 @@ class VSSRetriever:
             return f"GPU: {torch.cuda.get_device_name(0)} (Memory: {torch.cuda.get_device_properties(0).total_memory / 1e9:.2f} GB)"
         else:
             return "CPU"
-
+        
+def rerank_nodes_by_similarity(
+    self,
+    node_ids: List[int],
+    query: str
+) -> Tuple[List[int], List[float]]:
+    """
+    Rerank a list of node IDs by their VSS similarity to a query string.
+    
+    Args:
+        node_ids: List of node IDs to rerank
+        query: Query string to compute similarities against
+        
+    Returns:
+        Tuple of (reranked_node_ids, similarity_scores) ordered by descending similarity
+        
+    Raises:
+        ValueError: If a node ID doesn't exist in KB or doesn't have embeddings
+    """
+    # Get query embedding dynamically
+    query_emb = self.get_query_emb(query, query_id=None, use_cache=True)
+    if query_emb is None:
+        raise ValueError(f"Could not generate embedding for query: {query}")
+    
+    # Ensure query embedding is on correct device and is 1D
+    query_emb = query_emb.to(self.device).squeeze()
+    
+    # Compute similarities for each node
+    similarities = []
+    
+    for node_id in node_ids:
+        # Get node type from KB
+        node_type = self.kb.get_node_type_by_id(node_id)
+        
+        if node_type is None:
+            raise ValueError(f"Node ID {node_id} does not exist in the knowledge base")
+        
+        # Check if embeddings exist for this node type
+        if node_type not in self.node_emb_dict:
+            raise ValueError(f"No embeddings found for node type: {node_type}")
+        
+        # Get the index of this node in the type's node list
+        type_node_ids = self.node_ids_by_type.get(node_type, [])
+        
+        try:
+            node_index = type_node_ids.index(node_id)
+        except ValueError:
+            raise ValueError(f"Node ID {node_id} not found in node list for type {node_type}")
+        
+        # Get node embedding and ensure it's 1D
+        node_embedding = self.node_emb_dict[node_type][node_index].squeeze()
+        
+        # Compute similarity (cosine similarity via dot product with normalized embeddings)
+        similarity = torch.dot(node_embedding, query_emb).item()
+        similarities.append(similarity)
+    
+    # Sort by similarity (descending order)
+    sorted_indices = sorted(range(len(similarities)), key=lambda i: similarities[i], reverse=True)
+    
+    reranked_node_ids = [node_ids[i] for i in sorted_indices]
+    reranked_scores = [similarities[i] for i in sorted_indices]
+    
+    return reranked_node_ids, reranked_scores
