@@ -1,0 +1,68 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+9557,"Are there any papers with shared authors from ""Infrared Spectral Mapping of Supernova Remnants. I. N63A and Its Environment"", that similarly investigate supernova remnants in the Large Magellanic Cloud as their principal area of study?",6,3,3,0.5,0.5,1.0,1.0,1.0,0.3333333333333333
+12661,Find papers from Pittsburg State University researchers on dark matter exploration through gamma rays.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+11538,"Find publications by co-authors of ""Validity of the generalized density matrix method for the microscopic calculation of a collective/bosonic Hamiltonian"", which also explore the topic of thermalization in small isolated systems.",2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+8029,"What other research papers on quiet sun magnetism has the study ""Spectropolarimetric Evidence for a Siphon Flow along an Emerging Magnetic Flux Tube"" cited?",6,6,0,1.0,1.0,1.0,1.0,1.0,1.0
+11635,Show me publications by F. Pallas that discuss a multifunctional laser system.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+9132,Show me publications by M. Giunta exploring constraints on a lightweight pseudoscalar Higgs particle.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+6448,"What are some other works that have referenced or examined ""Stochastic Background of Gravitational Waves from Fermions -- Theory and Applications"" in relation to anisotropies in the gravitational wave background?",4,4,0,1.0,1.0,1.0,1.0,1.0,0.75
+467,"Can you find papers that explore Pc4-5 pulsations' influence on chorus waves and are referenced in ""Cluster observations of whistler mode ducts and banded chorus""?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+3671,Which publications by Monash University South Africa scholars focus on germanium defect analysis?,1,1,0,1.0,1.0,0.0,0.0,0.125,1.0
+10579,"Find more publications from the co-authors of ""Intense EM filamentation in relativistic hot plasmas"" that delve into the principles of self-organization.",10,0,10,0.0,0.0,0.0,0.0,0.0,0.0
+653,Show me publications by R. Brown on the formation of high-temperature field configurations through the merging of compact toroids.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+13234,Show me publications on gravity theories from the co-authors involved in the 'Extensions of Lorentzian spacetime geometry: From Finsler to Cartan and vice versa' paper.,19,19,0,1.0,1.0,1.0,1.0,1.0,0.6842105263157895
+10701,Show me publications by L. Lebanowski related to the study of neutrino oscillation experiments.,7,7,0,1.0,1.0,1.0,1.0,1.0,1.0
+9338,"What research papers that delve into heat transfer optimization methods have been referenced in the study titled ""Temperature–heat diagram analysis method for heat recovery physical adsorption refrigeration cycle – Taking multi-stage cycle as an example""?",2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+6455,Search for publications by Marco Breschi on thermal properties.,10,7,3,0.7,0.7,1.0,1.0,1.0,0.6
+9771,Show me research articles on Dynamic contrast-enhanced magnetic resonance imaging that investigate compressed sensing techniques for real-time monitoring of lung tumor movement.,2,1,1,0.5,0.5,0.0,0.0,0.16666666666666666,0.5
+2667,"Show me publications by authors of ""Dynamical instability and the expansion-free condition"" that cover the topic of cavity evolution in relativistic fluids.",2,1,1,0.5,0.5,1.0,1.0,1.0,1.0
+9054,Which publications from Wrocław University of Economics researchers focus on transitions in their studies?,3,3,0,1.0,1.0,0.0,0.0,0.14285714285714285,1.0
+7838,Are there any research articles from Dresden University of Technology that analyze LHC data seeking novel resonances within the context of Quark-Gluon plasma?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+13094,Publications on plasma-generated magnetic fields authored by Hashemite University researchers,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+6732,"Show me papers examining dual-band phased array antenna technologies, authored by the co-authors of the publication 'Dual-Band Wide-Angle Scanning Planar Phased Array in X/Ku-Bands'.",4,3,1,0.75,0.75,1.0,1.0,1.0,0.5
+12096,Show me publications by A. Sandacz on the topic of gluon polarization.,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+5111,"Which publications from the co-authors of ""Antenna Array Geometries to Reduce the Compute Load in Radio Telescopes"" also discuss efficient techniques for analyzing radio telescope data?",4,3,1,0.75,0.75,1.0,1.0,1.0,0.75
+11250,Search for publications by Neeraj Tripathi focusing on the impact of polarization on GaN photocathodes.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+32,I'm looking for publications on the adjustment of topological phases within the pseudospectrum domain through system parameter alteration.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+11157,"Can you find 2014 papers about ionospheric plasma parameters that were cited in the study ""Equinoctial asymmetry in ionosphere over Indian region during 2006–2013 using COSMIC measurements""?",2,2,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+9834,Show me publications by Anahit Badalyan on the topic of holography with Bessel beam recordings.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+11718,"Are there any other studies on high-velocity outflows that have referenced or been inspired by the evidence presented in ""Discovery of the transition of a mini-broad absorption line into a broad absorption line in the SDSS quasar J115122.14+020426.3""?",7,6,1,0.8571428571428571,0.8571428571428571,0.0,1.0,0.5,0.8571428571428571
+8716,Can you find any publications from Shiga University of Medical Science that focus on the study of interfaces via molecular dynamics simulations?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+8467,"Show me articles on crystal structures and their formation authored by co-authors of ""Dependence of the Apex Angle of an Inverted Pyramidal-Shaped Container on Crystallization of Brownian Particles"".",3,2,1,0.6666666666666666,0.6666666666666666,1.0,1.0,1.0,1.0
+2317,"Show me publications from Nirmalagiri College, Kuthuparamba exploring the features and utilization of lithium ferrite nanoparticles.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3951,Looking for research papers related to electric motor armature design optimization that have affiliations with Hanbat National University. Specifically interested in works proposing design optimizations of electric motors.,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+12357,Does any literature exist from the Netherlands Environmental Assessment Agency on anticipated climate extremes under 1.5°C global warming? Could you also look up related research papers in the domain of Astronomy?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+6540,I'm looking for papers on the geochemical characteristics of lunar features related to the Moon's magma ocean.,8,8,0,1.0,1.0,1.0,1.0,1.0,1.0
+4403,"Search for publications from Penn State Erie, The Behrend College regarding the study of mass transfer within water filtration systems, specifically within the mechanical engineering discipline.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5664,Could you show me a collection of scholarly articles related to Nitrobenzene that discuss kinetic models for laser-induced fragmentation?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7208,Publications by authors affiliated with Ussuriysk Astrophysical Observatory on the relationship between eruptive filaments and solar magnetic fields,5,5,0,1.0,1.0,0.0,0.0,0.06666666666666667,0.0
+11913,"Looking for papers having a coauthor in common with ""Quantitative analysis of strain distribution in InAs/InAs1−xSbx superlattices"", within the same research discipline, and suggesting a novel FPA architecture.",4,0,4,0.0,0.0,0.0,0.0,0.0,0.0
+4429,"Are there any papers authored by the same writer as ""Triton photodisintegration in three-dimensional approach"", discussing a nuclear process from 2013, and within the same discipline as the primary paper?",1,1,0,1.0,1.0,0.0,0.0,0.05,0.0
+9819,Show me papers where Davood Abbaszadeh is the author and the topic is the creation of PLEDs utilizing a stable aluminum cathode in air.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8608,Show me publications by Li Yi on the investigation of flow and nonflow elements in particle collision events.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+11621,"Show me the papers that are authored by the coauthors of ""Self-Dual Soliton Solution in a Generalized Jackiw-Pi Model"", and discuss compacton configurations.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+936,Could you find any papers written by Yan Xu focusing on the research of the impact of additives? I'm particularly interested in those which offer an analysis of the effects of these additives.,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+3345,2017 publications on multiplex networks by Central European University researchers,2,0,2,0.0,0.0,0.0,0.0,0.0,0.5
+5883,Search for publications on nanomaterials synthesis by authors affiliated with Khadir Mohideen College.,2,2,0,1.0,1.0,0.0,0.0,0.05555555555555555,0.0
+2999,Show me the research papers written by Bin Shao focusing on thermoelectric properties.,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+4308,"Can you find papers that explore the impact of variables on horizontal buoyant jets and have referenced or been referenced by the study ""A convective-like energy-stable open boundary condition for simulations of incompressible flows""?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+3331,"What are the papers discussed about planet pairs near resonances that also reference the paper ""Eight planets in four multi-planet systems via transit timing variations in 1350 days?",9,9,0,1.0,1.0,1.0,1.0,1.0,0.8888888888888888
+1320,"Does the Sainsbury Laboratory have any publications on Supernovae, incorporating recent molecular data in their examination of these cosmic events?",2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+7070,"Show me publications from the co-authors of ""Air quality and thermal comfort levels under extreme hot weather"", specifically those which analyze the comparison between satellite and model estimates of air quality from 2009-2010.",1,1,0,1.0,1.0,0.0,0.0,0.1,1.0
+5520,"What are the references to other studies examining multi-frequency radio observations of galaxies in the work ""The clustering and bias of radio-selected AGN and star-forming galaxies in the COSMOS field""?",12,5,7,0.4166666666666667,0.4166666666666667,0.0,1.0,0.25,0.3333333333333333
+12569,Find papers by José M. Perez-Lorenzo on sound source localization with microphones.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+730,Show me publications by Weiduo Zhao on reducing torque in military vehicles.,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+10361,Searching for papers on the Tomlinson model addressing the causes of directional friction variation.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+5307,Are there any publications from Bukovinian State Medical University authors on the topic of spatial-frequency analysis in blood plasma imagery?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7930,Show me publications by Ari Sihvola related to plasmonic resonances in various geometries.,7,7,0,1.0,1.0,1.0,1.0,1.0,1.0
+12223,"What are the papers cited by ""Calibration of a flat field soft x-ray grating spectrometer for laser produced plasmas"" that also discuss future spectroscopy experiments with high-Z ions?",1,1,0,1.0,1.0,0.0,0.0,0.125,1.0
+7460,"Could you please locate papers from 2010 on quantum phase transition, within the same field as ""Cs Faraday optical filter with a single transmission peak resonant with the atomic transition at 455 nm"", and present a common co-author with it?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+11829,Which publications by Sigma-Aldrich researchers discuss microgravity experiments performed during parabolic flights?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+6522,Does the University of Maryland Biotechnology Institute publish any research on the interaction between biological nanofactories and bacteria?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+11514,"Show me publications from co-authors of the paper ""Magnetic Shielding Analysis of a Ferrite Plate With a Periodic Metal Strip"" that also discuss the use of magnetic shields in their research or applications.",4,4,0,1.0,1.0,0.0,1.0,0.5,0.75
+11958,"Show me papers discussing effective field theories near potential valleys, authored by collaborators on 'Gravitational Forces on a Codimension-2 Brane'.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+854,Could you show me some papers on Fixed Beam that delve into the development of carbon therapy facilities?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+2305,Does the National Institute of Technology in Durgapur have any publications on the properties and characterization of nanocrystalline materials?,6,0,6,0.0,0.0,0.0,0.0,0.0,0.0
+10661,"What are the publications mentioned in ""Enhanced Coercivity in $L1_{1}$ CoPt Thin Film on Glass Substrate by Fine-Tuning Pt Underlayer"" that also discuss the L10 ordering of FePt films?",3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+11815,Does any research from Xi'an Polytechnic University discuss quantum state sharing schemes amidst noise within the realm of Topology?,2,1,1,0.5,0.5,0.0,1.0,0.5,0.5
+3267,Which articles by authors who also contributed to 'The concept of quasi-integrability' delve into collective approximations in additional co-written research?,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0

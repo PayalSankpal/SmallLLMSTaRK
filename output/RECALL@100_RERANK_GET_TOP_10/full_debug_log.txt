@@ -1,0 +1,4 @@
+Use file from /root/.cache/huggingface/hub/datasets--snap-stanford--stark/snapshots/88269e23e90587f99476c5dd74e235a0877e69be/qa/mag/stark_qa/stark_qa_human_generated_eval.csv.
+
+[SAVED] Aggregate results saved to ./output//RECALL@100_RERANK_GET_TOP_10/aggregate_results.csv
+✓ Successfully saved 39 results to ./output//RECALL@100_RERANK_GET_TOP_10/full_data_dump.csv
