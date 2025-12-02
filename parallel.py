@@ -333,11 +333,39 @@ def save_results_threadsafe(query: Query, csv_writer: ThreadSafeCSVWriter):
 
 
 def save_aggregate_results(queries: list, csv_path: str = "aggregate_results.csv"):
-    # This function now mostly acts as a final merger or check, 
-    # since we are saving incrementally in the process
     if not queries: return
-    # Logic remains similar for calculating final averages if needed
-    # ... (Implementation kept as utility)
+    grounding_metrics_list = []
+    vss_metrics_list = []
+
+    for query in queries:
+        if hasattr(query, 'results') and query.results is not None:
+            grounding_metrics_list.append(query.results.get('metrics', {}))
+        if hasattr(query, 'results') and 'vss_merged_metrics' in query.results:
+            vss_metrics_list.append(query.results.get('vss_merged_metrics', {}))
+
+    if not grounding_metrics_list: return
+    num_queries = len(grounding_metrics_list)
+    
+    # --- THIS IS THE MATH PART ---
+    avg_metrics = {
+        'total_queries': num_queries,
+        'avg_total_answers': sum(m.get('total_answers', 0) for m in grounding_metrics_list) / num_queries,
+        'avg_retrieved_count': sum(m.get('retrieved_count', 0) for m in grounding_metrics_list) / num_queries,
+        'avg_missed_count': sum(m.get('missed_count', 0) for m in grounding_metrics_list) / num_queries,
+        'avg_recall@20': sum(m.get('recall@20', 0.0) for m in grounding_metrics_list) / num_queries,
+        'avg_recall@50': sum(m.get('recall@50', 0.0) for m in grounding_metrics_list) / num_queries,
+        'avg_hit@1': sum(m.get('hit_at_1', 0.0) for m in grounding_metrics_list) / num_queries,
+        'avg_hit@5': sum(m.get('hit_at_5', 0.0) for m in grounding_metrics_list) / num_queries,
+        'avg_mrr': sum(m.get('mrr', 0.0) for m in grounding_metrics_list) / num_queries,
+        'recall@20_vss_merged': sum(m.get('recall@20', 0.0) for m in vss_metrics_list) / num_queries if vss_metrics_list else 0.0,        
+    }
+    
+    with open(csv_path, 'w', newline='', encoding='utf-8') as f:
+        writer = csv.DictWriter(f, fieldnames=list(avg_metrics.keys()))
+        writer.writeheader()
+        writer.writerow(avg_metrics)
+    print(f"\n[SAVED] Aggregate results saved to {csv_path}")
+
 
 def serialize_value(value):
     if value is None: return ""
@@ -734,6 +762,7 @@ def main(config_path):
                     # os.remove(fpath) # Optional cleanup
                 except Exception: pass
 
+        save_aggregate_results(results, csv_path=f"{output_base}/{exp_name}/aggregate_results.csv")
         if failed_queries:
             with open(f"{output_base}/{exp_name}/failed_queries.csv", 'a', newline='', encoding='utf-8') as f:
                 writer = csv.DictWriter(f, fieldnames=['query_id', 'error', 'traceback'])
