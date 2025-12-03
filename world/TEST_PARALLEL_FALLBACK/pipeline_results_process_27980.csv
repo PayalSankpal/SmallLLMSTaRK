@@ -1,0 +1,3 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+1989,"What possible conditions could I have that are linked to or similar to uniparental disomy of chromosome X, particularly if this led to me inheriting two copies of a recessive gene from my mother?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+4242,Can you recommend medications that treat both eosinophilic pneumonia and a parasitic worm infection?,1,1,0,1.0,1.0,0.0,0.0,0.08333333333333333,1.0

@@ -1,0 +1,6 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+10076,Which medications are associated with genes or proteins that engage with the Golgi apparatus interior?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+7527,Which multi-organ systemic diseases are linked to the PXK gene and have contraindications with the use of Pyridoxine?,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+9158,Which gene or protein is simultaneously not expressed in the placenta and the superior frontal gyrus?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1558,What conditions similar to malignant mesothelioma could affect the heart's outer lining and cause abnormal symptoms?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+6250,Which gene or protein is not expressed in the fallopian tube and is also non-existent in the metanephric glomerular tissue?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0

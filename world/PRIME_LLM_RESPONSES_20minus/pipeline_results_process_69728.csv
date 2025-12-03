@@ -1,0 +1,6 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+11152,"Identify common genetic targets of both 3-({[(1Z)-(2-methoxyphenyl)methylidene]amino}oxy)propanoic acid and 2,6-dimethyl-4-[(E)-2-phenylethenyl]phenol.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8732,Please identify the common gene targets that both Hydrocortisone phosphate and Testosterone propionate interact with.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+2855,What genetic disorder associated with the PMP22 gene manifests symptoms similar to acute sensory ataxic neuropathy?,1,1,0,1.0,1.0,0.0,0.0,0.1,1.0
+8602,Identify common genetic targets modulated by both 2-Methoxyestradiol and Hydrocortisone probutate.,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+10675,What are the observed effects or phenotypes associated with the subtype of gastritis induced by alcohol consumption?,4,4,0,1.0,1.0,1.0,1.0,1.0,1.0

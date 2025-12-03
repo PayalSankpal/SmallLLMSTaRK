@@ -1,0 +1,3 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+2287,What diseases are subclassified under secondary malignant neoplasms and have metastatic potential?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+1804,"Please find me genes or proteins linked to pediatric liver cancer, interacting with PAXIP1, highly expressed in lung adenocarcinoma, with a nuclear signal and similarity to GAGE/PAGE proteins.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
