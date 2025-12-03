@@ -225,14 +225,7 @@ def step4_grounding(query: Query, kb, retriever, config):
         )]
     else:
         answers = []
-    beta = 10 
-    top_beta_candidates = answers[:beta].copy()
-    candidates_to_rerank = answers[beta:].copy()
-    reranked_candidates = retriever.rerank_nodes_by_similarity(
-        node_ids = candidates_to_rerank,
-        query = query.query,
-    )[0]
-    query.grounding_candidates = top_beta_candidates + reranked_candidates
+    query.grounding_candidates = answers
     query.final_candidates = final_candidates
     return final_candidates
 
@@ -262,6 +255,7 @@ def step5_merge_vss_candidates(query: Query, retriever: VSSRetriever, kb, config
     if not use_saved:
         all_candidates = []
         expanded_query = get_expanded_query(query, dataset_name=dataset_name, kb=kb, llm_bridge=llm_bridge)
+        # expanded_query = query.query
         print(query)
         print("[Step 5] Expanded Query for VSS:", expanded_query)
         possible_node_types = query.entities["ANSWER"]["type"].copy()

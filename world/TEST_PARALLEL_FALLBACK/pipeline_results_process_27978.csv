@@ -1,0 +1,3 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+10551,"Which genes encode proteins that interact with both O-Trifluoromethylphenyl Anthranilic Acid and N-(3,5-dibromo-4-hydroxyphenyl)benzamide as ligands?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7224,"Which medication, facilitated by gene or protein interactions with the sarcolemma, exhibits minimal impact on blood gases, respiratory function, and the cardiovascular system?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

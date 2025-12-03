@@ -1,0 +1,39 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+1505,"Looking for a tight, secure, non-slip armband for an MP3 player with a transparent window to allow easy setting adjustments while protecting the device.",17,0,17,0.0,0.0,0.0,0.0,0.0,0.0
+5748,"Can you suggest a compact wallet with an NFL team logo that's capable of holding cash, cards, and ID securely? I'm not worried about the size.",16,0,16,0.0,0.0,0.0,0.0,0.0,0.1875
+5039,"Looking for a baseball glove made from Buffalo Palm and Shell/Mesh with a manufacturer's warranty, size and fitting aren't important, Can you assist?",4,0,4,0.0,0.0,0.0,0.0,0.0,0.0
+1154,What 8x10 inch Barry Bonds collectible item featuring his portrait would you recommend for a big fan?,3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
+6133,"Can you suggest a compact backpack that comes with secure waist straps, offers dual shoulder support, and features a dual water bottle system? I'm not a fan of large backpacks, so something smaller would be ideal.",9,0,9,0.0,0.0,0.0,0.0,0.0,0.0
+871,Can you recommend a swimwear from TYR brand that has a similar style to TYR Alliance Team Lightning Diamondback?,10,3,7,0.3,0.3,1.0,1.0,1.0,0.2
+6619,What's a good rubber grip with comfortable finger grooves for the Ruger 22/45 RP that can help enhance grip and accuracy?,9,0,9,0.0,0.0,0.0,0.0,0.0,0.3333333333333333
+6941,"Where can I find an authentic University of Kentucky T-shirt that is officially licensed, fits comfortably, and remains durable after washing? It would be preferable if it includes official tags as proof of authenticity.",3,2,1,0.6666666666666666,0.6666666666666666,1.0,1.0,1.0,0.6666666666666666
+8254,"Can you suggest a beach blanket that can be compressed to fit in a 5x7 inch pouch, but expand to approximately 7x6 feet? It should be lightweight, wind-resistant up to 15 mph, and compatible with my Pacific Breeze Easy Setup Beach Tent.",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+900,"Can you suggest a black streak remover spray for my truck that's easy to use and doesn't require hard scrubbing? Ideally, I'd like something that can quickly clean black spots with a simple spray and wipe process.",12,0,12,0.0,0.0,0.0,0.0,0.0,0.3333333333333333
+3508,Looking for an officially licensed gift related to the Pittsburgh Penguins gnome. Any recommendations?,4,0,4,0.0,0.0,0.0,0.0,0.0,0.75
+579,Can you recommend some lightweight green paintball goggles?,3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
+3557,Looking for a fishing lure that's effective when fishing from piers and bridges. Have previously had excellent results with Gotchas which attracted various types of fish. Want something of a similar standard.,9,0,9,0.0,0.0,0.0,0.0,0.0,0.0
+3113,Where can I find delightful alligator feet-themed slippers with an animal-inspired design?,4,0,4,0.0,0.0,0.0,0.0,0.0,0.25
+9022,What are some options for black women's Dodgers shirts?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+3481,Does Amazon sell hip-mounted crossbow quivers that can hold three arrows?,5,0,5,0.0,0.0,0.0,0.0,0.0,0.0
+7542,"Looking for a lightweight, 100% polyester cap suitable for sensitive skin. Preferably with a logo design on the front and offers a comfortable fit.",19,0,19,0.0,0.0,0.0,0.0,0.0,0.0
+6463,What are some golf tees that would work well with my 12-pack of Nitro Maximum Distance Golf Balls?,2,2,0,1.0,1.0,0.0,0.0,0.14285714285714285,1.0
+7053,"Can you suggest a one-size-fits-all winter loop scarf available in multiple colors, with a rough circumference of 59 inches and width around 12 inches?",2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+4725,What type of Mizuno bamboo wood baseball bat is frequently used with a Tiger Stick! in the wrapper 4.25 oz Hand Grip Pine Tar Baseball Bat?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7861,"Can you suggest a medium size weighted shirt system for me, where the sizing is perfectly accurate?",4,0,4,0.0,0.0,0.0,0.0,0.0,0.0
+1272,"Is there a lightweight, sophisticated tote bag suitable for the workplace available?",16,0,16,0.0,0.0,0.0,0.0,0.0,0.0
+8245,"Looking for a well-known brand's kiteboarding trainer kite harness bundle, such as HQ Power Kites, Peter Lynn, CX, or WindBone.",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+3462,"Looking for a Coleman 3-in-1 rain poncho that features Kansas State team colors and logos, and can also function as a stadium blanket or seat cushion.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+9031,"Where can I find a sophisticated women's beanie with detailed cabling and intricate design? I would also need it to have a risk-free purchase option, with the ability to return for a full refund if required.",7,0,7,0.0,0.0,0.0,0.0,0.0,0.0
+5029,Where can I find an MLB Arizona Diamondbacks alternative replica jersey with an original team locker tag for an authentic team spirit experience?,6,0,6,0.0,0.0,0.0,0.0,0.0,0.16666666666666666
+6997,Can you recommend a women's shirt from the CP Clothing range that has been listed on Amazon since early 2015?,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+8034,Are there any USA-made salt grinders available on Amazon that cater to my Clemson fandom?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+4476,"Where can I find a Milwaukee Brewers royal blue T-shirt with a vintage, washed-out look that's made from ultra-soft fabric for all-day comfort?",2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+8742,"Where can I find a 100% cotton baby bib, perfect as a gift for a Bayern Munich fanatic, and features the Bayern Munich branding for a comfortable fit?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+258,Where can I find a high-quality marine impeller from a trusted brand like Sierra? I have previously purchased a Sierra International Lower Unit Seal Kit for my Johnson/Evinrude outboard motor. What are some complementary products that are commonly used with this seal kit?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+5332,"Is there a bicycle saddle water system that is easy to adjust, fits perfectly with the Cobb Seat, and keeps me hydrated?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8732,"What's a good camping wood stove that can easily fit inside my Dutch oven? I frequently use the BeGrit Backpacking Camping Cookware Picnic Camp Cooking Cook Set for Hiking (8pcs/Set, 410 Stainless Steel) during my hikes and I'm looking for a stove that is compatible with this set.",2,0,2,0.0,0.0,0.0,0.0,0.0,0.5
+8548,"Are there any durable kids sport watches with a high-quality plastic case, stainless steel back cover, and buckle? Ideally, it should be packaged in an elegant box suitable for gifting.",7,0,7,0.0,0.0,0.0,0.0,0.0,0.0
+1397,Looking for a compatible Beretta pistol adapter for my Beretta 96 that also works seamlessly with the NcStar Beretta 92 Pistol Accessory Rail Adapter (MADBER).,10,2,8,0.2,0.2,1.0,1.0,1.0,0.2
+848,Can you recommend high-quality rifle shooting targets that instantly indicate whether a shot is a hit or miss and come with a minimum of 120 pasters?,3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
+5062,What are some lightweight golf bags that are typically recommended to pair with the Grey Bennington QO-14 Quiet Organizer Golf Cart Bag?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+8981,"What are some comfortable compression socks that can be worn for a long duration and match with Copper Fit Unisex Sport Socks compression anti odor 3 Pair L/XL(9-12)? Also, how can I print the return shipping label?",2,1,1,0.5,0.5,0.0,1.0,0.5,1.0

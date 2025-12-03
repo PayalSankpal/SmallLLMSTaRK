@@ -1,0 +1,36 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+583,"Could you find a gene or protein that interacts with the ATR activation pathway during replication stress, has significant homology with fission yeast's Rad9, and possesses 3' to 5' exonuclease activity linked to DNA damage detection and repair?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+733,Please find genes or proteins that interact with TNF receptor superfamily members associated with the non-canonical NF-kB pathway and also connect with CISD2 through protein-protein interactions.,1,1,0,1.0,1.0,0.0,0.0,0.07692307692307693,1.0
+2069,Could you help me identify the condition associated with cerebellar hemisphere malformation that is hereditary and might explain developmental issues in the posterior brain region?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+1408,"I need to find a gene or protein that interacts with USH1C through PPI, is expressed in leg muscles, helps anchor protocadherins to actin, and is involved in gathering intermicrovillar adhesion complex components.",1,1,0,1.0,1.0,0.0,0.0,0.14285714285714285,1.0
+8335,Which keratolytic medication utilizes the same gene or protein for transport as Polythiazide?,3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
+10947,Which cellular structures are engaged in interactions with genes or proteins that Aeruginosin 98-B affects?,4,4,0,1.0,1.0,1.0,1.0,1.0,1.0
+3891,Can you identify a gene or protein involved in atrial fibrillation that also has a role in ubiquitin ligase binding and is active in the rapid repolarization phase of cardiac activity?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5086,"What possible medical conditions could be linked to femoral vein thrombophlebitis and phlebitis, considering they are hereditary in my family?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+2827,"Could you provide information on hereditary diseases linked to 'acheiria, unilateral'? I'm wondering if it could explain the symptoms I'm having.",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+9578,"Are there any pharmaceutical agents designed to regulate pH balance that also interact with, or have an effect on, the genes or proteins associated with 6,7-dihydropteridine reductase activity?",1,1,0,1.0,1.0,0.0,0.0,0.058823529411764705,0.0
+5727,Identify proteins or genes that interact with NEK11 and share an association with a mutual disease.,1,1,0,1.0,1.0,0.0,1.0,0.2,1.0
+2884,Which disease falls under normal pressure hydrocephalus and is linked to the THAS gene or its protein product?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+6231,"Identify pathways associated with the ""Release of Hedgehog protein without cholesterol"" (Hh-Np) from secreting cells that also interact with a common gene or protein.",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+7256,"Is there a shared genetic or protein transporter mechanism between Fluorometholone and Dexamethasone, both being potent corticosteroid medications frequently prescribed in eye care practices?",12,0,12,0.0,0.0,0.0,0.0,0.0,0.0
+6603,Identify a biological pathway associated with the Formation of the Cornified Envelope that also demonstrates interaction with a mutual gene or protein.,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+8625,Which medication shares a gene or protein transporter with Efavirenz and additionally serves as a reverse transcriptase inhibitor?,11,3,8,0.2727272727272727,0.2727272727272727,1.0,1.0,1.0,0.45454545454545453
+1208,Which disease associated with neoplastic syndrome aggressively invades the chest skeleton early on?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7047,"Is there an interaction between the gene/protein responsible for actin binding and disassembly, mediated by actin depolymerization factor 2, and the gene/protein implicated in the synthesis of 5-Phosphoribose 1-diphosphate?",2,1,1,0.5,0.5,0.0,0.0,0.16666666666666666,0.5
+6434,"Could you identify a medication facilitated by genetic or proteomic agents that engage with the endoplasmic reticulum and exhibits a half-life ranging from 12 to 17 hours, which plays a role in controlling the intracellular protein processing and trafficking?",14,0,14,0.0,0.0,0.0,0.0,0.0,0.0
+3501,"Which gene on chromosome 4, known to interact with PALS2 protein and expressed in multicellular organisms, encodes a protein located between 69,969 and 70,151 base pairs?",2,1,1,0.5,0.5,1.0,1.0,1.0,0.5
+10076,Which medications are associated with genes or proteins that engage with the Golgi apparatus interior?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+7527,Which multi-organ systemic diseases are linked to the PXK gene and have contraindications with the use of Pyridoxine?,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+9158,Which gene or protein is simultaneously not expressed in the placenta and the superior frontal gyrus?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1558,What conditions similar to malignant mesothelioma could affect the heart's outer lining and cause abnormal symptoms?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+6250,Which gene or protein is not expressed in the fallopian tube and is also non-existent in the metanephric glomerular tissue?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+6159,Which gene/protein is not expressed in both the renal tissues and the medial segment of the globus pallidus?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+10698,Identify pathways associated with the metabolism of polyamines which also exhibit interaction with identical genes or proteins.,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+4344,"Can you find a gene or protein that interacts with the sphingolipid biosynthesis pathway, is involved in dihydrosphingosine-1-phosphate phosphatase activity, and contributes to the chemotactic response to EGF?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+5449,"I'm looking for a gene or protein that modulates the Glutathione synthesis and recycling pathway, catalyzes the transformation of amino acids into different metabolites, and inhibits the growth of cancer cells, particularly with tumor-suppressing effects in gastric cancer.",3,3,0,1.0,1.0,0.0,0.0,0.07692307692307693,0.3333333333333333
+1828,Which autosomal recessive disease is associated with the AEBP1 gene?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8161,Which genes or proteins are found to be expressed in the nasopharyngeal tissue but not in the parietal lobe of the brain?,1,1,0,1.0,1.0,0.0,0.0,0.1111111111111111,1.0
+9020,Which disorders linked to Ketosis may lead to cardiomyopathy and hypoketotic hypoglycemia and currently lack any drugs officially sanctioned for treatment?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+143,"What disease functions as a parent and child condition in the hierarchy of autoinflammatory disorders, linking both pyogenic bacterial infections with amylopectinosis and PLCG2-associated antibody deficiency and immune dysregulation?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+4434,Could you recommend a medication for hemorrhoids treatment with a molecular weight near 340 units?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7043,Search for genes or proteins that interact with ATG2B and share an association with a common disease.,1,1,0,1.0,1.0,0.0,0.0,0.07692307692307693,1.0
