@@ -568,7 +568,6 @@ def print_aggregate_report(pipeline_results_path):
 
     except Exception as e:
         print(f"[Report Error] Failed to calculate aggregates: {e}", file=sys.__stdout__)
-
 def main():
     # 1. SETUP ARGUMENTS
     parser = argparse.ArgumentParser(description="Run StarkQA Pipeline")
@@ -596,6 +595,24 @@ def main():
     if args.score_decay is not None: config['grounding_params']['score_decay'] = args.score_decay
     if args.num_workers is not None: config['pipeline']['max_workers'] = args.num_workers
     if args.split: config['experiment']['split'] = args.split
+
+    # --- NEW: PRINT FINALIZED PARAMS (COMPACT) ---
+    print("\n" + "="*80)
+    print("FINALIZED PARAMETERS:")
+    flat_params = []
+    for section, content in config.items():
+        if isinstance(content, dict):
+            for k, v in content.items():
+                flat_params.append(f"{section}.{k}: {v}")
+        else:
+            flat_params.append(f"{section}: {content}")
+            
+    # Print 3 parameters per line for compactness
+    for i in range(0, len(flat_params), 3):
+        print(" | ".join(f"{p:<35}" for p in flat_params[i:i+3]))
+    print("="*80 + "\n")
+    # ---------------------------------------------
+
     # 4. SETUP DIRECTORIES
     exp_config = config['experiment']
     pipe_config = config['pipeline']
