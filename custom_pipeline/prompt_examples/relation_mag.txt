@@ -1,74 +1,324 @@
-Example 1
-Query: I'm looking for papers with a shared co-author from "A possible NN*(1440) quasi-molecular state", in the same field of nucleon-nucleon resonance states research, that also discuss nucleon-nucleon resonance states.
-
-Entities:
-{
+Example 1 
+Query: Look for papers that have a common coauthor with "Efficient Iterative Integral Technique for Computation of Fields in Electric Machines with Rotor Eccentricity", that are in the same research area, and that also undertake analysis of nonlinear machine fields similar to this 2012 study. 
+Entities: {
   "A": {
     "type": ["paper"],
-    "lexical": {"name": ""A possible NN*(1440) quasi-molecular state"},
+    "lexical": {
+      "title": "Efficient Iterative Integral Technique for Computation of Fields in Electric Machines with Rotor Eccentricity"
+    },
     "semantic": [],
-    "constant: true
+    "constant": true
   },
   "B": {
     "type": ["author"],
     "lexical": {},
     "semantic": [],
-    "constant" : false
+    "constant": false
   },
   "C": {
     "type": ["field_of_study"],
-    "lexical": {"name": "nucleon-nucleon resonance states"},
-    "semantic": [],
-    "constant" : true
+    "lexical": {},
+    "semantic": ["research area", "nonlinear machine fields"],
+    "constant": false
   },
   "ANSWER": {
     "type": ["paper"],
     "lexical": {},
-    "semantic": ["shared co-author", "nucleon-nucleon resonance states research"],
-    "constant" : false
+    "semantic": ["common coauthor", "analysis of nonlinear machine fields", "2012 study"],
+    "constant": false
   }
+} 
+Identified Relations: {
+  ("B", "A"): ["author___writes___paper"],
+  ("B", "ANSWER"): ["author___writes___paper"],
+  ("A", "C"): ["paper___has_topic___field_of_study"],
+  ("ANSWER", "C"): ["paper___has_topic___field_of_study"]
 }
 
-Identified Relations:
-{
-  ("B", "A"): ["writes"],
-  ("B", "ANSWER"): ["writes"],
-  ("ANSWER", "C"): ["has_topic"]
-}
-
-Example 2
-Query: '2015 Physics papers discussing fermions from Loyola University New Orleans on Arxiv'
-Entities:
-{
+Example 2 
+Query: Please show me publications by N. L. Seed on enhancing pattern reconstructions using phase-seeded point holograms. 
+Entities: {
   "A": {
-    "type": ["institution"],
-    "lexical": {"name": "Loyola University New Orleans"},
+    "type": ["author"],
+    "lexical": {"name": "N. L. Seed"},
     "semantic": [],
-    "constant: true
+    "constant": true
   },
   "B": {
+    "type": ["field_of_study"],
+    "lexical": {},
+    "semantic": ["enhancing pattern reconstructions", "phase-seeded point holograms"],
+    "constant": false
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["publications by N. L. Seed", "enhancing pattern reconstructions using phase-seeded point holograms"],
+    "constant": false
+  }
+} 
+Identified Relations: {
+  ("A", "ANSWER"): ["author___writes___paper"],
+  ("ANSWER", "B"): ["paper___has_topic___field_of_study"],
+  ("A", "B"): ["author___affiliated_with___institution", "author___writes___paper", "paper___cites___paper", "paper___has_topic___field_of_study"]
+}
+
+Example 3 
+Query: Find papers discussing fusion rocket propulsion for asteroid deflection or analyzing the practicality of fusion-powered engines, referencing "A New Vision for Fusion Energy Research: Fusion Rocket Engines for Planetary Defense". 
+Entities: {
+  "A": {
+    "type": ["paper"],
+    "lexical": {"title": "A New Vision for Fusion Energy Research: Fusion Rocket Engines for Planetary Defense"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fusion rocket propulsion"},
+    "semantic": [],
+    "constant": true
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "asteroid deflection"},
+    "semantic": [],
+    "constant": true
+  },
+  "D": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fusion-powered engines"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["fusion rocket propulsion for asteroid deflection", "practicality of fusion-powered engines"],
+    "constant": false
+  }
+} 
+Identified Relations: {
+  ("A", "B"): ["paper___has_topic___field_of_study"],
+  ("A", "C"): ["paper___has_topic___field_of_study"],
+  ("A", "D"): ["paper___has_topic___field_of_study"],
+  ("ANSWER", "B"): ["paper___has_topic___field_of_study"],
+  ("ANSWER", "C"): ["paper___has_topic___field_of_study"],
+  ("ANSWER", "D"): ["paper___has_topic___field_of_study"],
+  ("A", "ANSWER"): ["paper___cites___paper"]
+}
+
+Example 4 
+Query: Show publications by Colin McGinty on the topic of uncooled thermal imaging cameras. 
+Entities: {
+  "A": {
+    "type": ["author"],
+    "lexical": {"name": "Colin McGinty"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "uncooled thermal imaging cameras"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["publications by Colin McGinty", "uncooled thermal imaging cameras"],
+    "constant": false
+  }
+} 
+Identified Relations: {
+  ("A", "ANSWER"): ["author___writes___paper"],
+  ("ANSWER", "B"): ["paper___has_topic___field_of_study"]
+}
+
+Example 5 
+Query: Looking for publications on efficient algorithm development for fiber vibration sensing within Derivation methods. 
+Entities: {
+  "A": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "Derivation methods"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "fiber vibration sensing"},
+    "semantic": [],
+    "constant": true
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "efficient algorithm development"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["publications", "efficient algorithm development for fiber vibration sensing within Derivation methods"],
+    "constant": false
+  }
+} 
+Identified Relations: {
+  ("ANSWER", "A"): ["paper___has_topic___field_of_study"],
+  ("ANSWER", "B"): ["paper___has_topic___field_of_study"],
+  ("ANSWER", "C"): ["paper___has_topic___field_of_study"]
+}
+
+Example 6 
+Query: Hideyuki Takakura publications on predicting energy output using weather data 
+Entities: {
+  "A": {
+    "type": ["author"],
+    "lexical": {"name": "Hideyuki Takakura"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {},
+    "semantic": ["predicting energy output", "using weather data"],
+    "constant": false
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["Hideyuki Takakura publications"],
+    "constant": false
+  }
+} 
+Identified Relations: {
+  ("A", "ANSWER"): ["author___writes___paper"],
+  ("ANSWER", "B"): ["paper___has_topic___field_of_study"]
+}
+
+Example 7 
+Query: Can you find research papers that implemented micro-texturing methods comparable to the ones used in "High-efficiency microcrystalline silicon solar cells on honeycomb textured substrates grown with high-rate VHF plasma-enhanced chemical vapor deposition"? These papers should have also been referenced in subsequent studies investigating the efficiency of textured substrates for solar cells. 
+Entities: {
+  "A": {
+    "type": ["paper"],
+    "lexical": {
+      "title": "High-efficiency microcrystalline silicon solar cells on honeycomb textured substrates grown with high-rate VHF plasma-enhanced chemical vapor deposition"
+    },
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "textured substrates for solar cells"},
+    "semantic": [],
+    "constant": true
+  },
+  "C": {
     "type": ["author"],
     "lexical": {},
     "semantic": [],
-    "constant" : false
-  },
-  "C": {
-    "type": ["field_of_study"],
-    "lexical": {"name": "fermions"},
-    "semantic": [],
-    "constant" : true
+    "constant": false
   },
   "ANSWER": {
     "type": ["paper"],
     "lexical": {},
-    "semantic": ["2015 Physics papers"],
-    "constant" : false
+    "semantic": ["research papers", "micro-texturing methods", "comparable to High-efficiency microcrystalline silicon solar cells", "referenced in subsequent studies", "investigating the efficiency of textured substrates for solar cells"],
+    "constant": false
   }
+} 
+Identified Relations: {
+  ("A", "B"): ["paper___has_topic___field_of_study"],
+  ("A", "C"): ["author___writes___paper"],
+  ("ANSWER", "B"): ["paper___has_topic___field_of_study"],
+  ("ANSWER", "A"): ["paper___cites___paper"],
+  ("ANSWER", "C"): ["author___writes___paper"],
+  ("C", "A"): ["author___writes___paper"]
 }
 
-Identified Relations:
-{
-  ("B", "A"): ["affiliated_with"],
-  ("B", "ANSWER"): ["writes"],
-  ("ANSWER", "C"): ["has_topic"]
+Example 8 
+Query: Can you find me papers published in 2013 in the field of astroparticle physics that either cite or are cited by "Effects of kination and scalar-tensor cosmologies on sterile neutrinos"? 
+Entities: {
+  "A": {
+    "type": ["paper"],
+    "lexical": {"title": "Effects of kination and scalar-tensor cosmologies on sterile neutrinos"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "astroparticle physics"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["published in 2013", "cite or are cited by", "astroparticle physics"],
+    "constant": false
+  }
+} 
+Identified Relations: {
+  ("A", "B"): ["paper___has_topic___field_of_study"],
+  ("ANSWER", "B"): ["paper___has_topic___field_of_study"],
+  ("A", "ANSWER"): ["paper___cites___paper"]
+}
+
+Example 9 
+Query: Show me 2018 publications discussing the application of gallium oxide in CIGS layers. 
+Entities: {
+  "A": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "gallium oxide"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "CIGS layers"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["2018 publications", "application of gallium oxide in CIGS layers"],
+    "constant": false
+  }
+} 
+Identified Relations: {
+  ("ANSWER", "A"): ["paper___has_topic___field_of_study"],
+  ("ANSWER", "B"): ["paper___has_topic___field_of_study"]
+}
+
+Example 10 
+Query: Search for publications by Hyron Spinrad focusing on Lyman-alpha emission in galaxies at redshift approximately 7. 
+Entities: {
+  "A": {
+    "type": ["author"],
+    "lexical": {"name": "Hyron Spinrad"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["field_of_study"],
+    "lexical": {"name": "Lyman-alpha emission in galaxies"},
+    "semantic": [],
+    "constant": true
+  },
+  "C": {
+    "type": ["field_of_study"],
+    "lexical": {},
+    "semantic": ["galaxies at redshift approximately 7"],
+    "constant": false
+  },
+  "ANSWER": {
+    "type": ["paper"],
+    "lexical": {},
+    "semantic": ["publications by Hyron Spinrad", "Lyman-alpha emission in galaxies at redshift approximately 7"],
+    "constant": false
+  }
+} 
+Identified Relations: {
+  ("A", "ANSWER"): ["author___writes___paper"],
+  ("ANSWER", "B"): ["paper___has_topic___field_of_study"],
+  ("ANSWER", "C"): ["paper___has_topic___field_of_study"]
 }
