@@ -1,0 +1,225 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+5882,Which dietary supplements or nutritional interventions are designed to influence gene expression or protein activity related to phosphatase interactions as a way to correct or prevent dietary deficiencies?,6,0,6,0.0,0.0,0.0,0.0,0.0,0.0
+6080,What are the observed effects and phenotypes specific to ovarian choriocarcinoma subtypes?,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+530,Which drugs are known to target the NOXO1 gene/protein for therapeutic purposes?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+3549,Identify the gene or protein that interacts with GLCCI1 and encodes a FAM194 family member.,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+6480,Identify the common gene targets that interact with both Diethylstilbestrol and Levothyroxine.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+3799,"Could I have a disease linked to bowel obstruction for which Niraparib is prescribed, possibly related to a primary malignant peritoneal tumor like my aunt had?",1,1,0,1.0,1.0,0.0,0.0,0.1666666666666666,1.0
+331,"Can you find genes that produce proteins interacting with the Voltage-gated Potassium channel pathway, form heteromeric complexes with KCNQ3's protein, and show changed expression in certain brain areas and skeletal muscle?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+10481,Which genes or proteins are not expressed in adipose tissue?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+4777,Which established pathways involve interactions with the TXNRD1 gene or its protein product?,1,1,0,1.0,1.0,0.0,0.0,0.1666666666666666,1.0
+8494,Identify genes or proteins that exhibit interaction with ATXN10 and share a common disease association.,1,1,0,1.0,1.0,0.0,0.0,0.1428571428571428,1.0
+5026,Can you give me a list of drugs that both interact with the SLCO1B3 transporter and have the potential to cause pain and induce gallbladder contraction as side effects?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+4444,"Please find the gene or protein that functions as a beta subunit for MaxiK channels, interacts with the cGMP signaling pathway, and can modulate potassium channel activity.",4,4,0,1.0,1.0,1.0,1.0,1.0,1.0
+11008,Which medication is effective in managing calcium concentrations within cardiac cells and additionally has an influence on the genetic or protein components associated with the enzymatic action of alcohol sulfotransferase?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+5304,"Could you tell me about a rare, hereditary disease similar to thymic carcinoma that is aggressive and targets the thymus gland?",8,0,8,0.0,0.0,0.0,0.0,0.0,0.375
+4771,What are the best treatment options for seborrheic dermatitis and ichthyosis vulgaris that can relieve itchiness and prevent my skin from drying out?,1,1,0,1.0,1.0,0.0,0.0,0.1666666666666666,1.0
+8892,Which factors could potentially diminish the effectiveness of Taurochenodeoxycholic acid by influencing the gene expression or function of its transport proteins?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+2559,"What is the probable diagnosis for a genetic condition associated with the NF1 gene, part of the neurofibromatosis spectrum, that if not treated, may lead to severe outcomes like meningitis, liver, or kidney failure?",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+141,Which genes or proteins are involved in the Linoleic acid metabolism pathway and function as oxidoreductases?,1,1,0,1.0,1.0,0.0,0.0,0.1666666666666666,1.0
+824,Could you list the variants and associated disorders of hemolytic anemia that might share similar symptoms?,1,1,0,1.0,1.0,0.0,0.0,0.1428571428571428,1.0
+819,"Please list genes or proteins with active expression in female gonads, no expression in the cerebellum, and localization on chromosome 17.",1,1,0,1.0,1.0,0.0,0.0,0.125,1.0
+7132,What are the observed effects or phenotypes associated with the subtype of glutathione synthetase deficiency that includes 5-oxoprolinuria?,5,3,2,0.6,0.6,0.0,1.0,0.3333333333333333,0.4
+7735,Which phenotypic manifestations or effects are associated with mixed adenoneuroendocrine carcinoma within the subclassification of the digestive system?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+3990,"What's the name of the ultra-rare condition associated with enlarged spleen, classified as a subtype or variation of heavy chain disease?",2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+11147,What are some diseases linked to NOS2 expression that not only cause elevated blood pressure due to secondary medical reasons but also pose contraindications for the use of Mometasone furoate?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+6485,Which medication acts on enzymes produced by certain genes or proteins in cartilage and is prescribed for managing both hyperphosphatemia and iron deficiency anemia in adult chronic kidney disease patients?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+2061,Which colorectal cancer subtype arises from both the colon and rectal areas?,8,0,8,0.0,0.0,0.0,0.0,0.0,0.125
+9447,Which agents could potentially impact the effectiveness of unspecified-form dextrose by interacting with the genes encoding its transport proteins?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+5555,Which gene or protein both binds specific DNA sequences and interacts with the SP2 gene/protein?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+10584,"Which pharmacological substances are synthesized or influenced by genes or proteins associated with the Golgi apparatus, exert their influence through the activation of particular G protein-coupled receptors, and affect the central and peripheral nervous systems, including the brain and spinal cord?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3251,Can you find genes or proteins involved in homotypic interactions that also play a role in reducing MET signal transduction?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+6296,Search for diseases not treatable by any known drugs that also correlate with abnormal lymphocyte morphology.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+6266,Which gene or protein is consistently not expressed in lung tissue?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+793,Can you identify any genes or proteins that both interact directly with the MGMT DNA repair pathway and have the ability to bind calcium at the functional level?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+898,"Which diseases are associated with homozygous mutations in the DSC3 gene, coding for desmocollin-3?",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+4329,"Is it possible that I've inherited a susceptibility to a condition like listeriosis from my parent, considering the severe fevers and headaches I'm having that suggest immediate medical attention is necessary?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+1526,What drugs actively engage with both RAB11A and TGM3 genes/proteins in their action mechanisms?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+7537,Which side effects or phenotypes can be attributed to a drug that is transported by the SCARB1 protein?,8,8,0,1.0,1.0,1.0,1.0,1.0,1.0
+7257,Which cellular structures are affected by interactions with genes or proteins that 6-(2-Hydroxycyclopentyl)-7-oxo-heptanamidine targets?,9,9,0,1.0,1.0,1.0,1.0,1.0,0.7777777777777778
+10367,"Could you provide information on any nasal medications that work in conjunction with Oxymetazoline to enhance the relief of symptoms for a common nasal ailment, essentially having a synergistic effect?",8,4,4,0.5,0.5,1.0,1.0,1.0,0.5
+9982,Identify the genes or proteins that are present in the pineal gland but not expressed in the quadriceps femoris muscle.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1967,"I'm looking for a diagnosis that might connect my persistent headaches and occasional visual disturbances with a history of atypical hemolytic-uremic syndrome in my family, and potential issues with the small blood vessels in my retina.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5528,What disease is linked with superficial fibromatosis and causes the fingers to bend permanently and increasingly over time?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+10480,"Is there a pharmaceutical agent that can be combined with Sodium citrate to enhance its therapeutic efficacy in treating a specific condition, and which also possesses a keratolytic effect beneficial for acne treatment by promoting increased exfoliation of epithelial cells?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7254,"Which pharmaceuticals interact synergistically with Fluphenazine in the treatment of identical conditions, and also possess a half-life ranging from 24 to 48 hours?",1,1,0,1.0,1.0,0.0,0.0,0.1,1.0
+3835,Could there be a disease that manifests with tumors and is associated with skin irritation issues akin to dermatitis?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+9720,Which gene or protein exhibits a lack of expression in both renal and tracheal tissues?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+2530,What disease is related to immunodeficiency as both an ancestor and descendant and shares a similar hierarchical connection with congenital T-cell immunodeficiency?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1980,Could you recommend medications effective for open-angle glaucoma that reduce intraocular pressure by about 16-19% and have a lower risk of causing eye-related side effects?,1,1,0,1.0,1.0,0.0,0.0,0.0526315789473684,0.0
+6560,"Which condition is characterized by a painful, bleeding ulcer in the esophagus, stomach, or duodenum and should not be treated with medications prescribed for severe early-onset retinal dystrophy in young children?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+10873,Which anatomical structures lack expression of genes or proteins that play a role in the shaping of the heart's ventricular chambers?,4,2,2,0.5,0.5,1.0,1.0,1.0,0.5
+5932,"Which genes or proteins have been documented to simultaneously interact with NPR1 and natriuretic peptide B, and have also been linked to a common disease in past research?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+10983,Which drug is known for its powerful selective inhibition of the hedgehog pathway through attachment to the smoothened (SMO) receptor and is associated with genes or proteins that have interactions within the endoplasmic reticulum lumen?,2,2,0,1.0,1.0,0.0,1.0,0.5,1.0
+5041,"I'm developing a management plan for induced abortion and I'm looking for a medication that can be used alongside Carboprost tromethamine to increase its efficacy. Can you suggest any drugs that are proven in clinical trials to boost the effectiveness of this pharmacological approach, specifically within the categories of nonsteroidal abortifacients, uterotonic agents, or similar prostaglandin E analogs?",1,1,0,1.0,1.0,0.0,0.0,0.0625,0.0
+106,What disorder stems from colorectal tubulovillous adenoma and features neoplastic growth with both villous and tubular structures?,3,0,3,0.0,0.0,0.0,0.0,0.0,1.0
+9194,"Search for pathways associated with the assembly of the Origin Recognition Complex (ORC) at replication origins, which also exhibit interactions with a common gene or protein.",1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+891,"Can you find pill or tablet medications that act on the IGHG2 gene, the one associated with immunoglobin G2?",8,8,0,1.0,1.0,1.0,1.0,1.0,1.0
+2657,What disease is classified as a type of glandular papilloma and also considered a precursor to benign vaginal tumors?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7908,What are the distinctive effects or phenotypes associated with signet ring cell subtype in basal cell carcinoma?,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+7238,"Which drug, in the form of a solid unsaturated fatty acid, is associated with genes or proteins that facilitate its transport to the peroxisomal matrix?",2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+7206,Which cellular structures are involved in interactions with genes or proteins influenced by the administration of Latanoprost?,4,4,0,1.0,1.0,1.0,1.0,1.0,1.0
+3715,Please find substances in our database that interact enzymatically with the PLA2G4A gene product and also target the PLG protein.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+9824,Which anatomical structures lack expression of genes or proteins involved in calcium-activated phospholipid scrambling?,7,7,0,1.0,1.0,0.0,1.0,0.5,0.5714285714285714
+5698,What is the cellular pathway that involves the GYS1 gene/protein and is connected to Glycogen storage disease pathways?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+2805,Is there an inheritable disease linked to cerebrovascular issues that could pertain to my health concerns?,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+4114,"Could you provide information on parasitic gastrointestinal infections treatable with Quinacrine, considering my family's history of similar ailments?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1233,"Hello, could you provide a list of targeted therapies for HER2 positive breast cancer, and also suggest any drugs that synergize with Erythropoietin for treating my condition?",1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+8807,Which medications not only decrease hypertension by acting on the central nervous system but also demonstrate a synergistic effect when used in conjunction with Ketanserin to manage identical medical conditions?,8,4,4,0.5,0.5,0.0,1.0,0.3333333333333333,0.75
+7755,Which anatomical structures lack gene or protein expression linked to reduced cerebrospinal fluid (CSF) levels of 5-methyltetrahydrofolate?,2,2,0,1.0,1.0,0.0,0.0,0.1666666666666666,1.0
+4289,Can you tell me the medical term for the condition associated with mitral valve abnormalities where the atrium and ventricle are irregularly connected?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+10424,Could you identify the rapid-metabolism drug that is a substrate for certain enzymes expressed in genes or proteins within the peripheral nervous system and possesses a metabolic half-life shorter than 3 seconds?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3453,Can you help me find a liquid medication targeting the IFNAR1 receptor that comes in multiple active forms suitable for combined use?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+6782,"Search for a biological pathway involving the suppression of gene expression by NR1D1 (also known as REV-ERBA), which also exhibits interaction with a gene or protein targeted by this repression mechanism.",1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+9763,Which gene or protein is not expressed in either the nucleus accumbens or the temporal lobe?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8013,"Could you help me identify a medication that shares a gene or protein transporter with Rosuvastatin and possesses strong resistance to various beta-lactamases, providing it with an effective action against a diverse array of aerobic and anaerobic bacteria, including both gram-positive and gram-negative species?",4,1,3,0.25,0.25,0.0,0.0,0.0555555555555555,0.0
+3319,Which diseases associated with the PEX6 gene could show symptoms in patients?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+8018,Which non-cancerous prostate gland enlargement condition could negatively interact with medications prescribed for myeloid leukemia?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+2435,"What condition involves trouble swallowing, is linked to the SLC52A3 gene, and includes brainstem abnormalities affecting speech, chewing, and oral motor skills?",3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+3002,Could you supply a list of genes or proteins that both interact with the RHOA GTPase cycle and possess lipid-binding capabilities?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+2419,"Which gene or protein interacts with the Defensins pathway, binds to sperm, and has anti-E. coli activity?",14,7,7,0.5,0.5,1.0,1.0,1.0,0.4285714285714285
+2309,What neuromuscular disorder could cause altered movement perception?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+4207,What is the disorder considered a subtype of MELAS syndrome that's also linked to the FOXRED1 gene?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+10802,Which dietary supplements are formulated to influence the genes or proteins associated with fatty acid elongation processes to alleviate nutritional deficiencies or correct imbalances?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+4743,"Hello, could you provide me with a list of medications suitable for someone with thrombocytopenic purpura?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+8349,Which body structures are influenced by the expression of genes or proteins responsible for the translocation of Bezafibrate?,2,2,0,1.0,1.0,1.0,1.0,1.0,0.5
+4973,Could you recommend treatment options for lymphosarcoma that are safe for someone potentially with Kallmann syndrome and don't pose a risk of blurred vision?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+10309,Which genes or proteins are not expressed in either lung tissue or the deltoid muscle?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+940,"What is the name of the gene or protein associated with protein-losing enteropathy type diarrhea 10 that serves as a key metabolic enzyme, catalyzing the conversion of diacylglycerol and fatty acyl CoA to triacylglycerol?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8627,"Which medication, facilitated by gene or protein interactions with endocytic vesicles, assists in the regulation of healthy glucose metabolic processes?",6,0,6,0.0,0.0,0.0,0.0,0.0,0.0
+9059,Which gene or protein is responsible for transporting pharmaceutical agents that exhibit synergistic effects when combined with Capric acid?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+9707,Search for pathways associated with the crosslinking of collagen fibrils that also interact with a common gene or protein.,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+6058,Identify the gene or protein that is not expressed in the stomach's fundus and the lungs.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1199,Which disorder is associated with a partial loss of chromosome 14's long arm and results in significant developmental delays and hypotonia?,3,0,3,0.0,0.0,0.0,0.0,0.0,0.6666666666666666
+3643,Please provide data on proteins and genes interacting with PLAAT5 via PPIs crucial for degrading cross-linked fibrin through targeted hydrolysis of the L-gamma-glutamyl-L-epsilon-lysine isodipeptide.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+3655,What disease is both an ancestor and descendant of non-invasive pancreatic mucinous cystadenocarcinoma and is also directly connected to mucinous cystadenocarcinoma in a hierarchical order?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+4560,"What medical condition could cause leg paralysis or numbness, and is also linked to male infertility due to sperm issues?",1,1,0,1.0,1.0,0.0,0.0,0.05,0.0
+9861,Search for pathways involving AKT-mediated phosphorylation of cytosolic targets that also interact with a common gene or protein.,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+1802,"Could you find out which genes or proteins are involved in both the Carnitine metabolism pathway and the regulation of ribosomal proteins L5 and L11, as well as their association with the CNOT2 complex?",1,1,0,1.0,1.0,0.0,0.0,0.0769230769230769,0.0
+5541,"What is the name of the condition that falls under adrenogenital syndrome associated with BMPR2 gene dysfunctions, characterized by excessive androgen production from adrenal or gonadal origins?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+5507,"What type of skin cancer presents with symptoms like fever, general discomfort, muscle pain, and skin rashes?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7102,Which pharmacological agent demonstrates a synergistic effect when combined with a medication that not only lists Glioma as an adverse reaction but also is recognized for its affinity and activation of the human erythropoietin receptor?,4,0,4,0.0,0.0,0.0,0.0,0.0,0.5
+1129,What diseases are associated with the SLC26A2 gene and can be triggered by mutations at the slc26a2 site?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+9908,What are the pharmaceutical agents that inhibit the activity of genes or proteins associated with 17-beta-hydroxysteroid dehydrogenase (NAD+) to potentially enhance metabolic energy production?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+562,What are the related diseases that fall under or branch off from malignant ciliary body melanoma in the disease classification system?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+6082,"Could you identify medications with both immunosuppressive and anti-inflammatory characteristics that, when used in combination with Belimumab, exhibit a synergistic effect and are prescribed for the same autoimmune condition as Belimumab?",9,1,8,0.1111111111111111,0.1111111111111111,0.0,0.0,0.0625,0.0
+586,"What cellular pathway involves the MSH2 gene/protein within the MMR disease pathway hierarchy, includes heteroduplex repair, and leads to compromised mismatch repair functionality?",2,2,0,1.0,1.0,0.0,1.0,0.5,1.0
+7622,I'm looking for a signaling pathway that interacts with the Toll-Like Receptor 10 (TLR10) cascade and also engages with genes or proteins that TLR10 itself affects. Can you identify such a pathway for me?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+7116,Which genes or proteins have interactions with those associated with TPMT deficiency due to TPMT gene mutations?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+9728,Search for diseases that have no drugs indicated for treatment and are linked to Acral ulceration.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+854,What cellular pathways is the SLC25A28 gene/protein associated with?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+6002,Which medications interact synergistically with Cinnarizine to treat the same condition and possess a similar elimination half-life of approximately 20 hours?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+10011,"Which cardiac condition, characterized by inadequate blood pumping, should be considered a contraindication when prescribing medications for stunted growth attributable to isolated growth hormone deficit in conjunction with X-linked hypogammaglobulinemia?",11,1,10,0.0909090909090909,0.0909090909090909,0.0,0.0,0.1666666666666666,0.2727272727272727
+9270,Which phenotypic manifestations or effects are associated with benign neoplasm subtypes?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+9945,"Which gene or protein, responsible for encoding an organic cation transporter capable of translocating drugs across cellular membranes, facilitates the movement of substances that demonstrate synergistic effects when combined with Azatadine, in addition to transporting a range of organic cations and pharmaceutical compounds?",9,0,9,0.0,0.0,0.0,0.0,0.0,0.5555555555555556
+4241,"Which pathways demonstrate a hierarchical structure, similar to a 'parent-child' relationship, in connection to the Cytosolic tRNA Aminoacylation pathway?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+9857,Which anatomical structures do not exhibit expression of genes or proteins involved in lysosomal targeting mechanisms?,6,5,1,0.8333333333333334,0.8333333333333334,0.0,1.0,0.5,0.8333333333333334
+9279,Which biological pathways are influenced by the gene or protein linked to significant worldwide developmental delays?,4,0,4,0.0,0.0,0.0,0.0,0.0,0.0
+7376,"What are the common gene targets for the compounds 2',6'-Difluorobiphenyl-4-carboxylic acid and N-(3,5-dibromo-4-hydroxyphenyl)-2,6-dimethylbenzamide?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+9060,"Which protein or gene, responsible for presenting mainly self or microbial lipid and glycolipid antigens to T cells, is not expressed in the frontal cortex and parietal lobe?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7271,"Which naturally sourced drug, encoded by genes or associated with proteins, engages with HDL (high-density lipoprotein) particles and serves as an antioxidant, while also functioning as a vitamin?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+10974,Which renal condition serves as a contraindication for medications prescribed to treat asymptomatic neurosyphilis?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+3921,"Which temporal lobe-active gene or protein is involved in nucleolus assembly, has deubiquitinating activity, and belongs to the peptidase C19 or ubiquitin-specific protease class of cysteine proteases?",1,1,0,1.0,1.0,0.0,0.0,0.1111111111111111,1.0
+9841,Which genes or proteins are present in the peripheral nervous system but are not expressed in the tracheal tissue?,1,1,0,1.0,1.0,0.0,0.0,0.0909090909090909,1.0
+8870,"Could you describe the mechanism by which a medication, transported by gene or protein vectors that engage with essential elements of plasma membranes, provides antioxidant protection to lipid bilayers?",3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
+2563,What disease commonly exhibits escalating symptoms and carries a high mortality risk in patients who react positively to Fluorouracil therapy?,1,1,0,1.0,1.0,0.0,0.0,0.0769230769230769,0.0
+5930,"Which protein from the amyloid precursor protein family, known for its evolutionary conservation, is present in the peripheral nervous system but not detected in hair follicles?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7707,Which medications are designed to influence the gene or protein interactions associated with the activity of ATP-sensitive potassium channels in mitochondria?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+8022,"Search for pathways associated with the inactivation of CDC42 and RAC1, which also interact with a common gene or protein.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+4201,What hereditary conditions associated with neurofibromatosis could lead to severe muscle cramps and persistent weakness?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3750,"Given my family history of malignant ciliary body melanoma and the recent emergence of suspicious skin growths, combined with my frequent sun exposure and numerous moles, which related diseases should I be vigilant about, especially with regards to skin cancer risks?",5,0,5,0.0,0.0,0.0,0.0,0.0,0.6
+6865,Which conditions linked to ATM gene mutations are incompatible with the use of Estradiol cypionate and lead to severe myocardial necrosis as a result of compromised cardiac blood flow?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+4389,Find a gene or protein linked to adenoid cystic carcinoma of the salivary gland with the ability to enhance C-MYC-driven transcription of E box motifs via its role as a transcription coactivator.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+10566,Can you help identify a medication which shares a gene or protein transporter with Desipramine and also increases the activity of histamine in the brain?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+3438,Which disease is related to angiolipoma and characterized by an extensive growth of blood vessels into surrounding tissues?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+10162,"Which saturated fatty acid, present in fats and waxes, utilizes the same gene or protein as a transporter as the antibiotic delafloxacin?",5,0,5,0.0,0.0,0.0,0.0,0.0,0.0
+407,Which diseases could be related to or arise as subtypes of non-syndromic visceral malformations in patients who are asymptomatic with embryopathic conditions?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+8803,Find conditions linked to the COL4A1 gene that should not be treated with Triethylenetetramine.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+5923,"Which pharmacological agents, transported by genes or proteins associated with the hemoglobin complex, are known to elevate oxygen concentration in the bloodstream?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7128,Identify common gene targets for both Fluocinolone acetonide and Flurandrenolide.,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+9746,Which anatomical structures lack the expression of genes or proteins linked to Sleep Myoclonus?,1,1,0,1.0,1.0,0.0,0.0,0.0625,0.0
+8088,Which genes or proteins are present in the pericardial tissue but not expressed in the palpebral conjunctiva?,1,1,0,1.0,1.0,0.0,0.0,0.125,1.0
+3796,Could you list the drugs that target the TARS2 gene/protein for their therapeutic effects?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+2425,What cardiac condition associated with CITED2 could be responsible for an abnormal connection between the atria due to fused fetal heart tissue in patients?,4,4,0,1.0,1.0,1.0,1.0,1.0,1.0
+5195,Could you provide me with a list of medications effective for advanced metastatic colon cancer that target the EGFR protein on cancer cells?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+3991,"Which syndromic lymphedema-related diseases cause swelling, a feeling of heaviness in the limbs, and recurrent skin infections?",7,7,0,1.0,1.0,1.0,1.0,1.0,1.0
+6597,Identify diseases that have no drugs indicated for treatment and exhibit a correlation with Polydipsia.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5885,Identify a gene or protein which interacts with IFI27 and is concurrently linked to an identical pathological condition.,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+11046,Which biological process shares a similar interaction pattern with genes or proteins as observed in the hydroxylation of peptidyl-proline to form 3-hydroxy-L-proline?,6,0,6,0.0,0.0,0.0,0.0,0.0,0.1666666666666666
+6101,"Could you identify medications that, when combined with Tolcapone to treat the same condition, exhibit a synergistic effect and also share Tolcapone's properties in blocking the peripheral transformation of levodopa into dopamine and preventing levodopa's conversion to serotonin via inhibition of the enzyme aromatic L-amino acid decarboxylase?",1,1,0,1.0,1.0,0.0,0.0,0.1111111111111111,1.0
+11103,Which cellular structures associate with genes or proteins that are affected by the administration of Suvorexant?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+10167,"Could you provide me with a list of once-a-day medications that, when co-administered for the treatment of the same condition, exhibit synergistic effects with Raltegravir, and additionally demonstrate a lower impact on lipid profiles compared to alternative treatments?",1,1,0,1.0,1.0,0.0,0.0,0.0666666666666666,1.0
+8063,What is the interaction mechanism between STAT3 and proteins or genes associated with the alpha-2 adrenergic receptor signaling cascade in adrenaline response?,3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
+3618,"Could you identify a gene or protein that shows involvement in transferring functional groups enzymatically, is active in adult mammalian kidney tissue, and is likely to have folic acid binding ability along with transferase catalytic function?",4,1,3,0.25,0.25,1.0,1.0,1.0,0.25
+4561,"Can you assist in identifying a potential condition linked to familial cancer syndromes, considering I have developing sores on my arms and face that started as tiny red marks, became inflamed, and evolved into healing wounds?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+9148,Which biological process shares the typical interaction pattern seen in gene or protein networks with that of protein delipidation?,6,0,6,0.0,0.0,0.0,0.0,0.0,0.1666666666666666
+2151,"Could you share any research on drugs in development influencing the IFNA2 gene or proteins related to interferon-alpha, for a patient case I'm analyzing with potential for genetic-based treatment?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+11133,"Is Coenzyme Q10 involved in modulating the functions of genes or proteins associated with long-chain-3-hydroxyacyl-CoA dehydrogenase, and does it act as an electron carrier to supply energy for various biochemical processes?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+4379,"What disease, characterized by pleural effusion and pus collection in the pleural space treated with Ticarcillin, occurs at a rate of 1 to 5 per 10,000 people?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7172,Which liver disorder characterized by excess fat buildup contraindicates medications commonly used to manage stress urinary incontinence in women?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+4308,"What potential diseases could be linked to a genetic susceptibility to infections, particularly those that increase the risk of septicemia?",4,0,4,0.0,0.0,0.0,0.0,0.0,0.5
+3301,Can you find genes or proteins linked to small cell lung carcinoma and also involved in the gene regulation pathway of NEUROG3+ endocrine progenitor cells?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+236,Can you give me a list of pills or tablets that specifically target the COMT enzyme?,11,11,0,1.0,1.0,1.0,1.0,1.0,0.9090909090909092
+1206,Which condition is classified as a type of both globe and lens diseases in the eye?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+971,Which diseases are linked to abnormalities in the NGLY1 gene or its protein product?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+3291,What is the term for a papillary carcinoma linked to thyroid cancer that specifically targets the cervical region of the uterus?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+4184,"What condition is linked to KDM3B and involves blue-gray or gray-black pigmentation changes in the skin, nails, and mucosa due to poisoning?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1644,What's the most common type of invasive ductal carcinoma found in women?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+3398,"What are the possible conditions associated with a spinal lump, persistent stomach issues such as abdominal pain, bloating, excessive gas, and diarrhea, especially considering a family history of neurofibromatosis?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5116,"Please find genes and proteins directly involved in neurotransmitter release, also showing enzymatic activity like N-acylsphingosine amidohydrolase.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+4482,"Please find genes and proteins that are involved in RNA binding, interact with MYO9B, and modulate the activity and substrate specificity of ALKBH5 demethylase.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+9193,Identify medications that act on genes or proteins involved in the regulation of forward-moving microfilament motor functions.,1,1,0,1.0,1.0,0.0,0.0,0.1666666666666666,1.0
+571,"Identify the gene or protein that plays a role in mitochondrial tRNA modification, interacts with tRNA-5-taurinomethyluridine 2-sulfurtransferase, and catalyzes the 2-thiolation of wobble position uridine in tRNAs for lysine, glutamate, and glutamine, resulting in the creation of 5-taurinomethyl-2-thiouridine.",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+6070,"Can you identify a medication that, akin to Sertraline, is deemed safe for regular consumption (GRAS status), interacts with the same gene or protein transporter, and is prescribed for comparable health issues?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+10827,Which anatomical structures lack the expression of genes or proteins connected to Tinnitus?,1,1,0,1.0,1.0,0.0,0.0,0.0714285714285714,0.0
+6209,Could you provide information on the specific effects or phenotypes associated with a subtype of hypersomnia?,2,2,0,1.0,1.0,0.0,1.0,0.5,1.0
+4697,Which benign conjunctival neoplasm subtype is associated with the BICD2 gene/protein?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+242,"What medical condition could be associated with heat rash-like symptoms and fragile, fluid-filled blisters on the skin that burst easily?",7,0,7,0.0,0.0,0.0,0.0,0.0,0.0
+4574,"Could you assist me in identifying potential illnesses I may have that are compatible with Bosley-Salih-Alorainy syndrome characteristics, such as severe hearing impairment, inner ear structural issues, horizontal eye movement difficulties, sleep-related breathing problems, as well as impacting cognitive abilities and learning, considering my family's medical history of similar conditions?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+1355,"Can you help me find a gene or protein that interacts with the Organic Anion Transporters pathway, serves as a mitochondrial glutamate transporter, and is associated with early infantile epileptic encephalopathy?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1362,I've been diagnosed with thrombocytopenia and need to find medications that can boost my platelet production. Could you recommend treatments that stimulate the cells responsible for generating platelets?,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+10719,Search for conditions lacking medications for treatment that correlate with heightened bone mineral density and primarily lead to osteosclerosis in the metaphyseal and epiphyseal areas of the limbs.,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+2885,"What are the cancer-related pathways linked to PDGFRA that lead to sunitinib resistance, especially when dealing with PDGFR mutants that don't respond to the therapy?",4,4,0,1.0,1.0,0.0,1.0,0.2,1.0
+6879,Which gene or protein is consistently not expressed in the endometrial tissue?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3672,"What drugs have been found to interact with the protein produced by the PPP1CC gene, also known as protein phosphatase 1 catalytic subunit gamma?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+5984,"Could you identify the gene or protein responsible for producing a scaffold protein that connects the plasma membrane with the actin cytoskeleton and also interacts with the gene or protein associated with SLC4A1 mutations? Additionally, is there evidence to suggest that this scaffold protein plays a role in the development of hereditary spherocytosis type 4, distal renal tubular acidosis, or the variant of distal renal tubular acidosis accompanied by hemolytic anemia, considering its function in linking the plasma membrane to the cytoskeleton?",5,4,1,0.8,0.8,1.0,1.0,1.0,0.4
+10997,Which genes or proteins are found in the lacrimal gland but not expressed in the cardiac muscle tissue?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7373,Find conditions linked to the GPD2 gene that should not be treated with Methyldopa.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1352,Which solid-state medications specifically engage with the METAP2 gene/protein through direct interaction?,18,18,0,1.0,1.0,1.0,1.0,1.0,0.7222222222222222
+8489,Find health conditions linked to Interleukin 27 (IL27) that should not be treated with Hyoscyamine.,1,1,0,1.0,1.0,0.0,0.0,0.05,0.0
+711,"What disease is associated with the FBN1 gene, presents eye issues such as lens dislocation, requires eye check-ups, and involves treatment for its symptoms?",2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+5637,"Hi, I've been prescribed Omacetaxine mepesuccinate and Emapalumab. I'm looking for complementary medications that enhance their efficacy. Additionally, due to my family history of blood clots, I need options that are safe and can help mitigate that risk. Can you recommend any suitable drugs?",5,1,4,0.2,0.2,0.0,0.0,0.0769230769230769,0.8
+656,What gene or protein is linked to spheroid body myopathy development?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+7002,"Identify pathways linked to the assembly of connexins into connexons, with an emphasis on those that also involve interactions with a common gene or protein.",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+6804,"Which medications, after being metabolized in the liver to become aldophosphamide, exhibit a synergistic effect when combined with Dinutuximab and are approved for treating the same condition that Dinutuximab is used for?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+3864,Which gene or protein is linked to neuronal ceroid lipofuscinosis and also regulates the micro-opioid receptor's trafficking and signaling?,1,1,0,1.0,1.0,0.0,0.0,0.125,1.0
+9242,Search for diseases linked to the ADORA2A gene that have contraindications with the drug Isopropamide.,1,1,0,1.0,1.0,0.0,0.0,0.0833333333333333,1.0
+13,Which genes or proteins interact with the 'mRNA decay by 3' to 5' exoribonuclease' pathway and play a role in RNA metabolism?,11,11,0,1.0,1.0,1.0,1.0,1.0,1.0
+274,"Which genes or proteins interact with calmodulin, participate in the TRP channels pathway, and sense osmotic pressure changes?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3140,"Please locate the signal transduction pathways connected to the 'Acetylcholine inhibits contraction of outer hair cells' pathway, including those interacting with the USH1C gene/protein, both preceding and following it.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7327,"Which gene/protein engages in interaction with the enzyme associated with Mucopolysaccharidosis Type VII (Sly syndrome) that facilitates the breakdown or modification of diverse foreign and native compounds featuring ester, thioester, or amide linkages?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3826,"What is the diagnosis for vaginal warts stemming from a benign papilloma, possibly linked to glandular papilloma?",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+8029,Identify pathways that share a gene or protein interaction with the calcium/calmodulin-dependent pathway.,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+2856,"Can you find any calcitriol analogs targeting the VDR gene that are in phase II trials for benign prostatic hyperplasia and might also be effective for urinary issues, prostate disorders, and infertility?",1,1,0,1.0,1.0,0.0,0.0,0.125,1.0
+10504,"Is there an interaction between PRKAA2, which codes for the alpha-2 catalytic subunit of AMP-activated protein kinase, and PIK3R1, and do they share any common effects or phenotypes?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7024,What are the observed effects and phenotypes associated with the subtype of orbital cellulitis?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+4632,Could you identify the calicivirus strain responsible for causing gastroenteritis outbreaks within the Caliciviridae family?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+1896,"Identify genes or proteins that interact with ITGB3, are linked to keloid susceptibility, and show primary expression in the calyx.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+10090,Search for diseases that lack treatment options and have an association with Diabetic Ketoacidosis.,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+1179,"Could you suggest medications targeting the IGF-1 receptor that have long-lasting effects, specifically with half-lives between 148 and 209 hours?",1,1,0,1.0,1.0,0.0,0.0,0.0666666666666666,0.0
+2971,"Could my symptoms of restlessness and inattention be indicative of ADHD, and is it possible that my family's history of urea cycle disorder is relevant to my condition?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+9097,Which pharmaceutical compounds are associated with genes or proteins that interact with the midpiece of spermatozoa?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5746,"Which gene or protein, involved in controlling the mitochondrial apoptosis pathway and increasing the sensitivity to antimicrotubule agents through the cleavage of phosphorylated BCL-2, also engages with the gene or protein responsible for the removal of Dopamine at the synaptic junction?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3358,What are the genes or proteins that interact with USF1 and are involved in regulating or promoting the motility of flagellated sperm?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+2882,What drugs are currently known to target the EGLN1 gene/protein interactions?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+4166,What signaling pathways interact with the CARM1 gene/protein and are connected above or below the 'TP53 Regulates Transcription of Cell Cycle Genes' pathway in the hierarchy?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8765,Which gene or protein is consistently unexpressed in the epithelial tissues of both the renal system and the nasal passages?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+8228,"I am looking for any genes or proteins that have an interaction with TGFB1 and also encode for the alpha chain of collagen type V. Additionally, these genes or proteins should share a common association with a particular effect or phenotype.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+6220,Which phenotype or side effect is associated with a medication that is conveyed into cells by the SLC19A2 transporter?,7,7,0,1.0,1.0,1.0,1.0,1.0,1.0
+4495,"Could you recommend a drug that targets dopamine receptors for rapid, sustained uterine contraction, particularly one associated with the HTR2B gene or protein and with headache as a possible side effect, for a patient prone to postpartum hemorrhage?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+6388,Which genes or proteins are present in the lacrimal gland but not in the biceps brachii muscle?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+10357,"Which core component of the cohesin complex, known for its role in genome organization, also has interactions with genes or proteins associated with Sorafenib-resistant PDGFR mutations, or is implicated in the Sorafenib resistance pathway influenced by these PDGFR mutations?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+9716,"Which gene or protein, being a part of the keratin-associated protein (KAP) family, engages in interaction with the gene or protein linked to SLC6A20 variant associated with conditions of hyperglycinuria (HG) and iminoglycinuria (IG)?",8,8,0,1.0,1.0,1.0,1.0,1.0,1.0
+1255,Could you provide the details and features for a pathway involved in amino acid transport via proton symport that functions downstream of 'Transport of inorganic cations/anions and amino acids/oligopeptides' and utilizes both SLC36A1 and SLC36A2 transporters?,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+1082,"What is the name of the pediatric condition associated with the APOA1 gene that causes severe reduction of high-density lipoproteins in blood and is marked by enlarged liver and spleen, swollen lymph nodes, oversized tonsils, nerve issues, and possible heart complications in adults?",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+8546,"Is there an interaction between SMAD3 and WWP2, and do they share a link to a common disease?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

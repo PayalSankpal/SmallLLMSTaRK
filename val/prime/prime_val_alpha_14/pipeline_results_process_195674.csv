@@ -1,0 +1,29 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+274,"Which genes or proteins interact with calmodulin, participate in the TRP channels pathway, and sense osmotic pressure changes?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3140,"Please locate the signal transduction pathways connected to the 'Acetylcholine inhibits contraction of outer hair cells' pathway, including those interacting with the USH1C gene/protein, both preceding and following it.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7327,"Which gene/protein engages in interaction with the enzyme associated with Mucopolysaccharidosis Type VII (Sly syndrome) that facilitates the breakdown or modification of diverse foreign and native compounds featuring ester, thioester, or amide linkages?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3826,"What is the diagnosis for vaginal warts stemming from a benign papilloma, possibly linked to glandular papilloma?",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+8029,Identify pathways that share a gene or protein interaction with the calcium/calmodulin-dependent pathway.,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+2856,"Can you find any calcitriol analogs targeting the VDR gene that are in phase II trials for benign prostatic hyperplasia and might also be effective for urinary issues, prostate disorders, and infertility?",1,1,0,1.0,1.0,0.0,0.0,0.125,1.0
+10504,"Is there an interaction between PRKAA2, which codes for the alpha-2 catalytic subunit of AMP-activated protein kinase, and PIK3R1, and do they share any common effects or phenotypes?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7024,What are the observed effects and phenotypes associated with the subtype of orbital cellulitis?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+4632,Could you identify the calicivirus strain responsible for causing gastroenteritis outbreaks within the Caliciviridae family?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+1896,"Identify genes or proteins that interact with ITGB3, are linked to keloid susceptibility, and show primary expression in the calyx.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+10090,Search for diseases that lack treatment options and have an association with Diabetic Ketoacidosis.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+1179,"Could you suggest medications targeting the IGF-1 receptor that have long-lasting effects, specifically with half-lives between 148 and 209 hours?",1,1,0,1.0,1.0,0.0,0.0,0.06666666666666667,0.0
+2971,"Could my symptoms of restlessness and inattention be indicative of ADHD, and is it possible that my family's history of urea cycle disorder is relevant to my condition?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+9097,Which pharmaceutical compounds are associated with genes or proteins that interact with the midpiece of spermatozoa?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5746,"Which gene or protein, involved in controlling the mitochondrial apoptosis pathway and increasing the sensitivity to antimicrotubule agents through the cleavage of phosphorylated BCL-2, also engages with the gene or protein responsible for the removal of Dopamine at the synaptic junction?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3358,What are the genes or proteins that interact with USF1 and are involved in regulating or promoting the motility of flagellated sperm?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+2882,What drugs are currently known to target the EGLN1 gene/protein interactions?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+4166,What signaling pathways interact with the CARM1 gene/protein and are connected above or below the 'TP53 Regulates Transcription of Cell Cycle Genes' pathway in the hierarchy?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8765,Which gene or protein is consistently unexpressed in the epithelial tissues of both the renal system and the nasal passages?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+8228,"I am looking for any genes or proteins that have an interaction with TGFB1 and also encode for the alpha chain of collagen type V. Additionally, these genes or proteins should share a common association with a particular effect or phenotype.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+6220,Which phenotype or side effect is associated with a medication that is conveyed into cells by the SLC19A2 transporter?,7,7,0,1.0,1.0,1.0,1.0,1.0,1.0
+4495,"Could you recommend a drug that targets dopamine receptors for rapid, sustained uterine contraction, particularly one associated with the HTR2B gene or protein and with headache as a possible side effect, for a patient prone to postpartum hemorrhage?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+6388,Which genes or proteins are present in the lacrimal gland but not in the biceps brachii muscle?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+10357,"Which core component of the cohesin complex, known for its role in genome organization, also has interactions with genes or proteins associated with Sorafenib-resistant PDGFR mutations, or is implicated in the Sorafenib resistance pathway influenced by these PDGFR mutations?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+9716,"Which gene or protein, being a part of the keratin-associated protein (KAP) family, engages in interaction with the gene or protein linked to SLC6A20 variant associated with conditions of hyperglycinuria (HG) and iminoglycinuria (IG)?",8,8,0,1.0,1.0,1.0,1.0,1.0,1.0
+1255,Could you provide the details and features for a pathway involved in amino acid transport via proton symport that functions downstream of 'Transport of inorganic cations/anions and amino acids/oligopeptides' and utilizes both SLC36A1 and SLC36A2 transporters?,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+1082,"What is the name of the pediatric condition associated with the APOA1 gene that causes severe reduction of high-density lipoproteins in blood and is marked by enlarged liver and spleen, swollen lymph nodes, oversized tonsils, nerve issues, and possible heart complications in adults?",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+8546,"Is there an interaction between SMAD3 and WWP2, and do they share a link to a common disease?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
