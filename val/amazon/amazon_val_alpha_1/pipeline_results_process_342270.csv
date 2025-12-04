@@ -1,0 +1,3 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+1824,"Can you recommend a compact Unknown brand bike headlight that offers a powerful, focused beam? I'm open to considering offerings from non-mainstream brands as well.",1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,0.0
+3683,"Looking for a Boise State Broncos logo duct tape that's perfect for home, dorm use, or tailgating events. Preferably with a roll size about 2 inches by 10 yards. Any suggestions?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0

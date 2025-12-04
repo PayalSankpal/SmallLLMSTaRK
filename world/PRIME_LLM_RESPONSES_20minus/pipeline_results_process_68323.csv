@@ -1,0 +1,6 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+1340,"What are the genes or proteins that interact with NMD3, are expressed in adult mammalian kidneys, have a role in secretion and transport, and show high expression levels in lung tissue?",1,1,0,1.0,1.0,0.0,0.0,0.05555555555555555,0.0
+957,Could you suggest any treatments compatible with Phenelzine that are effective for hemoglobinopathy and also assist in dissolving blood clots?,3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
+1172,Please list diseases related to polyradiculoneuropathy that affect multiple spinal nerve roots and share a similar or subordinate pathophysiological relationship.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+967,"Could you provide me with alternative treatments that complement Methotrexate and enhance its synergy with Tetrahydrofolic acid, as well as assist in the safe clearance of Methotrexate from my system when necessary?",1,1,0,1.0,1.0,0.0,0.0,0.05263157894736842,0.0
+3365,Can you list the medications suitable for benign prostatic hyperplasia and tell me if any are linked to dysphagia as a side effect?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0

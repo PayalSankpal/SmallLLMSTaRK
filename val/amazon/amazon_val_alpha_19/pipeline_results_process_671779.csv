@@ -1,0 +1,21 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+1301,Where can I find a Game Time Boston Red Sox MLB watch with a sapphire crystal lens?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+5247,What's the best bowling ball from Bowlerstore Products for consistently hitting 7 and 10 pin shots?,5,5,0,1.0,1.0,0.0,1.0,0.25,1.0
+2600,Looking for a scope mount compatible with a Remington 700 Long Action. Open to models that may raise the scope and require the addition of a cheek piece.,16,1,15,0.0625,0.0625,0.0,1.0,0.5,0.0625
+3594,What are some recommended clear lenses compatible with Wiley X eyewear? I prefer products from reliable and reputable brands like Wiley X.,8,4,4,0.5,0.5,1.0,1.0,1.0,0.5
+2521,Looking for a durable Stanley stainless steel water bottle that's suitable for outdoor use and designed for carbonated drinks.,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+7863,Is there a cycling jacket with two side pockets and a raglan sleeve design that you could suggest?,11,0,11,0.0,0.0,0.0,0.0,0.0,0.0
+3928,What's the best easy-to-clean portable urinal for men that can be emptied without much effort? I'm prioritizing ease of maintenance over durability.,20,0,20,0.0,0.0,0.0,0.0,0.0,0.05
+8630,"Looking for a fun, inflatable party decoration that will pair well with a 1 lb vinyl dumbbell of any color. It should also complement a set of 72 wholesale winner award medals and serve as a great photo prop.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8290,"Can you help me find men's athletic shoes that are lightweight, approximately 2.6 pounds, and have been on the market since 2017 or earlier?",7,0,7,0.0,0.0,0.0,0.0,0.0,0.0
+2118,Searching for a Therma Base technology sports team jacket that is water-resistant and comfortable. It would be preferable if it's packed in a compact size approximately 10.8 x 5.9 x 3 inches.,11,0,11,0.0,0.0,0.0,0.0,0.0,0.0
+5900,"Are there any cycling trousers available with a well-designed waist contour, reflective tape inside the hem, and extra seat area space for comfort?",8,0,8,0.0,0.0,0.0,0.0,0.0,0.0
+1360,"Can I find a Sports Coverage NFL shower curtain with a prominent team logo and colors, and an interesting athletic netting design?",7,2,5,0.2857142857142857,0.2857142857142857,1.0,1.0,1.0,0.2857142857142857
+7405,"What is a good alternative to the AccuMed CMS-50D1 Finger Pulse Oximeter Blood Oxygen Sensor SpO2 which is portable, energy-efficient, and has a comfortable fit, especially for use during sports, aviation and traveling?",6,6,0,1.0,1.0,0.0,1.0,0.5,1.0
+1824,"Can you recommend a compact Unknown brand bike headlight that offers a powerful, focused beam? I'm open to considering offerings from non-mainstream brands as well.",1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+3683,"Looking for a Boise State Broncos logo duct tape that's perfect for home, dorm use, or tailgating events. Preferably with a roll size about 2 inches by 10 yards. Any suggestions?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+6074,"Suggestions for a fashionable Carolina Hurricanes neck tie made of classy polyester micro fiber in official team colors, ideal for a gift to a hockey fan?",3,0,3,0.0,0.0,0.0,0.0,0.0,0.3333333333333333
+3332,"Can you recommend a soccer ball that would complement my Adidas cleats, shin protectors, and especially socks? The current one I own doesn't coordinate well.",20,0,20,0.0,0.0,0.0,0.0,0.0,0.0
+4762,"Can someone recommend a men's winter jacket that uses both natural down and synthetic insulation for enhanced warmth? It should ideally have a high down fill power and an adjustable hood with faux-fur trim, controllable by toggles.",18,1,17,0.05555555555555555,0.05555555555555555,0.0,0.0,0.09090909090909091,0.05555555555555555
+5538,"Looking for a Champ pistol-shaped golf putter grip suitable for small hands. Most grips seem too large, any suggestions for a more compact one?",14,0,14,0.0,0.0,0.0,0.0,0.0,0.07142857142857142
+331,Looking for a multi-functional personal safety light with options for steady and varying flashing lights. It would be great if it can significantly boost visibility. Any recommendations?,20,0,20,0.0,0.0,0.0,0.0,0.0,0.0

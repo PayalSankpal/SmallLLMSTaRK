@@ -222,7 +222,7 @@ def load_configs_from_file(file_path: Optional[str | Path] = None) -> Dict[str, 
 # -------------------------- Class: LlmBridge ---------------------------------
 
 class LlmBridge:
-    def __init__(self, model_name: str, configs_path: Optional[str | Path] = None, verbose: bool = True):
+    def __init__(self, model_name: str,dataset: Optional[str], configs_path: Optional[str | Path] = None, verbose: bool = True, ):
         """
         Standalone LlmBridge (framework-free).
         - model_name: string identifying model (same semantics as original, e.g., "gpt-4", "ollama_xxx", "deepseek-...")
@@ -232,6 +232,8 @@ class LlmBridge:
         self.verbose = verbose
         self.model_name = model_name
         configs = load_configs_from_file(configs_path)
+        configs['dataset'] = dataset
+        
         # read commonly used config keys; if missing, supply reasonable defaults
         self.temperature = configs.get("llm_temperature", None)
         self.seed = configs.get("llm_seed", None)
@@ -267,12 +269,31 @@ class LlmBridge:
                 # NVIDIA / OpenAI-like client (original used OpenAI with a base_url)
                 if self.verbose:
                     print(f"[LlmBridge] Using NVIDIA/meta-style model: {self.model_name}")
-                self.client = OpenAI(api_key=os.environ.get("NVIDIA_API_KEY"), base_url="https://integrate.api.nvidia.com/v1")
+                keys_str = os.environ.get("NVIDIA_API_KEYS", "")
+                nvidia_keys = [k.strip() for k in keys_str.split(",") if k.strip()]
+                key = nvidia_keys[2]
+                if configs['dataset'] == "prime":
+                    key = nvidia_keys[1]
+                elif configs['dataset'] == "mag":
+                    key = nvidia_keys[0]
+                
+                print(key)
+                    
+                self.client = OpenAI(api_key=key, base_url="https://integrate.api.nvidia.com/v1")
 
             elif "nvidia" in self.model_name:
                 if self.verbose:
                     print(f"[LlmBridge] Using NVIDIA model: {self.model_name}")
-                self.client = OpenAI(api_key=os.environ.get("NVIDIA_API_KEY"), base_url="https://integrate.api.nvidia.com/v1")
+                keys_str = os.environ.get("NVIDIA_API_KEYS", "")
+                nvidia_keys = [k.strip() for k in keys_str.split(",") if k.strip()]
+                key = nvidia_keys[2]
+                if configs['dataset'] == "prime":
+                    key = nvidia_keys[1]
+                elif configs['dataset'] == "mag":
+                    key = nvidia_keys[0]
+                
+                print(key)
+                self.client = OpenAI(api_key=key, base_url="https://integrate.api.nvidia.com/v1")
 
             elif "gpt" in self.model_name:
                 if self.verbose:
@@ -503,3 +524,4 @@ class LlmBridge:
         return answers, chat_logs
 
 # End of custom_llm_bridge.py
+

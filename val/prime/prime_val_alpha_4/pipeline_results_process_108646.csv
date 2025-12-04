@@ -1,0 +1,29 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+2657,What disease is classified as a type of glandular papilloma and also considered a precursor to benign vaginal tumors?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7908,What are the distinctive effects or phenotypes associated with signet ring cell subtype in basal cell carcinoma?,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+7238,"Which drug, in the form of a solid unsaturated fatty acid, is associated with genes or proteins that facilitate its transport to the peroxisomal matrix?",2,0,2,0.0,0.0,0.0,0.0,0.0,0.5
+7206,Which cellular structures are involved in interactions with genes or proteins influenced by the administration of Latanoprost?,4,4,0,1.0,1.0,1.0,1.0,1.0,1.0
+3715,Please find substances in our database that interact enzymatically with the PLA2G4A gene product and also target the PLG protein.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+9824,Which anatomical structures lack expression of genes or proteins involved in calcium-activated phospholipid scrambling?,7,7,0,1.0,1.0,0.0,1.0,0.5,0.14285714285714285
+5698,What is the cellular pathway that involves the GYS1 gene/protein and is connected to Glycogen storage disease pathways?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+2805,Is there an inheritable disease linked to cerebrovascular issues that could pertain to my health concerns?,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+4114,"Could you provide information on parasitic gastrointestinal infections treatable with Quinacrine, considering my family's history of similar ailments?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1233,"Hello, could you provide a list of targeted therapies for HER2 positive breast cancer, and also suggest any drugs that synergize with Erythropoietin for treating my condition?",1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+8807,Which medications not only decrease hypertension by acting on the central nervous system but also demonstrate a synergistic effect when used in conjunction with Ketanserin to manage identical medical conditions?,8,4,4,0.5,0.5,0.0,1.0,0.3333333333333333,0.75
+7755,Which anatomical structures lack gene or protein expression linked to reduced cerebrospinal fluid (CSF) levels of 5-methyltetrahydrofolate?,2,2,0,1.0,1.0,0.0,0.0,0.16666666666666666,0.0
+4289,Can you tell me the medical term for the condition associated with mitral valve abnormalities where the atrium and ventricle are irregularly connected?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+10424,Could you identify the rapid-metabolism drug that is a substrate for certain enzymes expressed in genes or proteins within the peripheral nervous system and possesses a metabolic half-life shorter than 3 seconds?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3453,Can you help me find a liquid medication targeting the IFNAR1 receptor that comes in multiple active forms suitable for combined use?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+6782,"Search for a biological pathway involving the suppression of gene expression by NR1D1 (also known as REV-ERBA), which also exhibits interaction with a gene or protein targeted by this repression mechanism.",1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+9763,Which gene or protein is not expressed in either the nucleus accumbens or the temporal lobe?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8013,"Could you help me identify a medication that shares a gene or protein transporter with Rosuvastatin and possesses strong resistance to various beta-lactamases, providing it with an effective action against a diverse array of aerobic and anaerobic bacteria, including both gram-positive and gram-negative species?",4,1,3,0.25,0.25,0.0,0.0,0.05555555555555555,0.0
+3319,Which diseases associated with the PEX6 gene could show symptoms in patients?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+8018,Which non-cancerous prostate gland enlargement condition could negatively interact with medications prescribed for myeloid leukemia?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+2435,"What condition involves trouble swallowing, is linked to the SLC52A3 gene, and includes brainstem abnormalities affecting speech, chewing, and oral motor skills?",3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+3002,Could you supply a list of genes or proteins that both interact with the RHOA GTPase cycle and possess lipid-binding capabilities?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+2419,"Which gene or protein interacts with the Defensins pathway, binds to sperm, and has anti-E. coli activity?",14,7,7,0.5,0.5,1.0,1.0,1.0,0.35714285714285715
+2309,What neuromuscular disorder could cause altered movement perception?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+4207,What is the disorder considered a subtype of MELAS syndrome that's also linked to the FOXRED1 gene?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+10802,Which dietary supplements are formulated to influence the genes or proteins associated with fatty acid elongation processes to alleviate nutritional deficiencies or correct imbalances?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+4743,"Hello, could you provide me with a list of medications suitable for someone with thrombocytopenic purpura?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+8349,Which body structures are influenced by the expression of genes or proteins responsible for the translocation of Bezafibrate?,2,2,0,1.0,1.0,1.0,1.0,1.0,0.5

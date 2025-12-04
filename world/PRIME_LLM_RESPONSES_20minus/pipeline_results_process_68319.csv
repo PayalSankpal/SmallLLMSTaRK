@@ -1,0 +1,6 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+7490,Which neonatal gastrointestinal illness resulting in severe intestinal harm and necrosis should not be treated with medication typically prescribed for Pasteurella multocida due to contraindications?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7168,Which illness leading to cerebral infarction would render medications for prolactin-secreting pituitary tumors inadvisable?,4,0,4,0.0,0.0,0.0,0.0,0.0,0.5
+9133,Identify a gene or protein with the capability to interact with FOXC1 and shares an association with a similar effect or phenotype.,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+2635,"Could you recommend a medication designed for Laron syndrome, specifically a synthetic version of the human insulin-like growth factor 1?",2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+5820,"Identify the common genetic targets that interact with both 3',5'-Dinitro-N-Acetyl-L-Thyronine and 3-({[(1Z)-(2-methoxyphenyl)methylidene]amino}oxy)propanoic acid.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0

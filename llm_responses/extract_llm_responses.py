@@ -11,7 +11,7 @@ def main():
     args = parser.parse_args()
 
     input_file = args.input
-    output_file = f"llm_response_dataset_{args.dataset}.csv"
+    output_file = f"./{args.dataset}/llm_response_{args.dataset}_val.csv"
 
     # FINAL output columns you want
     required_columns = ["id", "query", "entities", "relations"]

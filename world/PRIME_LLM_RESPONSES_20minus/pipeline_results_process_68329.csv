@@ -1,0 +1,6 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+10017,Which cellular structures come into contact with genes or proteins that are influenced by p-Coumaric acid?,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+6164,Which cell structures interact with the genetic or protein targets of the drug Linaclotide?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+10629,"Which cellular structures engage with genes or proteins affected by the compound 4,6-dideoxy-4-amino-alpha-D-glucose?",3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+904,Could you provide information on treatments available for C. diff colitis and clarify whether any of these medications could potentially lead to facial swelling as a side effect?,1,1,0,1.0,1.0,0.0,0.0,0.07692307692307693,1.0
+1342,Please find a gene or protein associated with Spinocerebellar Ataxia type 8 that also interacts within the cell nucleus.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0

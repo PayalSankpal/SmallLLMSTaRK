@@ -1,0 +1,29 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+9945,"Which gene or protein, responsible for encoding an organic cation transporter capable of translocating drugs across cellular membranes, facilitates the movement of substances that demonstrate synergistic effects when combined with Azatadine, in addition to transporting a range of organic cations and pharmaceutical compounds?",9,0,9,0.0,0.0,0.0,0.0,0.0,0.4444444444444444
+4241,"Which pathways demonstrate a hierarchical structure, similar to a 'parent-child' relationship, in connection to the Cytosolic tRNA Aminoacylation pathway?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+9857,Which anatomical structures do not exhibit expression of genes or proteins involved in lysosomal targeting mechanisms?,6,5,1,0.8333333333333334,0.8333333333333334,0.0,1.0,0.5,0.6666666666666666
+9279,Which biological pathways are influenced by the gene or protein linked to significant worldwide developmental delays?,4,0,4,0.0,0.0,0.0,0.0,0.0,0.0
+7376,"What are the common gene targets for the compounds 2',6'-Difluorobiphenyl-4-carboxylic acid and N-(3,5-dibromo-4-hydroxyphenyl)-2,6-dimethylbenzamide?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+9060,"Which protein or gene, responsible for presenting mainly self or microbial lipid and glycolipid antigens to T cells, is not expressed in the frontal cortex and parietal lobe?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7271,"Which naturally sourced drug, encoded by genes or associated with proteins, engages with HDL (high-density lipoprotein) particles and serves as an antioxidant, while also functioning as a vitamin?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+10974,Which renal condition serves as a contraindication for medications prescribed to treat asymptomatic neurosyphilis?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+3921,"Which temporal lobe-active gene or protein is involved in nucleolus assembly, has deubiquitinating activity, and belongs to the peptidase C19 or ubiquitin-specific protease class of cysteine proteases?",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+9841,Which genes or proteins are present in the peripheral nervous system but are not expressed in the tracheal tissue?,1,1,0,1.0,1.0,0.0,0.0,0.09090909090909091,1.0
+8870,"Could you describe the mechanism by which a medication, transported by gene or protein vectors that engage with essential elements of plasma membranes, provides antioxidant protection to lipid bilayers?",3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
+2563,What disease commonly exhibits escalating symptoms and carries a high mortality risk in patients who react positively to Fluorouracil therapy?,1,1,0,1.0,1.0,0.0,0.0,0.07692307692307693,1.0
+5930,"Which protein from the amyloid precursor protein family, known for its evolutionary conservation, is present in the peripheral nervous system but not detected in hair follicles?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7707,Which medications are designed to influence the gene or protein interactions associated with the activity of ATP-sensitive potassium channels in mitochondria?,1,1,0,1.0,1.0,0.0,0.0,0.14285714285714285,1.0
+8022,"Search for pathways associated with the inactivation of CDC42 and RAC1, which also interact with a common gene or protein.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+4201,What hereditary conditions associated with neurofibromatosis could lead to severe muscle cramps and persistent weakness?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3750,"Given my family history of malignant ciliary body melanoma and the recent emergence of suspicious skin growths, combined with my frequent sun exposure and numerous moles, which related diseases should I be vigilant about, especially with regards to skin cancer risks?",5,0,5,0.0,0.0,0.0,0.0,0.0,0.0
+6865,Which conditions linked to ATM gene mutations are incompatible with the use of Estradiol cypionate and lead to severe myocardial necrosis as a result of compromised cardiac blood flow?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+4389,Find a gene or protein linked to adenoid cystic carcinoma of the salivary gland with the ability to enhance C-MYC-driven transcription of E box motifs via its role as a transcription coactivator.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+10566,Can you help identify a medication which shares a gene or protein transporter with Desipramine and also increases the activity of histamine in the brain?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+3438,Which disease is related to angiolipoma and characterized by an extensive growth of blood vessels into surrounding tissues?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+10162,"Which saturated fatty acid, present in fats and waxes, utilizes the same gene or protein as a transporter as the antibiotic delafloxacin?",5,0,5,0.0,0.0,0.0,0.0,0.0,0.0
+407,Which diseases could be related to or arise as subtypes of non-syndromic visceral malformations in patients who are asymptomatic with embryopathic conditions?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+8803,Find conditions linked to the COL4A1 gene that should not be treated with Triethylenetetramine.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+5923,"Which pharmacological agents, transported by genes or proteins associated with the hemoglobin complex, are known to elevate oxygen concentration in the bloodstream?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7128,Identify common gene targets for both Fluocinolone acetonide and Flurandrenolide.,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+9746,Which anatomical structures lack the expression of genes or proteins linked to Sleep Myoclonus?,1,1,0,1.0,1.0,0.0,0.0,0.05,0.0
+8088,Which genes or proteins are present in the pericardial tissue but not expressed in the palpebral conjunctiva?,1,1,0,1.0,1.0,0.0,0.0,0.125,1.0

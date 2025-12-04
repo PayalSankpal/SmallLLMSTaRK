@@ -1,0 +1,6 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+1755,"Please find a metabolic process that either precedes or follows hyaluronan absorption and breakdown, and is involved in its metabolism or signaling cascades.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5686,Please find genes or proteins that bind to clathrin and also interact with the FAT3 protein.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7969,Which biological process shares a similar interaction pattern with genes or proteins to that of 7-methylguanosine cap hypermethylation?,5,0,5,0.0,0.0,0.0,0.0,0.0,0.4
+6641,"Would you be able to provide information on whether the specified medication acts on genes or proteins that play a role in the signaling pathways of blood clotting receptors, particularly those associated with protein tyrosine kinase activator activity, given the importance of anticoagulation for specific medical conditions?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+10271,Identify a medication that shares a similar gene or protein carrier with Pegaspargase and is indicated for the treatment of neurological conditions.,6,0,6,0.0,0.0,0.0,0.0,0.0,0.0

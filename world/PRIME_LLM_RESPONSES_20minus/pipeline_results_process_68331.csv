@@ -1,0 +1,6 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+1396,"Identify genes or proteins that are linked with RNA binding, act as regulators of ribosomal protein gene expression impacting translation, and participate in the Antigen processing pathway via Ubiquitination and Proteasome degradation.",2,2,0,1.0,1.0,0.0,1.0,0.5,0.5
+2791,Can you help me find any tablets or capsules that target the FGF1 gene/protein in our drug database?,10,10,0,1.0,1.0,1.0,1.0,1.0,1.0
+4453,Can you supply details on drugs that complement Darbepoetin alfa and focus on the HIF1A gene or protein?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+1248,What is the gene or protein involved in both the Translesion Synthesis pathway via POLH interaction and the binding to single-stranded DNA as part of the Replication Protein A complex?,3,3,0,1.0,1.0,0.0,0.0,0.14285714285714285,1.0
+1109,"What possible diseases could I have that are linked to lymphatic system problems, such as swollen glands, and also associated with facial or neck abnormalities, as seen in syndromes or congenital conditions?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

@@ -1,0 +1,4 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+5900,"Are there any cycling trousers available with a well-designed waist contour, reflective tape inside the hem, and extra seat area space for comfort?",8,0,8,0.0,0.0,0.0,0.0,0.0,0.0
+1360,"Can I find a Sports Coverage NFL shower curtain with a prominent team logo and colors, and an interesting athletic netting design?",7,2,5,0.2857142857142857,0.2857142857142857,1.0,1.0,1.0,0.14285714285714285
+7405,"What is a good alternative to the AccuMed CMS-50D1 Finger Pulse Oximeter Blood Oxygen Sensor SpO2 which is portable, energy-efficient, and has a comfortable fit, especially for use during sports, aviation and traveling?",6,6,0,1.0,1.0,0.0,1.0,0.5,1.0

@@ -1,0 +1,6 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+5574,Which strobilurin fungicides target both CYC1 and UQCRB genes/proteins?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+139,"Can you list the diseases associated with the PDE8B gene, specifically those that fall under primary pigmented nodular adrenocortical disease with a known PDE11A gene mutation etiology?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1893,Which diseases are related to or fall under oophoritis and also manifest with tuberculous inflammation of the ovaries?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+10411,Which genes or proteins are expressed in the pericardium but not in the deltoid muscle?,1,1,0,1.0,1.0,0.0,0.0,0.1111111111111111,1.0
+1595,Could you provide a list of medications that are compatible with Ormeloxifene for treating a respiratory infection?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

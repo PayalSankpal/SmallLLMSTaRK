@@ -1,0 +1,36 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+2085,What is the common upstream or downstream biological pathway shared by the 'Biosynthesis of DHA-derived SPMs' and the 'Biosynthesis of maresin conjugates in tissue regeneration (MCTR)'?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+6632,Search for illnesses that have no drugs indicated for treatment and are related to the presence of Wormian bones.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+657,Can you give me a rundown of drugs effective against both UTIs and Mycoplasma pneumonia that have a molecular weight exactly at 558.52 Da?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+3478,What are the diseases similar or linked to Paradas congenital myopathy that also present with progressive muscle weakness?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+2215,"What condition associated with the GPR68 gene could cause symptoms like long-term abdominal pain, consistent nausea, vomiting, and notable weight loss, coupled with ongoing inflammation and damage to the stomach lining?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7684,Identify proteins or genes that interact with Glycophorin A (GYPA) and are linked to a common disease.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7107,Search for pathologies linked to cholecystokinin (CCK) that should not be treated with Tacrine.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1926,Could you provide a list of immunosuppressant drugs that may lead to rashes and abdominal swelling as side effects?,4,2,2,0.5,0.5,0.0,1.0,0.3333333333333333,0.5
+7879,"Could you provide a list of medications that, when combined with Astemizole, exhibit synergistic effects in treating allergic conjunctivitis, share the same indication, and are available in ophthalmic solution format for the management of allergic conjunctivitis?",7,6,1,0.8571428571428571,0.8571428571428571,1.0,1.0,1.0,0.8571428571428571
+4026,What secondary disease arises due to metastasis from bladder cancer?,7,0,7,0.0,0.0,0.0,0.0,0.0,0.8571428571428571
+4945,"What is the diagnosis for a urogenital condition characterized by non-syndromic urinary tract malformations, presenting as duplicated penile structures, ranging from double glans to separate shafts, and potentially bundled with other congenital issues like urethral duplication, abnormal urination patterns, hypo- or epispadias, bifid scrotum, or bladder exstrophy?",2,1,1,0.5,0.5,1.0,1.0,1.0,1.0
+6115,"Is the gene responsible for encoding the ATP-binding cassette transporter protein, which facilitates drug transport and exhibits a synergistic relationship with Trapidil, a member of the ABC superfamily of transporters?",16,0,16,0.0,0.0,0.0,0.0,0.0,0.125
+3222,What are the solid-form drugs known to target the lysozyme (LYZ) gene or its protein?,13,13,0,1.0,1.0,1.0,1.0,1.0,1.0
+2937,"Can you supply a list of conditions that are related to both partial monosomy of chromosome 20p and Alagille syndrome, showing how they are connected or branched from these two disorders?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+10930,Which anatomical parts lack expression of genes or proteins implicated in the development of Ureteropelvic Junction Obstruction?,2,2,0,1.0,1.0,0.0,1.0,0.2,1.0
+8278,Which gene encodes the neuropeptide FF receptor 1 that is not expressed in the corpus callosum and parietal lobe regions of the brain?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8939,Which gene or protein is not expressed in both the fallopian tube and amniotic fluid?,1,1,0,1.0,1.0,0.0,0.0,0.05555555555555555,0.0
+3085,"Could you recommend treatments for ocular hypertension? Additionally, I'd like to know if respiratory issues are a typical side effect of these medications. Thank you!",12,12,0,1.0,1.0,1.0,1.0,1.0,1.0
+788,Can you find genes or proteins acting as Rho guanine nucleotide exchange factors involved in the RHOA GTPase cycle and linked to amyotrophic lateral sclerosis pathogenesis? Please generate a list from the database.,2,1,1,0.5,0.5,0.0,0.0,0.1111111111111111,0.5
+2392,"What condition is associated with arthrogryposis multiplex congenita and typically results in persistent bending of the fingers and toes, also known as camptodactyly?",2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+1634,Which drugs interact with the SLC22A5 transporter and also act upon the SLC6A8 gene/protein in their pharmacodynamics?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+6550,"Can someone provide information on any genes or proteins that engage in interactions with partners associated with the TET family (TET1, TET2, TET3) and TDG in the context of DNA demethylation, and also play a role in the regulation of nuclear cell division?",6,0,6,0.0,0.0,0.0,0.0,0.0,0.0
+10489,Search for a biological pathway associated with the activation of gene expression by RORA that also involves an interaction with a common gene or protein.,1,1,0,1.0,1.0,0.0,0.0,0.16666666666666666,1.0
+4318,"Can you recommend medications effective against both amoebiasis, caused by Entamoeba histolytica, and helminthiasis?",1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+2511,"Please locate genes or proteins that are involved in functional interactions with the Class C/3 signaling pathway, exhibit GPCR activity, are expressed in both smooth muscle and taste bud cells, and belong to the bitter taste receptor family.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+363,What disease stems from Ascaridida infection and leads to blockage or rupture in the intestines?,2,0,2,0.0,0.0,0.0,0.0,0.0,1.0
+7923,Which pharmacological agent interacts with genes or proteins prevalent in gallbladder tissue to facilitate less invasive staging procedures?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+6533,"Which medication, sharing a similar transporter protein or gene as Levocetirizine, specifically targets and inhibits the nuclear enzyme DNA topoisomerase I?",2,0,2,0.0,0.0,0.0,0.0,0.0,1.0
+6336,Identify proteins or genes that interact with the SCN11A gene and are linked to a shared phenotype or biological effect.,1,1,0,1.0,1.0,0.0,0.0,0.14285714285714285,1.0
+138,What is the biochemical pathway that falls under mRNA Editing and specifically modifies apolipoprotein B mRNA by converting cysteine to uridine?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+1439,Could you assist in identifying which disease is associated with adenocarcinoma of the lung and its potential connection to hereditary cancer syndromes?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+11151,Could you identify the medication that functions as an enzymatic agent affecting certain genes or proteins within the peripheral nervous system and metabolizes to create pain-relieving effects through the diminution of substance P neuropeptide concentrations?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+4355,Which gene or protein facilitates the symbiotic interaction within the pathway that inserts viral DNA into the host genome and possesses the ability to bind nonspecifically to double-stranded DNA?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+10715,Which anatomical structures lack the expression of genes or proteins involved in the negative regulation of organ development?,7,6,1,0.8571428571428571,0.8571428571428571,0.0,0.0,0.1,0.2857142857142857
+2803,Could you recommend any medications that target the TUBB1 gene/protein and inform me about potential side effects like myelosuppression or neurotoxicity?,3,3,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0

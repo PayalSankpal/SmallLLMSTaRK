@@ -1,0 +1,29 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+4973,Could you recommend treatment options for lymphosarcoma that are safe for someone potentially with Kallmann syndrome and don't pose a risk of blurred vision?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+10309,Which genes or proteins are not expressed in either lung tissue or the deltoid muscle?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+940,"What is the name of the gene or protein associated with protein-losing enteropathy type diarrhea 10 that serves as a key metabolic enzyme, catalyzing the conversion of diacylglycerol and fatty acyl CoA to triacylglycerol?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8627,"Which medication, facilitated by gene or protein interactions with endocytic vesicles, assists in the regulation of healthy glucose metabolic processes?",6,0,6,0.0,0.0,0.0,0.0,0.0,0.0
+9059,Which gene or protein is responsible for transporting pharmaceutical agents that exhibit synergistic effects when combined with Capric acid?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+9707,Search for pathways associated with the crosslinking of collagen fibrils that also interact with a common gene or protein.,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+6058,Identify the gene or protein that is not expressed in the stomach's fundus and the lungs.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1199,Which disorder is associated with a partial loss of chromosome 14's long arm and results in significant developmental delays and hypotonia?,3,0,3,0.0,0.0,0.0,0.0,0.0,0.6666666666666666
+3643,Please provide data on proteins and genes interacting with PLAAT5 via PPIs crucial for degrading cross-linked fibrin through targeted hydrolysis of the L-gamma-glutamyl-L-epsilon-lysine isodipeptide.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+3655,What disease is both an ancestor and descendant of non-invasive pancreatic mucinous cystadenocarcinoma and is also directly connected to mucinous cystadenocarcinoma in a hierarchical order?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+4560,"What medical condition could cause leg paralysis or numbness, and is also linked to male infertility due to sperm issues?",1,1,0,1.0,1.0,0.0,0.0,0.05,0.0
+9861,Search for pathways involving AKT-mediated phosphorylation of cytosolic targets that also interact with a common gene or protein.,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+1802,"Could you find out which genes or proteins are involved in both the Carnitine metabolism pathway and the regulation of ribosomal proteins L5 and L11, as well as their association with the CNOT2 complex?",1,1,0,1.0,1.0,0.0,0.0,0.07692307692307693,0.0
+5541,"What is the name of the condition that falls under adrenogenital syndrome associated with BMPR2 gene dysfunctions, characterized by excessive androgen production from adrenal or gonadal origins?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+5507,"What type of skin cancer presents with symptoms like fever, general discomfort, muscle pain, and skin rashes?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7102,Which pharmacological agent demonstrates a synergistic effect when combined with a medication that not only lists Glioma as an adverse reaction but also is recognized for its affinity and activation of the human erythropoietin receptor?,4,0,4,0.0,0.0,0.0,0.0,0.0,0.5
+1129,What diseases are associated with the SLC26A2 gene and can be triggered by mutations at the slc26a2 site?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+9908,What are the pharmaceutical agents that inhibit the activity of genes or proteins associated with 17-beta-hydroxysteroid dehydrogenase (NAD+) to potentially enhance metabolic energy production?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+562,What are the related diseases that fall under or branch off from malignant ciliary body melanoma in the disease classification system?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+6082,"Could you identify medications with both immunosuppressive and anti-inflammatory characteristics that, when used in combination with Belimumab, exhibit a synergistic effect and are prescribed for the same autoimmune condition as Belimumab?",9,1,8,0.1111111111111111,0.1111111111111111,0.0,0.0,0.0625,0.0
+586,"What cellular pathway involves the MSH2 gene/protein within the MMR disease pathway hierarchy, includes heteroduplex repair, and leads to compromised mismatch repair functionality?",2,2,0,1.0,1.0,0.0,1.0,0.5,1.0
+7622,I'm looking for a signaling pathway that interacts with the Toll-Like Receptor 10 (TLR10) cascade and also engages with genes or proteins that TLR10 itself affects. Can you identify such a pathway for me?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+7116,Which genes or proteins have interactions with those associated with TPMT deficiency due to TPMT gene mutations?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+9728,Search for diseases that have no drugs indicated for treatment and are linked to Acral ulceration.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+854,What cellular pathways is the SLC25A28 gene/protein associated with?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+6002,Which medications interact synergistically with Cinnarizine to treat the same condition and possess a similar elimination half-life of approximately 20 hours?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+10011,"Which cardiac condition, characterized by inadequate blood pumping, should be considered a contraindication when prescribing medications for stunted growth attributable to isolated growth hormone deficit in conjunction with X-linked hypogammaglobulinemia?",11,1,10,0.09090909090909091,0.09090909090909091,0.0,0.0,0.16666666666666666,0.2727272727272727
+9270,Which phenotypic manifestations or effects are associated with benign neoplasm subtypes?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
