@@ -37,8 +37,8 @@
     "score_decay": 1
   },
   "data_paths": {
-    "use_saved_llm_responses": false,
-    "llm_responses_file": "./llm_responses/prime/llm_response_prime_val.csv",
+    "use_saved_llm_responses": true,
+    "llm_responses_file": "./llm_responses/amazon/llm_response_amazon_val.csv",
     "use_saved_vss_candidates": false,
     "vss_candidates_json_path": "vss_candidates.json"
   }

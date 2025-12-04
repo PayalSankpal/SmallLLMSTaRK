@@ -6,7 +6,7 @@ SPLIT="val"       # Change to 'test' if needed later
 CONFIG_FILE="./params/amazon_alpha_params.json"
 
 # Alpha values: 5, then 10 through 18
-ALPHAS=(0)
+ALPHAS=({1..20})
 
 # Activate your environment if needed
 # source venv/bin/activate 
