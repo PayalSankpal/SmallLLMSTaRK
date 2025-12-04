@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+904,Could you provide information on treatments available for C. diff colitis and clarify whether any of these medications could potentially lead to facial swelling as a side effect?,1,1,0,1.0,1.0,0.0,0.0,0.07142857142857142,1.0

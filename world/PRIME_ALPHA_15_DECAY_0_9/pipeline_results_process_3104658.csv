@@ -1,0 +1,4 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+10629,"Which cellular structures engage with genes or proteins affected by the compound 4,6-dideoxy-4-amino-alpha-D-glucose?",3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
+10629,"Which cellular structures engage with genes or proteins affected by the compound 4,6-dideoxy-4-amino-alpha-D-glucose?",3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
+10629,"Which cellular structures engage with genes or proteins affected by the compound 4,6-dideoxy-4-amino-alpha-D-glucose?",3,0,3,0.0,0.0,0.0,0.0,0.0,1.0

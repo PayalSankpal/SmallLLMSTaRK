@@ -1,0 +1,36 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+1340,"What are the genes or proteins that interact with NMD3, are expressed in adult mammalian kidneys, have a role in secretion and transport, and show high expression levels in lung tissue?",1,1,0,1.0,1.0,0.0,0.0,0.05555555555555555,0.0
+957,Could you suggest any treatments compatible with Phenelzine that are effective for hemoglobinopathy and also assist in dissolving blood clots?,3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
+1172,Please list diseases related to polyradiculoneuropathy that affect multiple spinal nerve roots and share a similar or subordinate pathophysiological relationship.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+967,"Could you provide me with alternative treatments that complement Methotrexate and enhance its synergy with Tetrahydrofolic acid, as well as assist in the safe clearance of Methotrexate from my system when necessary?",1,1,0,1.0,1.0,0.0,0.0,0.05555555555555555,0.0
+3365,Can you list the medications suitable for benign prostatic hyperplasia and tell me if any are linked to dysphagia as a side effect?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+631,"What condition could cause pain and visual symptoms like blurriness or floaters, and is manageable with Propranolol?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+9382,Identify genes or proteins that interact with the interleukin-6 receptor (IL6R) and are linked to a common effect or phenotype.,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+7945,"Which condition, characterized by tiny blisters on the corneal surface that can deteriorate into branch-like ulcers, would render the conventional medications for treating mite infestations inadvisable?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+7945,"Which condition, characterized by tiny blisters on the corneal surface that can deteriorate into branch-like ulcers, would render the conventional medications for treating mite infestations inadvisable?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+3629,Can you give me a rundown of diseases associated with uneven facial features and typically involve an enlarged tongue?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+8772,"What are the common gene targets for 2,6-dimethyl-4-[(E)-2-phenylethenyl]phenol and O-Trifluoromethylphenyl Anthranilic Acid?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+2008,"What possible conditions could be indicated by a coin-shaped spot on a chest X-ray, especially considering my family history of lung issues?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+452,"Could you identify a medication targeting the SCN4A gene/protein and supply details on its pharmacokinetics, focusing on its elimination half-life? Also, does this drug induce localized numbness from the thoracic area to the lower limbs?",1,1,0,1.0,1.0,0.0,0.0,0.16666666666666666,1.0
+10053,"I'm looking for angiotensin receptor blockers (ARBs) that specifically target the AT1 subtype, which also enhance the effects when used in combination with Pindolol. Could you list any ARBs that are prescribed for the same conditions as Pindolol?",9,0,9,0.0,0.0,0.0,0.0,0.0,0.2222222222222222
+7630,Which anatomical structures lack the expression of genes or proteins that are involved in recognizing lipoteichoic acid?,10,0,10,0.0,0.0,0.0,0.0,0.0,0.2
+5903,"Which gene or protein is capable of interacting with tyrosine hydroxylase (TH), shares associated effects or phenotypes with mitogen-activated protein kinase 3 (MAPK3), and possesses the functionality to bind to, or regulate MAPK3?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3007,"Can you supply a list of genes and proteins that interact with lipid-binding functions, partner with LRRK2 in protein-protein interactions, and also facilitate lipid-binding?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5546,Could you suggest any tablet or capsule medications that specifically target the CTRB1 gene/protein?,15,15,0,1.0,1.0,1.0,1.0,1.0,0.9333333333333333
+196,"Can you find genes or proteins that regulate enzymes, interact with NCK2, and modulate enzymatic activity?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+4936,Could you provide me with the early treatment options available in the US for Chagas disease to eliminate the parasite responsible for it?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1541,"What signaling pathway, associated with the APAF1 protein and a part of the Cytochrome c-triggered apoptotic process, leads to the triggering of caspase-3 and -7 through the proteolytic activity of the apoptosome?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+4203,Could you list the diseases associated with or stemming from testicular disorders?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5527,Can you supply a selection of tablet or capsule medications designed to inhibit or interact with the MMP1 gene/protein?,6,6,0,1.0,1.0,1.0,1.0,1.0,1.0
+2673,What is the subtype of juvenile polyposis syndrome that includes refractory anemia as a symptom?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+3598,Which pathway is a subordinate in the hierarchy to the Visual phototransduction pathway and functionally interacts with the HSD17B6 gene/protein?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+6083,Which medications are designed to influence genes or proteins associated with the enzymatic activity of dITP diphosphatase?,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+2416,Which diseases are considered subtypes or are directly related to intracranial arachnoid cysts?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+1792,"Seeking the gene that encodes for a type IV collagen subunit strengthening the extracellular matrix and shares a head-to-head configuration with a distinct type IV collagen gene, unified by a single promoter.",5,0,5,0.0,0.0,0.0,0.0,0.0,0.6
+6213,Identify genes or proteins that interact with WIPF1 and are also linked to a common disease.,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+475,"Which condition is associated with the PMP22 gene and presents with paresthesias, ataxia, and neuropathic pain after an infection?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+9336,What are the phenotypic manifestations or effects associated with the subtype of chondroid hamartoma?,3,1,2,0.3333333333333333,0.3333333333333333,0.0,0.0,0.05,0.0
+10017,Which cellular structures come into contact with genes or proteins that are influenced by p-Coumaric acid?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+10017,Which cellular structures come into contact with genes or proteins that are influenced by p-Coumaric acid?,2,0,2,0.0,0.0,0.0,0.0,0.0,1.0
+6164,Which cell structures interact with the genetic or protein targets of the drug Linaclotide?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+10629,"Which cellular structures engage with genes or proteins affected by the compound 4,6-dideoxy-4-amino-alpha-D-glucose?",3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
