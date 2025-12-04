@@ -1,0 +1,302 @@
+Loading from /root/.cache/huggingface/hub/datasets--snap-stanford--stark/snapshots/88269e23e90587f99476c5dd74e235a0877e69be/skb/prime/processed!
+[LlmBridge] Initializing model: meta/llama-3.3-70b-instruct (device=cpu)
+[LlmBridge] Using NVIDIA/meta-style model: meta/llama-3.3-70b-instruct
+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
+Use file from /root/.cache/huggingface/hub/datasets--snap-stanford--stark/snapshots/88269e23e90587f99476c5dd74e235a0877e69be/qa/prime/stark_qa/stark_qa_human_generated_eval.csv.
+[VSSRetriever] Using CPU
+--- Processing Query 6517 ---
+Getting embedding for query:  Travoprost using model: text-embedding-ada-002
+Getting embedding for query: influenced by the medication Travoprost using model: text-embedding-ada-002
+Getting embedding for query: Travoprost using model: text-embedding-ada-002
+Getting embedding for query: involved in interaction with genes or proteins influenced by the medication Travoprost using model: text-embedding-ada-002
+Getting embedding for query: Which cell structures are involved in interaction with genes or proteins that are influenced by the medication Travoprost? using model: text-embedding-ada-002
+Finished Query 6517
+--- Processing Query 9996 ---
+Getting embedding for query:  pericardium using model: text-embedding-ada-002
+Getting embedding for query:  dorsal regions of the thalamus using model: text-embedding-ada-002
+Getting embedding for query:  ventral regions of the thalamus using model: text-embedding-ada-002
+Getting embedding for query: pericardium using model: text-embedding-ada-002
+Getting embedding for query: dorsal regions of the thalamus using model: text-embedding-ada-002
+Getting embedding for query: ventral regions of the thalamus using model: text-embedding-ada-002
+Getting embedding for query: expressed exclusively in the pericardium not expressed in the dorsal regions of the thalamus not expressed in the ventral regions of the thalamus using model: text-embedding-ada-002
+Getting embedding for query: Which genes or proteins are expressed exclusively in the pericardium and not in either the dorsal or ventral regions of the thalamus? using model: text-embedding-ada-002
+Finished Query 9996
+--- Processing Query 3630 ---
+Getting embedding for query:  beriberi using model: text-embedding-ada-002
+Getting embedding for query:  Zopiclone using model: text-embedding-ada-002
+Getting embedding for query: beriberi using model: text-embedding-ada-002
+Getting embedding for query: Zopiclone using model: text-embedding-ada-002
+Getting embedding for query: effective for treating beriberi safe to use with Zopiclone using model: text-embedding-ada-002
+Getting embedding for query: Could you suggest any medications effective for treating beriberi that are safe to use with Zopiclone? using model: text-embedding-ada-002
+Finished Query 3630
+--- Processing Query 10252 ---
+Getting embedding for query: regulatory component PI3K using model: text-embedding-ada-002
+Getting embedding for query:  FGFR1c using model: text-embedding-ada-002
+Getting embedding for query:  Klotho complex signal transduction using model: text-embedding-ada-002
+Getting embedding for query: PI3K regulatory component using model: text-embedding-ada-002
+Getting embedding for query: FGFR1c using model: text-embedding-ada-002
+Getting embedding for query: Klotho complex signal transduction using model: text-embedding-ada-002
+Getting embedding for query: responsible for coding the regulatory component of PI3K engage with elements of the pathways for FGFR1c and Klotho complex signal transduction using model: text-embedding-ada-002
+Getting embedding for query: Which gene or protein responsible for coding the regulatory component of PI3K is known to engage with elements of the pathways for FGFR1c and Klotho complex signal transduction? using model: text-embedding-ada-002
+Finished Query 10252
+--- Processing Query 5142 ---
+[WARNING] Query 5142 failed attempt 1/3: Step 2 Failed (Relation Extraction)
+--- Processing Query 5142 ---
+[WARNING] Query 5142 failed attempt 2/3: Step 1 Failed (Entity Extraction)
+--- Processing Query 5142 ---
+[WARNING] Query 5142 failed attempt 3/3: Step 1 Failed (Entity Extraction)
+[CRITICAL] Query 5142 failed 3 attempts. Triggering Fallback.
+--- [FALLBACK] Query 5142: Falling back to VSS. Reason: Step 1 Failed (Entity Extraction)
+--- [FALLBACK] Using detected ANSWER types: ['disease']
+Getting embedding for query: Which autosomal dominant diseases are linked to the development of supernumerary breast tissue? using model: text-embedding-ada-002
+--- Processing Query 1755 ---
+Getting embedding for query:  hyaluronan absorption and breakdown using model: text-embedding-ada-002
+Getting embedding for query: hyaluronan absorption and breakdown using model: text-embedding-ada-002
+Getting embedding for query: precedes or follows hyaluronan absorption and breakdown involved in its metabolism or signaling cascades using model: text-embedding-ada-002
+Getting embedding for query: Please find a metabolic process that either precedes or follows hyaluronan absorption and breakdown, and is involved in its metabolism or signaling cascades. using model: text-embedding-ada-002
+Finished Query 1755
+--- Processing Query 5686 ---
+Getting embedding for query:  clathrin using model: text-embedding-ada-002
+Getting embedding for query:  FAT3 using model: text-embedding-ada-002
+Getting embedding for query: clathrin using model: text-embedding-ada-002
+Getting embedding for query: FAT3 using model: text-embedding-ada-002
+Getting embedding for query: bind to clathrin interact with the FAT3 protein using model: text-embedding-ada-002
+Getting embedding for query: Please find genes or proteins that bind to clathrin and also interact with the FAT3 protein. using model: text-embedding-ada-002
+Finished Query 5686
+--- Processing Query 7969 ---
+Getting embedding for query:  7-methylguanosine cap hypermethylation using model: text-embedding-ada-002
+Getting embedding for query: 7-methylguanosine cap hypermethylation using model: text-embedding-ada-002
+Getting embedding for query: shares a similar interaction pattern with genes or proteins to that of 7-methylguanosine cap hypermethylation using model: text-embedding-ada-002
+Getting embedding for query: Which biological process shares a similar interaction pattern with genes or proteins to that of 7-methylguanosine cap hypermethylation? using model: text-embedding-ada-002
+Finished Query 7969
+--- Processing Query 6641 ---
+Getting embedding for query:  specified medication using model: text-embedding-ada-002
+Getting embedding for query: play a role in the signaling pathways of blood clotting receptorsassociated with protein tyrosine kinase activator activity using model: text-embedding-ada-002
+Getting embedding for query:  anticoagulation using model: text-embedding-ada-002
+Getting embedding for query: specific medical conditions using model: text-embedding-ada-002
+Getting embedding for query: specified medication using model: text-embedding-ada-002
+Getting embedding for query: play a role in the signaling pathways of blood clotting receptors associated with protein tyrosine kinase activator activity using model: text-embedding-ada-002
+Getting embedding for query: anticoagulation using model: text-embedding-ada-002
+Getting embedding for query: acts on genes or proteins play a role in the signaling pathways of blood clotting receptors associated with protein tyrosine kinase activator activity importance of anticoagulation for specific medical conditions using model: text-embedding-ada-002
+Getting embedding for query: Would you be able to provide information on whether the specified medication acts on genes or proteins that play a role in the signaling pathways of blood clotting receptors, particularly those associated with protein tyrosine kinase activator activity, given the importance of anticoagulation for specific medical conditions? using model: text-embedding-ada-002
+Finished Query 6641
+--- Processing Query 10271 ---
+Getting embedding for query:  Pegaspargase using model: text-embedding-ada-002
+Getting embedding for query:  neurological conditions using model: text-embedding-ada-002
+Getting embedding for query: Pegaspargase using model: text-embedding-ada-002
+Getting embedding for query: neurological conditions using model: text-embedding-ada-002
+Getting embedding for query: shares a similar gene or protein carrier with Pegaspargase indicated for the treatment of neurological conditions using model: text-embedding-ada-002
+Getting embedding for query: Identify a medication that shares a similar gene or protein carrier with Pegaspargase and is indicated for the treatment of neurological conditions. using model: text-embedding-ada-002
+Finished Query 10271
+--- Processing Query 10069 ---
+Getting embedding for query:  N-[(2',4'-Difluoro-4-hydroxy-5-iodobiphenyl-3-yl)carbonyl]-beta-alanine using model: text-embedding-ada-002
+Getting embedding for query:  2-(2,6-Dichlorophenyl)-1,3-benzoxazole-6-carboxylic acid using model: text-embedding-ada-002
+Getting embedding for query: N-[(2',4'-Difluoro-4-hydroxy-5-iodobiphenyl-3-yl)carbonyl]-beta-alanine using model: text-embedding-ada-002
+Getting embedding for query: 2-(2,6-Dichlorophenyl)-1,3-benzoxazole-6-carboxylic acid using model: text-embedding-ada-002
+Getting embedding for query: interact with N-[(2',4'-Difluoro-4-hydroxy-5-iodobiphenyl-3-yl)carbonyl]-beta-alanine interact with 2-(2,6-Dichlorophenyl)-1,3-benzoxazole-6-carboxylic acid common genetic targets using model: text-embedding-ada-002
+Getting embedding for query: Identify the common genetic targets that interact with both N-[(2',4'-Difluoro-4-hydroxy-5-iodobiphenyl-3-yl)carbonyl]-beta-alanine and 2-(2,6-Dichlorophenyl)-1,3-benzoxazole-6-carboxylic acid. using model: text-embedding-ada-002
+Finished Query 10069
+--- Processing Query 768 ---
+Getting embedding for query: physical growth using model: text-embedding-ada-002
+Getting embedding for query: cognitive impairments using model: text-embedding-ada-002
+Getting embedding for query: stunted physical growth and cognitive impairments using model: text-embedding-ada-002
+Getting embedding for query: associated with chromosomal abnormalities can lead to stunted physical growth can lead to cognitive impairments using model: text-embedding-ada-002
+Getting embedding for query: What diseases associated with chromosomal abnormalities can lead to stunted physical growth and cognitive impairments? using model: text-embedding-ada-002
+Finished Query 768
+--- Processing Query 3093 ---
+Getting embedding for query:  FAM111A using model: text-embedding-ada-002
+Getting embedding for query: bone sclerosisdenser long bones using model: text-embedding-ada-002
+Getting embedding for query: FAM111A using model: text-embedding-ada-002
+Getting embedding for query: bone sclerosis denser long bones using model: text-embedding-ada-002
+Getting embedding for query: linked to FAM111A gene or protein modifications in individuals with bone sclerosis in individuals with denser long bones using model: text-embedding-ada-002
+Getting embedding for query: What condition could be linked to FAM111A gene or protein modifications in individuals with bone sclerosis and denser long bones? using model: text-embedding-ada-002
+Finished Query 3093
+--- Processing Query 9732 ---
+Getting embedding for query:  exoribonuclease activity using model: text-embedding-ada-002
+Getting embedding for query:  positive regulation of exoribonuclease activity using model: text-embedding-ada-002
+Getting embedding for query: exoribonuclease activity using model: text-embedding-ada-002
+Getting embedding for query: positive regulation of exoribonuclease activity using model: text-embedding-ada-002
+Getting embedding for query: share a similar interaction pattern with genes or proteins as the positive regulation of exoribonuclease activity using model: text-embedding-ada-002
+Getting embedding for query: Which biological processes share a similar interaction pattern with genes or proteins as the positive regulation of exoribonuclease activity is observed in? using model: text-embedding-ada-002
+Finished Query 9732
+--- Processing Query 6708 ---
+Getting embedding for query: subtype of acute biphenotypic leukemia acute biphenotypic leukemia using model: text-embedding-ada-002
+Getting embedding for query: acute biphenotypic leukemia subtype of acute biphenotypic leukemia using model: text-embedding-ada-002
+Getting embedding for query: phenotypic manifestations or effects associated with the subtype of acute biphenotypic leukemia using model: text-embedding-ada-002
+Getting embedding for query: Which phenotypic manifestations or effects are associated with the subtype of acute biphenotypic leukemia? using model: text-embedding-ada-002
+Finished Query 6708
+--- Processing Query 5950 ---
+Getting embedding for query: unresponsive to medication using model: text-embedding-ada-002
+Getting embedding for query:  liver using model: text-embedding-ada-002
+Getting embedding for query: increased iron levels using model: text-embedding-ada-002
+Getting embedding for query: liver using model: text-embedding-ada-002
+Getting embedding for query: correlate with increased liver iron levels unresponsive to medication using model: text-embedding-ada-002
+Getting embedding for query: Identify conditions unresponsive to medication that correlate with increased liver iron levels. using model: text-embedding-ada-002
+Finished Query 5950
+--- Processing Query 11077 ---
+Getting embedding for query:  SLC29A3 using model: text-embedding-ada-002
+Getting embedding for query:  Goserelin using model: text-embedding-ada-002
+Getting embedding for query: SLC29A3 using model: text-embedding-ada-002
+Getting embedding for query: Goserelin using model: text-embedding-ada-002
+Getting embedding for query: linked to the gene SLC29A3 should not be treated with the drug Goserelin using model: text-embedding-ada-002
+Getting embedding for query: Find medical conditions linked to the gene SLC29A3 that should not be treated with the drug Goserelin. using model: text-embedding-ada-002
+Finished Query 11077
+--- Processing Query 4438 ---
+Getting embedding for query:  cis-Golgi network using model: text-embedding-ada-002
+Getting embedding for query:  Golgi apparatus using model: text-embedding-ada-002
+Getting embedding for query:  Golgi cis cisterna using model: text-embedding-ada-002
+Getting embedding for query:  Golgi cisterna membrane using model: text-embedding-ada-002
+Getting embedding for query: cis-Golgi network using model: text-embedding-ada-002
+Getting embedding for query: Golgi apparatus using model: text-embedding-ada-002
+Getting embedding for query: Golgi cis cisterna using model: text-embedding-ada-002
+Getting embedding for query: Golgi cisterna membrane using model: text-embedding-ada-002
+Getting embedding for query: interacts with the cis-Golgi network contributes to the organization of the Golgi apparatus involved in regulating Golgi structure and function within the Golgi cis cisterna within the Golgi cisterna membrane within the cis-Golgi network using model: text-embedding-ada-002
+Getting embedding for query: I need to find a gene or protein that interacts with the cis-Golgi network and contributes to the organization of the Golgi apparatus. It should be involved in regulating Golgi structure and function specifically within the Golgi cis cisterna, the Golgi cisterna membrane, and the cis-Golgi network. Can you supply information on any genes or proteins that fit this description? using model: text-embedding-ada-002
+Finished Query 4438
+--- Processing Query 5928 ---
+[WARNING] Query 5928 failed attempt 1/3: Step 2 Failed (Relation Extraction)
+--- Processing Query 5928 ---
+[WARNING] Query 5928 failed attempt 2/3: Step 1 Failed (Entity Extraction)
+--- Processing Query 5928 ---
+[WARNING] Query 5928 failed attempt 3/3: Step 1 Failed (Entity Extraction)
+[CRITICAL] Query 5928 failed 3 attempts. Triggering Fallback.
+--- [FALLBACK] Query 5928: Falling back to VSS. Reason: Step 1 Failed (Entity Extraction)
+--- [FALLBACK] Using detected ANSWER types: ['effect/phenotype']
+Getting embedding for query: What are the observed effects or phenotypes associated with the subtype of hereditary papillary renal cell carcinoma? using model: text-embedding-ada-002
+--- Processing Query 8037 ---
+Getting embedding for query: in postsynaptic terminals organization of actin cytoskeleton using model: text-embedding-ada-002
+Getting embedding for query: involved in the interaction with the organization of actin cytoskeleton using model: text-embedding-ada-002
+Getting embedding for query: organization of actin cytoskeleton in postsynaptic terminals using model: text-embedding-ada-002
+Getting embedding for query: lack the expression of genes or proteins involved in the interaction with the organization of actin cytoskeleton in postsynaptic terminals using model: text-embedding-ada-002
+Getting embedding for query: Which anatomical structures lack the expression of genes or proteins involved in the interaction with the organization of actin cytoskeleton in postsynaptic terminals? using model: text-embedding-ada-002
+Finished Query 8037
+--- Processing Query 4259 ---
+Getting embedding for query:  bind metal ions using model: text-embedding-ada-002
+Getting embedding for query:  protein polyubiquitination using model: text-embedding-ada-002
+Getting embedding for query:  Antigen processing through Ubiquitination using model: text-embedding-ada-002
+Getting embedding for query:  Proteasome degradation using model: text-embedding-ada-002
+Getting embedding for query: bind metal ions using model: text-embedding-ada-002
+Getting embedding for query: protein polyubiquitination using model: text-embedding-ada-002
+Getting embedding for query: Antigen processing through Ubiquitination using model: text-embedding-ada-002
+Getting embedding for query: Proteasome degradation using model: text-embedding-ada-002
+Getting embedding for query: enzymes bind metal ions active in protein polyubiquitination play a role in Antigen processing through Ubiquitination play a role in Proteasome degradation using model: text-embedding-ada-002
+Getting embedding for query: Could you identify enzymes that bind metal ions, are active in protein polyubiquitination, and play a role in both Antigen processing through Ubiquitination and Proteasome degradation? using model: text-embedding-ada-002
+Finished Query 4259
+--- Processing Query 3815 ---
+Getting embedding for query:  invasive ductal carcinoma using model: text-embedding-ada-002
+Getting embedding for query:  cystic hypersecretory carcinoma using model: text-embedding-ada-002
+Getting embedding for query:  breast carcinoma using model: text-embedding-ada-002
+Getting embedding for query: invasive ductal carcinoma using model: text-embedding-ada-002
+Getting embedding for query: cystic hypersecretory carcinoma using model: text-embedding-ada-002
+Getting embedding for query: breast carcinoma using model: text-embedding-ada-002
+Getting embedding for query: included in the differential diagnosis for a patient presenting with a breast carcinoma subtype linked to both invasive ductal carcinoma and cystic hypersecretory carcinoma using model: text-embedding-ada-002
+Getting embedding for query: What conditions should be included in the differential diagnosis for a patient presenting with a breast carcinoma subtype linked to both invasive ductal carcinoma and cystic hypersecretory carcinoma? using model: text-embedding-ada-002
+Finished Query 3815
+--- Processing Query 5496 ---
+Getting embedding for query:  cervical benign epithelial neoplasms using model: text-embedding-ada-002
+Getting embedding for query: cervical benign epithelial neoplasms using model: text-embedding-ada-002
+Getting embedding for query: derived from cervical benign epithelial neoplasms using model: text-embedding-ada-002
+Getting embedding for query: What are the diseases derived from cervical benign epithelial neoplasms? using model: text-embedding-ada-002
+Finished Query 5496
+--- Processing Query 5772 ---
+[WARNING] Query 5772 failed attempt 1/3: Step 2 Failed (Relation Extraction)
+--- Processing Query 5772 ---
+[WARNING] Query 5772 failed attempt 2/3: Step 1 Failed (Entity Extraction)
+--- Processing Query 5772 ---
+[WARNING] Query 5772 failed attempt 3/3: Step 1 Failed (Entity Extraction)
+[CRITICAL] Query 5772 failed 3 attempts. Triggering Fallback.
+--- [FALLBACK] Query 5772: Falling back to VSS. Reason: Step 1 Failed (Entity Extraction)
+--- [FALLBACK] Using detected ANSWER types: ['effect/phenotype']
+Getting embedding for query: What are the observed effects or phenotypes associated with constrictive pericarditis subtypes? using model: text-embedding-ada-002
+--- Processing Query 10117 ---
+Getting embedding for query:  Distal Sensory Impairment using model: text-embedding-ada-002
+Getting embedding for query: linked to Distal Sensory Impairment using model: text-embedding-ada-002
+Getting embedding for query: Distal Sensory Impairment using model: text-embedding-ada-002
+Getting embedding for query: involved with or influenced by the gene or protein linked to Distal Sensory Impairment using model: text-embedding-ada-002
+Getting embedding for query: Could you identify the biological processes that are involved with or influenced by the gene or protein linked to Distal Sensory Impairment? using model: text-embedding-ada-002
+Finished Query 10117
+--- Processing Query 5699 ---
+Getting embedding for query:  FLT4 using model: text-embedding-ada-002
+Getting embedding for query: inflammationedemaangiogenesis using model: text-embedding-ada-002
+Getting embedding for query: FLT4 using model: text-embedding-ada-002
+Getting embedding for query: inflammation edema angiogenesis using model: text-embedding-ada-002
+Getting embedding for query: target the FLT4 gene/protein suppress inflammation suppress edema suppress angiogenesis using model: text-embedding-ada-002
+Getting embedding for query: Can you give me a list of drugs that target the FLT4 gene/protein and also suppress inflammation, edema, and angiogenesis? using model: text-embedding-ada-002
+Finished Query 5699
+--- Processing Query 7152 ---
+Getting embedding for query: subtype of suppurative uveitis suppurative uveitis using model: text-embedding-ada-002
+Getting embedding for query: suppurative uveitis subtype of suppurative uveitis using model: text-embedding-ada-002
+Getting embedding for query: associated specifically with the subtype of suppurative uveitis observed effects or phenotypes using model: text-embedding-ada-002
+Getting embedding for query: What are the observed effects or phenotypes associated specifically with the subtype of suppurative uveitis? using model: text-embedding-ada-002
+Finished Query 7152
+--- Processing Query 10551 ---
+Getting embedding for query:  O-Trifluoromethylphenyl Anthranilic Acid using model: text-embedding-ada-002
+Getting embedding for query:  N-(3,5-dibromo-4-hydroxyphenyl)benzamide using model: text-embedding-ada-002
+Getting embedding for query: O-Trifluoromethylphenyl Anthranilic Acid using model: text-embedding-ada-002
+Getting embedding for query: N-(3,5-dibromo-4-hydroxyphenyl)benzamide using model: text-embedding-ada-002
+Getting embedding for query: encode proteins that interact with O-Trifluoromethylphenyl Anthranilic Acid and N-(3,5-dibromo-4-hydroxyphenyl)benzamide as ligands using model: text-embedding-ada-002
+Getting embedding for query: Which genes encode proteins that interact with both O-Trifluoromethylphenyl Anthranilic Acid and N-(3,5-dibromo-4-hydroxyphenyl)benzamide as ligands? using model: text-embedding-ada-002
+Finished Query 10551
+--- Processing Query 7224 ---
+Getting embedding for query:  sarcolemma using model: text-embedding-ada-002
+Getting embedding for query: minimal impact on blood gasesminimal impact on respiratory functionminimal impact on the cardiovascular system using model: text-embedding-ada-002
+Getting embedding for query: sarcolemma using model: text-embedding-ada-002
+Getting embedding for query: minimal impact on blood gases minimal impact on respiratory function minimal impact on the cardiovascular system using model: text-embedding-ada-002
+Getting embedding for query: facilitated by gene or protein interactions with the sarcolemma exhibits minimal impact on blood gases exhibits minimal impact on respiratory function exhibits minimal impact on the cardiovascular system using model: text-embedding-ada-002
+Getting embedding for query: Which medication, facilitated by gene or protein interactions with the sarcolemma, exhibits minimal impact on blood gases, respiratory function, and the cardiovascular system? using model: text-embedding-ada-002
+Finished Query 7224
+--- Processing Query 2287 ---
+Getting embedding for query:  secondary malignant neoplasms using model: text-embedding-ada-002
+Getting embedding for query: secondary malignant neoplasms using model: text-embedding-ada-002
+Getting embedding for query: subclassified under secondary malignant neoplasms have metastatic potential using model: text-embedding-ada-002
+Getting embedding for query: What diseases are subclassified under secondary malignant neoplasms and have metastatic potential? using model: text-embedding-ada-002
+Finished Query 2287
+--- Processing Query 1804 ---
+Getting embedding for query:  pediatric liver cancer using model: text-embedding-ada-002
+Getting embedding for query:  PAXIP1 using model: text-embedding-ada-002
+Getting embedding for query:  lung adenocarcinoma using model: text-embedding-ada-002
+Getting embedding for query:  nuclear using model: text-embedding-ada-002
+Getting embedding for query:  GAGE/PAGE proteins using model: text-embedding-ada-002
+Getting embedding for query: pediatric liver cancer using model: text-embedding-ada-002
+Getting embedding for query: PAXIP1 using model: text-embedding-ada-002
+Getting embedding for query: lung adenocarcinoma using model: text-embedding-ada-002
+Getting embedding for query: nuclear using model: text-embedding-ada-002
+Getting embedding for query: GAGE/PAGE proteins using model: text-embedding-ada-002
+Getting embedding for query: linked to pediatric liver cancer interacting with PAXIP1 highly expressed in lung adenocarcinoma with a nuclear signal similarity to GAGE/PAGE proteins using model: text-embedding-ada-002
+Getting embedding for query: Please find me genes or proteins linked to pediatric liver cancer, interacting with PAXIP1, highly expressed in lung adenocarcinoma, with a nuclear signal and similarity to GAGE/PAGE proteins. using model: text-embedding-ada-002
+Finished Query 1804
+--- Processing Query 1989 ---
+Getting embedding for query:  chromosome X using model: text-embedding-ada-002
+Getting embedding for query: recessive gene using model: text-embedding-ada-002
+Getting embedding for query:  uniparental disomy of chromosome X using model: text-embedding-ada-002
+Getting embedding for query: chromosome X using model: text-embedding-ada-002
+Getting embedding for query: uniparental disomy of chromosome X using model: text-embedding-ada-002
+Getting embedding for query: linked to or similar to uniparental disomy of chromosome X inheriting two copies of a recessive gene from mother using model: text-embedding-ada-002
+Getting embedding for query: What possible conditions could I have that are linked to or similar to uniparental disomy of chromosome X, particularly if this led to me inheriting two copies of a recessive gene from my mother? using model: text-embedding-ada-002
+Finished Query 1989
+--- Processing Query 4242 ---
+Getting embedding for query:  eosinophilic pneumonia using model: text-embedding-ada-002
+Getting embedding for query:  parasitic worm infection using model: text-embedding-ada-002
+Getting embedding for query: eosinophilic pneumonia using model: text-embedding-ada-002
+Getting embedding for query: parasitic worm infection using model: text-embedding-ada-002
+Getting embedding for query: treat both eosinophilic pneumonia and a parasitic worm infection using model: text-embedding-ada-002
+Getting embedding for query: Can you recommend medications that treat both eosinophilic pneumonia and a parasitic worm infection? using model: text-embedding-ada-002
+Finished Query 4242
+--- Processing Query 2080 ---
+Getting embedding for query:  BCR-ABL1 using model: text-embedding-ada-002
+Getting embedding for query:  blast phase CML using model: text-embedding-ada-002
+Getting embedding for query: BCR-ABL1 using model: text-embedding-ada-002
+Getting embedding for query: blast phase CML using model: text-embedding-ada-002
+Getting embedding for query: recommended for managing BCR-ABL1 positive blast phase CML using model: text-embedding-ada-002
+Getting embedding for query: What are the recommended medications for managing BCR-ABL1 positive blast phase CML? using model: text-embedding-ada-002
+Finished Query 2080
+--- Processing Query 3755 ---
+[WARNING] Query 3755 failed attempt 1/3: Step 2 Failed (Relation Extraction)
+--- Processing Query 3755 ---
+[WARNING] Query 3755 failed attempt 2/3: Step 1 Failed (Entity Extraction)
+--- Processing Query 3755 ---
+[WARNING] Query 3755 failed attempt 3/3: Step 1 Failed (Entity Extraction)
+[CRITICAL] Query 3755 failed 3 attempts. Triggering Fallback.
+--- [FALLBACK] Query 3755: Falling back to VSS. Reason: Step 1 Failed (Entity Extraction)
+--- [FALLBACK] Using detected ANSWER types: ['disease']
+Getting embedding for query: What hereditary diseases are associated with the HLA-C gene? using model: text-embedding-ada-002

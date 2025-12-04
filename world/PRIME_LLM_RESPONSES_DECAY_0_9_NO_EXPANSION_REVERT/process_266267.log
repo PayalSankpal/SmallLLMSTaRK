@@ -1,0 +1,298 @@
+Loading from /root/.cache/huggingface/hub/datasets--snap-stanford--stark/snapshots/88269e23e90587f99476c5dd74e235a0877e69be/skb/prime/processed!
+[LlmBridge] Initializing model: meta/llama-3.3-70b-instruct (device=cpu)
+[LlmBridge] Using NVIDIA/meta-style model: meta/llama-3.3-70b-instruct
+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
+Use file from /root/.cache/huggingface/hub/datasets--snap-stanford--stark/snapshots/88269e23e90587f99476c5dd74e235a0877e69be/qa/prime/stark_qa/stark_qa_human_generated_eval.csv.
+[VSSRetriever] Using CPU
+--- Processing Query 2825 ---
+Getting embedding for query:  Calcium carbimide using model: text-embedding-ada-002
+Getting embedding for query:  Disulfiram using model: text-embedding-ada-002
+Getting embedding for query: Calcium carbimide using model: text-embedding-ada-002
+Getting embedding for query: Disulfiram using model: text-embedding-ada-002
+Getting embedding for query: carbocyclic acid, aldehyde, or benzene derivative drugs enhance the effects of Calcium carbimide and Disulfiram when administered together using model: text-embedding-ada-002
+Getting embedding for query: What are some carbocyclic acid, aldehyde, or benzene derivative drugs that enhance the effects of Calcium carbimide and Disulfiram when administered together? using model: text-embedding-ada-002
+Finished Query 2825
+--- Processing Query 7140 ---
+Getting embedding for query:  cytomegalovirus retinitis using model: text-embedding-ada-002
+Getting embedding for query: medications prescribed for cytomegalovirus retinitis using model: text-embedding-ada-002
+Getting embedding for query: cytomegalovirus retinitis using model: text-embedding-ada-002
+Getting embedding for query: characterized by episodes precipitated by non-allergic stimuli like stress or physical activity should not be treated with medications prescribed for cytomegalovirus retinitis due to contraindications using model: text-embedding-ada-002
+Getting embedding for query: Which condition, characterized by episodes precipitated by non-allergic stimuli like stress or physical activity, should not be treated with medications prescribed for cytomegalovirus retinitis due to contraindications? using model: text-embedding-ada-002
+Finished Query 7140
+--- Processing Query 7679 ---
+Getting embedding for query:  Rilpivirine using model: text-embedding-ada-002
+Getting embedding for query: genetic or proteomic elements affected by Rilpivirine using model: text-embedding-ada-002
+Getting embedding for query: Rilpivirine using model: text-embedding-ada-002
+Getting embedding for query: engage in interactions with the genetic or proteomic elements affected by Rilpivirine using model: text-embedding-ada-002
+Getting embedding for query: Which cell parts engage in interactions with the genetic or proteomic elements affected by Rilpivirine? using model: text-embedding-ada-002
+Finished Query 7679
+--- Processing Query 6242 ---
+Getting embedding for query:  UDP-N-acetylgalactosamine diphosphorylase using model: text-embedding-ada-002
+Getting embedding for query: UDP-N-acetylgalactosamine diphosphorylase using model: text-embedding-ada-002
+Getting embedding for query: investigational compounds designed to affect genes or proteins associated with UDP-N-acetylgalactosamine diphosphorylase for scientific study using model: text-embedding-ada-002
+Getting embedding for query: Which investigational compounds are designed to affect genes or proteins associated with UDP-N-acetylgalactosamine diphosphorylase for scientific study? using model: text-embedding-ada-002
+Finished Query 6242
+--- Processing Query 9238 ---
+Getting embedding for query:  PTGES3 using model: text-embedding-ada-002
+Getting embedding for query: common disease using model: text-embedding-ada-002
+Getting embedding for query: regulation of oxygen-dependent breakdown of hypoxia-inducible factors using model: text-embedding-ada-002
+Getting embedding for query: PTGES3 using model: text-embedding-ada-002
+Getting embedding for query: capable of interaction with PTGES3 shares an association with a common disease plays a role in the regulation of oxygen-dependent breakdown of hypoxia-inducible factors using model: text-embedding-ada-002
+Getting embedding for query: Which gene or protein is capable of interaction with PTGES3, shares an association with a common disease, and also plays a role in the regulation of oxygen-dependent breakdown of hypoxia-inducible factors? using model: text-embedding-ada-002
+Finished Query 9238
+--- Processing Query 1396 ---
+Getting embedding for query:  RNA binding using model: text-embedding-ada-002
+Getting embedding for query: impacting translation regulation of ribosomal protein gene expression using model: text-embedding-ada-002
+Getting embedding for query:  Antigen processing pathway using model: text-embedding-ada-002
+Getting embedding for query: Ubiquitination and Proteasome degradation using model: text-embedding-ada-002
+Getting embedding for query: RNA binding using model: text-embedding-ada-002
+Getting embedding for query: regulation of ribosomal protein gene expression impacting translation using model: text-embedding-ada-002
+Getting embedding for query: Antigen processing pathway using model: text-embedding-ada-002
+Getting embedding for query: linked with RNA binding act as regulators of ribosomal protein gene expression impacting translation participate in the Antigen processing pathway via Ubiquitination and Proteasome degradation using model: text-embedding-ada-002
+Getting embedding for query: Identify genes or proteins that are linked with RNA binding, act as regulators of ribosomal protein gene expression impacting translation, and participate in the Antigen processing pathway via Ubiquitination and Proteasome degradation. using model: text-embedding-ada-002
+Finished Query 1396
+--- Processing Query 2791 ---
+Getting embedding for query:  FGF1 using model: text-embedding-ada-002
+Getting embedding for query: FGF1 using model: text-embedding-ada-002
+Getting embedding for query: tablets or capsules target the FGF1 gene/protein using model: text-embedding-ada-002
+Getting embedding for query: Can you help me find any tablets or capsules that target the FGF1 gene/protein in our drug database? using model: text-embedding-ada-002
+Finished Query 2791
+--- Processing Query 4453 ---
+Getting embedding for query:  Darbepoetin alfa using model: text-embedding-ada-002
+Getting embedding for query:  HIF1A using model: text-embedding-ada-002
+Getting embedding for query: Darbepoetin alfa using model: text-embedding-ada-002
+Getting embedding for query: HIF1A using model: text-embedding-ada-002
+Getting embedding for query: complement Darbepoetin alfa focus on the HIF1A gene or protein using model: text-embedding-ada-002
+Getting embedding for query: Can you supply details on drugs that complement Darbepoetin alfa and focus on the HIF1A gene or protein? using model: text-embedding-ada-002
+Finished Query 4453
+--- Processing Query 1248 ---
+Getting embedding for query:  Translesion Synthesis pathway using model: text-embedding-ada-002
+Getting embedding for query:  POLH using model: text-embedding-ada-002
+Getting embedding for query:  Replication Protein A using model: text-embedding-ada-002
+Getting embedding for query:  binding to single-stranded DNA using model: text-embedding-ada-002
+Getting embedding for query: Translesion Synthesis pathway using model: text-embedding-ada-002
+Getting embedding for query: POLH using model: text-embedding-ada-002
+Getting embedding for query: Replication Protein A using model: text-embedding-ada-002
+Getting embedding for query: binding to single-stranded DNA using model: text-embedding-ada-002
+Getting embedding for query: involved in the Translesion Synthesis pathway via POLH interaction binding to single-stranded DNA as part of the Replication Protein A complex using model: text-embedding-ada-002
+Getting embedding for query: What is the gene or protein involved in both the Translesion Synthesis pathway via POLH interaction and the binding to single-stranded DNA as part of the Replication Protein A complex? using model: text-embedding-ada-002
+Finished Query 1248
+--- Processing Query 1109 ---
+Getting embedding for query: lymphatic system problemsswollen glands lymphatic system using model: text-embedding-ada-002
+Getting embedding for query: facial or neck abnormalities using model: text-embedding-ada-002
+Getting embedding for query:  syndromes or congenital conditions using model: text-embedding-ada-002
+Getting embedding for query: lymphatic system lymphatic system problems swollen glands using model: text-embedding-ada-002
+Getting embedding for query: syndromes or congenital conditions using model: text-embedding-ada-002
+Getting embedding for query: linked to lymphatic system problems associated with facial or neck abnormalities seen in syndromes or congenital conditions using model: text-embedding-ada-002
+Getting embedding for query: What possible diseases could I have that are linked to lymphatic system problems, such as swollen glands, and also associated with facial or neck abnormalities, as seen in syndromes or congenital conditions? using model: text-embedding-ada-002
+Finished Query 1109
+--- Processing Query 9634 ---
+Getting embedding for query:  NEK10 using model: text-embedding-ada-002
+Getting embedding for query: NEK10 using model: text-embedding-ada-002
+Getting embedding for query: interact with NEK10 sharing an association with a common disease using model: text-embedding-ada-002
+Getting embedding for query: Identify genes or proteins that interact with NEK10, with both sharing an association with a common disease. using model: text-embedding-ada-002
+Finished Query 9634
+--- Processing Query 2472 ---
+Getting embedding for query: with vaginitis candidiasis using model: text-embedding-ada-002
+Getting embedding for query:  MC1R using model: text-embedding-ada-002
+Getting embedding for query: vaginitis using model: text-embedding-ada-002
+Getting embedding for query:  Candida albicans using model: text-embedding-ada-002
+Getting embedding for query: candidiasis with vaginitis using model: text-embedding-ada-002
+Getting embedding for query: MC1R using model: text-embedding-ada-002
+Getting embedding for query: Candida albicans using model: text-embedding-ada-002
+Getting embedding for query: effective against Candida albicans suitable for treating candidiasis with vaginitis targets the MC1R gene/protein using model: text-embedding-ada-002
+Getting embedding for query: Could you recommend a drug effective against Candida albicans, suitable for treating candidiasis with vaginitis, that also targets the MC1R gene/protein? using model: text-embedding-ada-002
+Finished Query 2472
+--- Processing Query 202 ---
+Getting embedding for query:  kinase binding using model: text-embedding-ada-002
+Getting embedding for query:  tRNA binding using model: text-embedding-ada-002
+Getting embedding for query:  selenocysteinyl-tRNA(Sec) synthesis using model: text-embedding-ada-002
+Getting embedding for query:  selenocysteinyl-tRNA(Sec) biosynthesis using model: text-embedding-ada-002
+Getting embedding for query: kinase binding using model: text-embedding-ada-002
+Getting embedding for query: tRNA binding using model: text-embedding-ada-002
+Getting embedding for query: selenocysteinyl-tRNA(Sec) synthesis using model: text-embedding-ada-002
+Getting embedding for query: selenocysteinyl-tRNA(Sec) biosynthesis using model: text-embedding-ada-002
+Getting embedding for query: enable kinase binding enable tRNA binding involved in selenocysteinyl-tRNA(Sec) synthesis involved in selenocysteinyl-tRNA(Sec) biosynthesis using model: text-embedding-ada-002
+Getting embedding for query: Identify genes and proteins that enable kinase and tRNA binding, and are involved in selenocysteinyl-tRNA(Sec) synthesis and biosynthesis. using model: text-embedding-ada-002
+Finished Query 202
+--- Processing Query 8631 ---
+Getting embedding for query:  SLC40A1 using model: text-embedding-ada-002
+Getting embedding for query:  Scopolamine using model: text-embedding-ada-002
+Getting embedding for query: symptoms of fatigue and weakness using model: text-embedding-ada-002
+Getting embedding for query: SLC40A1 using model: text-embedding-ada-002
+Getting embedding for query: Scopolamine using model: text-embedding-ada-002
+Getting embedding for query: linked to the SLC40A1 gene lead to symptoms of fatigue and weakness adversely affected by the administration of Scopolamine using model: text-embedding-ada-002
+Getting embedding for query: Which conditions linked to the SLC40A1 gene lead to symptoms of fatigue and weakness and are adversely affected by the administration of Scopolamine? using model: text-embedding-ada-002
+Finished Query 8631
+--- Processing Query 6155 ---
+Getting embedding for query:  skeletal muscle using model: text-embedding-ada-002
+Getting embedding for query:  neuronal tissue using model: text-embedding-ada-002
+Getting embedding for query:  decidua using model: text-embedding-ada-002
+Getting embedding for query: skeletal muscle using model: text-embedding-ada-002
+Getting embedding for query: neuronal tissue using model: text-embedding-ada-002
+Getting embedding for query: decidua using model: text-embedding-ada-002
+Getting embedding for query: essential for regulating skeletal muscle contraction present in neuronal tissue not present in the decidua using model: text-embedding-ada-002
+Getting embedding for query: Which gene or protein, essential for regulating skeletal muscle contraction, is present in neuronal tissue but not in the decidua? using model: text-embedding-ada-002
+Finished Query 6155
+--- Processing Query 467 ---
+Getting embedding for query: autoimmune blistering skin diseases using model: text-embedding-ada-002
+Getting embedding for query: vesiclesskin using model: text-embedding-ada-002
+Getting embedding for query: break open easilycausing painful sores using model: text-embedding-ada-002
+Getting embedding for query: vesicles skin using model: text-embedding-ada-002
+Getting embedding for query: break open easily causing painful sores using model: text-embedding-ada-002
+Getting embedding for query: autoimmune blistering skin diseases vesicles break open easily causing painful sores using model: text-embedding-ada-002
+Getting embedding for query: Can you list autoimmune blistering skin diseases where the vesicles break open easily, causing painful sores? using model: text-embedding-ada-002
+Finished Query 467
+--- Processing Query 6251 ---
+Getting embedding for query:  male somatic sex determination process using model: text-embedding-ada-002
+Getting embedding for query: involved in the interaction with the male somatic sex determination process using model: text-embedding-ada-002
+Getting embedding for query: male somatic sex determination process using model: text-embedding-ada-002
+Getting embedding for query: lack the expression of genes or proteins involved in the interaction with the male somatic sex determination process using model: text-embedding-ada-002
+Getting embedding for query: Which anatomical structures lack the expression of genes or proteins that are involved in the interaction with the male somatic sex determination process? using model: text-embedding-ada-002
+Finished Query 6251
+--- Processing Query 9440 ---
+Getting embedding for query:  FGFR1 using model: text-embedding-ada-002
+Getting embedding for query:  activation of phospholipase C using model: text-embedding-ada-002
+Getting embedding for query: genes or proteins that FGFR1 typically engages with using model: text-embedding-ada-002
+Getting embedding for query: FGFR1 using model: text-embedding-ada-002
+Getting embedding for query: activation of phospholipase C using model: text-embedding-ada-002
+Getting embedding for query: triggered by activated FGFR1 signaling includes the activation of phospholipase C has the potential for crosstalk or interaction with the genes or proteins that FGFR1 typically engages with using model: text-embedding-ada-002
+Getting embedding for query: Can you identify a biological pathway that is triggered by activated FGFR1 signaling, which includes the activation of phospholipase C, and has the potential for crosstalk or interaction with the genes or proteins that FGFR1 typically engages with? using model: text-embedding-ada-002
+Finished Query 9440
+--- Processing Query 5873 ---
+Getting embedding for query:  2-(2,6-Dichlorophenyl)-1,3-benzoxazole-6-carboxylic acid using model: text-embedding-ada-002
+Getting embedding for query:  Fx-1006A using model: text-embedding-ada-002
+Getting embedding for query: 2-(2,6-Dichlorophenyl)-1,3-benzoxazole-6-carboxylic acid using model: text-embedding-ada-002
+Getting embedding for query: Fx-1006A using model: text-embedding-ada-002
+Getting embedding for query: shared genetic targets of 2-(2,6-Dichlorophenyl)-1,3-benzoxazole-6-carboxylic acid and Fx-1006A using model: text-embedding-ada-002
+Getting embedding for query: Identify the shared genetic targets of 2-(2,6-Dichlorophenyl)-1,3-benzoxazole-6-carboxylic acid and Fx-1006A. using model: text-embedding-ada-002
+Finished Query 5873
+--- Processing Query 7353 ---
+Getting embedding for query:  Buclizine using model: text-embedding-ada-002
+Getting embedding for query:  atropine using model: text-embedding-ada-002
+Getting embedding for query: Buclizine using model: text-embedding-ada-002
+Getting embedding for query: atropine using model: text-embedding-ada-002
+Getting embedding for query: antimuscarinic agents have a synergistic effect in conjunction with Buclizine shared therapeutic indications akin to the pharmacological interaction observed with atropine using model: text-embedding-ada-002
+Getting embedding for query: Which antimuscarinic agents have a synergistic effect in conjunction with Buclizine for their shared therapeutic indications, akin to the pharmacological interaction observed with atropine? using model: text-embedding-ada-002
+Finished Query 7353
+--- Processing Query 6908 ---
+Getting embedding for query:  fundus using model: text-embedding-ada-002
+Getting embedding for query:  hypopigmentation using model: text-embedding-ada-002
+Getting embedding for query: no indicated medications using model: text-embedding-ada-002
+Getting embedding for query: fundus using model: text-embedding-ada-002
+Getting embedding for query: hypopigmentation using model: text-embedding-ada-002
+Getting embedding for query: associated with hypopigmentation of the fundus no indicated medications using model: text-embedding-ada-002
+Getting embedding for query: Identify conditions associated with hypopigmentation of the fundus for which there are no indicated medications. using model: text-embedding-ada-002
+Finished Query 6908
+--- Processing Query 6572 ---
+Getting embedding for query: similar to the regulation of recycling endosome positioning in the postsynaptic region using model: text-embedding-ada-002
+Getting embedding for query: in the postsynaptic region regulation of recycling endosome positioning using model: text-embedding-ada-002
+Getting embedding for query: regulation of recycling endosome positioning in the postsynaptic region using model: text-embedding-ada-002
+Getting embedding for query: shares a characteristic interaction pattern with genes or proteins similar to the regulation of recycling endosome positioning in the postsynaptic region using model: text-embedding-ada-002
+Getting embedding for query: Which biological process shares a characteristic interaction pattern with genes or proteins similar to the regulation of recycling endosome positioning in the postsynaptic region? using model: text-embedding-ada-002
+Finished Query 6572
+--- Processing Query 2041 ---
+Getting embedding for query:  acquired polycythemia vera using model: text-embedding-ada-002
+Getting embedding for query:  myelofibrosis using model: text-embedding-ada-002
+Getting embedding for query: acquired polycythemia vera using model: text-embedding-ada-002
+Getting embedding for query: myelofibrosis using model: text-embedding-ada-002
+Getting embedding for query: effective for treating acquired polycythemia vera effective for treating myelofibrosis using model: text-embedding-ada-002
+Getting embedding for query: Could you provide a list of medications effective for treating both acquired polycythemia vera and myelofibrosis? using model: text-embedding-ada-002
+Finished Query 2041
+--- Processing Query 1075 ---
+Getting embedding for query: triosephosphate isomerase TPI1 using model: text-embedding-ada-002
+Getting embedding for query: TPI1 triosephosphate isomerase using model: text-embedding-ada-002
+Getting embedding for query: experimental drugs targeting triosephosphate isomerase (TPI1) using model: text-embedding-ada-002
+Getting embedding for query: Could you list experimental drugs targeting triosephosphate isomerase (TPI1)? using model: text-embedding-ada-002
+Finished Query 1075
+--- Processing Query 10573 ---
+Getting embedding for query:  subpallium using model: text-embedding-ada-002
+Getting embedding for query:  cerebral cortex using model: text-embedding-ada-002
+Getting embedding for query: chemorepellent-induced interneuron migration using model: text-embedding-ada-002
+Getting embedding for query: play a role in chemorepellent-induced interneuron migration from the subpallium to the cerebral cortex using model: text-embedding-ada-002
+Getting embedding for query: subpallium using model: text-embedding-ada-002
+Getting embedding for query: cerebral cortex using model: text-embedding-ada-002
+Getting embedding for query: interneuron migration chemorepellent-induced using model: text-embedding-ada-002
+Getting embedding for query: lack expression of genes or proteins involved in chemorepellent-induced interneuron migration from the subpallium to the cerebral cortex using model: text-embedding-ada-002
+Getting embedding for query: Which anatomical structures lack expression of genes or proteins that play a role in chemorepellent-induced interneuron migration from the subpallium to the cerebral cortex? using model: text-embedding-ada-002
+Finished Query 10573
+--- Processing Query 749 ---
+Getting embedding for query:  SRD5A2 using model: text-embedding-ada-002
+Getting embedding for query:  Megestrol acetate using model: text-embedding-ada-002
+Getting embedding for query: SRD5A2 using model: text-embedding-ada-002
+Getting embedding for query: Megestrol acetate using model: text-embedding-ada-002
+Getting embedding for query: associated with the SRD5A2 gene could be treated using Megestrol acetate using model: text-embedding-ada-002
+Getting embedding for query: Which illness is associated with the SRD5A2 gene and could be treated using Megestrol acetate? using model: text-embedding-ada-002
+Finished Query 749
+--- Processing Query 3738 ---
+Getting embedding for query:  PSEN1 using model: text-embedding-ada-002
+Getting embedding for query: HD+PEST Domain Mutants in Cancer NOTCH1 using model: text-embedding-ada-002
+Getting embedding for query: PSEN1 using model: text-embedding-ada-002
+Getting embedding for query: NOTCH1 HD+PEST Domain Mutants in Cancer using model: text-embedding-ada-002
+Getting embedding for query: works alongside PSEN1 part of the Signaling by NOTCH1 HD+PEST Domain Mutants in Cancer cascade using model: text-embedding-ada-002
+Getting embedding for query: Which pathway works alongside PSEN1 and serves as part of the "Signaling by NOTCH1 HD+PEST Domain Mutants in Cancer" cascade? using model: text-embedding-ada-002
+Finished Query 3738
+--- Processing Query 2860 ---
+Getting embedding for query:  chromatin binding using model: text-embedding-ada-002
+Getting embedding for query:  meiotic synapsis using model: text-embedding-ada-002
+Getting embedding for query: chromatin binding using model: text-embedding-ada-002
+Getting embedding for query: meiotic synapsis using model: text-embedding-ada-002
+Getting embedding for query: associated with chromatin binding play a role in meiotic synapsis using model: text-embedding-ada-002
+Getting embedding for query: Please list genes and proteins associated with chromatin binding that also play a role in meiotic synapsis. using model: text-embedding-ada-002
+Finished Query 2860
+--- Processing Query 179 ---
+Getting embedding for query:  TBX4 using model: text-embedding-ada-002
+Getting embedding for query: legstorso using model: text-embedding-ada-002
+Getting embedding for query: persistent seizures involving multiple muscle groups using model: text-embedding-ada-002
+Getting embedding for query: TBX4 using model: text-embedding-ada-002
+Getting embedding for query: legs torso using model: text-embedding-ada-002
+Getting embedding for query: associated with the TBX4 gene presents with persistent seizures involving multiple muscle groups primarily in the legs and torso using model: text-embedding-ada-002
+Getting embedding for query: What condition is associated with the TBX4 gene and presents with persistent seizures involving multiple muscle groups, primarily in the legs and torso? using model: text-embedding-ada-002
+Finished Query 179
+--- Processing Query 5066 ---
+Getting embedding for query:  lacrimal gland using model: text-embedding-ada-002
+Getting embedding for query:  benign eye neoplasms using model: text-embedding-ada-002
+Getting embedding for query: lacrimal gland using model: text-embedding-ada-002
+Getting embedding for query: benign eye neoplasms using model: text-embedding-ada-002
+Getting embedding for query: similar to or falling under the category of benign eye neoplasms affecting the lacrimal gland using model: text-embedding-ada-002
+Getting embedding for query: Can you give me a rundown of conditions similar to or falling under the category of benign eye neoplasms, especially those affecting the lacrimal gland? using model: text-embedding-ada-002
+Finished Query 5066
+--- Processing Query 5659 ---
+Getting embedding for query:  hemicrania continua using model: text-embedding-ada-002
+Getting embedding for query: hemicrania continua using model: text-embedding-ada-002
+Getting embedding for query: related to hemicrania continua might follow hemicrania continua fall under hemicrania continua in patients showing its symptoms using model: text-embedding-ada-002
+Getting embedding for query: What conditions are related to and might follow or fall under hemicrania continua in patients showing its symptoms? using model: text-embedding-ada-002
+Finished Query 5659
+--- Processing Query 2807 ---
+Getting embedding for query:  protein kinase M (PKM) using model: text-embedding-ada-002
+Getting embedding for query: protein kinase M (PKM) using model: text-embedding-ada-002
+Getting embedding for query: primarily target the protein kinase M (PKM) gene in their mechanism of action using model: text-embedding-ada-002
+Getting embedding for query: What drugs are presently recognized to primarily target the protein kinase M (PKM) gene in their mechanism of action? using model: text-embedding-ada-002
+Finished Query 2807
+--- Processing Query 2766 ---
+Getting embedding for query:  MUC1 using model: text-embedding-ada-002
+Getting embedding for query:  Cytosolic tRNA aminoacylation pathway using model: text-embedding-ada-002
+Getting embedding for query: MUC1 using model: text-embedding-ada-002
+Getting embedding for query: Cytosolic tRNA aminoacylation pathway using model: text-embedding-ada-002
+Getting embedding for query: regulates MUC1 synthesis directly interacts with the Cytosolic tRNA aminoacylation pathway using model: text-embedding-ada-002
+Getting embedding for query: What is the name of the gene or protein that both regulates MUC1 synthesis and directly interacts with the Cytosolic tRNA aminoacylation pathway? using model: text-embedding-ada-002
+Finished Query 2766
+--- Processing Query 11087 ---
+Getting embedding for query:  Meclofenamic acid using model: text-embedding-ada-002
+Getting embedding for query:  Ethotoin using model: text-embedding-ada-002
+Getting embedding for query: Meclofenamic acid using model: text-embedding-ada-002
+Getting embedding for query: Ethotoin using model: text-embedding-ada-002
+Getting embedding for query: common gene targets associated with the binding of Meclofenamic acid and Ethotoin using model: text-embedding-ada-002
+Getting embedding for query: What are the common gene targets associated with the binding of Meclofenamic acid and Ethotoin? using model: text-embedding-ada-002
+Finished Query 11087
+--- Processing Query 9753 ---
+Getting embedding for query:  Complement Factor B (CFB) using model: text-embedding-ada-002
+Getting embedding for query:  Ramipril using model: text-embedding-ada-002
+Getting embedding for query: inflammatory symptoms in any organ system using model: text-embedding-ada-002
+Getting embedding for query: adult-onsetmultisystem organ damage systemic lupus erythematosus using model: text-embedding-ada-002
+Getting embedding for query: Complement Factor B (CFB) using model: text-embedding-ada-002
+Getting embedding for query: Ramipril using model: text-embedding-ada-002
+Getting embedding for query: systemic lupus erythematosus adult-onset multisystem organ damage using model: text-embedding-ada-002
+Getting embedding for query: linked to Complement Factor B (CFB) contraindicate the use of Ramipril exhibit inflammatory symptoms in any organ system with an early onset before adulthood manifesting a wide range of symptoms that are more severe and involve major organs more frequently compared to adult-onset systemic lupus erythematosus posing a greater risk of multisystem organ damage using model: text-embedding-ada-002
+Getting embedding for query: Which illnesses linked to Complement Factor B (CFB) contraindicate the use of Ramipril and exhibit inflammatory symptoms in any organ system with an early onset before adulthood, manifesting a wide range of symptoms that are more severe and involve major organs more frequently compared to adult-onset systemic lupus erythematosus, thereby posing a greater risk of multisystem organ damage? using model: text-embedding-ada-002
+Finished Query 9753
