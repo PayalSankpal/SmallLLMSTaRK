@@ -1,0 +1,507 @@
+Loading from /home/adityad_ext/.cache/huggingface/hub/datasets--snap-stanford--stark/snapshots/88269e23e90587f99476c5dd74e235a0877e69be/skb/prime/processed!
+[LlmBridge] Initializing model: meta/llama-3.3-70b-instruct (device=cpu)
+[LlmBridge] Using NVIDIA/meta-style model: meta/llama-3.3-70b-instruct
+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
+Use file from /home/adityad_ext/.cache/huggingface/hub/datasets--snap-stanford--stark/snapshots/88269e23e90587f99476c5dd74e235a0877e69be/qa/prime/stark_qa/stark_qa_human_generated_eval.csv.
+[VSSRetriever] Using CPU
+--- Processing Query 904 ---
+[LlmBridge] ask_llm_batch: first query (if exists): ENTITY EXTRACTION TASK
+
+    OBJECTIVE: Extract entities from a natural language query and structure them in JSON format. One entity must be designated as "ANSWER", and others should use placeholder names (A, B, C, etc.).
+
+    EXTRACTION RULES
+
+    Rule 1: Entity Types
+    Only extract entities mentioned in the query.For each entity, provide a list of possible types from this list: disease, gene/protein, molecular_function, drug, pathway, anatomy, effect/phenotype, biological_process, cellular_component, exposure. THE ENTITY TYPE SHOULD NOT BE ANY OTHER THAN THESE. An entity may have multiple types.
+    If a general entity is mentioned in the query , extract it as an entity too and IF there is no semantic information for it, use the entire query as a semantic constraint for it, else use the semantic .
+    DO NOT EVER assign an entity a possible type not in this list.
+
+    Rule 2: Properties
+    If an entity has specific properties mentioned in the query, include them. Properties must be from this list: title, name.
+
+    Rule 3: Lexical Constraints
+    Identify hard lexical constraints where field values must match exactly. Do NOT use general names. Use specific entity names only. for entities that do not have their name mentioned in the query, add the general information in the semantic part.
+
+    Rule 4: Semantic Constraints
+    Provide a general description of the entity. Include ALL relevant information from the query. Can include descriptions, short phrases, and contextual information. Format as a list of descriptive strings.
+
+    Rule 5: Constant Field
+    Boolean field indicating whether the entity is a specific constant entity when it is true, or a general entity type when it is false.
+
+    OUTPUT FORMAT
+
+    CRITICAL: Your response must be a valid JSON object with the following structure:
+
+    {
+    "ENTITY_KEY": {
+        "type": ["type1", "type2"],
+        "lexical": {"property": "value"},
+        "semantic": ["description1", "description2"],
+        "constant": true/false
+    }
+    }
+
+    FORMAT REQUIREMENTS: "type" is an array of strings. "lexical" is an object (can be empty {}). "semantic" is an array of strings (can be empty []). "constant" is a boolean (true or false, not a string).
+
+    EXAMPLES:
+    Example 1
+Query: What conditions are associated with hyperalphalipoproteinemia, which causes elevated triglycerides and cholesterol levels in the blood?
+Response:
+{
+  "A": {
+    "type": ["disease"],
+    "lexical": {"name": "hyperalphalipoproteinemia"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["effect/phenotype"],
+    "lexical": {"name": "elevated triglycerides"},
+    "semantic": [],
+    "constant": true
+  },
+  "C": {
+    "type": ["effect/phenotype"],
+    "semantic": ["elevated cholesterol levels in the blood"],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["drug"],
+    "lexical": {},
+    "semantic": ["associated with hyperalphalipoproteinemia", "elevated cholesterol levels in the blood", "elevated triglycerides"],
+    "constant": false
+  }
+}
+
+Example 2
+Query: Please find the genes and proteins that interact with manganese ion binding and participate in the KSRP-mediated mRNA binding and destabilization pathway.
+Response:
+{
+  "A": {
+    "type": ["molecular_function"],
+    "lexical": {"name": "manganese ion binding"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["pathway"],
+    "lexical": {},
+    "semantic": ["KSRP-mediated mRNA binding and destabilization"],
+    "constant": false
+  },
+  "ANSWER": {
+    "type": ["gene/protein"],
+    "lexical": {},
+    "semantic": [],
+    "constant": false
+  }
+}
+
+
+
+
+    CRITICAL REQUIREMENTS
+
+    Your response must be ONLY the JSON object with no additional text. Ensure the JSON is valid and properly formatted. Do NOT leave any fields incomplete or empty when they should contain values. Follow the exact data structure shown in examples. Check that arrays use [], objects use {}, and booleans are true/false (not strings).
+    FOLLOW THE FORMAT EXACTLY.
+
+    YOUR TASK
+
+    Extract entities from the following query:
+
+    Q: Could you provide information on treatments available for C. diff colitis and clarify whether any of these medications could potentially lead to facial swelling as a side effect? 
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  "A": {
+    "type": ["disease"],
+    "lexical": {"name": "C. diff colitis"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["effect/phenotype"],
+    "lexical": {"name": "facial swelling"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["drug"],
+    "lexical": {},
+    "semantic": ["treatments available for C. diff colitis", "potential side effect of facial swelling"],
+    "constant": false
+  }
+}
+[LlmBridge] ask_llm_batch: first query (if exists): RELATION EXTRACTION TASK
+        OBJECTIVE: Given a natural language query Q and a set of identified entities from that query, identify all possible relations (edges) between these entities that are implied by the query.
+
+        TASK REQUIREMENTS
+
+        1. Identify all possible edges between entities that can be understood from the query. Consider all entity pairs.
+
+        2. For each identified relation, provide a list of possible edge types. Since edges are undirected, if you think A-rel1->B and A<-rel2-B, include both relations as (A,B): [rel1, rel2] in your answer.
+
+        3. The ANSWER entity must be associated with at least one of the other identified entities.
+
+        EDGE TYPE IDENTIFICATION PROCESS
+
+        Step 1: Consider Initial Edge Types
+        Start by considering all semantically relevant edge types from this list: ppi, carrier, enzyme, target, transporter, contraindication, indication, off-label use, synergistic interaction, associated with, parent-child, phenotype absent, phenotype present, side effect, interacts with, linked to, expression present, expression absent THE RELATION TYPE SHOULD NOT BE ANY OTHER THAN THESE.
+        DO NOT consider any other name for edge as edge type, other than the ones mentioned in the list above. if some other type of connection, say 'abc' is mentioned in the query between two entities, assign all the labels from the above list that are semantically close to 'abc'.
+
+        Step 2: Filter Based on Query Semantics
+        Only remove edge types that are semantically irrelevant or cannot be implied by the given query in any reasonable way.
+
+        Step 3: Validate Against Node Types
+        Consider the node types of the two entities between which the edge exists. Strictly follow the valid triplet patterns listed below.
+
+
+        IMPORTANT: Only use edge types not listed in the triplets above if the query implies a relation that absolutely cannot be represented using the standard triplets.
+
+        VALID TRIPLET PATTERNS
+        anatomy --- expression absent ---> gene/protein
+anatomy --- expression present ---> gene/protein
+biological_process --- interacts with ---> exposure
+biological_process --- interacts with ---> gene/protein
+biological_process --- parent-child ---> biological_process
+cellular_component --- interacts with ---> exposure
+cellular_component --- interacts with ---> gene/protein
+cellular_component --- parent-child ---> cellular_component
+disease --- associated with ---> gene/protein
+disease --- contraindication ---> drug
+disease --- indication ---> drug
+disease --- linked to ---> exposure
+disease --- off-label use ---> drug
+disease --- parent-child ---> disease
+disease --- phenotype absent ---> effect/phenotype
+disease --- phenotype present ---> effect/phenotype
+drug --- carrier ---> gene/protein
+drug --- contraindication ---> disease
+drug --- enzyme ---> gene/protein
+drug --- indication ---> disease
+drug --- off-label use ---> disease
+drug --- side effect ---> effect/phenotype
+drug --- synergistic interaction ---> drug
+drug --- target ---> gene/protein
+drug --- transporter ---> gene/protein
+effect/phenotype --- associated with ---> gene/protein
+effect/phenotype --- parent-child ---> effect/phenotype
+effect/phenotype --- phenotype absent ---> disease
+effect/phenotype --- phenotype present ---> disease
+effect/phenotype --- side effect ---> drug
+exposure --- interacts with ---> biological_process
+exposure --- interacts with ---> cellular_component
+exposure --- interacts with ---> gene/protein
+exposure --- interacts with ---> molecular_function
+exposure --- linked to ---> disease
+exposure --- parent-child ---> exposure
+gene/protein --- associated with ---> disease
+gene/protein --- associated with ---> effect/phenotype
+gene/protein --- carrier ---> drug
+gene/protein --- enzyme ---> drug
+gene/protein --- expression absent ---> anatomy
+gene/protein --- expression present ---> anatomy
+gene/protein --- interacts with ---> biological_process
+gene/protein --- interacts with ---> cellular_component
+gene/protein --- interacts with ---> exposure
+gene/protein --- interacts with ---> molecular_function
+gene/protein --- interacts with ---> pathway
+gene/protein --- ppi ---> gene/protein
+gene/protein --- target ---> drug
+gene/protein --- transporter ---> drug
+molecular_function --- interacts with ---> exposure
+molecular_function --- interacts with ---> gene/protein
+molecular_function --- parent-child ---> S-adenosyl-L-methionine
+molecular_function --- parent-child ---> acetyl CoA
+molecular_function --- parent-child ---> molecular_function
+molecular_function --- parent-child ---> succinyl-CoA
+pathway --- interacts with ---> gene/protein
+pathway --- parent-child ---> pathway
+
+
+        EXAMPLES
+        Example 1
+Query: Which genes or proteins are expressed exclusively in the gallbladder but not in both dorsal and ventral regions of the thalamus?
+Entities:
+{
+  "A": {
+    "type": ["cellular_component"],
+    "lexical": {"name": "gallbladder"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["cellular_component"],
+    "lexical": {"name": "dorsal and ventral regions of the thalamus"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["gene/protein"],
+    "lexical": {},
+    "semantic": [],
+    "constant": false
+  }
+}
+
+Identified Relations:
+{
+  ("ANSWER", "A"): ["expression_present"],
+  ("ANSWER", "B"): ["expression_absent"]
+}
+
+Example 2
+Query: Identify common gene targets associated with both Etofenamate and Heparin.
+Entities:
+{
+  "A": {
+    "type": ["drug"],
+    "lexical": {"name": "Etofenamate"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["drug"],
+    "lexical": {"name": "Heparin"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["gene/protein"],
+    "lexical": {},
+    "semantic": [],
+    "constant": false
+  }
+}
+
+Identified Relations:
+{
+  ("A", "ANSWER"): ["target","carrier" , "transporter"],
+  ("B", "ANSWER"):["target","carrier" , "transporter"]
+}
+
+        OUTPUT FORMAT
+
+        Your response must be a valid JSON object with the following structure:
+
+        {
+        ("ENTITY_KEY_1", "ENTITY_KEY_2"): ["edge_type_1", "edge_type_2"],
+        ("ENTITY_KEY_3", "ENTITY_KEY_4"): ["edge_type_3"]
+        }
+
+        Where ENTITY_KEY_1, ENTITY_KEY_2, etc. are the entity identifiers (A, B, C, ANSWER, etc.) and the edge types are strings from the valid triplet list.
+
+
+        YOUR TASK
+
+        Given the query Q and identified entities below, identify all relations possible between entities and provide them in the JSON format specified above. Do not give any other text in the output, just the required JSON formatted string.FOLLOW THE FORMAT EXACTLY
+        Q :Could you provide information on treatments available for C. diff colitis and clarify whether any of these medications could potentially lead to facial swelling as a side effect? 
+        Identified Entities: {
+  "A": {
+    "type": ["disease"],
+    "lexical": {"name": "C. diff colitis"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["effect/phenotype"],
+    "lexical": {"name": "facial swelling"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["drug"],
+    "lexical": {},
+    "semantic": ["treatments available for C. diff colitis", "potential side effect of facial swelling"],
+    "constant": false
+  }
+}
+        
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): {
+  ("A", "ANSWER"): ["indication", "contraindication", "off-label use"],
+  ("ANSWER", "B"): ["side effect"],
+  ("A", "B"): ["phenotype present", "associated with"]
+}
+Getting embedding for query:  C. diff colitis using model: text-embedding-ada-002
+Getting embedding for query:  facial swelling using model: text-embedding-ada-002
+Getting embedding for query: C. diff colitis using model: text-embedding-ada-002
+Getting embedding for query: facial swelling using model: text-embedding-ada-002
+Getting embedding for query: treatments available for C. diff colitis potential side effect of facial swelling using model: text-embedding-ada-002
+
+
+ [PROMPT GEN]Sample Docs String:
+
+ - - name: Bezlotoxumab
+- type: drug
+- source: DrugBank
+- details:
+  - description: Bezlotoxumab is a human monoclonal antibody that binds to Clostridium difficile toxin B and neutralizes its effects. Used to reduce the recurrence of Clostridium difficle infection in adults receiving antibiotic therapy to treat C. difficile infection and high risk of recurrence.
+  - half_life: The half-life is 19 Days 
+  - indication: Prevents recurrence of Clostridium difficile infection in people 18 years or older who are either currently receiving treatment for C. difficile infection or have a high risk of recurrence. 
+  - mechanism_of_action: A single molecule of bezlotoxumab neutralizes Toxin B by binding its two Fab regions to two epitopes within the N-terminal half of the Toxin B CROP domain, partially blocking the carbohydrate binding pockets of the toxin and preventing toxin binding to host cells.
+  - protein_binding: Binds to C.difficile virulence factor toxin B which prevents its action on host cells.
+  - pharmacodynamics: Bezlotoxumab binds to C.difficile toxin B, a virulence factor common to practically all C.difficile, which prevents the bacteria from infecting host cells. Bezlotoxumab binds two epitopes of toxin B, via two Fab regions, which partially blocks the carbohydrate binding pockets of the toxin resulting in the prevention of toxin B from binding to host cells.
+  - state: Bezlotoxumab is a solid.
+  - atc_1: Bezlotoxumab is anatomically related to antiinfectives for systemic use.
+  - atc_2: Bezlotoxumab is in the therapeutic group of immune sera and immunoglobulins.
+  - atc_3: Bezlotoxumab is pharmacologically related to immunoglobulins.
+  - atc_4: The chemical and functional group of  is specific immunoglobulins.
+  - category: Bezlotoxumab is part of Amino Acids, Peptides, and Proteins ; Antibodies ; Antiinfectives for Systemic Use ; Blood Proteins ; Globulins ; Immune Sera and Immunoglobulins ; Immunoglobulins ; Immunoproteins ; Proteins ; Serum Globulins ; Specific Immunoglobulins.
+  - group: Bezlotoxumab is approved and investigational.
+
+- - name: Fusidic acid
+- type: drug
+- source: DrugBank
+- details:
+  - description: An antibiotic isolated from the fermentation broth of Fusidium coccineum. (From Merck Index, 11th ed) It acts by inhibiting translocation during protein synthesis. It is often used topically in creams and eyedrops but is available in systemic formulations including tablets and injections.
+  - half_life: Approximately 5 to 6 hours in adults.
+  - indication: For the treatment of bacterial infections.
+  - mechanism_of_action: Fusidic acid works by interfering with bacterial protein synthesis, specifically by preventing the translocation of the elongation factor G (EF-G) from the ribosome. It also can inhibit chloramphenicol acetyltransferase enzymes.
+  - protein_binding: 97 to 99%
+  - pharmacodynamics: Fusidic acid is a bacteriostatic antibiotic and helps prevent bacterial growth while the immune system clears the infection.
+  - state: Fusidic acid is a solid.
+  - atc_1: Fusidic acid is anatomically related to sensory organs and dermatologicals and antiinfectives for systemic use and dermatologicals.
+  - atc_2: Fusidic acid is in the therapeutic group of ophthalmologicals and medicated dressings and antibacterials for systemic use and antibiotics and chemotherapeutics for dermatological use.
+  - atc_3: Fusidic acid is pharmacologically related to antiinfectives and medicated dressings and other antibacterials and antibiotics for topical use.
+  - atc_4: The chemical and functional group of  is antibiotics and medicated dressings with antiinfectives and steroid antibacterials and other antibiotics for topical use.
+  - category: Fusidic acid is part of Agents Causing Muscle Toxicity ; Anti-Bacterial Agents ; Anti-Infective Agents ; Antibacterials for Systemic Use ; Antibiotics for Topical Use ; Antiinfectives for Systemic Use ; BCRP/ABCG2 Inhibitors ; BSEP/ABCB11 Inhibitors ; Cholestadienes ; Cholestadienols ; Cholestanes ; Cholestenes ; Cytochrome P-450 CYP2D6 Inhibitors ; Cytochrome P-450 CYP2D6 Inhibitors (moderate) ; Cytochrome P-450 CYP2D6 Substrates ; Cytochrome P-450 CYP3A Inhibitors ; Cytochrome P-450 CYP3A Substrates ; Cytochrome P-450 CYP3A4 Inhibitors ; Cytochrome P-450 CYP3A4 Inhibitors (moderate) ; Cytochrome P-450 CYP3A4 Substrates ; Cytochrome P-450 Enzyme Inhibitors ; Cytochrome P-450 Substrates ; Dermatologicals ; Enzyme Inhibitors ; Fused-Ring Compounds ; Lipids ; Medicated Dressings ; Medicated Dressings With Antiinfectives ; Membrane Lipids ; OATP1B1/SLCO1B1 Inhibitors ; Ophthalmologicals ; Other Miscellaneous Antibacterial Agents ; Protein Synthesis Inhibitors ; Sensory Organs ; Steroid Antibacterials ; Steroids ; Sterols ; UGT1A1 Substrates.
+  - group: Fusidic acid is approved and investigational.
+  - molecular_weight: The molecular weight is 516.72.
+  - tpsa: Fusidic acid has a topological polar surface area of 104.06.
+  - clogp: The log p value of  is 7.28.
+
+- - name: Fosfomycin
+- type: drug
+- source: DrugBank
+- details:
+  - description: An antibiotic produced by Streptomyces fradiae.
+  - half_life: 5.7 (&plusmn; 2.8) hours. The elimination half-life is 40 hours in anuric patients undergoing hemodialysis.
+  - indication: For the treatment of uncomplicated urinary tract infections (acute cystitis) in women due to susceptible strains of <i>Escherichia coli</i> and <i>Enterococcus faecalis</i>.
+  - mechanism_of_action: Fosfomycin is a phosphoenolpyruvate analogue produced by Streptomyces that irreversibly inhibits enolpyruvate transferase (MurA), which prevents the formation of N-acetylmuramic acid, an essential element of the peptidoglycan cell wall.
+  - protein_binding: 0% (not bound to plasma proteins)
+  - pharmacodynamics: Fosfomycin is a broad spectrum antibiotic that concentrates in kidney and bladder and is used to treat uncomplicated urinary tract infections. Fosfomycin also reduces nephrotoxicity and ototoxicity of platinum-containing anti-tumor agents.
+  - state: Fosfomycin is a solid.
+  - atc_1: Fosfomycin is anatomically related to antiinfectives for systemic use.
+  - atc_2: Fosfomycin is in the therapeutic group of antibacterials for systemic use.
+  - atc_3: Fosfomycin is pharmacologically related to other antibacterials.
+  - atc_4: The chemical and functional group of  is other antibacterials.
+  - category: Fosfomycin is part of Anti-Bacterial Agents ; Anti-Infective Agents ; Anti-Infective Agents, Urinary ; Antibacterials for Systemic Use ; Antiinfectives for Systemic Use ; Drugs that are Mainly Renally Excreted ; Organophosphonates ; Organophosphorus Compounds.
+  - group: Fosfomycin is approved.
+  - molecular_weight: The molecular weight is 138.06.
+  - tpsa: Fosfomycin has a topological polar surface area of 70.06.
+  - clogp: The log p value of  is -0.23.
+
+- - name: Colistin
+- type: drug
+- source: DrugBank
+- details:
+  - description: Cyclic polypeptide antibiotic from Bacillus colistinus. It is composed of Polymyxins E1 and E2 (or Colistins A, B, and C) which act as detergents on cell membranes. Colistin is less toxic than Polymyxin B, but otherwise similar; the methanesulfonate is used orally.
+  - half_life: The half-life is 5 hours
+  - indication: For the treatment of acute or chronic infections due to sensitive strains of certain gram-negative bacilli, particularly <i>Pseudomonas aeruginosa</i>.
+  - mechanism_of_action: Colistin is a surface active agent which penetrates into and disrupts the bacterial cell membrane. Colistin is polycationic and has both hydrophobic and lipophilic moieties. It interacts with the bacterial cytoplasmic membrane, changing its permeability. This effect is bactericidal. There is also evidence that polymyxins enter the cell and precipitate cytoplasmic components, primarily ribosomes.
+  - pharmacodynamics: Colistin is a polymyxin antibiotic agent. Polymyxins are cationic polypeptides that disrupt the bacterial cell membrane through a detergentlike mechanism. With the development of less toxic agents, such as extended-spectrum penicillins and cephalosporins, parenteral polymyxin use was largely abandoned, except for the treatment of multidrug-resistant pulmonary infections in patients with cystic fibrosis. More recently, however, the emergence of multidrug-resistant gram-negative bacteria, such as <i>Pseudomonas aeruginosa</i> and <i>Acinetobacter baumannii</i>, and the lack of new antimicrobial agents have led to the revived use of the polymyxins.
+  - state: Colistin is a solid.
+  - atc_1: Colistin is anatomically related to antiinfectives for systemic use and alimentary tract and metabolism.
+  - atc_2: Colistin is in the therapeutic group of antibacterials for systemic use and antidiarrheals, intestinal antiinflammatory/antiinfective agents.
+  - atc_3: Colistin is pharmacologically related to other antibacterials and intestinal antiinfectives.
+  - atc_4: The chemical and functional group of  is polymyxins and antibiotics.
+  - category: Colistin is part of Agents that produce neuromuscular block (indirect) ; Alimentary Tract and Metabolism ; Amino Acids, Peptides, and Proteins ; Aminoglycoside Antibacterials ; Anti-Bacterial Agents ; Anti-Infective Agents ; Antibacterials for Systemic Use ; Antidiarrheals, Intestinal Antiinflammatory/antiinfective Agents ; Antiinfectives for Systemic Use ; Antimicrobial Cationic Peptides ; Drugs that are Mainly Renally Excreted ; Drugs that are Mainly Renally Excreted with a Narrow Therapeutic Index ; Intestinal Antiinfectives ; Lipids ; Lipopeptides ; Membrane Proteins ; Narrow Therapeutic Index Drugs ; Nephrotoxic agents ; Peptides ; Peptides, Cyclic ; Polymyxins ; Pore Forming Cytotoxic Proteins ; Proteins.
+  - group: Colistin is approved.
+  - molecular_weight: The molecular weight is 2324.94.
+  - tpsa: Colistin has a topological polar surface area of 490.66.
+
+[LlmBridge] ask_llm_batch: first query (if exists): You are a precision-focused search optimization assistant for the prime domain.
+    
+    Input Query: "Query(id=904, query='Could you provide information on treatments available for C. diff colitis and clarify whether any of these medications could potentially lead to facial swelling as a side effect?', status='IN_PROGRESS', ground_truths=[20585])"
+    
+    Task: Generate a comma-separated list of expansion terms to improve retrieval recall.
+    
+    Strict Guidelines:
+    1. DO NOT be creative. Avoid abstract associations or broad generalizations.
+    2. ONLY include direct synonyms, acronyms, or strictly technical terms used in this specific domain.
+    3. Use the provided sample documents below to ground your vocabulary choice.
+    4. Return valid search terms only. No conversational text, no explanations, no labels.
+    
+    Reference Context (Sample Documents from prime):
+    - - name: Bezlotoxumab
+- type: drug
+- source: DrugBank
+- details:
+  - description: Bezlotoxumab is a human monoclonal antibody that binds to Clostridium difficile toxin B and neutralizes its effects. Used to reduce the recurrence of Clostridium difficle infection in adults receiving antibiotic therapy to treat C. difficile infection and high risk of recurrence.
+  - half_life: The half-life is 19 Days 
+  - indication: Prevents recurrence of Clostridium difficile infection in people 18 years or older who are either currently receiving treatment for C. difficile infection or have a high risk of recurrence. 
+  - mechanism_of_action: A single molecule of bezlotoxumab neutralizes Toxin B by binding its two Fab regions to two epitopes within the N-terminal half of the Toxin B CROP domain, partially blocking the carbohydrate binding pockets of the toxin and preventing toxin binding to host cells.
+  - protein_binding: Binds to C.difficile virulence factor toxin B which prevents its action on host cells.
+  - pharmacodynamics: Bezlotoxumab binds to C.difficile toxin B, a virulence factor common to practically all C.difficile, which prevents the bacteria from infecting host cells. Bezlotoxumab binds two epitopes of toxin B, via two Fab regions, which partially blocks the carbohydrate binding pockets of the toxin resulting in the prevention of toxin B from binding to host cells.
+  - state: Bezlotoxumab is a solid.
+  - atc_1: Bezlotoxumab is anatomically related to antiinfectives for systemic use.
+  - atc_2: Bezlotoxumab is in the therapeutic group of immune sera and immunoglobulins.
+  - atc_3: Bezlotoxumab is pharmacologically related to immunoglobulins.
+  - atc_4: The chemical and functional group of  is specific immunoglobulins.
+  - category: Bezlotoxumab is part of Amino Acids, Peptides, and Proteins ; Antibodies ; Antiinfectives for Systemic Use ; Blood Proteins ; Globulins ; Immune Sera and Immunoglobulins ; Immunoglobulins ; Immunoproteins ; Proteins ; Serum Globulins ; Specific Immunoglobulins.
+  - group: Bezlotoxumab is approved and investigational.
+
+- - name: Fusidic acid
+- type: drug
+- source: DrugBank
+- details:
+  - description: An antibiotic isolated from the fermentation broth of Fusidium coccineum. (From Merck Index, 11th ed) It acts by inhibiting translocation during protein synthesis. It is often used topically in creams and eyedrops but is available in systemic formulations including tablets and injections.
+  - half_life: Approximately 5 to 6 hours in adults.
+  - indication: For the treatment of bacterial infections.
+  - mechanism_of_action: Fusidic acid works by interfering with bacterial protein synthesis, specifically by preventing the translocation of the elongation factor G (EF-G) from the ribosome. It also can inhibit chloramphenicol acetyltransferase enzymes.
+  - protein_binding: 97 to 99%
+  - pharmacodynamics: Fusidic acid is a bacteriostatic antibiotic and helps prevent bacterial growth while the immune system clears the infection.
+  - state: Fusidic acid is a solid.
+  - atc_1: Fusidic acid is anatomically related to sensory organs and dermatologicals and antiinfectives for systemic use and dermatologicals.
+  - atc_2: Fusidic acid is in the therapeutic group of ophthalmologicals and medicated dressings and antibacterials for systemic use and antibiotics and chemotherapeutics for dermatological use.
+  - atc_3: Fusidic acid is pharmacologically related to antiinfectives and medicated dressings and other antibacterials and antibiotics for topical use.
+  - atc_4: The chemical and functional group of  is antibiotics and medicated dressings with antiinfectives and steroid antibacterials and other antibiotics for topical use.
+  - category: Fusidic acid is part of Agents Causing Muscle Toxicity ; Anti-Bacterial Agents ; Anti-Infective Agents ; Antibacterials for Systemic Use ; Antibiotics for Topical Use ; Antiinfectives for Systemic Use ; BCRP/ABCG2 Inhibitors ; BSEP/ABCB11 Inhibitors ; Cholestadienes ; Cholestadienols ; Cholestanes ; Cholestenes ; Cytochrome P-450 CYP2D6 Inhibitors ; Cytochrome P-450 CYP2D6 Inhibitors (moderate) ; Cytochrome P-450 CYP2D6 Substrates ; Cytochrome P-450 CYP3A Inhibitors ; Cytochrome P-450 CYP3A Substrates ; Cytochrome P-450 CYP3A4 Inhibitors ; Cytochrome P-450 CYP3A4 Inhibitors (moderate) ; Cytochrome P-450 CYP3A4 Substrates ; Cytochrome P-450 Enzyme Inhibitors ; Cytochrome P-450 Substrates ; Dermatologicals ; Enzyme Inhibitors ; Fused-Ring Compounds ; Lipids ; Medicated Dressings ; Medicated Dressings With Antiinfectives ; Membrane Lipids ; OATP1B1/SLCO1B1 Inhibitors ; Ophthalmologicals ; Other Miscellaneous Antibacterial Agents ; Protein Synthesis Inhibitors ; Sensory Organs ; Steroid Antibacterials ; Steroids ; Sterols ; UGT1A1 Substrates.
+  - group: Fusidic acid is approved and investigational.
+  - molecular_weight: The molecular weight is 516.72.
+  - tpsa: Fusidic acid has a topological polar surface area of 104.06.
+  - clogp: The log p value of  is 7.28.
+
+- - name: Fosfomycin
+- type: drug
+- source: DrugBank
+- details:
+  - description: An antibiotic produced by Streptomyces fradiae.
+  - half_life: 5.7 (&plusmn; 2.8) hours. The elimination half-life is 40 hours in anuric patients undergoing hemodialysis.
+  - indication: For the treatment of uncomplicated urinary tract infections (acute cystitis) in women due to susceptible strains of <i>Escherichia coli</i> and <i>Enterococcus faecalis</i>.
+  - mechanism_of_action: Fosfomycin is a phosphoenolpyruvate analogue produced by Streptomyces that irreversibly inhibits enolpyruvate transferase (MurA), which prevents the formation of N-acetylmuramic acid, an essential element of the peptidoglycan cell wall.
+  - protein_binding: 0% (not bound to plasma proteins)
+  - pharmacodynamics: Fosfomycin is a broad spectrum antibiotic that concentrates in kidney and bladder and is used to treat uncomplicated urinary tract infections. Fosfomycin also reduces nephrotoxicity and ototoxicity of platinum-containing anti-tumor agents.
+  - state: Fosfomycin is a solid.
+  - atc_1: Fosfomycin is anatomically related to antiinfectives for systemic use.
+  - atc_2: Fosfomycin is in the therapeutic group of antibacterials for systemic use.
+  - atc_3: Fosfomycin is pharmacologically related to other antibacterials.
+  - atc_4: The chemical and functional group of  is other antibacterials.
+  - category: Fosfomycin is part of Anti-Bacterial Agents ; Anti-Infective Agents ; Anti-Infective Agents, Urinary ; Antibacterials for Systemic Use ; Antiinfectives for Systemic Use ; Drugs that are Mainly Renally Excreted ; Organophosphonates ; Organophosphorus Compounds.
+  - group: Fosfomycin is approved.
+  - molecular_weight: The molecular weight is 138.06.
+  - tpsa: Fosfomycin has a topological polar surface area of 70.06.
+  - clogp: The log p value of  is -0.23.
+
+- - name: Colistin
+- type: drug
+- source: DrugBank
+- details:
+  - description: Cyclic polypeptide antibiotic from Bacillus colistinus. It is composed of Polymyxins E1 and E2 (or Colistins A, B, and C) which act as detergents on cell membranes. Colistin is less toxic than Polymyxin B, but otherwise similar; the methanesulfonate is used orally.
+  - half_life: The half-life is 5 hours
+  - indication: For the treatment of acute or chronic infections due to sensitive strains of certain gram-negative bacilli, particularly <i>Pseudomonas aeruginosa</i>.
+  - mechanism_of_action: Colistin is a surface active agent which penetrates into and disrupts the bacterial cell membrane. Colistin is polycationic and has both hydrophobic and lipophilic moieties. It interacts with the bacterial cytoplasmic membrane, changing its permeability. This effect is bactericidal. There is also evidence that polymyxins enter the cell and precipitate cytoplasmic components, primarily ribosomes.
+  - pharmacodynamics: Colistin is a polymyxin antibiotic agent. Polymyxins are cationic polypeptides that disrupt the bacterial cell membrane through a detergentlike mechanism. With the development of less toxic agents, such as extended-spectrum penicillins and cephalosporins, parenteral polymyxin use was largely abandoned, except for the treatment of multidrug-resistant pulmonary infections in patients with cystic fibrosis. More recently, however, the emergence of multidrug-resistant gram-negative bacteria, such as <i>Pseudomonas aeruginosa</i> and <i>Acinetobacter baumannii</i>, and the lack of new antimicrobial agents have led to the revived use of the polymyxins.
+  - state: Colistin is a solid.
+  - atc_1: Colistin is anatomically related to antiinfectives for systemic use and alimentary tract and metabolism.
+  - atc_2: Colistin is in the therapeutic group of antibacterials for systemic use and antidiarrheals, intestinal antiinflammatory/antiinfective agents.
+  - atc_3: Colistin is pharmacologically related to other antibacterials and intestinal antiinfectives.
+  - atc_4: The chemical and functional group of  is polymyxins and antibiotics.
+  - category: Colistin is part of Agents that produce neuromuscular block (indirect) ; Alimentary Tract and Metabolism ; Amino Acids, Peptides, and Proteins ; Aminoglycoside Antibacterials ; Anti-Bacterial Agents ; Anti-Infective Agents ; Antibacterials for Systemic Use ; Antidiarrheals, Intestinal Antiinflammatory/antiinfective Agents ; Antiinfectives for Systemic Use ; Antimicrobial Cationic Peptides ; Drugs that are Mainly Renally Excreted ; Drugs that are Mainly Renally Excreted with a Narrow Therapeutic Index ; Intestinal Antiinfectives ; Lipids ; Lipopeptides ; Membrane Proteins ; Narrow Therapeutic Index Drugs ; Nephrotoxic agents ; Peptides ; Peptides, Cyclic ; Polymyxins ; Pore Forming Cytotoxic Proteins ; Proteins.
+  - group: Colistin is approved.
+  - molecular_weight: The molecular weight is 2324.94.
+  - tpsa: Colistin has a topological polar surface area of 490.66.
+
+    
+    Output (comma-separated terms only):
+[LlmBridge] meta/llama-3.3-70b-instruct Shortened Answer (first): C. diff colitis, Clostridium difficile, toxin B, bezlotoxumab, fusidic acid, fosfomycin, colistin, antiinfectives, antibacterials, antibiotics, immunoglobulins, protein synthesis inhibitors, polymyxins, enolpyruvate transferase inhibitors, MurA inhibitors, cell membrane disruptors, gram-negative bacilli, pseudomonas aeruginosa, enterococcus faecalis, escherichia coli, acinetobacter baumannii, cystic fibrosis, multidrug-resistant infections, urinary tract infections, acute cystitis, anuric patients, hemodialysis, nephrotoxicity, ototoxicity, platinum-containing anti-tumor agents.
+Getting embedding for query: C. diff colitis, Clostridium difficile, toxin B, bezlotoxumab, fusidic acid, fosfomycin, colistin, antiinfectives, antibacterials, antibiotics, immunoglobulins, protein synthesis inhibitors, polymyxins, enolpyruvate transferase inhibitors, MurA inhibitors, cell membrane disruptors, gram-negative bacilli, pseudomonas aeruginosa, enterococcus faecalis, escherichia coli, acinetobacter baumannii, cystic fibrosis, multidrug-resistant infections, urinary tract infections, acute cystitis, anuric patients, hemodialysis, nephrotoxicity, ototoxicity, platinum-containing anti-tumor agents. using model: text-embedding-ada-002
+Finished Query 904
