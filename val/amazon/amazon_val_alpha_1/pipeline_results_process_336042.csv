@@ -1,0 +1,6 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+3102,"Looking for a bike tire puncture sealant that is compatible with an Orange Seal Cycling Regular Tubeless Tire Sealant Refill, 16 oz, and won't cause any chemical reactions or damage to my tires or rims. Any suggestions?",14,2,12,0.14285714285714285,0.14285714285714285,1.0,1.0,1.0,0.7142857142857143
+8371,"Looking for a small, multipurpose flashlight that doubles as a camcorder, able to take photos and videos with audio capabilities. Does it also have a rechargeable battery?",2,1,1,0.5,0.5,1.0,1.0,1.0,0.5
+8825,Looking for a US-made portable nylon hammock under 1 pound that prioritizes durability and portability with features like triple stitches and reinforced seams over comfort and skin-friendliness.,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+1952,Can you suggest a Caseworks jersey display case?,1,1,0,1.0,1.0,0.0,0.0,0.09090909090909091,0.0
+7173,"Looking for bikini swimsuits with good customer reviews, around 3.1 stars, and high color fastness to avoid quick fading.",3,0,3,0.0,0.0,0.0,0.0,0.0,0.0

@@ -1,0 +1,4 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+2600,Looking for a scope mount compatible with a Remington 700 Long Action. Open to models that may raise the scope and require the addition of a cheek piece.,16,1,15,0.0625,0.0625,0.0,1.0,0.5,0.0625
+3594,What are some recommended clear lenses compatible with Wiley X eyewear? I prefer products from reliable and reputable brands like Wiley X.,8,4,4,0.5,0.5,1.0,1.0,1.0,0.25
+2521,Looking for a durable Stanley stainless steel water bottle that's suitable for outdoor use and designed for carbonated drinks.,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
