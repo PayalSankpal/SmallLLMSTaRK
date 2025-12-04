@@ -1,0 +1,45 @@
+{
+  "experiment": {
+    "dataset": "mag",
+    "split": "test",
+    "exp_name": "MAG_TEST",
+    "test_run": false,
+    "output_base_dir": "./test/mag/",
+    "logging_level": "INFO"
+  },
+  "pipeline": {
+    "max_workers": 4,
+    "timeout_seconds": 300,
+    "max_queries_test_run": 20
+  },
+  "models": {
+    "llm_name": "meta/llama-3.3-70b-instruct",
+    "llm_config_path": "configs.json",
+    "embedding_model": "text-embedding-ada-002",
+    "embedding_base_path": "emb/"
+  },
+  "retrieval_params": {
+    "step3_candidate_generation": {
+      "initial_limit": 20,
+      "vss_cutoff": 0.75
+    },
+    "step5_vss_merge": {
+      "alpha": 15,
+      "top_k": 20,
+      "cutoff": 0.6
+    }
+  },
+  "grounding_params": {
+    "max_candidates_per_symbol": 3000,
+    "max_answer_candidates": 20,
+    "top_k_neighbors": 20,
+    "support_boost": 0.0,
+    "score_decay": 1
+  },
+  "data_paths": {
+    "use_saved_llm_responses": false,
+    "llm_responses_file": "./llm_responses/prime/llm_response_prime_test.csv",
+    "use_saved_vss_candidates": false,
+    "vss_candidates_json_path": "vss_candidates.json"
+  }
+}
