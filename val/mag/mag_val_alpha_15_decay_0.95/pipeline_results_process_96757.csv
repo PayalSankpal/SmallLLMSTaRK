@@ -1,0 +1,3 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+7540,Show me publications from co-authors of 'Characterizing dark matter at the LHC in Drell-Yan events' that further investigate new physics impacts on increasing Higgs diphoton decay rates beyond Standard Model expectations.,3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
+6977,"What research papers are referenced in ""Spectral line broadening in magnetized black holes"" and also involve discussions on magnetic fields near the supermassive black hole in the center of the Milky Way?",1,1,0,1.0,1.0,0.0,1.0,0.25,1.0

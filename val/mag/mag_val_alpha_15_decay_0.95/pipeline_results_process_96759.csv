@@ -1,0 +1,3 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+6116,Show me Ali Hussnain's research papers focusing on carbon nitride films.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1075,"Seeking articles on condensed representations of ferroelectric tunnel junction mechanisms that are referenced in ""Compact modelling of ferroelectric tunnel memristor and its use for neuromorphic simulation"".",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0

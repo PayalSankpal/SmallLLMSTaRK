@@ -1,0 +1,4 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+10303,Are there any papers from the Armament Research and Development Establishment that explore the potential applications of PMN-PT material compositions?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+13126,Does Arxiv have any research papers from Eckerd College on the neutron scattering of 6He in Neutron physics?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+11917,"What are the papers cited in ""Merging Strangeon Stars"" that also delve into the topic of emissions from neutron star mergers?",13,11,2,0.8461538461538461,0.8461538461538461,0.0,1.0,0.25,0.6153846153846154

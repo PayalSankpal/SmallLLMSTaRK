@@ -4,7 +4,7 @@
 DATASET="amazon"
 SPLIT="val"
 CONFIG_FILE="./params/amazon_alpha_params.json"
-ALPHA=14
+ALPHA=15
 
 # Score decay values from 0.7 to 1.0
 SCORE_DECAYS=(0.7 0.75 0.8 0.85 0.9 0.95 1.0)
@@ -22,7 +22,7 @@ for SCORE_DECAY in "${SCORE_DECAYS[@]}"; do
     echo ""
     echo ">>> Running: score_decay=$SCORE_DECAY | exp=$EXP_NAME"
 
-    python parallel_pipeline.py "$CONFIG_FILE" \
+    python parallel_final.py "$CONFIG_FILE" \
         --dataset "$DATASET" \
         --split "$SPLIT" \
         --alpha "$ALPHA" \

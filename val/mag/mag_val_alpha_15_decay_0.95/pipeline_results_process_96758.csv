@@ -1,0 +1,3 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+3194,"Find publications analyzing light-induced optical activity that have referenced or been referenced by ""Spiral metamaterial for active tuning of optical activity.",1,1,0,1.0,1.0,0.0,1.0,0.2,1.0
+1988,"What other research papers suggesting nondiffracting polarization beams have referenced or been referenced by ""Twisted longitudinally polarized field in the focal region""?",3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
