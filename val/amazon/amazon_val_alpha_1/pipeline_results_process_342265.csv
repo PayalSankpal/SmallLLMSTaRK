@@ -1,0 +1,4 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+1166,"Could you help me find a lightweight golf stand bag that's easy to transport? Ideally, it should have a Trunk Lift Grip System molded base.",12,0,12,0.0,0.0,0.0,0.0,0.0,0.08333333333333333
+1024,"Looking for a MirrOLure fishing lure that can camouflage with the water. We're very satisfied with the MirrOLure Mirrodine, Bayou Green Back/Pearl Belly, 2-5/8-Inch we already have, so we need the new one to complement it well.",1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+7893,Where can I find a 100% cotton women's muscle tee that is soft due to pretreatment? I prefer buying from brands that donate a part of their earnings to charity.,15,0,15,0.0,0.0,0.0,0.0,0.0,0.13333333333333333

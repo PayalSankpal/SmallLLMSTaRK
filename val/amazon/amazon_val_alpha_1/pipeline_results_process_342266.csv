@@ -1,0 +1,4 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+1439,Is there a unique and cute decorative statue from Bowling Delights made out of nuts and bolts that you could recommend?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+4793,"I absolutely adore my merino wool base layer shirt and I'm searching for another one. Preferably, it should be covered by the First Lite Warranty. I just wish I had made the purchase earlier!",11,8,3,0.7272727272727273,0.7272727272727273,0.0,1.0,0.5,0.8181818181818182
+3923,Looking for a durable upland vest made with resilient fabric and reinforced with extra stitching. Can you help?,8,1,7,0.125,0.125,1.0,1.0,1.0,0.375

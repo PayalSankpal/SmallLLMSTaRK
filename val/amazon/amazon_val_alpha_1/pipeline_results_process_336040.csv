@@ -1,0 +1,6 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+6759,Looking for an archery accessories kit that includes a nock installation and removal tool compatible with Allen 674 Bow String Wax.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+8992,What are some recommended Shaddock Fishing equipment for fishing?,1,1,0,1.0,1.0,0.0,1.0,0.25,0.0
+1470,"What's a good all-year-round, versatile knitted beanie that's comfortable to wear and comes in a compact package size around 8 by 5.6 by 3.1 inches?",3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
+4967,Looking for lightweight Shimano MTB shoes compatible with the SPD pedal system that don't run smaller than average sizes.,2,1,1,0.5,0.5,0.0,1.0,0.25,0.0
+4774,Searching for triathlon shorts suitable for long-distance biking. I need ones comfortable enough for a 6-day cycling trip like the one I had in Montana.,8,0,8,0.0,0.0,0.0,0.0,0.0,0.0

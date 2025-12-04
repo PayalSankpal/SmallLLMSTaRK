@@ -1,0 +1,29 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+10584,"Which pharmacological substances are synthesized or influenced by genes or proteins associated with the Golgi apparatus, exert their influence through the activation of particular G protein-coupled receptors, and affect the central and peripheral nervous systems, including the brain and spinal cord?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3251,Can you find genes or proteins involved in homotypic interactions that also play a role in reducing MET signal transduction?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+6296,Search for diseases not treatable by any known drugs that also correlate with abnormal lymphocyte morphology.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+6266,Which gene or protein is consistently not expressed in lung tissue?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+793,Can you identify any genes or proteins that both interact directly with the MGMT DNA repair pathway and have the ability to bind calcium at the functional level?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+898,"Which diseases are associated with homozygous mutations in the DSC3 gene, coding for desmocollin-3?",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+4329,"Is it possible that I've inherited a susceptibility to a condition like listeriosis from my parent, considering the severe fevers and headaches I'm having that suggest immediate medical attention is necessary?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+1526,What drugs actively engage with both RAB11A and TGM3 genes/proteins in their action mechanisms?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+7537,Which side effects or phenotypes can be attributed to a drug that is transported by the SCARB1 protein?,8,8,0,1.0,1.0,1.0,1.0,1.0,1.0
+7257,Which cellular structures are affected by interactions with genes or proteins that 6-(2-Hydroxycyclopentyl)-7-oxo-heptanamidine targets?,9,9,0,1.0,1.0,1.0,1.0,1.0,0.6666666666666666
+10367,"Could you provide information on any nasal medications that work in conjunction with Oxymetazoline to enhance the relief of symptoms for a common nasal ailment, essentially having a synergistic effect?",8,4,4,0.5,0.5,1.0,1.0,1.0,0.625
+9982,Identify the genes or proteins that are present in the pineal gland but not expressed in the quadriceps femoris muscle.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1967,"I'm looking for a diagnosis that might connect my persistent headaches and occasional visual disturbances with a history of atypical hemolytic-uremic syndrome in my family, and potential issues with the small blood vessels in my retina.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5528,What disease is linked with superficial fibromatosis and causes the fingers to bend permanently and increasingly over time?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+10480,"Is there a pharmaceutical agent that can be combined with Sodium citrate to enhance its therapeutic efficacy in treating a specific condition, and which also possesses a keratolytic effect beneficial for acne treatment by promoting increased exfoliation of epithelial cells?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7254,"Which pharmaceuticals interact synergistically with Fluphenazine in the treatment of identical conditions, and also possess a half-life ranging from 24 to 48 hours?",1,1,0,1.0,1.0,0.0,0.0,0.1,0.0
+3835,Could there be a disease that manifests with tumors and is associated with skin irritation issues akin to dermatitis?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+9720,Which gene or protein exhibits a lack of expression in both renal and tracheal tissues?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+2530,What disease is related to immunodeficiency as both an ancestor and descendant and shares a similar hierarchical connection with congenital T-cell immunodeficiency?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1980,Could you recommend medications effective for open-angle glaucoma that reduce intraocular pressure by about 16-19% and have a lower risk of causing eye-related side effects?,1,1,0,1.0,1.0,0.0,0.0,0.05263157894736842,0.0
+6560,"Which condition is characterized by a painful, bleeding ulcer in the esophagus, stomach, or duodenum and should not be treated with medications prescribed for severe early-onset retinal dystrophy in young children?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+10873,Which anatomical structures lack expression of genes or proteins that play a role in the shaping of the heart's ventricular chambers?,4,2,2,0.5,0.5,1.0,1.0,1.0,0.5
+5932,"Which genes or proteins have been documented to simultaneously interact with NPR1 and natriuretic peptide B, and have also been linked to a common disease in past research?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+10983,Which drug is known for its powerful selective inhibition of the hedgehog pathway through attachment to the smoothened (SMO) receptor and is associated with genes or proteins that have interactions within the endoplasmic reticulum lumen?,2,2,0,1.0,1.0,0.0,1.0,0.5,1.0
+5041,"I'm developing a management plan for induced abortion and I'm looking for a medication that can be used alongside Carboprost tromethamine to increase its efficacy. Can you suggest any drugs that are proven in clinical trials to boost the effectiveness of this pharmacological approach, specifically within the categories of nonsteroidal abortifacients, uterotonic agents, or similar prostaglandin E analogs?",1,1,0,1.0,1.0,0.0,0.0,0.0625,0.0
+106,What disorder stems from colorectal tubulovillous adenoma and features neoplastic growth with both villous and tubular structures?,3,0,3,0.0,0.0,0.0,0.0,0.0,1.0
+9194,"Search for pathways associated with the assembly of the Origin Recognition Complex (ORC) at replication origins, which also exhibit interactions with a common gene or protein.",1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+891,"Can you find pill or tablet medications that act on the IGHG2 gene, the one associated with immunoglobin G2?",8,8,0,1.0,1.0,1.0,1.0,1.0,0.875
