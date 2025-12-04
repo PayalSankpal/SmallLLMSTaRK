@@ -1,0 +1,2 @@
+total_queries,avg_total_answers,avg_retrieved_count,avg_missed_count,avg_recall@20,avg_recall@50,avg_hit@1,avg_hit@5,avg_mrr,recall@20_vss_merged
+39,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

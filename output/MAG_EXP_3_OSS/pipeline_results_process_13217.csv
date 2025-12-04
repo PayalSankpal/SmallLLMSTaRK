@@ -1,0 +1,31 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+12661,Find papers from Pittsburg State University researchers on dark matter exploration through gamma rays.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+11538,"Find publications by co-authors of ""Validity of the generalized density matrix method for the microscopic calculation of a collective/bosonic Hamiltonian"", which also explore the topic of thermalization in small isolated systems.",2,2,0,1.0,1.0,0.0,1.0,0.5,1.0
+8029,"What other research papers on quiet sun magnetism has the study ""Spectropolarimetric Evidence for a Siphon Flow along an Emerging Magnetic Flux Tube"" cited?",6,6,0,1.0,1.0,0.0,1.0,0.5,1.0
+11635,Show me publications by F. Pallas that discuss a multifunctional laser system.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+9132,Show me publications by M. Giunta exploring constraints on a lightweight pseudoscalar Higgs particle.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+3671,Which publications by Monash University South Africa scholars focus on germanium defect analysis?,1,1,0,1.0,0.0,0.0,0.0,0.038461538461538464,0.0
+10579,"Find more publications from the co-authors of ""Intense EM filamentation in relativistic hot plasmas"" that delve into the principles of self-organization.",10,6,4,0.6,0.0,0.0,0.0,0.043478260869565216,0.0
+653,Show me publications by R. Brown on the formation of high-temperature field configurations through the merging of compact toroids.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+13234,Show me publications on gravity theories from the co-authors involved in the 'Extensions of Lorentzian spacetime geometry: From Finsler to Cartan and vice versa' paper.,19,19,0,1.0,0.42105263157894735,0.0,1.0,0.3333333333333333,0.3157894736842105
+10701,Show me publications by L. Lebanowski related to the study of neutrino oscillation experiments.,7,7,0,1.0,0.0,0.0,0.0,0.043478260869565216,0.0
+9338,"What research papers that delve into heat transfer optimization methods have been referenced in the study titled ""Temperature–heat diagram analysis method for heat recovery physical adsorption refrigeration cycle – Taking multi-stage cycle as an example""?",2,2,0,1.0,1.0,0.0,0.0,0.16666666666666666,1.0
+6455,Search for publications by Marco Breschi on thermal properties.,10,6,4,0.6,0.2,1.0,1.0,1.0,0.2
+9771,Show me research articles on Dynamic contrast-enhanced magnetic resonance imaging that investigate compressed sensing techniques for real-time monitoring of lung tumor movement.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+2667,"Show me publications by authors of ""Dynamical instability and the expansion-free condition"" that cover the topic of cavity evolution in relativistic fluids.",2,2,0,1.0,0.0,0.0,0.0,0.014705882352941176,0.0
+9054,Which publications from Wrocław University of Economics researchers focus on transitions in their studies?,3,3,0,1.0,0.0,0.0,0.0,0.017857142857142856,0.0
+7838,Are there any research articles from Dresden University of Technology that analyze LHC data seeking novel resonances within the context of Quark-Gluon plasma?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+13094,Publications on plasma-generated magnetic fields authored by Hashemite University researchers,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+6732,"Show me papers examining dual-band phased array antenna technologies, authored by the co-authors of the publication 'Dual-Band Wide-Angle Scanning Planar Phased Array in X/Ku-Bands'.",4,4,0,1.0,0.5,1.0,1.0,1.0,0.5
+12096,Show me publications by A. Sandacz on the topic of gluon polarization.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+5111,"Which publications from the co-authors of ""Antenna Array Geometries to Reduce the Compute Load in Radio Telescopes"" also discuss efficient techniques for analyzing radio telescope data?",4,3,1,0.75,0.25,1.0,1.0,1.0,0.25
+32,I'm looking for publications on the adjustment of topological phases within the pseudospectrum domain through system parameter alteration.,1,1,0,1.0,1.0,0.0,0.0,0.1111111111111111,1.0
+11157,"Can you find 2014 papers about ionospheric plasma parameters that were cited in the study ""Equinoctial asymmetry in ionosphere over Indian region during 2006–2013 using COSMIC measurements""?",2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+9834,Show me publications by Anahit Badalyan on the topic of holography with Bessel beam recordings.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+11718,"Are there any other studies on high-velocity outflows that have referenced or been inspired by the evidence presented in ""Discovery of the transition of a mini-broad absorption line into a broad absorption line in the SDSS quasar J115122.14+020426.3""?",7,0,7,0.0,0.0,0.0,0.0,0.0,0.0
+8716,Can you find any publications from Shiga University of Medical Science that focus on the study of interfaces via molecular dynamics simulations?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+8467,"Show me articles on crystal structures and their formation authored by co-authors of ""Dependence of the Apex Angle of an Inverted Pyramidal-Shaped Container on Crystallization of Brownian Particles"".",3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+2317,"Show me publications from Nirmalagiri College, Kuthuparamba exploring the features and utilization of lithium ferrite nanoparticles.",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+3951,Looking for research papers related to electric motor armature design optimization that have affiliations with Hanbat National University. Specifically interested in works proposing design optimizations of electric motors.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+6540,I'm looking for papers on the geochemical characteristics of lunar features related to the Moon's magma ocean.,8,8,0,1.0,1.0,1.0,1.0,1.0,0.75
+4403,"Search for publications from Penn State Erie, The Behrend College regarding the study of mass transfer within water filtration systems, specifically within the mechanical engineering discipline.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

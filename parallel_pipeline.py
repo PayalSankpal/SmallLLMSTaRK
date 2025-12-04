@@ -229,7 +229,6 @@ def step4_grounding(query: Query, kb, retriever, config):
     query.final_candidates = final_candidates
     return final_candidates
 
-
 def get_expanded_query(query, dataset_name: str, kb, llm_bridge) -> str:
     docs_list = []
     print(query.grounding_candidates)
@@ -256,6 +255,7 @@ def step5_merge_vss_candidates(query: Query, retriever: VSSRetriever, kb, config
     if not use_saved:
         all_candidates = []
         expanded_query = get_expanded_query(query, dataset_name=dataset_name, kb=kb, llm_bridge=llm_bridge)
+        # expanded_query = query.query
         print(query)
         print("[Step 5] Expanded Query for VSS:", expanded_query)
         possible_node_types = query.entities["ANSWER"]["type"].copy()

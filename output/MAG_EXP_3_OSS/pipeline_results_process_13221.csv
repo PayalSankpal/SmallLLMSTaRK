@@ -1,0 +1,34 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+9448,List of papers on spectroscopic detection of fluoride levels in Strontium fluoride.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+2637,Search for papers by Katharina Brassat on the self-assembly mechanisms in nanosphere suspensions.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+2026,Show me papers by Bart V. Beeman on pulsed power diagnostic systems.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+8610,Are there any research papers from Gebze Institute of Technology focusing on the absorption cross section that discuss the optical limiting properties of materials?,2,2,0,1.0,1.0,0.0,1.0,0.5,1.0
+4655,Which publications from the Sukachev Institute of Forest address the topic of spin crossover in materials subjected to high pressure conditions?,2,1,1,0.5,0.5,1.0,1.0,1.0,0.5
+12461,"Find articles by the authors of ""Simulation on Boron Concentration Profile in Silicon Introduced by Plasma Doping"" that discuss plasma doping simulation.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+2314,2015 publications from the National Aviation Academy on gamma-ray measurements results,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7917,Find articles by Moshe Rozali on the dynamics of driven field theories on Arxiv.,3,2,1,0.6666666666666666,0.6666666666666666,1.0,1.0,1.0,0.6666666666666666
+4326,Are there any papers from CMR Institute of Technology authors regarding single-electron transistor modeling?,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+2645,"I am looking for publications that both cite ""Knot invariants and M-theory: Hitchin equations, Chern-Simons actions, and surface operators"" and address the topic of supersymmetry in the context of resolved conifolds.",3,3,0,1.0,1.0,0.0,1.0,0.5,1.0
+7887,Which publications by authors affiliated with TRW Inc. discuss lowering the driving voltage needs for actuators?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+9015,"I'm keen on obtaining a selection of research papers that delve into the topic of flow instability within micro-channels in relation to restrictive flow orifice. In particular, I'm interested in exploring how these unstable flows at higher pressures can affect design considerations, particularly within applications such as lab-on-a-chip technologies.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+3941,"What are the papers on graviton scattering referenced by the study ""Euler-Lagrange equations for the Gribov reggeon calculus in QCD and in gravity""?",2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+4074,"Can you find papers published in 2009 about Korea's participation in ITER, which either cite or are referenced by the paper titled, ""Detail procedure of pressure and baking test for ITER vacuum vessel lower port stub extension?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+11496,Please find articles related to control logic with a focus on enhancing system reliability when faced with shading conditions.,2,2,0,1.0,0.0,0.0,0.0,0.038461538461538464,0.0
+145,"I'm looking for papers with at least one shared author with ""Physics of Microswimmers - Single Particle Motion and Collective Behavior"", that explore the subject of active turbulence and transport in a self-assembled spinning particles gas within the same research field.",1,1,0,1.0,0.0,0.0,0.0,0.015873015873015872,0.0
+9814,"Could you locate studies co-authored by the same individual(s) who contributed to ""Critical behaviors and phase diagrams of the mixed spin-1 and spin-7/2 Blume-Capel (BC) Ising model on the Bethe lattice (BL),"" that remain within the same field? Specifically, documents that similarly examine phases in a spin model?",9,9,0,1.0,0.0,0.0,0.0,0.029411764705882353,0.2222222222222222
+2665,"Can I find any papers by coauthors of ""Role of surface recombination in affecting the efficiency of nanostructured thin-film solar cells"" that also explore enhancing light absorption and trapping strategies for better solar cell efficiency?",3,3,0,1.0,0.6666666666666666,0.0,1.0,0.5,0.6666666666666666
+12248,Are there any research papers from Clare College exploring the confinement of gravitational magnetic fields within a torus in the field of Torus studies?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+9378,Does any research originating from the Federal University of Ceará involve studying room temperature acoustic-phonon emission in the realm of Terahertz radiation?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+5650,Could you show me some research papers that explore generating multiple wavelengths using Barium nitrate in their studies?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+8939,"Looking for papers from the co-authors of ""Elastic properties and electronic structure of Mo2FeB2 alloyed with Cr, Ni and Mn by first-principles calculations"", which further explore the structural stability and elastic properties of Mo2FeB2 alloyed with different elements, similar to the initial investigations with Cr, Ni, and Mn.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+11852,Show me publications by Ryan Gavin on squark production and decay incorporating parton shower matching.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+1750,Show me research papers about Central composite design focusing on parameters that influence nanomagnetite particles.,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+3212,Could you show me some 2015 publications on Sensitivity in control systems that have evaluated channel sets for human observer performance prediction?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+5332,Which scholarly articles are there from Athabasca University that focus on the examination and interpretation of auroral images?,4,1,3,0.25,0.25,1.0,1.0,1.0,0.25
+12719,Show me publications by T. Okada focusing on the study of Ion Cyclotron Range of Frequencies (ICRF) wave excitation and propagation.,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+7395,Show me articles by W Zabolotny on the performance of CMS resistive plate chambers.,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+2288,Show me publications by A. Matic on neutron beam properties.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+13011,Could you show me some papers that delve into quantum reasoning and its applications within the Principle of locality field?,20,16,4,0.8,0.65,0.0,1.0,0.3333333333333333,0.65
+2548,Which publications authored by individuals affiliated with the Sukkur Institute of Business Administration explore the relationship between intensity noise correlations?,5,5,0,1.0,0.2,1.0,1.0,1.0,0.2
+1978,Show me publications by I. G. Miron on the topic of integrating plasma-edge in tokamaks.,4,4,0,1.0,1.0,1.0,1.0,1.0,1.0
+11336,Could you find the research papers by Malinda L. C. Buffon related to thermoelectric materials?,2,2,0,1.0,0.0,0.0,0.0,0.047619047619047616,0.0
