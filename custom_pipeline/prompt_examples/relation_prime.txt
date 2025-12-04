@@ -1,40 +1,59 @@
-Example 1 
-Query: Which anatomical structures lack the expression of genes or proteins involved in the interaction with the fucose metabolism pathway? 
-Entities: { "A": { "type": ["pathway"], "lexical": { "name": "fucose metabolism pathway" }, "semantic": [], "constant": true }, "B": { "type": ["gene/protein"], "lexical": {}, "semantic": [], "constant": false }, "ANSWER": { "type": ["anatomy"], "lexical": {}, "semantic": [], "constant": false } }
-Identified Relations: { ("ANSWER", "B"): ["expression absent"], ("B", "A"): ["interacts with"] }
+Example 1
+Query: Which genes or proteins are expressed exclusively in the gallbladder but not in both dorsal and ventral regions of the thalamus?
+Entities:
+{
+  "A": {
+    "type": ["cellular_component"],
+    "lexical": {"name": "gallbladder"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["cellular_component"],
+    "lexical": {"name": "dorsal and ventral regions of the thalamus"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["gene/protein"],
+    "lexical": {},
+    "semantic": [],
+    "constant": false
+  }
+}
 
-Example 2 Query: What liquid drugs target the A2M gene/protein and bind to the PDGFR-beta receptor?
-Entities: { "A": { "type": ["gene/protein"], "lexical": { "name": "A2M" }, "semantic": [], "constant": true }, "B": { "type": ["molecular_function"], "lexical": { "name": "binding to PDGFR-beta receptor" }, "semantic": [], "constant": true }, "ANSWER": { "type": ["drug"], "lexical": { "name": "liquid drugs" }, "semantic": [], "constant": false } }
-Identified Relations: { ("ANSWER", "A"): ["target"], ("ANSWER", "B"): ["interacts with"] }
+Identified Relations:
+{
+  ("ANSWER", "A"): ["expression_present"],
+  ("ANSWER", "B"): ["expression_absent"]
+}
 
-Example 3 Query: What diseases are linked to the NSMCE3 gene or its corresponding protein? 
-Entities: { "A": { "type": ["gene/protein"], "lexical": { "name": "NSMCE3" }, "semantic": [], "constant": true }, "ANSWER": { "type": ["disease"], "lexical": {}, "semantic": [], "constant": false } }
-Identified Relations: { ("A", "ANSWER"): ["associated with", "linked to"] }
+Example 2
+Query: Identify common gene targets associated with both Etofenamate and Heparin.
+Entities:
+{
+  "A": {
+    "type": ["drug"],
+    "lexical": {"name": "Etofenamate"},
+    "semantic": [],
+    "constant": true
+  },
+  "B": {
+    "type": ["drug"],
+    "lexical": {"name": "Heparin"},
+    "semantic": [],
+    "constant": true
+  },
+  "ANSWER": {
+    "type": ["gene/protein"],
+    "lexical": {},
+    "semantic": [],
+    "constant": false
+  }
+}
 
-Example 4 Query: Identify a gene or protein that interacts with SLC4A10 and is linked to a similar effect or phenotype. 
-Entities: { "A": { "type": ["gene/protein"], "lexical": { "name": "SLC4A10" }, "semantic": [], "constant": true }, "ANSWER": { "type": ["gene/protein"], "lexical": {}, "semantic": [], "constant": false } }
-Identified Relations: { ("A", "ANSWER"): ["interacts with", "ppi", "associated with"] }
-
-Example 5 Query: What drug should be avoided for focal hand dystonia and also targets the ORM2 gene/protein? 
-Entities: { "A": { "type": ["disease"], "lexical": { "name": "focal hand dystonia" }, "semantic": [], "constant": true }, "B": { "type": ["gene/protein"], "lexical": { "name": "ORM2" }, "semantic": [], "constant": true }, "ANSWER": { "type": ["drug"], "lexical": {}, "semantic": [], "constant": false } }
-Identified Relations: { ("A", "ANSWER"): ["contraindication"], ("B", "ANSWER"): ["target", "carrier", "transporter", "enzyme"] }
-
-Example 6 Query: What solid-state drugs currently target the ATP5F1C gene/protein as their main biological interaction? 
-Entities: { "A": { "type": ["gene/protein"], "lexical": { "name": "ATP5F1C" }, "semantic": [], "constant": true }, "ANSWER": { "type": ["drug"], "lexical": {}, "semantic": [], "constant": false } }
-Identified Relations: { ("ANSWER", "A"): ["target", "carrier", "transporter", "enzyme"] }
-
-Example 7 Query: Identify proteins that interact with ATXN1L and are linked to the same medical condition. 
-Entities: { "A": { "type": ["gene/protein"], "lexical": { "name": "ATXN1L" }, "semantic": [], "constant": true }, "B": { "type": ["disease"], "lexical": {}, "semantic": [], "constant": false }, "ANSWER": { "type": ["gene/protein"], "lexical": {}, "semantic": [], "constant": false } }
-Identified Relations: { ("A", "ANSWER"): ["ppi", "interacts with"], ("ANSWER", "B"): ["associated with", "linked to"], ("A", "B"): ["associated with"] }
-
-Example 8 Query: Can you identify any medications that exhibit a synergistic effect when taken concomitantly with Simvastatin for treating the same medical condition and additionally act by reversibly and selectively blocking the angiotensin II AT1 receptors in vascular smooth muscle and adrenal tissues? 
-Entities: { "A": { "type": ["drug"], "lexical": { "name": "Simvastatin" }, "semantic": [], "constant": true }, "B": { "type": ["effect/phenotype"], "lexical": {}, "semantic": [], "constant": false }, "C": { "type": ["anatomy"], "lexical": {}, "semantic": [], "constant": false }, "D": { "type": ["molecular_function"], "lexical": {}, "semantic": [], "constant": false }, "ANSWER": { "type": ["drug"], "lexical": {}, "semantic": [], "constant": false } }
-Identified Relations: { ("A", "ANSWER"): ["synergistic interaction"], ("ANSWER", "C"): ["expression present"], ("D", "C"): ["interacts with"], ("A", "B"): ["side effect"], ("ANSWER", "B"): ["side effect"], ("ANSWER", "D"): ["associated with"] }
-
-Example 9 Query: Find a gene or protein that interacts with protease binding, is associated with hepatocellular carcinoma progression, is significantly elevated in the blood during late pregnancy, and inhibits multiple proteinases by trapping them after enzymatic cleavage. 
-Entities: { "A": { "type": ["molecular_function"], "lexical": { "name": "protease binding" }, "semantic": [], "constant": true }, "B": { "type": ["disease"], "lexical": { "name": "hepatocellular carcinoma" }, "semantic": [], "constant": true }, "C": { "type": ["effect/phenotype"], "lexical": {}, "semantic": [], "constant": false }, "D": { "type": ["molecular_function"], "lexical": {}, "semantic": [], "constant": false }, "ANSWER": { "type": ["gene/protein"], "lexical": {}, "semantic": [], "constant": false } }
-Identified Relations: { ("A", "ANSWER"): ["interacts with"], ("B", "ANSWER"): ["associated with"], ("C", "ANSWER"): ["associated with", "phenotype present"], ("D", "ANSWER"): ["interacts with"] }
-
-Example 10 Query: Identify the biological pathway that enables FGFR4 and PLCG1 to engage and subsequently activates phospholipase C.
-Entities: { "A": { "type": ["gene/protein"], "lexical": { "name": "FGFR4" }, "semantic": [], "constant": true }, "B": { "type": ["gene/protein"], "lexical": { "name": "PLCG1" }, "semantic": [], "constant": true }, "C": { "type": ["gene/protein"], "lexical": { "name": "phospholipase C" }, "semantic": [], "constant": true }, "ANSWER": { "type": ["pathway"], "lexical": {}, "semantic": [], "constant": false } }
-Identified Relations: { ("A", "B"): ["interacts with", "ppi"], ("A", "ANSWER"): ["interacts with"], ("B", "ANSWER"): ["interacts with"], ("C", "ANSWER"): ["interacts with"], ("A", "C"): ["interacts with"], ("B", "C"): ["interacts with"] }
+Identified Relations:
+{
+  ("A", "ANSWER"): ["target","carrier" , "transporter"],
+  ("B", "ANSWER"):["target","carrier" , "transporter"]
+}
