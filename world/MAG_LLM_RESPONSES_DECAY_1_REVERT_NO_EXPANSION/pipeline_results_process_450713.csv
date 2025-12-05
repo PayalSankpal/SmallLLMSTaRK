@@ -1,0 +1,5 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+7989,Show me papers published by co-authors of 'Will organic thermoelectrics get hot' that also explore the subject of magnetoplasmonic systems.,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+580,"Looking for papers that have either been referenced in ""Study on power coupling of annular vortex beam propagating through a two-Cassegrain-telescope optical system in turbulent atmosphere"" or explore similar features and uses of vortex electron beams in turbulent conditions.",2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+249,"Find papers related to surface plasmons that cite or are cited by ""Conventional and acoustic surface plasmons on noble metal surfaces: a time-dependent density functional theory study"".",2,2,0,1.0,1.0,0.0,0.0,0.09090909090909091,1.0
+9732,Could you show me some papers that delve into the study of fractional order equations within the context of the Hunter-Saxton equation?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0

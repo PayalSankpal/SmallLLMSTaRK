@@ -1,0 +1,5 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+12873,"What are the other studies about restraining dark matter using 21-cm cosmology that are also referenced in the ""Bounds on Dark Matter decay from 21 cm line"" paper?",10,10,0,1.0,1.0,1.0,1.0,1.0,0.9
+8411,Does Chung Shan Medical University have any research papers on the study of all-optically controllable random lasers in the context of Dye lasers?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1159,Does any research relate Steyr Mannlicher to reflective boundary conditions within the context of Applied Mathematics?,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+8846,Show me publications by Simone Daflon on B-type stars characteristics.,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0

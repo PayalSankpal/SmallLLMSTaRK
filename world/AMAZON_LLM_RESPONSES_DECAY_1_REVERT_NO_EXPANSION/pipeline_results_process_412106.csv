@@ -1,0 +1,9 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+2288,What are some wireless optical mouse options from Tribeca?,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+6528,Does Amazon have any Green Bay brand light-up ornaments in stock?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1671,"I'm on the hunt for a portable travel spinning rod ideal for air travel. I've had positive experiences with the Okuma Nomad Inshore Saltwater Multi Action Travel Rods-NTi-S-703ML-M (Blue/Black, 7-Feet) and Okuma NOMAD Travel Casting Rod (15-40 Lbs, 7-Feet, Medium-Light), which I found perfect for my travels. I'm also interested in finding something similar to the DAIWA TRIPLE B B.B.B 666TLFS by Daiwa spinning rod.",3,0,3,0.0,0.0,0.0,0.0,0.0,0.6666666666666666
+597,What are some recommended Glock shooting sports caps with adjustable straps suitable for larger head sizes?,10,9,1,0.9,0.9,1.0,1.0,1.0,1.0
+5716,Are there any metal hangers suitable for hanging clay pigeons during shooting practice that are compatible with a TyCa Industries target stand?,9,1,8,0.1111111111111111,0.1111111111111111,0.0,0.0,0.1111111111111111,0.2222222222222222
+572,"Is there a well-constructed leather sheath with durable stitching available for my Woodman's Pal 284? Ideally, it would come with a matching concave axe blade for chopping wood.",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+8970,"Are there any hiking pants primarily made of nylon mixed with a bit of elastane? I'm in search of pairs that are not only lightweight and comfortable but are also equipped with advanced repellency technologies such as Omni-Shield. My main focus is not on the fit, but rather on the materials and features that cater to my needs.",18,3,15,0.16666666666666666,0.16666666666666666,0.0,0.0,0.125,0.05555555555555555
+2044,Can you suggest a durable Berkley brand boat spinning rod made from solid glass blanks?,6,2,4,0.3333333333333333,0.3333333333333333,0.0,0.0,0.125,0.3333333333333333

@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+2261,Show me articles by E. Corbel on the modulation of electron heat transport.,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0

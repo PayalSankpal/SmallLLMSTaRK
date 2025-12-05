@@ -238,3 +238,30 @@ query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@
 8656,Show me publications by Martin Kronberg on cataclysmic variables in astronomical surveys.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
 5190,"Can you find papers published from 2010 onwards that discuss an innovative 3D solar wind model and reference the paper titled ""A polytropic model for the solar wind""?",1,1,0,1.0,1.0,0.0,1.0,0.2,1.0
 2150,Does Hohai University have any papers that study fish swimming using classical mechanics?,2,1,1,0.5,0.5,0.0,0.0,0.1428571428571428,0.5
+4318,Does any Optics literature from Yokogawa Electric talk about a record-breaking breakdown voltage for diamond field-effect transistors when they were published?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+4412,Does any research from Wheelock College delve into the study of offset bars in late-type galaxies in the discipline of Astrophysics?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7100,"Can you find any publications from the co-authors of ""A high-resolution photon-counting breast CT system with tensor-framelet based iterative image reconstruction for radiation dose reduction"", which also explore the quantification of iodine in mammography using similar iterative reconstruction methods?",2,0,2,0.0,0.0,0.0,0.0,0.0,0.5
+5018,Explore published research on room temperature magnetocaloric effects by authors affiliated with Universidad Autónoma de Ciudad Juárez.,10,0,10,0.0,0.0,0.0,0.0,0.0,0.1
+2390,Does Arxiv have any papers from TRW Inc. exploring low-voltage dielectric elastomer actuators (DEAs) and their usage in membrane technologies?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+3742,Show me publications by T. Domingo on lifetime measurement studies.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+6877,"I'm looking for papers with a shared authorship with ""Passive-scheme analysis for solving the untrusted source problem in quantum key distribution"", which additionally delve into the analysis of beam wander effects or are related to the same field concerning how these effects can influence quantum key distribution systems. This is with the aim of exploring future research collaborations with authors experienced in this topic, particularly as it pertains to resolving potential issues that untrusted sources may cause.",5,0,5,0.0,0.0,0.0,0.0,0.0,0.0
+8155,"Can you search for 2013 Applied Physics Letters publications in the same field, co-authored by one of the authors from ""Ultraviolet Raman spectra of few nanometer thick silicon-on-insulator nanofilms: Lifetime reduction of confined phonons"" that also delve into single silicon nanowires investigations, much like this paper?",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+11927,"Search for Astronomy papers discussing the links between solar activity and magnetic clouds from 1995 to 2012, affiliated with University of the District of Columbia.",2,1,1,0.5,0.5,0.0,0.0,0.0833333333333333,0.5
+7718,"Can you show me studies that not only reference ""Experimental Demonstration of XOR Operation in Graphene Magnetologic Gates at Room Temperature"", but also showcase the detection of spin accumulation in graphene through a current-based approach at room temperature?",2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+12873,"What are the other studies about restraining dark matter using 21-cm cosmology that are also referenced in the ""Bounds on Dark Matter decay from 21 cm line"" paper?",10,10,0,1.0,1.0,1.0,1.0,1.0,0.9
+8411,Does Chung Shan Medical University have any research papers on the study of all-optically controllable random lasers in the context of Dye lasers?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1159,Does any research relate Steyr Mannlicher to reflective boundary conditions within the context of Applied Mathematics?,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+8846,Show me publications by Simone Daflon on B-type stars characteristics.,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+9014,Search for papers by Adam Smercina on dust and gas properties.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7607,Publications on airflow generation by authors affiliated with Hanoi University of Industry,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+9258,Does Dongbei University of Finance and Economics have any research papers on the photo-assisted growth of p-type ZnO films related to the study of ionization energy in materials science?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+11511,Show me publications by S. Mtougui on magnetic properties.,5,5,0,1.0,1.0,1.0,1.0,1.0,1.0
+7989,Show me papers published by co-authors of 'Will organic thermoelectrics get hot' that also explore the subject of magnetoplasmonic systems.,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+580,"Looking for papers that have either been referenced in ""Study on power coupling of annular vortex beam propagating through a two-Cassegrain-telescope optical system in turbulent atmosphere"" or explore similar features and uses of vortex electron beams in turbulent conditions.",2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+249,"Find papers related to surface plasmons that cite or are cited by ""Conventional and acoustic surface plasmons on noble metal surfaces: a time-dependent density functional theory study"".",2,2,0,1.0,1.0,0.0,0.0,0.0909090909090909,1.0
+9732,Could you show me some papers that delve into the study of fractional order equations within the context of the Hunter-Saxton equation?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+8136,"Looking for research articles on macromolecular crowding, focusing on its impact on molecular mobility, chemical reactions, and gene expression in cellular environments.",4,4,0,1.0,1.0,1.0,1.0,1.0,1.0
+4663,Could you show me some papers studying the stability of silver nanoblocks in the Sulfidation field?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+5382,Show me publications by Zhuo Chen on electrically tunable wide-spectrum absorptive coatings.,2,0,2,0.0,0.0,0.0,0.0,0.0,0.5
+12660,Exciton tunneling research articles by University of Northern British Columbia authors.,2,1,1,0.5,0.5,1.0,1.0,1.0,0.5
+2261,Show me articles by E. Corbel on the modulation of electron heat transport.,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0

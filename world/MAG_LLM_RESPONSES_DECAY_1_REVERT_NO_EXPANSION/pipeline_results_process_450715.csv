@@ -1,0 +1,5 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+8136,"Looking for research articles on macromolecular crowding, focusing on its impact on molecular mobility, chemical reactions, and gene expression in cellular environments.",4,4,0,1.0,1.0,1.0,1.0,1.0,1.0
+4663,Could you show me some papers studying the stability of silver nanoblocks in the Sulfidation field?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+5382,Show me publications by Zhuo Chen on electrically tunable wide-spectrum absorptive coatings.,2,0,2,0.0,0.0,0.0,0.0,0.0,0.5
+12660,Exciton tunneling research articles by University of Northern British Columbia authors.,2,1,1,0.5,0.5,1.0,1.0,1.0,0.5

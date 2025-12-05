@@ -1,0 +1,9 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+6900,Are there any hoodies available where the stitching matches the color of the actual garment?,9,0,9,0.0,0.0,0.0,0.0,0.0,0.0
+8595,Can you suggest any fishing flies that would pair well with the Piscifun Sword Fly Fishing Line with Welded Loop Weight Forward Floating Fly Line WF1 2 3 4 5 6 7 8 9 10wt 90 100FT for my upcoming fishing trip in August?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+8169,Looking for a soft and breathable ballet leotard dress for a baby girl in multiple color options. Can you suggest one?,17,0,17,0.0,0.0,0.0,0.0,0.0,0.11764705882352941
+6126,"Looking for Heckmann brand tent stakes suitable for outdoor use, specifically ones made of stainless steel for rust-resistance.",4,4,0,1.0,1.0,1.0,1.0,1.0,1.0
+1991,Looking for an athlete-specific headband made from P.R.O. Transfer Lite fabric with Minerale. Does Amazon have one with approximately 52% Minerale polyester and 48% regular polyester composition? Effective moisture management and quick drying are essential features I’m looking for.,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+7829,What are some good quality New Era labeled Gucci hats made from cotton?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+5764,Do you have any recommendations for a MLB team themed lapel pin that also features Hello Kitty? I'm a big fan and thought it would make an excellent gift.,18,0,18,0.0,0.0,0.0,0.0,0.0,0.2777777777777778
+2054,"Is there an OMP crossbow string available in varying shades of sand, sage and brown Dacron?",2,0,2,0.0,0.0,0.0,0.0,0.0,0.5
