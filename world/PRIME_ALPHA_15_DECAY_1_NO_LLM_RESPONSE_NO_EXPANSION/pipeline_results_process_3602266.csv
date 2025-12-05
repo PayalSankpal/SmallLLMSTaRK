@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+467,"Can you list autoimmune blistering skin diseases where the vesicles break open easily, causing painful sores?",6,0,6,0.0,0.0,0.0,0.0,0.0,0.5

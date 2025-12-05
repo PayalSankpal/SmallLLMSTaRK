@@ -134,6 +134,11 @@ query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@
 6213,Identify genes or proteins that interact with WIPF1 and are also linked to a common disease.,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
 475,"Which condition is associated with the PMP22 gene and presents with paresthesias, ataxia, and neuropathic pain after an infection?",1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
 9336,What are the phenotypic manifestations or effects associated with the subtype of chondroid hamartoma?,3,1,2,0.3333333333333333,0.3333333333333333,0.0,0.0,0.0769230769230769,0.3333333333333333
+10017,Which cellular structures come into contact with genes or proteins that are influenced by p-Coumaric acid?,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+6164,Which cell structures interact with the genetic or protein targets of the drug Linaclotide?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+10629,"Which cellular structures engage with genes or proteins affected by the compound 4,6-dideoxy-4-amino-alpha-D-glucose?",3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+904,Could you provide information on treatments available for C. diff colitis and clarify whether any of these medications could potentially lead to facial swelling as a side effect?,1,1,0,1.0,1.0,0.0,0.0,0.0769230769230769,1.0
+1342,Please find a gene or protein associated with Spinocerebellar Ataxia type 8 that also interacts within the cell nucleus.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
 11152,"Identify common genetic targets of both 3-({[(1Z)-(2-methoxyphenyl)methylidene]amino}oxy)propanoic acid and 2,6-dimethyl-4-[(E)-2-phenylethenyl]phenol.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
 8732,Please identify the common gene targets that both Hydrocortisone phosphate and Testosterone propionate interact with.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
 2855,What genetic disorder associated with the PMP22 gene manifests symptoms similar to acute sensory ataxic neuropathy?,1,1,0,1.0,1.0,0.0,0.0,0.1,1.0
@@ -203,6 +208,7 @@ query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@
 228,Could you identify genes or proteins that interact with RTL10 and are also associated with chromatin organization?,1,1,0,1.0,1.0,0.0,0.0,0.125,1.0
 10512,Identify pathways associated with the autointegration process resulting in circular viral DNA and its interaction with common genes/proteins.,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
 634,Which drugs interact with the SERPINA1 gene/protein as carriers?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8681,"Which pharmaceutical agents not only exhibit a synergistic effect when combined with Incadronic acid but are also approved for treating the same condition, and possess an extended half-life ensuring prolonged therapeutic impact within the body?",5,3,2,0.6,0.6,0.0,1.0,0.5,1.0
 2085,What is the common upstream or downstream biological pathway shared by the 'Biosynthesis of DHA-derived SPMs' and the 'Biosynthesis of maresin conjugates in tissue regeneration (MCTR)'?,1,1,0,1.0,1.0,0.0,0.0,0.125,1.0
 6632,Search for illnesses that have no drugs indicated for treatment and are related to the presence of Wormian bones.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
 657,Can you give me a rundown of drugs effective against both UTIs and Mycoplasma pneumonia that have a molecular weight exactly at 558.52 Da?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
@@ -270,3 +276,6 @@ query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@
 2287,What diseases are subclassified under secondary malignant neoplasms and have metastatic potential?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
 1804,"Please find me genes or proteins linked to pediatric liver cancer, interacting with PAXIP1, highly expressed in lung adenocarcinoma, with a nuclear signal and similarity to GAGE/PAGE proteins.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
 1989,"What possible conditions could I have that are linked to or similar to uniparental disomy of chromosome X, particularly if this led to me inheriting two copies of a recessive gene from my mother?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+4242,Can you recommend medications that treat both eosinophilic pneumonia and a parasitic worm infection?,1,1,0,1.0,1.0,0.0,0.0,0.0833333333333333,1.0
+2080,What are the recommended medications for managing BCR-ABL1 positive blast phase CML?,1,1,0,1.0,1.0,0.0,0.0,0.1666666666666666,1.0
+3755,What hereditary diseases are associated with the HLA-C gene?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
