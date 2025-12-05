@@ -1,0 +1,8 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+793,Are there any studies from the University of Lausanne focusing on a new frameless stereotactic technology in the context of Ionization chamber?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7777,"Can you find more publications from the authors of ""Circular dichroism of a tilted U-shaped nanostructure"" that introduce novel metamaterials to manipulate optical transmission asymmetry?",3,2,1,0.6666666666666666,0.6666666666666666,1.0,1.0,1.0,1.0
+2493,Are there any publications by Omsk State Transport University scholars on errors in Kramers' nuclear fission formulas?,3,0,3,0.0,0.0,0.0,0.0,0.0,1.0
+1682,"Find publications by coauthors of ""Thompson scattering in high-intensity chirped laser pulses"" which also explore the impact of spin on magnetic fields.",9,0,9,0.0,0.0,0.0,0.0,0.0,0.0
+7275,"Can you locate 2015 papers that compare photodetectors, which are referenced in ""A systematic characterization of the low-energy photon response of plastic scintillation detectors""?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1920,Show me publications by B. Spruck focusing on hyperon production research.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3587,Show me publications by P. A. Khilo related to beam generation.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
