@@ -1,0 +1,6 @@
+=== RERANKING RESULTS ===
+Total Queries Run: 2
+Method: pairwise_test_40
+MRR:      0.525 -> 0.750 (Δ +0.225)
+Hit@1:    0.500 -> 0.500
+Hit@5:    0.500 -> 1.000
