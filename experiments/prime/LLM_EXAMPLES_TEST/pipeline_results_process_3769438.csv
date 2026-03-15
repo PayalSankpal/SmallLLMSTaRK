@@ -1,1 +1,13 @@
 query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+5323,"What possible conditions could I have that involve persistent fatigue and weakness, considering my family history of thrombocytopenia with congenital dyserythropoietic anemia? Are there hereditary diseases related to these symptoms?",2,1,1,0.5,0.5,0.0,1.0,0.5,0.5
+228,Could you identify genes or proteins that interact with RTL10 and are also associated with chromatin organization?,1,1,0,1.0,1.0,0.0,0.0,0.125,1.0
+10512,Identify pathways associated with the autointegration process resulting in circular viral DNA and its interaction with common genes/proteins.,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+634,Which drugs interact with the SERPINA1 gene/protein as carriers?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8681,"Which pharmaceutical agents not only exhibit a synergistic effect when combined with Incadronic acid but are also approved for treating the same condition, and possess an extended half-life ensuring prolonged therapeutic impact within the body?",5,3,2,0.6,0.6,0.0,1.0,0.5,1.0
+11152,"Identify common genetic targets of both 3-({[(1Z)-(2-methoxyphenyl)methylidene]amino}oxy)propanoic acid and 2,6-dimethyl-4-[(E)-2-phenylethenyl]phenol.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8732,Please identify the common gene targets that both Hydrocortisone phosphate and Testosterone propionate interact with.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+2855,What genetic disorder associated with the PMP22 gene manifests symptoms similar to acute sensory ataxic neuropathy?,1,1,0,1.0,1.0,0.0,0.0,0.1,1.0
+8602,Identify common genetic targets modulated by both 2-Methoxyestradiol and Hydrocortisone probutate.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+10675,What are the observed effects or phenotypes associated with the subtype of gastritis induced by alcohol consumption?,4,4,0,1.0,1.0,1.0,1.0,1.0,1.0
+3426,"Could you find genes or proteins that bind to integrins, are involved in Syndecan signaling, and play a role in pyloric atresia onset or progression?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7867,Which anatomical structures lack the expression of genes or proteins that play a role in the interaction with the development of the metanephric nephron?,2,1,1,0.5,0.5,0.0,0.0,0.05,0.0

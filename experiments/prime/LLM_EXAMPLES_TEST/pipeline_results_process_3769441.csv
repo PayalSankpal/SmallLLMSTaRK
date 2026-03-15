@@ -1,0 +1,5 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+1844,What diseases could be associated with the MARS1 gene in patients exhibiting symptoms of respiratory insufficiency and liver impairment?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+10405,Search for diseases not treated by any known drugs that are also linked to the symptom of having a flat face.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7016,Identify common gene targets associated with both Hydrocortisone cypionate and Ciclesonide.,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+1221,What is the subtype of pediatric liver sarcoma most commonly found in adolescents?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0

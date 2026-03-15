@@ -7,7 +7,6 @@ import pandas as pd
 from stark_qa import load_skb, load_qa
 import regex as re
 import ast
-import vss
 import sys
 import os
 import time
@@ -26,6 +25,7 @@ import glob
 import shutil  # Added for copying files
 
 # Custom imports (assumed available in environment)
+import custom_pipeline.vss
 from custom_pipeline.entity_parsing import *
 from custom_pipeline.relation_parsing import *
 from custom_pipeline.llm_bridge import LlmBridge

@@ -1,0 +1,13 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+1828,Which autosomal recessive disease is associated with the AEBP1 gene?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+8161,Which genes or proteins are found to be expressed in the nasopharyngeal tissue but not in the parietal lobe of the brain?,1,1,0,1.0,1.0,0.0,0.0,0.1111111111111111,1.0
+9020,Which disorders linked to Ketosis may lead to cardiomyopathy and hypoketotic hypoglycemia and currently lack any drugs officially sanctioned for treatment?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+143,"What disease functions as a parent and child condition in the hierarchy of autoinflammatory disorders, linking both pyogenic bacterial infections with amylopectinosis and PLCG2-associated antibody deficiency and immune dysregulation?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+4434,Could you recommend a medication for hemorrhoids treatment with a molecular weight near 340 units?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7043,Search for genes or proteins that interact with ATG2B and share an association with a common disease.,1,1,0,1.0,1.0,0.0,0.0,0.07692307692307693,1.0
+8477,Which gene or protein is consistently non-expressed or missing in the adult mammalian renal system as well as the mammalian vulvar tissue?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+933,What drugs are known to primarily target the DCPS gene/protein in their mechanism of action?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+5152,What signaling pathway is connected to the 'Neuronal System' pathway and controls the stability of neurons' resting membrane potential?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+4996,Which condition involves a posterior polar cataract in its symptoms and is linked to the ITM2B gene?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+9516,Which liver-expressed transporter gene or protein is involved in organic ion translocation and facilitates the movement of drugs that exhibit synergistic effects with 1-Testosterone?,14,0,14,0.0,0.0,0.0,0.0,0.0,0.0
+5631,"What genes or proteins interact with the tubulin C-terminal post-translational modification pathway, bind to tubulin, and exhibit tubulin-glutamic acid ligase activity?",12,10,2,0.8333333333333334,0.8333333333333334,1.0,1.0,1.0,0.9166666666666666
