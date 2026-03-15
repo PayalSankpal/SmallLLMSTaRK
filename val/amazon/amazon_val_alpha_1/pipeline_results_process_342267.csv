@@ -1,4 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-4456,"Is there a comfortable wrap blanket with vibrant, true colors that's easy to clean and machine washable? Ideally, I'm looking for one that's around 71 inches long and 48 inches wide.",11,0,11,0.0,0.0,0.0,0.0,0.0,0.0
-1301,Where can I find a Game Time Boston Red Sox MLB watch with a sapphire crystal lens?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
-5247,What's the best bowling ball from Bowlerstore Products for consistently hitting 7 and 10 pin shots?,5,5,0,1.0,1.0,0.0,1.0,0.25,0.2

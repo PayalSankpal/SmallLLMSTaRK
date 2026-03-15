@@ -1,6 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-1125,What is the downstream cellular pathway associated with megakaryocyte development and platelet production that interacts with KIF27 protein?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-4452,What inherited disease is classified under autosomal dominant cerebellar ataxia and also serves as an umbrella condition for related neurodegenerative disorders?,1,1,0,1.0,1.0,0.0,0.0,0.06666666666666667,0.0
-6801,Which medications act upon genes or proteins associated with the binding of receptors for pituitary adenylate cyclase-activating polypeptide?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-6215,Identify pathways associated with NODAL signaling where there is a common gene or protein interaction.,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
-5271,Which genes or proteins are involved in the RHOBTB1 GTPase cycle and also serve as transcription corepressors?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

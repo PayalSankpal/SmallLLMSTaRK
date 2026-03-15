@@ -1,0 +1,5 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+5323,"What possible conditions could I have that involve persistent fatigue and weakness, considering my family history of thrombocytopenia with congenital dyserythropoietic anemia? Are there hereditary diseases related to these symptoms?",2,0,2,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.5,0.0
+228,Could you identify genes or proteins that interact with RTL10 and are also associated with chromatin organization?,1,1,0,1.0,1.0,0.0,1.0,0.2,1.0,1.0,0.14285714285714285,0.0
+10512,Identify pathways associated with the autointegration process resulting in circular viral DNA and its interaction with common genes/proteins.,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.3333333333333333,0.0
+8681,"Which pharmaceutical agents not only exhibit a synergistic effect when combined with Incadronic acid but are also approved for treating the same condition, and possess an extended half-life ensuring prolonged therapeutic impact within the body?",5,3,2,0.6,0.6,0.0,1.0,0.5,1.0,1.0,1.0,1.0

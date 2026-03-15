@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+452,"Could you identify a medication targeting the SCN4A gene/protein and supply details on its pharmacokinetics, focusing on its elimination half-life? Also, does this drug induce localized numbness from the thoracic area to the lower limbs?",1,1,0,1.0,1.0,0.0,1.0,0.25,1.0

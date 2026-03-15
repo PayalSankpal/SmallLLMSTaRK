@@ -1,6 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-8477,Which gene or protein is consistently non-expressed or missing in the adult mammalian renal system as well as the mammalian vulvar tissue?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-933,What drugs are known to primarily target the DCPS gene/protein in their mechanism of action?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
-5152,What signaling pathway is connected to the 'Neuronal System' pathway and controls the stability of neurons' resting membrane potential?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
-4996,Which condition involves a posterior polar cataract in its symptoms and is linked to the ITM2B gene?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
-9516,Which liver-expressed transporter gene or protein is involved in organic ion translocation and facilitates the movement of drugs that exhibit synergistic effects with 1-Testosterone?,14,0,14,0.0,0.0,0.0,0.0,0.0,0.07142857142857142

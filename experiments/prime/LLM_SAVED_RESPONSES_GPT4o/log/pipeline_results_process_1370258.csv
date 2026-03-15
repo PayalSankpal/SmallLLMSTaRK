@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+10489,Search for a biological pathway associated with the activation of gene expression by RORA that also involves an interaction with a common gene or protein.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

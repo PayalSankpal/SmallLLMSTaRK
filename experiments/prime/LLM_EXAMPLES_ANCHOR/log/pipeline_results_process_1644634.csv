@@ -1,0 +1,7 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+1792,"Seeking the gene that encodes for a type IV collagen subunit strengthening the extracellular matrix and shares a head-to-head configuration with a distinct type IV collagen gene, unified by a single promoter.",5,0,5,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.5,0.0
+6213,Identify genes or proteins that interact with WIPF1 and are also linked to a common disease.,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0,1.0,1.0,1.0
+475,"Which condition is associated with the PMP22 gene and presents with paresthesias, ataxia, and neuropathic pain after an infection?",1,1,0,1.0,1.0,0.0,0.0,0.125,1.0,1.0,0.5,0.0
+9336,What are the phenotypic manifestations or effects associated with the subtype of chondroid hamartoma?,3,1,2,0.3333333333333333,0.3333333333333333,0.0,0.0,0.08333333333333333,0.3333333333333333,0.3333333333333333,0.08333333333333333,0.0
+10017,Which cellular structures come into contact with genes or proteins that are influenced by p-Coumaric acid?,2,2,0,1.0,1.0,0.0,1.0,0.5,1.0,1.0,0.25,0.0
+6164,Which cell structures interact with the genetic or protein targets of the drug Linaclotide?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.3333333333333333,0.0

@@ -1,0 +1,5 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+3093,What condition could be linked to FAM111A gene or protein modifications in individuals with bone sclerosis and denser long bones?,3,0,3,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+9732,Which biological processes share a similar interaction pattern with genes or proteins as the positive regulation of exoribonuclease activity is observed in?,5,1,4,0.2,0.2,1.0,1.0,1.0,0.2,0.2,0.0625,0.0
+5950,Identify conditions unresponsive to medication that correlate with increased liver iron levels.,1,1,0,1.0,0.0,0.0,0.0,0.03571428571428571,0.0,0.0,0.0,0.0
+11077,Find medical conditions linked to the gene SLC29A3 that should not be treated with the drug Goserelin.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.09090909090909091,0.0

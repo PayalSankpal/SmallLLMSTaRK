@@ -1,5 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-7100,"Can you find any publications from the co-authors of ""A high-resolution photon-counting breast CT system with tensor-framelet based iterative image reconstruction for radiation dose reduction"", which also explore the quantification of iodine in mammography using similar iterative reconstruction methods?",2,0,2,0.0,0.0,0.0,0.0,0.0,0.5
-5018,Explore published research on room temperature magnetocaloric effects by authors affiliated with Universidad Autónoma de Ciudad Juárez.,10,0,10,0.0,0.0,0.0,0.0,0.0,0.1
-2390,Does Arxiv have any papers from TRW Inc. exploring low-voltage dielectric elastomer actuators (DEAs) and their usage in membrane technologies?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
-3742,Show me publications by T. Domingo on lifetime measurement studies.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0

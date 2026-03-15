@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+143,"What disease functions as a parent and child condition in the hierarchy of autoinflammatory disorders, linking both pyogenic bacterial infections with amylopectinosis and PLCG2-associated antibody deficiency and immune dysregulation?",1,1,0,1.0,1.0,0.0,1.0,0.2,1.0

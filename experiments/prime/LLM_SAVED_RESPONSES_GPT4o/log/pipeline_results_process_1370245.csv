@@ -1,0 +1,3 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+2152,"Could you provide information on hereditary diseases associated with bladder stone formation? My mother previously experienced bladder issues, and I'm concerned about the familial risk.",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+7287,Which cellular structures or organelles are associated with the interaction of genes or proteins affected by Thonzonium Bromide?,8,0,8,0.0,0.0,0.0,0.0,0.0,0.0

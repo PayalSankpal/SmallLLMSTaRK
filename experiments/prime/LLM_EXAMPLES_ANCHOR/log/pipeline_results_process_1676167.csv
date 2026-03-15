@@ -1,0 +1,9 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+2287,What diseases are subclassified under secondary malignant neoplasms and have metastatic potential?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.3333333333333333,0.0
+1804,"Please find me genes or proteins linked to pediatric liver cancer, interacting with PAXIP1, highly expressed in lung adenocarcinoma, with a nuclear signal and similarity to GAGE/PAGE proteins.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+1989,"What possible conditions could I have that are linked to or similar to uniparental disomy of chromosome X, particularly if this led to me inheriting two copies of a recessive gene from my mother?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+4242,Can you recommend medications that treat both eosinophilic pneumonia and a parasitic worm infection?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0,1.0,1.0,1.0
+2080,What are the recommended medications for managing BCR-ABL1 positive blast phase CML?,1,1,0,1.0,1.0,0.0,0.0,0.16666666666666666,1.0,1.0,0.16666666666666666,0.0
+3755,What hereditary diseases are associated with the HLA-C gene?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.5,0.0
+6457,"Could you provide a list of disorders characterized by both an absence of approved medications and a connection to atypical cardiac structures, which also result in skin that is prone to blistering and tearing with minimal trauma?",1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0,1.0,0.125,0.0
+6280,Which pharmaceutical compounds are designed to modulate gene or protein activities associated with SUMO-conjugation system interactions?,1,1,0,1.0,1.0,0.0,0.0,0.07692307692307693,1.0,1.0,0.07692307692307693,0.0

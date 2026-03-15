@@ -1,4 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-3897,"Looking for suggestions on fashionable women's jackets with an uneven vented hem, material thickness and length aren't my primary concerns.",9,2,7,0.2222222222222222,0.2222222222222222,0.0,1.0,0.5,0.2222222222222222
-8364,"Looking for a fast and exciting air hockey puck and slider set. Previously, we enjoyed playing with the 2 Air Hockey Pushers and 4 Pucks (1 Round, , 1 Octagon, 2 Triangle) set on our table. Any suggestions for similar or compatible sets?",2,2,0,1.0,1.0,0.0,1.0,0.5,0.5
-8991,Can you help me find a funny t-shirt from SlappyShirts?,1,1,0,1.0,1.0,0.0,0.0,0.058823529411764705,0.0

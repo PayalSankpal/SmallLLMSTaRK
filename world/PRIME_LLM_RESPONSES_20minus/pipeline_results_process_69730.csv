@@ -1,6 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-3426,"Could you find genes or proteins that bind to integrins, are involved in Syndecan signaling, and play a role in pyloric atresia onset or progression?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-7867,Which anatomical structures lack the expression of genes or proteins that play a role in the interaction with the development of the metanephric nephron?,2,1,1,0.5,0.5,0.0,0.0,0.05,0.0
-9579,What are the common gene targets associated with both Chromium and Chromous sulfate exposure or interactions?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-4507,Can you assist in identifying a drug used to treat acute myeloid leukemia in adults that may also have Non-Hodgkin lymphoma as a possible side effect?,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
-9714,"What condition, characterized by an abrupt neurological deficit stemming from a cerebrovascular disturbance, also serves as a reason to avoid medications prescribed for the treatment of secondary hypopituitarism?",5,4,1,0.8,0.8,1.0,1.0,1.0,0.8

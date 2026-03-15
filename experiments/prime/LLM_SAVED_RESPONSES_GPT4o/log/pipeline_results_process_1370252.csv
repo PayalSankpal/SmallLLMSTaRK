@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+6242,Which investigational compounds are designed to affect genes or proteins associated with UDP-N-acetylgalactosamine diphosphorylase for scientific study?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0

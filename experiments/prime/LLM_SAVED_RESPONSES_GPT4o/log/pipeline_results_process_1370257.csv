@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+2937,"Can you supply a list of conditions that are related to both partial monosomy of chromosome 20p and Alagille syndrome, showing how they are connected or branched from these two disorders?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0

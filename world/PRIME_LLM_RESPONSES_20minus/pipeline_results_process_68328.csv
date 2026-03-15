@@ -1,6 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-2416,Which diseases are considered subtypes or are directly related to intracranial arachnoid cysts?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
-1792,"Seeking the gene that encodes for a type IV collagen subunit strengthening the extracellular matrix and shares a head-to-head configuration with a distinct type IV collagen gene, unified by a single promoter.",5,5,0,1.0,1.0,0.0,0.0,0.16666666666666666,1.0
-6213,Identify genes or proteins that interact with WIPF1 and are also linked to a common disease.,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
-475,"Which condition is associated with the PMP22 gene and presents with paresthesias, ataxia, and neuropathic pain after an infection?",1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
-9336,What are the phenotypic manifestations or effects associated with the subtype of chondroid hamartoma?,3,1,2,0.3333333333333333,0.3333333333333333,0.0,0.0,0.07692307692307693,0.3333333333333333

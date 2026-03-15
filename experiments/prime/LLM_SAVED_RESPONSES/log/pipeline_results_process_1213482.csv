@@ -1,0 +1,10 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+6517,Which cell structures are involved in interaction with genes or proteins that are influenced by the medication Travoprost?,4,4,0,1.0,1.0,1.0,1.0,1.0,1.0
+9996,Which genes or proteins are expressed exclusively in the pericardium and not in either the dorsal or ventral regions of the thalamus?,1,1,0,1.0,1.0,0.0,0.0,0.125,1.0
+3630,Could you suggest any medications effective for treating beriberi that are safe to use with Zopiclone?,1,1,0,1.0,1.0,0.0,0.0,0.0625,0.0
+10252,Which gene or protein responsible for coding the regulatory component of PI3K is known to engage with elements of the pathways for FGFR1c and Klotho complex signal transduction?,2,1,1,0.5,0.5,1.0,1.0,1.0,1.0
+5142,Which autosomal dominant diseases are linked to the development of supernumerary breast tissue?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+1755,"Please find a metabolic process that either precedes or follows hyaluronan absorption and breakdown, and is involved in its metabolism or signaling cascades.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5686,Please find genes or proteins that bind to clathrin and also interact with the FAT3 protein.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7969,Which biological process shares a similar interaction pattern with genes or proteins to that of 7-methylguanosine cap hypermethylation?,5,0,5,0.0,0.0,0.0,0.0,0.0,0.4
+6641,"Would you be able to provide information on whether the specified medication acts on genes or proteins that play a role in the signaling pathways of blood clotting receptors, particularly those associated with protein tyrosine kinase activator activity, given the importance of anticoagulation for specific medical conditions?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

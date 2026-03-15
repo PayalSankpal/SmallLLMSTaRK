@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+733,Please find genes or proteins that interact with TNF receptor superfamily members associated with the non-canonical NF-kB pathway and also connect with CISD2 through protein-protein interactions.,1,1,0,1.0,1.0,0.0,0.0,0.07692307692307693,1.0

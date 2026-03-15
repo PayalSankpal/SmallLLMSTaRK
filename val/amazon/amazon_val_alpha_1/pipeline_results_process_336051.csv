@@ -1,6 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-6074,"Suggestions for a fashionable Carolina Hurricanes neck tie made of classy polyester micro fiber in official team colors, ideal for a gift to a hockey fan?",3,0,3,0.0,0.0,0.0,0.0,0.0,0.6666666666666666
-3332,"Can you recommend a soccer ball that would complement my Adidas cleats, shin protectors, and especially socks? The current one I own doesn't coordinate well.",20,0,20,0.0,0.0,0.0,0.0,0.0,0.2
-4762,"Can someone recommend a men's winter jacket that uses both natural down and synthetic insulation for enhanced warmth? It should ideally have a high down fill power and an adjustable hood with faux-fur trim, controllable by toggles.",18,1,17,0.05555555555555555,0.05555555555555555,0.0,0.0,0.09090909090909091,0.0
-5538,"Looking for a Champ pistol-shaped golf putter grip suitable for small hands. Most grips seem too large, any suggestions for a more compact one?",14,0,14,0.0,0.0,0.0,0.0,0.0,0.9285714285714286
-331,Looking for a multi-functional personal safety light with options for steady and varying flashing lights. It would be great if it can significantly boost visibility. Any recommendations?,20,0,20,0.0,0.0,0.0,0.0,0.0,0.05

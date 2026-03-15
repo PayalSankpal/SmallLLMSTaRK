@@ -1,6 +1,7 @@
 # custom_llm_bridge.py
 import json
 import os
+import time
 from pathlib import Path
 from threading import Thread
 from dotenv import load_dotenv
@@ -53,7 +54,7 @@ def prepare_chat_log(
 
 def ollama_api_call(model_name: str, messages: List[Dict[str, str]], temperature: Optional[float] = None, max_tokens: Optional[int] = None) -> str:
     """Make API call to Ollama using the official library"""
-    actual_model_name = model_name.replace("ollama_", "")
+    actual_model_name = model_name.replace("ollama/", "")
 
     options: Dict[str, Any] = {}
     if temperature is not None:
@@ -62,6 +63,7 @@ def ollama_api_call(model_name: str, messages: List[Dict[str, str]], temperature
         options["num_predict"] = max_tokens
 
     try:
+        print(actual_model_name)
         response = ollama.chat(model=actual_model_name, messages=messages, options=options if options else None)
         return response["message"]["content"]
     except Exception as e:
@@ -210,7 +212,7 @@ def pipeline_batch(
 
 def load_configs_from_file(file_path: Optional[str | Path] = None) -> Dict[str, Any]:
     if file_path is None:
-        file_path = Path(__file__).parent / "llm_configs.json"
+        file_path = Path(__file__).parent / "configs" / "llm_configs.json"
     else:
         file_path = Path(file_path)
     with open(file_path) as json_file:
@@ -222,11 +224,11 @@ def load_configs_from_file(file_path: Optional[str | Path] = None) -> Dict[str, 
 # -------------------------- Class: LlmBridge ---------------------------------
 
 class LlmBridge:
-    def __init__(self, model_name: str,dataset: Optional[str], configs_path: Optional[str | Path] = None, verbose: bool = True, ):
+    def __init__(self, model_name: str, dataset: Optional[str], configs_path: Optional[str | Path] = None, verbose: bool = True, worker_index: int = 0):
         """
         Standalone LlmBridge (framework-free).
         - model_name: string identifying model (same semantics as original, e.g., "gpt-4", "ollama_xxx", "deepseek-...")
-        - configs_path: path to llm_configs.json (defaults to module folder / llm_configs.json)
+        - configs_path: path to llm_configs.json (defaults to module folder / configs / llm_configs.json)
         - verbose: use print() debugging when True
         """
         self.verbose = verbose
@@ -258,27 +260,24 @@ class LlmBridge:
 
         # Branching logic mirroring the original LlmBridge
         try:
-            if "ollama_" in self.model_name:
+            if "ollama" in self.model_name:
                 if self.verbose:
-                    print(f"[LlmBridge] Using Ollama model: {self.model_name.replace('ollama_', '')}")
+                    print(f"[LlmBridge] Using Ollama model: {self.model_name.replace('ollama/', '')}")
                 # Ollama uses no local model or tokenizer
                 self.model = None
                 self.tokenizer = None
 
-            elif "oss" in self.model_name or "meta" in self.model_name:
+            elif "oss" in self.model_name or "meta" in self.model_name or "deep" in self.model_name:
                 # NVIDIA / OpenAI-like client (original used OpenAI with a base_url)
                 if self.verbose:
                     print(f"[LlmBridge] Using NVIDIA/meta-style model: {self.model_name}")
                 keys_str = os.environ.get("NVIDIA_API_KEYS", "")
                 nvidia_keys = [k.strip() for k in keys_str.split(",") if k.strip()]
-                key = nvidia_keys[2]
-                if configs['dataset'] == "prime":
-                    key = nvidia_keys[1]
-                elif configs['dataset'] == "mag":
-                    key = nvidia_keys[0]
-                
-                print(key)
-                    
+                self._nvidia_keys = nvidia_keys
+                # Distribute workers across keys — round-robin by worker_index
+                self._key_index = worker_index % len(nvidia_keys) if nvidia_keys else 0
+                key = nvidia_keys[self._key_index]
+                print(f"[LlmBridge] Worker {worker_index} → NVIDIA key index {self._key_index}: {key[:20]}...")
                 self.client = OpenAI(api_key=key, base_url="https://integrate.api.nvidia.com/v1")
 
             elif "nvidia" in self.model_name:
@@ -286,13 +285,10 @@ class LlmBridge:
                     print(f"[LlmBridge] Using NVIDIA model: {self.model_name}")
                 keys_str = os.environ.get("NVIDIA_API_KEYS", "")
                 nvidia_keys = [k.strip() for k in keys_str.split(",") if k.strip()]
-                key = nvidia_keys[2]
-                if configs['dataset'] == "prime":
-                    key = nvidia_keys[1]
-                elif configs['dataset'] == "mag":
-                    key = nvidia_keys[0]
-                
-                print(key)
+                self._nvidia_keys = nvidia_keys
+                self._key_index = worker_index % len(nvidia_keys) if nvidia_keys else 0
+                key = nvidia_keys[self._key_index]
+                print(f"[LlmBridge] Worker {worker_index} → NVIDIA key index {self._key_index}: {key[:20]}...")
                 self.client = OpenAI(api_key=key, base_url="https://integrate.api.nvidia.com/v1")
 
             elif "gpt" in self.model_name:
@@ -331,25 +327,45 @@ class LlmBridge:
             print(f"[LlmBridge] Initialization error for model '{self.model_name}': {e}")
             raise
 
+    def _rotate_nvidia_key(self) -> None:
+        """Rotate to the next available NVIDIA API key and rebuild the client."""
+        if not hasattr(self, '_nvidia_keys') or len(self._nvidia_keys) <= 1:
+            return
+        self._key_index = (self._key_index + 1) % len(self._nvidia_keys)
+        new_key = self._nvidia_keys[self._key_index]
+        self.client = OpenAI(api_key=new_key, base_url="https://integrate.api.nvidia.com/v1")
+        print(f"[LlmBridge] Rotated to NVIDIA key index {self._key_index}: {new_key[:20]}...")
+
     # --- forwarding helper methods (for threaded batch processing) -------------
     def forward_to_openai(self, idx: int, answers: List[Optional[str]], chat_log: List[Dict[str, str]]) -> None:
         temperature = 0.0 if self.temperature is None else self.temperature
-        # create chat completion (OpenAI client wrapper used in original)
-        try:
-            response = self.client.chat.completions.create(
-                model=self.model_name,
-                messages=chat_log,
-                max_tokens=self.max_output_tokens,
-                top_p=self.top_p,
-                temperature=temperature,
-                seed=self.seed,
-                timeout=120,
-            )
-            answers[idx] = response.choices[0].message.content
-        except Exception as e:
-            answers[idx] = f"OpenAI API error: {e}"
-            if self.verbose:
-                print(f"[LlmBridge] forward_to_openai error idx={idx}: {e}")
+        n_keys = len(getattr(self, '_nvidia_keys', [])) or 1
+        for attempt in range(n_keys):
+            try:
+                response = self.client.chat.completions.create(
+                    model=self.model_name,
+                    messages=chat_log,
+                    max_tokens=self.max_output_tokens,
+                    top_p=self.top_p,
+                    temperature=temperature,
+                    seed=self.seed,
+                    timeout=120,
+                )
+                answers[idx] = response.choices[0].message.content
+                return
+            except Exception as e:
+                err_str = str(e)
+                is_rate_limit = '429' in err_str or 'rate limit' in err_str.lower() or 'rate_limit' in err_str.lower()
+                if is_rate_limit and hasattr(self, '_nvidia_keys') and len(self._nvidia_keys) > 1 and attempt < n_keys - 1:
+                    if self.verbose:
+                        print(f"[LlmBridge] Rate limit on key index {self._key_index} (attempt {attempt+1}/{n_keys}), rotating...")
+                    self._rotate_nvidia_key()
+                    time.sleep(0.2)
+                else:
+                    answers[idx] = f"OpenAI API error: {e}"
+                    if self.verbose:
+                        print(f"[LlmBridge] forward_to_openai error idx={idx}: {e}")
+                    return
 
     def forward_to_ollama(self, idx: int, answers: List[Optional[str]], chat_log: List[Dict[str, str]]) -> None:
         try:
@@ -389,7 +405,7 @@ class LlmBridge:
         Ask a single question to the configured LLM.
         Returns (answer, updated_chat_log, full_answer)
         """
-        if "ollama_" in self.model_name:
+        if "ollama" in self.model_name:
             chat_log = prepare_chat_log(question, self.initial_system_message, chat_log=chat_log)
             answer = ollama_api_call(self.model_name, chat_log, self.temperature, self.max_output_tokens)
             chat_log.append({"role": "assistant", "content": answer})
@@ -397,10 +413,24 @@ class LlmBridge:
 
         elif "gpt" in self.model_name or "deepseek" in self.model_name or "nvidia" in self.model_name or "meta" in self.model_name:
             chat_log = prepare_chat_log(question, self.initial_system_message, chat_log=chat_log)
-            response = self.client.chat.completions.create(
-                model=self.model_name, messages=chat_log, temperature=self.temperature, seed=self.seed, timeout=120
-            )
-            answer = response.choices[0].message.content
+            n_keys = len(getattr(self, '_nvidia_keys', [])) or 1
+            for attempt in range(n_keys):
+                try:
+                    response = self.client.chat.completions.create(
+                        model=self.model_name, messages=chat_log, temperature=self.temperature, seed=self.seed, timeout=120
+                    )
+                    answer = response.choices[0].message.content
+                    break
+                except Exception as e:
+                    err_str = str(e)
+                    is_rate_limit = '429' in err_str or 'rate limit' in err_str.lower() or 'rate_limit' in err_str.lower()
+                    if is_rate_limit and hasattr(self, '_nvidia_keys') and len(self._nvidia_keys) > 1 and attempt < n_keys - 1:
+                        if self.verbose:
+                            print(f"[LlmBridge] ask_llm rate limit on key {self._key_index} (attempt {attempt+1}/{n_keys}), rotating...")
+                        self._rotate_nvidia_key()
+                        time.sleep(0.2)
+                    else:
+                        raise
             chat_log.append({"role": "assistant", "content": answer})
             full_answer = answer
 
@@ -448,7 +478,7 @@ class LlmBridge:
         Returns (answers, updated_chat_logs)
         """
         # Validate parallelization compatibility like original
-        api_models = ("gpt", "meta", "deepseek", "gemini", "ollama_", "nvidia")
+        api_models = ("gpt", "meta", "deepseek", "gemini", "ollama", "nvidia")
         if any(k in self.model_name for k in api_models) and self.parallelization_mode == "batch_processing":
             raise ValueError("Batch processing is not supported for API-based models (GPT, DeepSeek, Gemini, Ollama). "
                              "Please use parallelization_mode 'multiprocessing' instead.")
@@ -484,7 +514,7 @@ class LlmBridge:
 
                     if "gemini" in self.model_name:
                         target_func = self.forward_to_gemini
-                    elif "ollama_" in self.model_name:
+                    elif "ollama/" in self.model_name:
                         target_func = self.forward_to_ollama
                     else:
                         target_func = self.forward_to_openai

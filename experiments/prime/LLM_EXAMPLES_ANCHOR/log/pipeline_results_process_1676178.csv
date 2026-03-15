@@ -1,0 +1,9 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+733,Please find genes or proteins that interact with TNF receptor superfamily members associated with the non-canonical NF-kB pathway and also connect with CISD2 through protein-protein interactions.,1,1,0,1.0,1.0,0.0,0.0,0.058823529411764705,0.0,0.0,0.0,0.0
+2069,Could you help me identify the condition associated with cerebellar hemisphere malformation that is hereditary and might explain developmental issues in the posterior brain region?,1,1,0,1.0,1.0,0.0,0.0,0.16666666666666666,1.0,1.0,0.2,0.0
+1408,"I need to find a gene or protein that interacts with USH1C through PPI, is expressed in leg muscles, helps anchor protocadherins to actin, and is involved in gathering intermicrovillar adhesion complex components.",1,1,0,1.0,1.0,0.0,1.0,0.25,1.0,1.0,0.1111111111111111,0.0
+8335,Which keratolytic medication utilizes the same gene or protein for transport as Polythiazide?,3,0,3,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+9578,"Are there any pharmaceutical agents designed to regulate pH balance that also interact with, or have an effect on, the genes or proteins associated with 6,7-dihydropteridine reductase activity?",1,1,0,1.0,1.0,0.0,0.0,0.058823529411764705,0.0,0.0,0.0,0.0
+5727,Identify proteins or genes that interact with NEK11 and share an association with a mutual disease.,1,1,0,1.0,1.0,0.0,1.0,0.2,1.0,1.0,0.09090909090909091,0.0
+2884,Which disease falls under normal pressure hydrocephalus and is linked to the THAS gene or its protein product?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.0
+6231,"Identify pathways associated with the ""Release of Hedgehog protein without cholesterol"" (Hh-Np) from secreting cells that also interact with a common gene or protein.",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0,1.0,0.5,0.0

@@ -1,0 +1,9 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+6250,Which gene or protein is not expressed in the fallopian tube and is also non-existent in the metanephric glomerular tissue?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+6159,Which gene/protein is not expressed in both the renal tissues and the medial segment of the globus pallidus?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+10698,Identify pathways associated with the metabolism of polyamines which also exhibit interaction with identical genes or proteins.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+4344,"Can you find a gene or protein that interacts with the sphingolipid biosynthesis pathway, is involved in dihydrosphingosine-1-phosphate phosphatase activity, and contributes to the chemotactic response to EGF?",1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0,1.0,0.5,0.0
+5449,"I'm looking for a gene or protein that modulates the Glutathione synthesis and recycling pathway, catalyzes the transformation of amino acids into different metabolites, and inhibits the growth of cancer cells, particularly with tumor-suppressing effects in gastric cancer.",3,2,1,0.6666666666666666,0.3333333333333333,0.0,0.0,0.05263157894736842,0.0,0.0,0.0,0.0
+4434,Could you recommend a medication for hemorrhoids treatment with a molecular weight near 340 units?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.0
+7043,Search for genes or proteins that interact with ATG2B and share an association with a common disease.,1,1,0,1.0,1.0,0.0,0.0,0.07692307692307693,1.0,1.0,0.05555555555555555,0.0
+8477,Which gene or protein is consistently non-expressed or missing in the adult mammalian renal system as well as the mammalian vulvar tissue?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

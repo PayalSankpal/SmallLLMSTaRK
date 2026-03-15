@@ -1,0 +1,10 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+2152,"Could you provide information on hereditary diseases associated with bladder stone formation? My mother previously experienced bladder issues, and I'm concerned about the familial risk.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7287,Which cellular structures or organelles are associated with the interaction of genes or proteins affected by Thonzonium Bromide?,8,8,0,1.0,1.0,1.0,1.0,1.0,1.0
+10604,Which cellular structures engage with the genetic elements or proteins affected by the actions of D-Eritadenine?,5,5,0,1.0,1.0,1.0,1.0,1.0,1.0
+2045,"Please find a pathway that falls under the Defensins hierarchy, involves antimicrobial protein functions, and is externally peer-reviewed.",3,3,0,1.0,1.0,0.0,1.0,0.5,1.0
+5992,Is there evidence to suggest that the gene or protein responsible for organic cation transport also facilitates the translocation of pharmaceuticals that exhibit synergistic effects when combined with Sulfathiazole?,3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
+7490,Which neonatal gastrointestinal illness resulting in severe intestinal harm and necrosis should not be treated with medication typically prescribed for Pasteurella multocida due to contraindications?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+7168,Which illness leading to cerebral infarction would render medications for prolactin-secreting pituitary tumors inadvisable?,4,0,4,0.0,0.0,0.0,0.0,0.0,0.5
+9133,Identify a gene or protein with the capability to interact with FOXC1 and shares an association with a similar effect or phenotype.,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+2635,"Could you recommend a medication designed for Laron syndrome, specifically a synthetic version of the human insulin-like growth factor 1?",2,2,0,1.0,1.0,1.0,1.0,1.0,1.0

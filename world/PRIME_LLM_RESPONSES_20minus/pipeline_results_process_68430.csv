@@ -1,6 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-5631,"What genes or proteins interact with the tubulin C-terminal post-translational modification pathway, bind to tubulin, and exhibit tubulin-glutamic acid ligase activity?",12,10,2,0.8333333333333334,0.8333333333333334,1.0,1.0,1.0,0.9166666666666666
-7313,"Identify genes or proteins that (1) engage in interaction with TBK1, (2) are linked to the same pathology as TBK1, and (3) are capable of interacting with protein kinase B alpha (AKT1).",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
-8753,Are there any pharmacological agents that act as electron donors in metabolic processes through reversible oxidation and reduction and influence genes or proteins associated with L-aminoadipate-semialdehyde dehydrogenase enzymatic function?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-6117,"Could you identify the common genetic targets for both N-(M-Trifluoromethylphenyl) Phenoxazine-4,6-Dicarboxylic Acid and (2S)-3-[(9H-fluoren-9-ylideneamino)oxy]-2-methylpropanoic acid?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-5285,"Please find genes or proteins with structural molecular activity linked to the basal body-plasma membrane anchoring pathway, particularly those interacting with NPHP1, suggesting involvement in a common signaling pathway.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0

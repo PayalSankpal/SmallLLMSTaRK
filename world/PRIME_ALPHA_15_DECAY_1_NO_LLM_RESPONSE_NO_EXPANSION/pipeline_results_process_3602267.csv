@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-6251,Which anatomical structures lack the expression of genes or proteins that are involved in the interaction with the male somatic sex determination process?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0

@@ -1,6 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-363,What disease stems from Ascaridida infection and leads to blockage or rupture in the intestines?,2,0,2,0.0,0.0,0.0,0.0,0.0,1.0
-7923,Which pharmacological agent interacts with genes or proteins prevalent in gallbladder tissue to facilitate less invasive staging procedures?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-6533,"Which medication, sharing a similar transporter protein or gene as Levocetirizine, specifically targets and inhibits the nuclear enzyme DNA topoisomerase I?",2,0,2,0.0,0.0,0.0,0.0,0.0,0.5
-6336,Identify proteins or genes that interact with the SCN11A gene and are linked to a shared phenotype or biological effect.,1,1,0,1.0,1.0,0.0,0.0,0.14285714285714285,1.0
-138,What is the biochemical pathway that falls under mRNA Editing and specifically modifies apolipoprotein B mRNA by converting cysteine to uridine?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0

@@ -1,0 +1,9 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+933,What drugs are known to primarily target the DCPS gene/protein in their mechanism of action?,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0,1.0,0.1,0.0
+5152,What signaling pathway is connected to the 'Neuronal System' pathway and controls the stability of neurons' resting membrane potential?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+4996,Which condition involves a posterior polar cataract in its symptoms and is linked to the ITM2B gene?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0,1.0,0.25,0.0
+9516,Which liver-expressed transporter gene or protein is involved in organic ion translocation and facilitates the movement of drugs that exhibit synergistic effects with 1-Testosterone?,14,0,14,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+5631,"What genes or proteins interact with the tubulin C-terminal post-translational modification pathway, bind to tubulin, and exhibit tubulin-glutamic acid ligase activity?",12,10,2,0.8333333333333334,0.8333333333333334,0.0,1.0,0.2,0.5833333333333334,0.5,1.0,1.0
+9257,What are the common genetic targets of Meclofenamic acid and Escherichia coli-derived Asparaginase?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.0
+5881,"What are the common genetic targets associated with the action of both 2',4'-Dichloro-4-hydroxy-1,1'-biphenyl-3-carboxylic acid and Liotrix?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+5236,Could you supply a list of gene or protein regulators involved in ATPase activity that are also associated with the development of autism?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

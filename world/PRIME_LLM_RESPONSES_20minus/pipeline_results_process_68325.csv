@@ -1,6 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-2008,"What possible conditions could be indicated by a coin-shaped spot on a chest X-ray, especially considering my family history of lung issues?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
-452,"Could you identify a medication targeting the SCN4A gene/protein and supply details on its pharmacokinetics, focusing on its elimination half-life? Also, does this drug induce localized numbness from the thoracic area to the lower limbs?",1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
-10053,"I'm looking for angiotensin receptor blockers (ARBs) that specifically target the AT1 subtype, which also enhance the effects when used in combination with Pindolol. Could you list any ARBs that are prescribed for the same conditions as Pindolol?",9,9,0,1.0,1.0,1.0,1.0,1.0,1.0
-7630,Which anatomical structures lack the expression of genes or proteins that are involved in recognizing lipoteichoic acid?,10,9,1,0.9,0.9,0.0,1.0,0.5,0.5
-5903,"Which gene or protein is capable of interacting with tyrosine hydroxylase (TH), shares associated effects or phenotypes with mitogen-activated protein kinase 3 (MAPK3), and possesses the functionality to bind to, or regulate MAPK3?",1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0

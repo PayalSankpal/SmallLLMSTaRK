@@ -1,0 +1,9 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+7256,"Is there a shared genetic or protein transporter mechanism between Fluorometholone and Dexamethasone, both being potent corticosteroid medications frequently prescribed in eye care practices?",12,0,12,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+6603,Identify a biological pathway associated with the Formation of the Cornified Envelope that also demonstrates interaction with a mutual gene or protein.,1,1,0,1.0,1.0,0.0,0.0,0.1111111111111111,1.0,1.0,0.5,0.0
+8625,Which medication shares a gene or protein transporter with Efavirenz and additionally serves as a reverse transcriptase inhibitor?,11,3,8,0.2727272727272727,0.2727272727272727,1.0,1.0,1.0,0.45454545454545453,0.45454545454545453,1.0,1.0
+1208,Which disease associated with neoplastic syndrome aggressively invades the chest skeleton early on?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+10076,Which medications are associated with genes or proteins that engage with the Golgi apparatus interior?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0,1.0,0.058823529411764705,0.0
+7527,Which multi-organ systemic diseases are linked to the PXK gene and have contraindications with the use of Pyridoxine?,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+9158,Which gene or protein is simultaneously not expressed in the placenta and the superior frontal gyrus?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+1558,What conditions similar to malignant mesothelioma could affect the heart's outer lining and cause abnormal symptoms?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0

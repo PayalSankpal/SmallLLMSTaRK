@@ -1,0 +1,6 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+10117,Could you identify the biological processes that are involved with or influenced by the gene or protein linked to Distal Sensory Impairment?,9,0,9,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+5699,"Can you give me a list of drugs that target the FLT4 gene/protein and also suppress inflammation, edema, and angiogenesis?",1,1,0,1.0,1.0,0.0,0.0,0.16666666666666666,1.0,1.0,0.05555555555555555,0.0
+7152,What are the observed effects or phenotypes associated specifically with the subtype of suppurative uveitis?,3,0,3,0.0,0.0,0.0,0.0,0.0,0.3333333333333333,0.3333333333333333,0.06666666666666667,0.0
+10551,"Which genes encode proteins that interact with both O-Trifluoromethylphenyl Anthranilic Acid and N-(3,5-dibromo-4-hydroxyphenyl)benzamide as ligands?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+7224,"Which medication, facilitated by gene or protein interactions with the sarcolemma, exhibits minimal impact on blood gases, respiratory function, and the cardiovascular system?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

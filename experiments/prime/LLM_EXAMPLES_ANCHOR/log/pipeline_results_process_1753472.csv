@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+8631,Which conditions linked to the SLC40A1 gene lead to symptoms of fatigue and weakness and are adversely affected by the administration of Scopolamine?,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.0

@@ -1,0 +1,8 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+8814,What are the characteristic symptoms or manifestations observed in patients with the epidemic subtype of keratoconjunctivitis?,9,9,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.3333333333333333,0.0
+3632,Please find genes and proteins involved in Glucocorticoid biosynthesis that also functionally interact with steroid binding.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.125,0.0
+1118,Could you share a list of neurodegenerative conditions related to cerebral folate transport issues or diseases tied to isolated familial vitamin E deficiencies?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+2236,Could you find any drugs that target the CHRNA3 receptor and have a half-life ranging from 1 to 16 days?,2,2,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0,1.0,0.06666666666666667,0.0
+8757,"Which gene or protein, believed to play a role in inhibiting the canonical Wnt signaling pathway, is undetectable in both the small intestine and tonsil tissues?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+10518,Which genes or proteins are present in the gallbladder but not expressed in the metanephric glomerulus?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+5215,"What disease is a subtype of glycogen storage disease caused by branching enzyme deficiency, characterized by abnormal glycogen buildup, affecting enzymes involved in glycogen metabolism?",9,1,8,0.1111111111111111,0.1111111111111111,0.0,1.0,0.25,0.7777777777777778,0.7777777777777778,0.5,0.0

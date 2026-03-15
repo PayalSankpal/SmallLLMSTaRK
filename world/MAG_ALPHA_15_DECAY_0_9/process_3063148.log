@@ -1,6 +1,0 @@
-Loading from /home/adityad_ext/.cache/huggingface/hub/datasets--snap-stanford--stark/snapshots/88269e23e90587f99476c5dd74e235a0877e69be/skb/mag/processed!
-[LlmBridge] Initializing model: meta/llama-3.3-70b-instruct (device=cpu)
-[LlmBridge] Using NVIDIA/meta-style model: meta/llama-3.3-70b-instruct
-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
-Use file from /home/adityad_ext/.cache/huggingface/hub/datasets--snap-stanford--stark/snapshots/88269e23e90587f99476c5dd74e235a0877e69be/qa/mag/stark_qa/stark_qa_human_generated_eval.csv.
-[VSSRetriever] Using CPU

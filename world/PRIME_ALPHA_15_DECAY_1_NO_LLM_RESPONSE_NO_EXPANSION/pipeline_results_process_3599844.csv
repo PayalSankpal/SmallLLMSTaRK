@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-1208,Which disease associated with neoplastic syndrome aggressively invades the chest skeleton early on?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

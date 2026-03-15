@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-9440,"Can you identify a biological pathway that is triggered by activated FGFR1 signaling, which includes the activation of phospholipase C, and has the potential for crosstalk or interaction with the genes or proteins that FGFR1 typically engages with?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0

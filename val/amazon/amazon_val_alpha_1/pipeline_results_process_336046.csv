@@ -1,6 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-513,Can I find a standard size latex swim cap with fast delivery on Amazon?,8,2,6,0.25,0.25,1.0,1.0,1.0,0.375
-1913,Is there a versatile barrel harness available that can accommodate both 30L and 60L barrels?,2,1,1,0.5,0.5,1.0,1.0,1.0,0.5
-2692,"Is there a scuba diving lift bag made in America by 101Snorkel, specifically one made of robust 400 lb coated nylon?",2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
-6064,"Looking for a 15-foot vinyl tubing specifically designed for my fishing lure treble hook guard. It needs to be heat-resistant up to 158 degrees and fit well on smaller hooks, unlike previous ones I've used.",2,2,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
-4185,What are some durable women's weight vests suitable for running and fitness that could also help in preventing osteoporosis?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0

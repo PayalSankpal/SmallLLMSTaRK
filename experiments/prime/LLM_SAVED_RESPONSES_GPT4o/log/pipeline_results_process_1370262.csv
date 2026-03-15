@@ -1,0 +1,3 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+1558,What conditions similar to malignant mesothelioma could affect the heart's outer lining and cause abnormal symptoms?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+6250,Which gene or protein is not expressed in the fallopian tube and is also non-existent in the metanephric glomerular tissue?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

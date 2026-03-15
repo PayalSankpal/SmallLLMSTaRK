@@ -1,4 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-7812,"Could you suggest a girls' bike that comes with a sturdy front basket for carrying items? It should also feature a comfortable, well-cushioned seat with springs to ensure a smooth ride.",11,0,11,0.0,0.0,0.0,0.0,0.0,0.0
-1246,"Looking for an eco-friendly yoga set in hues of earth and sky, particularly one that includes a natural rubber yoga mat and a cork yoga block. Less interested in the strap and other additional accessories.",4,0,4,0.0,0.0,0.0,0.0,0.0,0.0
-5673,Looking for a cost-effective airsoft gun set that complements my Mossberg Tactical Long Shotgun Kit with 2500 BB's and my MetalTac Airsoft Speed Loader with a capacity of 100 Bbs. Any recommendations?,8,8,0,1.0,1.0,1.0,1.0,1.0,1.0

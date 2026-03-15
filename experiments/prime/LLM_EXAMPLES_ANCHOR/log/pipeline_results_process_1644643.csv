@@ -1,0 +1,6 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+1828,Which autosomal recessive disease is associated with the AEBP1 gene?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.5,0.0
+8161,Which genes or proteins are found to be expressed in the nasopharyngeal tissue but not in the parietal lobe of the brain?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+9020,Which disorders linked to Ketosis may lead to cardiomyopathy and hypoketotic hypoglycemia and currently lack any drugs officially sanctioned for treatment?,1,1,0,1.0,1.0,0.0,0.0,0.058823529411764705,0.0,0.0,0.0,0.0
+143,"What disease functions as a parent and child condition in the hierarchy of autoinflammatory disorders, linking both pyogenic bacterial infections with amylopectinosis and PLCG2-associated antibody deficiency and immune dysregulation?",1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0,1.0,0.1,0.0
+4434,Could you recommend a medication for hemorrhoids treatment with a molecular weight near 340 units?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.125,0.0

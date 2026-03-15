@@ -1,0 +1,10 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+5659,What conditions are related to and might follow or fall under hemicrania continua in patients showing its symptoms?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+2807,What drugs are presently recognized to primarily target the protein kinase M (PKM) gene in their mechanism of action?,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+2766,What is the name of the gene or protein that both regulates MUC1 synthesis and directly interacts with the Cytosolic tRNA aminoacylation pathway?,1,1,0,1.0,1.0,0.0,0.0,0.125,1.0
+11087,What are the common gene targets associated with the binding of Meclofenamic acid and Ethotoin?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+9753,"Which illnesses linked to Complement Factor B (CFB) contraindicate the use of Ramipril and exhibit inflammatory symptoms in any organ system with an early onset before adulthood, manifesting a wide range of symptoms that are more severe and involve major organs more frequently compared to adult-onset systemic lupus erythematosus, thereby posing a greater risk of multisystem organ damage?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+2085,What is the common upstream or downstream biological pathway shared by the 'Biosynthesis of DHA-derived SPMs' and the 'Biosynthesis of maresin conjugates in tissue regeneration (MCTR)'?,1,1,0,1.0,1.0,0.0,0.0,0.125,1.0
+6632,Search for illnesses that have no drugs indicated for treatment and are related to the presence of Wormian bones.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+657,Can you give me a rundown of drugs effective against both UTIs and Mycoplasma pneumonia that have a molecular weight exactly at 558.52 Da?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+3478,What are the diseases similar or linked to Paradas congenital myopathy that also present with progressive muscle weakness?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

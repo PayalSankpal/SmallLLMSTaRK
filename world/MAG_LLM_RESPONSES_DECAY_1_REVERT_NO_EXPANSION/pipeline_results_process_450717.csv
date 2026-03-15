@@ -1,5 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-9014,Search for papers by Adam Smercina on dust and gas properties.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-7607,Publications on airflow generation by authors affiliated with Hanoi University of Industry,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-9258,Does Dongbei University of Finance and Economics have any research papers on the photo-assisted growth of p-type ZnO films related to the study of ionization energy in materials science?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-11511,Show me publications by S. Mtougui on magnetic properties.,5,5,0,1.0,1.0,1.0,1.0,1.0,1.0

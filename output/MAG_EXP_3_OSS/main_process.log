@@ -1,9 +1,0 @@
-Use file from /root/.cache/huggingface/hub/datasets--snap-stanford--stark/snapshots/88269e23e90587f99476c5dd74e235a0877e69be/qa/mag/stark_qa/stark_qa_human_generated_eval.csv.
-Starting 266 queries. Main Logs: ./output//MAG_EXP_3_OSS/main_process.log
-Split into 8 batches for 8 workers
-
-Processed 266 queries successfully
-Failed queries: 0
-
-[SAVED] Aggregate results saved to ./output//MAG_EXP_3_OSS/aggregate_results.csv
-✓ Successfully saved 266 results to ./output//MAG_EXP_3_OSS/full_data_dump.csv

@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+202,"Identify genes and proteins that enable kinase and tRNA binding, and are involved in selenocysteinyl-tRNA(Sec) synthesis and biosynthesis.",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0

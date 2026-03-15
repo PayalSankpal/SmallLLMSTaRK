@@ -1,0 +1,8 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+10383,Which gene or protein is lacking in the tissues of both the lymph node and the heart muscle?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+1618,"Please provide a list of genes associated with coding proteins linked to short rib-polydactyly syndrome, covering both the general condition and Majewski type specifically.",14,14,0,1.0,1.0,1.0,1.0,1.0,0.7142857142857143
+9487,"Which cell structures engage with the genetic or proteomic entities affected by the compound N-{2,4-difluoro-3-[(5-pyridin-3-yl-1H-pyrrolo[2,3-b]pyridin-3-yl)carbonyl]phenyl}ethanesulfonamide?",4,3,1,0.75,0.75,0.0,0.0,0.16666666666666666,0.75
+8816,"Which protein, involved in modulating cell signaling networks through the removal of phosphate groups from tyrosine residues of its substrates, also engages with the entity responsible for catalyzing the process of Asparagine N-linked glycosylation?",2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+1844,What diseases could be associated with the MARS1 gene in patients exhibiting symptoms of respiratory insufficiency and liver impairment?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+10405,Search for diseases not treated by any known drugs that are also linked to the symptom of having a flat face.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7016,Identify common gene targets associated with both Hydrocortisone cypionate and Ciclesonide.,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0

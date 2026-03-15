@@ -1,6 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-10947,Which cellular structures are engaged in interactions with genes or proteins that Aeruginosin 98-B affects?,4,4,0,1.0,1.0,1.0,1.0,1.0,1.0
-3891,Can you identify a gene or protein involved in atrial fibrillation that also has a role in ubiquitin ligase binding and is active in the rapid repolarization phase of cardiac activity?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-5086,"What possible medical conditions could be linked to femoral vein thrombophlebitis and phlebitis, considering they are hereditary in my family?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
-2827,"Could you provide information on hereditary diseases linked to 'acheiria, unilateral'? I'm wondering if it could explain the symptoms I'm having.",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
-9578,"Are there any pharmaceutical agents designed to regulate pH balance that also interact with, or have an effect on, the genes or proteins associated with 6,7-dihydropteridine reductase activity?",1,1,0,1.0,1.0,0.0,0.0,0.1111111111111111,1.0

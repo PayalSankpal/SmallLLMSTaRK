@@ -1,0 +1,5 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+138,What is the biochemical pathway that falls under mRNA Editing and specifically modifies apolipoprotein B mRNA by converting cysteine to uridine?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+1439,Could you assist in identifying which disease is associated with adenocarcinoma of the lung and its potential connection to hereditary cancer syndromes?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+11151,Could you identify the medication that functions as an enzymatic agent affecting certain genes or proteins within the peripheral nervous system and metabolizes to create pain-relieving effects through the diminution of substance P neuropeptide concentrations?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+4355,Which gene or protein facilitates the symbiotic interaction within the pathway that inserts viral DNA into the host genome and possesses the ability to bind nonspecifically to double-stranded DNA?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0

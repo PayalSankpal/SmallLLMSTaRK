@@ -1,6 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-2998,Could you recommend any appetite suppressants that are effective for weight control?,14,0,14,0.0,0.0,0.0,0.0,0.0,0.8571428571428571
-9696,Which anatomical structures lack the expression of genes or proteins that engage in interaction with peptidyl-lysine acetylation processes?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
-10383,Which gene or protein is lacking in the tissues of both the lymph node and the heart muscle?,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
-1618,"Please provide a list of genes associated with coding proteins linked to short rib-polydactyly syndrome, covering both the general condition and Majewski type specifically.",14,14,0,1.0,1.0,1.0,1.0,1.0,1.0
-9487,"Which cell structures engage with the genetic or proteomic entities affected by the compound N-{2,4-difluoro-3-[(5-pyridin-3-yl-1H-pyrrolo[2,3-b]pyridin-3-yl)carbonyl]phenyl}ethanesulfonamide?",4,4,0,1.0,1.0,1.0,1.0,1.0,1.0

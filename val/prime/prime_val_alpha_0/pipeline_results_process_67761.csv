@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-9447,Which agents could potentially impact the effectiveness of unspecified-form dextrose by interacting with the genes encoding its transport proteins?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0

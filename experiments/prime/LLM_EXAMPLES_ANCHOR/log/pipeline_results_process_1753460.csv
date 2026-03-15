@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+3598,Which pathway is a subordinate in the hierarchy to the Visual phototransduction pathway and functionally interacts with the HSD17B6 gene/protein?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.3333333333333333,0.0

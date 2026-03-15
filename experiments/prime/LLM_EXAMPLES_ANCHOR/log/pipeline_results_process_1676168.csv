@@ -1,0 +1,7 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+7718,Which anatomical structures lack the expression of genes or proteins involved in the interaction with the formation of the endoplasmic reticulum's tubular network?,2,1,1,0.5,0.0,0.0,0.0,0.02702702702702703,0.0,0.0,0.0,0.0
+1152,"Please find the gene associated with multiple sclerosis pathogenesis that codes for a receptor on antigen-presenting cells, essential for various immune and inflammatory responses.",5,2,3,0.4,0.4,1.0,1.0,1.0,0.4,0.4,1.0,1.0
+7918,Find health conditions linked to Fatty Acid Binding Protein 2 (FABP2) that should not be managed with the use of Oxymorphone.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.14285714285714285,0.0
+233,"What is the name of the gene or protein that binds with molecules involved in protein binding, attaches to protein C-termini, contributes to pore complex assembly, and modulates ion transport across membranes in host-pathogen interactions?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.07142857142857142,0.0
+2152,"Could you provide information on hereditary diseases associated with bladder stone formation? My mother previously experienced bladder issues, and I'm concerned about the familial risk.",1,1,0,1.0,1.0,0.0,1.0,0.25,1.0,1.0,0.2,0.0
+7287,Which cellular structures or organelles are associated with the interaction of genes or proteins affected by Thonzonium Bromide?,8,8,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0

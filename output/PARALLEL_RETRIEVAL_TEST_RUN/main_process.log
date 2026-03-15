@@ -1,9 +1,0 @@
-Use file from /root/.cache/huggingface/hub/datasets--snap-stanford--stark/snapshots/88269e23e90587f99476c5dd74e235a0877e69be/qa/mag/stark_qa/stark_qa_human_generated_eval.csv.
-Starting 266 queries. Main Logs: ./output//PARALLEL_RETRIEVAL_TEST_RUN/main_process.log
-Split into 4 batches for 4 workers
-
-Processed 261 queries successfully
-Failed queries: 5
-
-[SAVED] Aggregate results saved to ./output//PARALLEL_RETRIEVAL_TEST_RUN/aggregate_results.csv
-✓ Successfully saved 261 results to ./output//PARALLEL_RETRIEVAL_TEST_RUN/full_data_dump.csv

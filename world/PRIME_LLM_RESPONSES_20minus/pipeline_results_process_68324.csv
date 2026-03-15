@@ -1,6 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-631,"What condition could cause pain and visual symptoms like blurriness or floaters, and is manageable with Propranolol?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-9382,Identify genes or proteins that interact with the interleukin-6 receptor (IL6R) and are linked to a common effect or phenotype.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-7945,"Which condition, characterized by tiny blisters on the corneal surface that can deteriorate into branch-like ulcers, would render the conventional medications for treating mite infestations inadvisable?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-3629,Can you give me a rundown of diseases associated with uneven facial features and typically involve an enlarged tongue?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-8772,"What are the common gene targets for 2,6-dimethyl-4-[(E)-2-phenylethenyl]phenol and O-Trifluoromethylphenyl Anthranilic Acid?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0

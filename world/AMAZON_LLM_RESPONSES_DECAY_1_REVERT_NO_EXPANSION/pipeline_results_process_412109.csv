@@ -1,9 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-8423,Where can I find a Majestic brand men's polo shirt with a perfect fit and a beautiful print design on the front?,9,0,9,0.0,0.0,0.0,0.0,0.0,0.0
-8948,Looking for an authentic Adidas bucket hat made of 100% polyester. Can you help me find one?,8,0,8,0.0,0.0,0.0,0.0,0.0,0.5
-6793,Looking for a Baleaf cycling jersey with UPF sun protection to shield my skin from harmful sun rays during my rides.,20,15,5,0.75,0.75,1.0,1.0,1.0,0.75
-1279,Could you recommend a bamboo longboard skateboard from Blank Skateboards?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-4646,"Looking for a premium leather gun holster that offers a snug fit, comfort for carrying, and is often viewed alongside the Holster with Magazine Pouch Fits Bersa Thunder 380 & Concealed Carry?",13,6,7,0.46153846153846156,0.46153846153846156,1.0,1.0,1.0,0.46153846153846156
-2061,Can you suggest some high-quality badminton racquets with a BOX frame design?,9,3,6,0.3333333333333333,0.3333333333333333,1.0,1.0,1.0,0.3333333333333333
-5623,"What's the best summer hoof gel that dries quickly and doesn't attract dirt? I typically pair this with Effol Winter Hoof Gel, so any similar recommendations would be appreciated.",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
-6295,"I'm looking for a bike frame pannier bag that comes with a headphone jack. My needs include it being able to securely hold my phone while also providing room for other items like wallet and keys. Size-wise, I'm aiming for something around 19.5 * 10 * 9cm. Ideally, the bag should have a sizable opening to ensure there's no hassle inserting and removing items, even when there's a headphone plugged in. Can you help me find such a product?",16,0,16,0.0,0.0,0.0,0.0,0.0,0.0

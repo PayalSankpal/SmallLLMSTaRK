@@ -1,5 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-1920,Show me publications by B. Spruck focusing on hyperon production research.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-3587,Show me publications by P. A. Khilo related to beam generation.,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
-4318,Does any Optics literature from Yokogawa Electric talk about a record-breaking breakdown voltage for diamond field-effect transistors when they were published?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-4412,Does any research from Wheelock College delve into the study of offset bars in late-type galaxies in the discipline of Astrophysics?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0

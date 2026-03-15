@@ -1,0 +1,4 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+6336,Identify proteins or genes that interact with the SCN11A gene and are linked to a shared phenotype or biological effect.,1,1,0,1.0,1.0,0.0,1.0,0.2,1.0,1.0,0.07692307692307693,0.0
+138,What is the biochemical pathway that falls under mRNA Editing and specifically modifies apolipoprotein B mRNA by converting cysteine to uridine?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+1439,Could you assist in identifying which disease is associated with adenocarcinoma of the lung and its potential connection to hereditary cancer syndromes?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

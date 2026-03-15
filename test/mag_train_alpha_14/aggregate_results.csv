@@ -1,2 +1,0 @@
-total_queries,avg_total_answers,avg_retrieved_count,avg_missed_count,avg_recall@20,avg_recall@50,avg_hit@1,avg_hit@5,avg_mrr,recall@20_vss_merged
-150,2.7,1.46,1.24,0.596037037037037,0.596037037037037,0.43333333333333335,0.5466666666666666,0.4810288751209804,0.5959629629629629

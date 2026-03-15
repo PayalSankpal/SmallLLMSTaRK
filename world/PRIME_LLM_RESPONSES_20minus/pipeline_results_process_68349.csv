@@ -1,6 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-6159,Which gene/protein is not expressed in both the renal tissues and the medial segment of the globus pallidus?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-10698,Identify pathways associated with the metabolism of polyamines which also exhibit interaction with identical genes or proteins.,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
-4344,"Can you find a gene or protein that interacts with the sphingolipid biosynthesis pathway, is involved in dihydrosphingosine-1-phosphate phosphatase activity, and contributes to the chemotactic response to EGF?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-5449,"I'm looking for a gene or protein that modulates the Glutathione synthesis and recycling pathway, catalyzes the transformation of amino acids into different metabolites, and inhibits the growth of cancer cells, particularly with tumor-suppressing effects in gastric cancer.",3,3,0,1.0,1.0,0.0,0.0,0.07692307692307693,0.3333333333333333
-1828,Which autosomal recessive disease is associated with the AEBP1 gene?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

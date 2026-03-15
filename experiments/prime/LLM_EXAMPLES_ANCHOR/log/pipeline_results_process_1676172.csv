@@ -1,0 +1,8 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
+6083,Which medications are designed to influence genes or proteins associated with the enzymatic activity of dITP diphosphatase?,1,1,0,1.0,1.0,0.0,0.0,0.125,1.0,1.0,0.07142857142857142,0.0
+2416,Which diseases are considered subtypes or are directly related to intracranial arachnoid cysts?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0,1.0,0.5,0.0
+6164,Which cell structures interact with the genetic or protein targets of the drug Linaclotide?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.2,0.0
+904,Could you provide information on treatments available for C. diff colitis and clarify whether any of these medications could potentially lead to facial swelling as a side effect?,1,1,0,1.0,1.0,0.0,0.0,0.07692307692307693,1.0,1.0,0.07142857142857142,0.0
+1342,Please find a gene or protein associated with Spinocerebellar Ataxia type 8 that also interacts within the cell nucleus.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+2825,"What are some carbocyclic acid, aldehyde, or benzene derivative drugs that enhance the effects of Calcium carbimide and Disulfiram when administered together?",1,1,0,1.0,1.0,0.0,1.0,0.25,1.0,1.0,1.0,1.0
+7140,"Which condition, characterized by episodes precipitated by non-allergic stimuli like stress or physical activity, should not be treated with medications prescribed for cytomegalovirus retinitis due to contraindications?",3,1,2,0.3333333333333333,0.3333333333333333,0.0,0.0,0.0625,0.3333333333333333,0.3333333333333333,1.0,1.0

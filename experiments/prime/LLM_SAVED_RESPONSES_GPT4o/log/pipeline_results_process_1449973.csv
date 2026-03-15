@@ -1,0 +1,3 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+4507,Can you assist in identifying a drug used to treat acute myeloid leukemia in adults that may also have Non-Hodgkin lymphoma as a possible side effect?,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+9714,"What condition, characterized by an abrupt neurological deficit stemming from a cerebrovascular disturbance, also serves as a reason to avoid medications prescribed for the treatment of secondary hypopituitarism?",5,4,1,0.8,0.8,1.0,1.0,1.0,0.8
