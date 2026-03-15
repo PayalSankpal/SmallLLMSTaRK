@@ -1,0 +1,13 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+5903,"Which gene or protein is capable of interacting with tyrosine hydroxylase (TH), shares associated effects or phenotypes with mitogen-activated protein kinase 3 (MAPK3), and possesses the functionality to bind to, or regulate MAPK3?",1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+3007,"Can you supply a list of genes and proteins that interact with lipid-binding functions, partner with LRRK2 in protein-protein interactions, and also facilitate lipid-binding?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5546,Could you suggest any tablet or capsule medications that specifically target the CTRB1 gene/protein?,15,15,0,1.0,1.0,1.0,1.0,1.0,0.9333333333333333
+196,"Can you find genes or proteins that regulate enzymes, interact with NCK2, and modulate enzymatic activity?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+4936,Could you provide me with the early treatment options available in the US for Chagas disease to eliminate the parasite responsible for it?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+1541,"What signaling pathway, associated with the APAF1 protein and a part of the Cytochrome c-triggered apoptotic process, leads to the triggering of caspase-3 and -7 through the proteolytic activity of the apoptosome?",1,1,0,1.0,1.0,0.0,0.0,0.08333333333333333,1.0
+4203,Could you list the diseases associated with or stemming from testicular disorders?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5527,Can you supply a selection of tablet or capsule medications designed to inhibit or interact with the MMP1 gene/protein?,6,6,0,1.0,1.0,1.0,1.0,1.0,1.0
+2673,What is the subtype of juvenile polyposis syndrome that includes refractory anemia as a symptom?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
+3598,Which pathway is a subordinate in the hierarchy to the Visual phototransduction pathway and functionally interacts with the HSD17B6 gene/protein?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+6083,Which medications are designed to influence genes or proteins associated with the enzymatic activity of dITP diphosphatase?,1,1,0,1.0,1.0,0.0,0.0,0.125,1.0
+2416,Which diseases are considered subtypes or are directly related to intracranial arachnoid cysts?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0

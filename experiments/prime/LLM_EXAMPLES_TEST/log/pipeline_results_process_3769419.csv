@@ -1,0 +1,13 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+3093,What condition could be linked to FAM111A gene or protein modifications in individuals with bone sclerosis and denser long bones?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+9732,Which biological processes share a similar interaction pattern with genes or proteins as the positive regulation of exoribonuclease activity is observed in?,5,1,4,0.2,0.2,0.0,1.0,0.25,0.2
+6708,Which phenotypic manifestations or effects are associated with the subtype of acute biphenotypic leukemia?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0
+5950,Identify conditions unresponsive to medication that correlate with increased liver iron levels.,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+11077,Find medical conditions linked to the gene SLC29A3 that should not be treated with the drug Goserelin.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+4438,"I need to find a gene or protein that interacts with the cis-Golgi network and contributes to the organization of the Golgi apparatus. It should be involved in regulating Golgi structure and function specifically within the Golgi cis cisterna, the Golgi cisterna membrane, and the cis-Golgi network. Can you supply information on any genes or proteins that fit this description?",18,13,5,0.7222222222222222,0.7222222222222222,0.0,1.0,0.3333333333333333,0.6111111111111112
+5928,What are the observed effects or phenotypes associated with the subtype of hereditary papillary renal cell carcinoma?,4,0,4,0.0,0.0,0.0,0.0,0.0,0.25
+8037,Which anatomical structures lack the expression of genes or proteins involved in the interaction with the organization of actin cytoskeleton in postsynaptic terminals?,4,2,2,0.5,0.5,0.0,1.0,0.25,0.5
+4259,"Could you identify enzymes that bind metal ions, are active in protein polyubiquitination, and play a role in both Antigen processing through Ubiquitination and Proteasome degradation?",9,1,8,0.1111111111111111,0.1111111111111111,0.0,0.0,0.09090909090909091,0.1111111111111111
+3815,What conditions should be included in the differential diagnosis for a patient presenting with a breast carcinoma subtype linked to both invasive ductal carcinoma and cystic hypersecretory carcinoma?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+5496,What are the diseases derived from cervical benign epithelial neoplasms?,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+5772,What are the observed effects or phenotypes associated with constrictive pericarditis subtypes?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.5
