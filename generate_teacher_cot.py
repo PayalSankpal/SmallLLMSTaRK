@@ -1,6 +1,7 @@
 import asyncio
 import pandas as pd
 import ast
+import sys
 from stark_qa import load_skb
 from copilot import CopilotClient, PermissionHandler
 import time
@@ -20,22 +21,23 @@ async def ask_model(client, prompt):
     
     def on_event(event):
         nonlocal response_text
-        event_type = getattr(event.type, 'value', event.type) if hasattr(event, 'type') else None
-        
-        if event_type == "assistant.message":
-            response_text = event.data.content
-            done.set()
-        elif event_type == "session.idle":
-            done.set()
-        elif event_type == "error":
-            print(f"Error:", event)
-            done.set()
+        try:
+            event_type = getattr(event.type, 'value', event.type) if hasattr(event, 'type') else str(event)
+            if event_type == "assistant.message":
+                response_text = getattr(event.data, "content", "")
+            elif event_type == "session.idle":
+                done.set()
+            elif event_type == "error":
+                print(f"Error:", event)
+                done.set()
+        except Exception:
+            pass
 
     session.on(on_event)
     await session.send(prompt)
     
     try:
-        await asyncio.wait_for(done.wait(), timeout=60.0)
+        await asyncio.wait_for(done.wait(), timeout=120.0)
     except asyncio.TimeoutError:
         print("Timeout waiting for response!")
         
@@ -104,9 +106,9 @@ Your detailed rationale here. Evaluate the query constraints against the provide
         
     out_df = pd.DataFrame(results)
     out_df.to_csv('teacher_cot_evaluations.csv', index=False)
-    print("\nSaved Teacher CoT queries to teacher_cot_evaluations.csv")
+    print("\nSaved Teacher CoT queries to teacher_cot_evaluations.csv", flush=True)
 
-    await client.stop()
+    sys.exit(0)
 
 if __name__ == "__main__":
     asyncio.run(main())

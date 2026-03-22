@@ -1,0 +1,112 @@
+import re
+
+with open('reranking/rankgpt_nvidia.py', 'r') as f:
+    text = f.read()
+
+# Part 1: Insert few-shot logic
+insertion_point = "kb = load_skb('prime', download_processed=True)"
+new_code = f"""{insertion_point}
+
+print("Building Few-Shot Prompt from teacher_cot_evaluations.csv...")
+few_shot_examples = ""
+try:
+    df_train = pd.read_csv('../teacher_cot_evaluations.csv')
+    for idx, row in df_train.iterrows():
+        try:
+            resp = row['teacher_response']
+            if not isinstance(resp, str): continue
+            
+            reasoning = resp.split('<reasoning>')[1].split('</reasoning>')[0].strip()
+            ranking_str = resp.split('<ranking>')[1].split('</ranking>')[0].strip()
+            
+            candidates = ast.literal_eval(row['candidates'])
+            
+            docs_info = []
+            for d in candidates:
+                d_info = str(kb.get_doc_info(d, add_rel=False, compact=True))
+                n_type = str(kb.get_node_type_by_id(d))
+                docs_info.append(f"[{d}] Type: {{n_type}} | Info: {{d_info}}")
+            fs_docs_str = '\\n'.join(docs_info)
+            
+            example = f\"\"\"
+Example {{idx+1}}:
+Query: {{row['query']}}
+
+Candidate Documents:
+{{fs_docs_str}}
+
+Response:
+<reasoning>
+{{reasoning}}
+</reasoning>
+<ranking>
+{{ranking_str}}
+</ranking>
+\"\"\"
+            few_shot_examples += example + "\\n"
+        except Exception as e:
+            continue
+    print("Few-Shot Prompt built successfully.")
+except Exception as e:
+    print("Could not build few-shot prompt:", e)
+"""
+text = text.replace(insertion_point, new_code)
+
+# Part 2: Override the prompt
+# using split to accurately target it
+parts = text.split("    prompt = f\"\"\"You are an advanced")
+if len(parts) > 1:
+    after_prompt = parts[1].split('"""\n    for attempt in range(retries):')[1]
+    
+    new_prompt = '''    prompt = f"""You are an advanced search relevance ranker. Below are some examples followed by a new search query and a list of candidate documents.
+Please rank the candidate documents by their relevance to the search query, from the most relevant to the least relevant.
+For your response to the final query, output your response in the same format: first provide a <reasoning> block with your reasoning, then provide a <ranking> block containing ONLY a JSON array of the document IDs in the sorted order.
+
+{few_shot_examples}
+
+=== NEW QUERY TO RANK ===
+Query: {query_text}
+
+Candidate Documents:
+{docs_str}
+
+Response:
+"""
+    for attempt in range(retries):'''
+    
+    text = parts[0] + new_prompt + after_prompt
+
+# Part 3: Override API call and parsing
+parts2 = text.split("            response = client.chat.completions.create(")
+if len(parts2) > 1:
+    after_api = parts2[1].split("            if isinstance(parsed, list):")[1]
+    new_api = '''            response = client.chat.completions.create(
+                model=MODEL,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.0,
+                max_tokens=1500,
+            )
+            raw = response.choices[0].message.content.strip()
+            
+            ranking_str = raw
+            try:
+                if '<ranking>' in raw and '</ranking>' in raw:
+                    ranking_str = raw.split('<ranking>')[1].split('</ranking>')[0].strip()
+            except Exception:
+                pass
+                
+            # Clean possible markdown
+            if ranking_str.startswith("```json"): ranking_str = ranking_str[7:]
+            if ranking_str.startswith("```"): ranking_str = ranking_str[3:]
+            if ranking_str.endswith("```"): ranking_str = ranking_str[:-3]
+            ranking_str = ranking_str.strip()
+            
+            parsed = json.loads(ranking_str)
+            if isinstance(parsed, list):'''
+    
+    text = parts2[0] + new_api + after_api
+
+with open('reranking/rankgpt_nvidia.py', 'w') as f:
+    f.write(text)
+
+print("Replacement complete.")

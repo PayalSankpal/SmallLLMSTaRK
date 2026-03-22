@@ -1,0 +1,179 @@
+qid,query,ground_truths,candidates,teacher_response
+3650,What mandibular diseases related to odontogenic tumors should I include in the differential diagnosis for a suspected lesion?,"[99091, 98556, 35695]","[39631, 98556, 37905, 99091, 35695, 97242, 97246, 94804, 99807, 97370, 35513, 97288, 95228, 33690, 97400, 35817, 97359, 35729, 39859, 97352]","<reasoning>
+The query specifically asks for ""mandibular diseases related to odontogenic tumors"" to include in a differential diagnosis. This requires identifying:
+1. Conditions that are odontogenic tumors (arising from tooth-forming tissues)
+2. That occur in or preferentially affect the mandible
+3. That would be clinically relevant for differential diagnosis
+
+**Highly Relevant (Specific Mandibular Odontogenic Tumors):**
+- [35695] Ameloblastoma: Described as ""most common odontogenic tumor"" and ""usually affecting the molar-ramus region of the mandible"" - essential for any odontogenic differential diagnosis
+- [98556] Keratocystic odontogenic tumor: Explicitly states it ""usually arises from the mandible"" with specific mandibular location details - directly answers the mandibular requirement
+- [99091] Calcifying epithelial odontogenic tumor: States it ""most often grows intraosseously in the mandible"" - specific and mandible-focused
+- [97246] Ameloblastic carcinoma: Identified as an odontogenic tumor ""occurring in mandible more often than in maxilla"" - malignant variant critical for differential
+
+**Moderately Relevant (Odontogenic Cysts/Tumors, Mandibular Common):**
+- [94804] Dentigerous cyst: Most common follicular odontogenic cyst, important differential diagnosis consideration
+- [39631] Odontogenic cyst: Broader category including mandibular cysts relevant to differential diagnosis
+- [99807] Odontoma: Benign odontogenic tumor occurring in jaw tooth-bearing areas
+- [37905] Odontogenic neoplasm: Umbrella term, provides context but less specific
+
+**Lower Relevance (Ameloblastoma Variants):**
+- [97370] Plexiform ameloblastoma, [97288] Desmoplastic ameloblastoma, [95228] Bone ameloblastoma: Histologic variants of ameloblastoma; relevant but secondary to main entity
+
+**Minimally Relevant for Mandibular Odontogenic Differential:**
+- [97242] Adenomatoid odontogenic tumor: Predominantly maxillary, not mandible-specific
+
+**Not Relevant (Not Odontogenic Tumors):**
+- [35513], [33690], [97400], [35817], [97359], [35729], [39859], [97352]: These are either malformation syndromes, fibromas, or salivary gland carcinomas - not odontogenic tumors
+
+</reasoning>
+
+<ranking>
+[35695, 98556, 99091, 97246, 94804, 39631, 99807, 37905, 97370, 97288, 95228, 97242]
+</ranking>"
+6912,"Could you provide information on drugs that interact with genes or proteins linked to signaling adaptor activities by converting disulfides into dithiols, ultimately influencing cell signaling processes?",[16528],"[16528, 14877, 19159, 17284, 17528, 17787, 14931, 17822, 18108, 17526, 19240, 16839, 17798, 14066, 16732, 19433, 17794, 17795, 21497, 19769]","<reasoning>
+The query requires drugs that:
+1. Interact with genes/proteins linked to signaling adaptor activities
+2. Specifically convert disulfides into dithiols (redox chemistry)
+3. Influence cell signaling processes
+
+Evaluating candidates:
+
+**[19159] PX-12** - PERFECT MATCH. This is a thioredoxin-1 (Trx-1) inhibitor. Thioredoxin is a redox protein whose primary function is catalyzing disulfide reduction (converting disulfides to dithiols), and it is a critical signaling adaptor involved in redox regulation of transcription factors and cell proliferation/death. The mechanism directly addresses all three query requirements: targets a redox signaling protein, performs disulfide-to-dithiol chemistry, influences cell signaling through transcription factor control.
+
+**[14877] Glutathione** - STRONG MATCH. Explicitly stated to be ""involved in protein disulfide bond rearrangement"" and ""reduces peroxides."" Functions as a cofactor for glutathione peroxidase and participates in cell signaling (leukotriene synthesis). Reduces disulfides but is a general redox agent rather than a targeted signaling adaptor inhibitor.
+
+**[16528] 1,4-Dithiothreitol** - MODERATE MATCH. Explicitly ""reduces disulfides to dithiols"" and is a protective agent for thiol groups. However, it is a general biochemical reagent without specific targeting of signaling adaptors or documented cell signaling influence.
+
+**[17528] Glutathione disulfide** - Poor match. This IS a disulfide (oxidized glutathione), not an agent that converts disulfides to dithiols. The chemistry is backwards.
+
+**[17284] Phosphonotyrosine** - Poor match. Related to tyrosine phosphorylation signaling, not disulfide-to-dithiol conversion chemistry.
+
+**[19433] Selenocysteine** - Poor match. While found in glutathione peroxidase (a redox enzyme), it's an amino acid component, not a drug that specifically converts disulfides or targets signaling adaptors.
+
+Remaining candidates [17787, 14931, 17822, 18108, 17526, 19240, 16839, 17798, 14066, 16732, 17794, 17795, 21497, 19769] either lack sufficient information, are glutathione derivatives without disulfide-reducing properties explicitly described, or focus on different signaling mechanisms (phosphorylation rather than redox) rather than disulfide reduction.
+</reasoning>
+
+<ranking>
+[19159, 14877, 16528]
+</ranking>"
+805,What are some related conditions to thyroiditis that cause extensive scarring in the thyroid region and impact surrounding tissues?,[95777],"[95776, 97563, 95777, 96577, 33576, 37749, 36252, 37750, 99858, 95778, 97103, 29894, 38784, 84100, 98622, 96350, 84135, 98564, 98596, 83804]","<reasoning>
+The query asks for related conditions to thyroiditis that:
+1. Cause extensive scarring in the thyroid region
+2. Impact surrounding tissues
+
+Let me evaluate the key candidates:
+
+**[95777] Riedel's fibrosing thyroiditis**: The definition explicitly states ""characterized by extensive fibrosis of the thyroid parenchyma. The fibrosis extends beyond the thyroid gland capsule to the adjacent structures."" This DIRECTLY and PERFECTLY addresses both query requirements: extensive scarring (fibrosis) AND impact on surrounding tissues (extends beyond capsule to adjacent structures). This is a thyroiditis variant, making it a related condition.
+
+**[98622] IgG4-related thyroid disease**: The definition describes this as ""A fibroinflammatory disorder of the thyroid gland... characterized a large, hard thyroid mass, and presenting with pressure symptoms (breathing difficulties and dysphagia)... can often be associated with extracervical fibroinflammatory disorders such as retroperitoneal fibrosis."" It explicitly mentions fibrosis, impact on surrounding structures (pressure symptoms on breathing/swallowing), and associated systemic fibroinflammatory conditions. This MATCHES both criteria well.
+
+**[33576] Thyroiditis (disease)**: This is a general category that explicitly mentions ""Riedel thyroiditis"" as one of its subtypes. While it provides useful context of thyroiditis types, it doesn't specifically describe extensive scarring in its own definition. However, it serves as an important parent classification of relevant subtypes.
+
+**Other thyroiditis variants** ([97563] subacute, [95776] suppurative, [97103] atrophic, [29894] Hashimoto, [99858] postpartum, [95778] acute): None of these specifically mention extensive scarring/fibrosis extending to adjacent structures in their definitions. They describe inflammation, destruction, or functional changes, but not the extensive fibrotic scarring characteristic of the query.
+
+**[84135] Substernal goiter and [37750] Toxic diffuse goiter**: While these mention impact on surrounding tissues (compression), they don't specifically describe extensive scarring in the thyroid region.
+
+</reasoning>
+
+<ranking>
+[95777, 98622, 33576]
+</ranking>"
+896,"Could you suggest any medications that might lead to stretch marks as a side effect? Additionally, I'm in need of a topical cream or ointment to alleviate localized redness, itching, and swelling.","[15500, 14015, 14019, 14021, 14023, 15047, 14026, 14028, 14029, 14033, 15703, 14040, 14043, 14941, 15583, 17775, 17776, 17777, 14970, 15486]","[16791, 21218, 16788, 14973, 15438, 21216, 14259, 14881, 20751, 14763, 14276, 21217, 15437, 14251, 16705, 16793, 14331, 14152, 17148, 14762]","<reasoning>
+The query contains two distinct information needs:
+
+1. **Medications that cause stretch marks as a side effect**: The query seeks medications with stretch marks listed as a known adverse effect. Stretch marks are commonly associated with systemic corticosteroid use due to skin atrophy and loss of collagen integrity. However, reviewing all candidate documents, none explicitly list ""stretch marks"" as a documented side effect in their adverse effect profiles.
+
+2. **Topical cream/ointment for localized redness, itching, and swelling**: This describes symptoms consistent with dermatological inflammation (eczema, dermatitis, etc.).
+
+**Analysis of candidates:**
+
+- **[14251] Tacrolimus**: This is the only candidate with explicit topical formulation and clear dermatological indication. The document states it is ""used in a topical preparation in the treatment of severe atopic dermatitis"" and notes it ""suppresses inflammation in a similar way to steroids."" Atopic dermatitis presents with redness, itching, and swelling—precisely matching the second part of the query. The document explicitly notes that ""topical steroids cannot be used on the face, as they thin the skin dramatically there,"" while tacrolimus can be used directly on the face. **Perfect match for part 2 of the query.**
+
+- **Thiazide diuretics** ([16791], [16788], [20751], [16705], [16793], [14331], [14152], [17148], [14762], [14276]): Multiple thiazide drugs are listed, but none are topical formulations, and none mention stretch marks as an adverse effect.
+
+- **[14973] Mifepristone**: While the pharmacology section mentions glucocorticoid antagonism, it does not list stretch marks as a side effect, and it is an oral medication, not topical.
+
+- **Other systemic medications** ([21218], [15438], [21216], [14259], [14881], [15437], [21217]): None are described as topical formulations or have indications for localized skin conditions. None list stretch marks as a documented adverse effect.
+
+**Conclusion**: Only Tacrolimus directly and explicitly answers one part of the two-part query (the topical treatment for redness, itching, and swelling). No candidate documents contain explicit information about medications that cause stretch marks as a documented side effect.
+</reasoning>
+
+<ranking>
+[14251]
+</ranking>"
+1273,Could cerebral amyloid angiopathy be linked to any diseases that cause memory lapses or cognitive issues akin to dementia?,[31570],"[28780, 37573, 33133, 27744, 28998, 28708, 32407, 94588, 32688, 32477, 31385, 33363, 27772, 30419, 28310, 39362, 37799, 35691, 39817, 37801]","<reasoning>
+This query specifically seeks documents that establish a connection between cerebral amyloid angiopathy (CAA) and diseases causing memory loss, cognitive decline, or dementia-like symptoms. Let me evaluate candidates against these query requirements:
+
+**Perfect/Excellent Matches:**
+
+[33133] ABeta amyloidosis: This is the strongest match. It explicitly describes ""Hereditary cerebral hemorrhage with amyloidosis"" with amyloid-beta accumulation in cerebral vessel walls, causing ""progressive Alzheimer's disease-like dementia."" This directly links amyloid pathology in cerebral vessels to cognitive decline and memory issues.
+
+[28780] Alzheimer disease: Highly relevant because it establishes that beta-amyloid (amyloid plaques) is a primary pathologic feature causing memory loss and cognitive decline (""Memory loss is the key symptom""). Shows the direct link between amyloid pathology and dementia-like cognitive symptoms.
+
+[28310] Dementia/parkinsonism with non-Alzheimer amyloid plaques: Directly relevant as it explicitly involves amyloid plaques causing dementia and cognitive changes, demonstrating amyloid-related dementias beyond Alzheimer's.
+
+**Good Matches (Relevant but less direct):**
+
+[37799] Cerebrovascular dementia: Shows that cerebrovascular pathology causes cognitive decline and dementia. Since CAA is a cerebrovascular condition involving amyloid, this demonstrates the mechanism by which vessel disease leads to cognitive symptoms.
+
+[39817] Vascular dementia: Similar to cerebrovascular dementia—demonstrates how vascular disease in the brain causes memory loss and cognitive dysfunction.
+
+[37573] dementia (disease): General overview that mentions Alzheimer's disease with amyloid plaques as a major cause of dementia, connecting amyloid to cognitive decline.
+
+[28998] CADASIL: Demonstrates that cerebral arteriopathy (small vessel disease) leads to ""cognitive problems and dementia,"" showing vessel disease mechanism in cognitive decline.
+
+**Weaker Matches:**
+
+Documents discussing dementias without specific amyloid pathology [35691, 32688, 32477] or transient conditions [94588] are less relevant to the specific CAA-amyloid connection being queried.
+</reasoning>
+
+<ranking>
+[33133, 28780, 28310, 37799, 39817, 37573, 28998]
+</ranking>"
+2734,What is the anxiety disorder subtype associated with the NR3C1 gene?,[94658],"[27933, 37703, 94658, 28249, 32087, 83760, 83840, 94656, 83841, 38242, 28313, 38957, 30035, 35915, 84019, 35754, 84204, 36105, 36478, 83779]","<reasoning>
+The query asks for ""the anxiety disorder subtype associated with the NR3C1 gene"" - this requires a document that:
+1. Discusses an anxiety-related condition or disorder
+2. Explicitly connects it to the NR3C1 gene
+
+Reviewing all candidates:
+
+**Document [32087] - Glucocorticoid Resistance**: This is the ONLY candidate that explicitly mentions the NR3C1 gene. The description states: ""An autosomal dominant condition due to mutation in the nr3c1 gene, encoding the glucocorticoid receptor."" Critically, the orphanet definition lists clinical manifestations including ""anxiety and depression in both sexes."" This directly establishes the genetic association requested.
+
+**Documents [27933], [84019], [84204], [36105]**: These discuss various anxiety-related conditions (anxiety disorder, anxiety, mixed anxiety and depressive disorder, phobic disorder) but contain NO mention of the NR3C1 gene whatsoever.
+
+**All other documents**: Neither mention anxiety/anxiety disorders nor the NR3C1 gene. These include depression-focused documents (38957, 83840, 83841, 94658, 83760), psychotic disorders (28313, 83779), bipolar disorder (38242), and other general mental health categories.
+
+The scientific basis is clear: NR3C1 encodes the glucocorticoid receptor, and mutations in this gene cause glucocorticoid resistance, which presents with anxiety as a notable clinical feature alongside other endocrine manifestations. Document [32087] is uniquely relevant because it is the only candidate that actually establishes the NR3C1-anxiety association.
+</reasoning>
+
+<ranking>
+[32087]
+</ranking>"
+3338,"What are the compounds that directly target the OPRM1 receptor, work synergistically with Ampicillin, and are used to treat opioid-induced constipation?","[15880, 17508]","[17508, 15880, 14437, 14171, 14160, 15089, 14314, 17162, 17165, 15268, 15125, 15152, 15228, 16506, 15856, 14981, 21878, 15879, 17150, 21879]","<reasoning>
+To answer this query, I need to identify compounds that satisfy ALL THREE criteria:
+1. Directly target the OPRM1 receptor (the μ-opioid receptor)
+2. Work synergistically with Ampicillin
+3. Are used to treat opioid-induced constipation (OIC)
+
+**Analysis by criterion:**
+
+**OPRM1 targeting (μ-opioid receptor):** Multiple candidates act on mu-opioid receptors - either as agonists (Methadone, Codeine, Oliceridine, Buprenorphine) or antagonists (Methylnaltrexone, Naldemedine, Naloxone, Alvimopan, Naloxegol, Naltrexone, etc.). This criterion is met by approximately 20 candidates.
+
+**OIC treatment indication:** Only a handful explicitly indicate treatment of opioid-induced constipation:
+- Methylnaltrexone [17508]: ""Treatment of opioids induced constipation in palliative patients""
+- Naldemedine [15880]: ""For the treatment of opioid-induced constipation""
+- Alvimopan [17162]: Used to accelerate gastrointestinal recovery (OIC-related)
+- Naloxegol [15228]: ""Indicated for the treatment of opioid-induced constipation""
+- Axelopran [21879]: ""used in trials studying the treatment of OIC""
+
+**Ampicillin synergy:** This is the critical constraint. After careful review of all 23 candidates, **NONE of them contain any documented interaction or synergistic relationship with Ampicillin**. There is no mention of Ampicillin in any candidate description, mechanism of action, or drug interaction profile.
+
+**Conclusion:** No candidates perfectly satisfy all three criteria. The query specifies compounds that must work synergistically with Ampicillin, and this requirement is completely absent from the dataset. Without explicit documentation of Ampicillin synergy, no compounds can be considered as ""perfectly answering"" the query.
+</reasoning>
+
+<ranking>
+[]
+</ranking>
+
+**Important Note:** This query cannot be answered from the provided dataset because none of the candidates demonstrate synergy with Ampicillin. While several compounds (Methylnaltrexone, Naldemedine, Alvimopan, Naloxegol) excellently meet the first two criteria (OPRM1 targeting + OIC treatment), the third requirement—synergistic action with Ampicillin—is completely undocumented across all 23 candidates. This suggests either: (1) such compounds do not exist in the dataset, or (2) this specific combination of properties has not been established in the medical literature provided."
