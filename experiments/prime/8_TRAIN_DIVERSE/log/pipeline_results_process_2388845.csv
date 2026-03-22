@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+3338,"What are the compounds that directly target the OPRM1 receptor, work synergistically with Ampicillin, and are used to treat opioid-induced constipation?",2,2,0,1.0,1.0,1.0,1.0,1.0,1.0

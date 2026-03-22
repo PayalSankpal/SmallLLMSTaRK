@@ -1,0 +1,15 @@
+/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning: The default value of `n_init` will change from 10 to 'auto' in 1.4. Set the value of `n_init` explicitly to suppress the warning
+  warnings.warn(
+Loading CSV...
+Loading embeddings...
+Loaded 120 embeddings from the CSV. Running K-Means...
+Finding closest queries to centroids...
+Saved selected 8 queries:
+- 6912: Could you provide information on drugs that interact with genes or proteins linked to signaling adaptor activities by converting disulfides into dithiols, ultimately influencing cell signaling processes?
+- 2734: What is the anxiety disorder subtype associated with the NR3C1 gene?
+- 805: What are some related conditions to thyroiditis that cause extensive scarring in the thyroid region and impact surrounding tissues?
+- 3338: What are the compounds that directly target the OPRM1 receptor, work synergistically with Ampicillin, and are used to treat opioid-induced constipation?
+- 1699: Which drugs are contraindicated for otitis media or ear infections?
+- 896: Could you suggest any medications that might lead to stretch marks as a side effect? Additionally, I'm in need of a topical cream or ointment to alleviate localized redness, itching, and swelling.
+- 1273: Could cerebral amyloid angiopathy be linked to any diseases that cause memory lapses or cognitive issues akin to dementia?
+- 3650: What mandibular diseases related to odontogenic tumors should I include in the differential diagnosis for a suspected lesion?

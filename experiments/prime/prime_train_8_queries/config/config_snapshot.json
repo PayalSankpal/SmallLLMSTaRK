@@ -3,6 +3,7 @@
     "dataset": "prime",
     "split": "train",
     "exp_name": "8_TRAIN_DIVERSE",
+
     "test_run": false,
     "output_base_dir": "./experiments/prime",
     "logging_level": "INFO"
@@ -37,7 +38,7 @@
     "score_decay": 1
   },
   "data_paths": {
-    "use_saved_llm_responses": false,
+    "use_saved_llm_responses": true,
     "llm_responses_file": "llm_responses/llm_response_dataset_prime.csv",
     "use_saved_vss_candidates": false,
     "vss_candidates_json_path": "vss_candidates.json"
