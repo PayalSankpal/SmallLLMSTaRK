@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-1618,"Please provide a list of genes associated with coding proteins linked to short rib-polydactyly syndrome, covering both the general condition and Majewski type specifically.",14,0,14,0.0,0.0,0.0,0.0,0.0,0.0

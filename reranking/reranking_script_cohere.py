@@ -10,14 +10,6 @@ from collections import deque
 from tqdm import tqdm
 from stark_qa import load_skb
 
-# API Keys for Cohere
-API_KEYS = [
-    "zUIi4u2suP7wMEOGZOeQaVP4LcXHvs7U1I4Avswd",
-    "ki5sgOxJy797ufk7fhQiK7LE5l3DJiK9CTyGefQ2",
-    "PS45TDnnGiQXwPafsH0SoN2w0IekBgjGLfJ9aiBJ",
-    "NK3nihzYwIq73MmVEJavCGdUUvBsfoakrihCw0ef"
-]
-
 class RateLimitedKeyManager:
     def __init__(self, api_keys, rate_limit_per_min=10):
         self.api_keys = api_keys

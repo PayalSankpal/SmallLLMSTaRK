@@ -1,8 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-1618,"Please provide a list of genes associated with coding proteins linked to short rib-polydactyly syndrome, covering both the general condition and Majewski type specifically.",14,0,14,0.0,0.0,0.0,0.0,0.0,0.0
-6517,Which cell structures are involved in interaction with genes or proteins that are influenced by the medication Travoprost?,4,0,4,0.0,0.0,0.0,0.0,0.0,0.0
-6155,"Which gene or protein, essential for regulating skeletal muscle contraction, is present in neuronal tissue but not in the decidua?",4,0,4,0.0,0.0,0.0,0.0,0.0,0.0
-6215,Identify pathways associated with NODAL signaling where there is a common gene or protein interaction.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-6960,Which gene or protein is not expressed in either the salivary glands or the renal nephron's tubular structures?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-8511,Could you identify any stable compounds listed in DrugBank with experimental evidence that act upon genes or proteins associated with peptidyl-asparagine 3-dioxygenase enzymatic function?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
-4948,Could you suggest medications that are compatible with Pegamotecan and Pegaptanib to enhance their efficacy and also help increase my neutrophil levels?,3,0,3,0.0,0.0,0.0,0.0,0.0,0.0

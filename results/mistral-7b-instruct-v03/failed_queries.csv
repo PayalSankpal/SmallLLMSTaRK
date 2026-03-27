@@ -1,0 +1,873 @@
+query_id,query_text,error_type,error,traceback
+5686,Please find genes or proteins that bind to clathrin and also interact with the FAT3 protein.,ValueError (VSS Fallback Applied),Node type protein not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'protein' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type protein not found
+"
+11077,Find medical conditions linked to the gene SLC29A3 that should not be treated with the drug Gosereli,ValueError (VSS Fallback Applied),Node type gene not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'gene' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type gene not found
+"
+5772,What are the observed effects or phenotypes associated with constrictive pericarditis subtypes?,TimeoutException (VSS Fallback Applied),Query execution timed out after 120 seconds,
+1989,What possible conditions could I have that are linked to or similar to uniparental disomy of chromos,ValueError (VSS Fallback Applied),Node type anomaly not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'anomaly' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type anomaly not found
+"
+7490,Which neonatal gastrointestinal illness resulting in severe intestinal harm and necrosis should not ,ValueError (VSS Fallback Applied),Node type bacteria not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'bacteria' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type bacteria not found
+"
+1125,What is the downstream cellular pathway associated with megakaryocyte development and platelet produ,ValueError (VSS Fallback Applied),Node type protein not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'protein' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type protein not found
+"
+196,"Can you find genes or proteins that regulate enzymes, interact with NCK2, and modulate enzymatic act",ValueError (VSS Fallback Applied),Node type protein not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'protein' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type protein not found
+"
+6083,Which medications are designed to influence genes or proteins associated with the enzymatic activity,ValueError (VSS Fallback Applied),Node type enzyme not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'enzyme' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type enzyme not found
+"
+1792,Seeking the gene that encodes for a type IV collagen subunit strengthening the extracellular matrix ,ValueError (VSS Fallback Applied),Node type gene not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'gene' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type gene not found
+"
+9336,What are the phenotypic manifestations or effects associated with the subtype of chondroid hamartoma,ValueError (VSS Fallback Applied),Node type tumor (anatomy) not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'tumor (anatomy)' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type tumor (anatomy) not found
+"
+6164,Which cell structures interact with the genetic or protein targets of the drug Linaclotide?,TimeoutException (VSS Fallback Applied),Query execution timed out after 120 seconds,
+6242,Which investigational compounds are designed to affect genes or proteins associated with UDP-N-acety,ValueError (VSS Fallback Applied),Node type enzyme not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'enzyme' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type enzyme not found
+"
+1248,What is the gene or protein involved in both the Translesion Synthesis pathway via POLH interaction ,ValueError (VSS Fallback Applied),Node type complex not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'complex' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type complex not found
+"
+2472,"Could you recommend a drug effective against Candida albicans, suitable for treating candidiasis wit",ValueError (VSS Fallback Applied),Node type fungus not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'fungus' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type fungus not found
+"
+8631,Which conditions linked to the SLC40A1 gene lead to symptoms of fatigue and weakness and are adverse,ValueError (VSS Fallback Applied),Node type gene not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'gene' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type gene not found
+"
+749,Which illness is associated with the SRD5A2 gene and could be treated using Megestrol acetate?,ValueError (VSS Fallback Applied),Node type gene not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'gene' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type gene not found
+"
+2215,"What condition associated with the GPR68 gene could cause symptoms like long-term abdominal pain, co",ValueError (VSS Fallback Applied),Node type gene not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'gene' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type gene not found
+"
+3222,What are the solid-form drugs known to target the lysozyme (LYZ) gene or its protein?,ValueError (VSS Fallback Applied),Node type gene not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'gene' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type gene not found
+"
+1634,Which drugs interact with the SLC22A5 transporter and also act upon the SLC6A8 gene/protein in their,ValueError (VSS Fallback Applied),Node type transporter not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'transporter' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type transporter not found
+"
+363,What disease stems from Ascaridida infection and leads to blockage or rupture in the intestines?,ValueError (VSS Fallback Applied),Node type parasite not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'parasite' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type parasite not found
+"
+6336,Identify proteins or genes that interact with the SCN11A gene and are linked to a shared phenotype o,ValueError (VSS Fallback Applied),Node type gene not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'gene' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type gene not found
+"
+11151,Could you identify the medication that functions as an enzymatic agent affecting certain genes or pr,ValueError (VSS Fallback Applied),Node type molecule not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'molecule' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type molecule not found
+"
+733,Please find genes or proteins that interact with TNF receptor superfamily members associated with th,ValueError (VSS Fallback Applied),Node type protein not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'protein' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type protein not found
+"
+1408,"I need to find a gene or protein that interacts with USH1C through PPI, is expressed in leg muscles,",ValueError (VSS Fallback Applied),Node type protein not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'protein' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type protein not found
+"
+2884,Which disease falls under normal pressure hydrocephalus and is linked to the THAS gene or its protei,ValueError (VSS Fallback Applied),Node type gene not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'gene' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type gene not found
+"
+3501,"Which gene on chromosome 4, known to interact with PALS2 protein and expressed in multicellular orga",ValueError (VSS Fallback Applied),Node type protein not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'protein' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type protein not found
+"
+4996,Which condition involves a posterior polar cataract in its symptoms and is linked to the ITM2B gene?,ValueError (VSS Fallback Applied),Node type gene not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'gene' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type gene not found
+"
+5631,"What genes or proteins interact with the tubulin C-terminal post-translational modification pathway,",ValueError (VSS Fallback Applied),Node type protein not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'protein' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type protein not found
+"
+8753,Are there any pharmacological agents that act as electron donors in metabolic processes through reve,ValueError (VSS Fallback Applied),Node type enzyme not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'enzyme' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type enzyme not found
+"
+5881,"What are the common genetic targets associated with the action of both 2',4'-Dichloro-4-hydroxy-1,1'",ValueError (VSS Fallback Applied),Node type gene not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'gene' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type gene not found
+"
+2855,What genetic disorder associated with the PMP22 gene manifests symptoms similar to acute sensory ata,ValueError (VSS Fallback Applied),Node type gene not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'gene' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type gene not found
+"
+8816,"Which protein, involved in modulating cell signaling networks through the removal of phosphate group",ValueError (VSS Fallback Applied),Node type protein not found,"Traceback (most recent call last):
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 147, in node_type2id
+    idx = list(self.node_type_dict.values()).index(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'protein' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 1044, in main
+    pipeline(
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 913, in pipeline
+    step3_get_initial_candidates(query, kb, retriever)
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 405, in step3_get_initial_candidates
+    initial_candidates[entity] = get_initial_candidates_for_entity(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/raid/adityasd314/BTechProject/march_pipeline.py"", line 377, in get_initial_candidates_for_entity
+    nodes_by_name = kb.get_node_ids_by_value(node_type=etype, key=""name"", value=name_constraint)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 166, in get_node_ids_by_value
+    ids = self.get_node_ids_by_type(node_type)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 162, in get_node_ids_by_type
+    return torch.arange(self.num_nodes())[self.node_types == self.node_type2id(node_type)].tolist()
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/home/coep/.pyenv/versions/3.11.14/lib/python3.11/site-packages/stark_qa/skb/knowledge_base.py"", line 149, in node_type2id
+    raise ValueError(f""Node type {node_type} not found"")
+ValueError: Node type protein not found
+"
