@@ -78,6 +78,9 @@ def rerank_with_cohere_direct(query, documents, top_n=None):
 
 def rerank(top_k_node_ids, query, kb, max_k=20, compact_docs=False, add_rel=False):
     # Simplified rerank for Method 4 only
+    if not top_k_node_ids:
+        return []
+        
     top_k_node_ids = top_k_node_ids[:max_k]
     
     documents = []
@@ -207,7 +210,8 @@ def main():
              # Fallback to extracting from results if vss_merged_candidates not present
              answers = []
              for x in df["results"]:
-                 answers.append((x['answer_list']))
+                 ans = x.get('answer_list', [])
+                 answers.append(ans)
              df["answer_list"] = answers
     
     df["answer_list"] = df["answer_list"].map(lambda x: x[:20])
