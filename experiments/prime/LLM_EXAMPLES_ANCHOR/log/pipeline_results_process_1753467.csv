@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
-1248,What is the gene or protein involved in both the Translesion Synthesis pathway via POLH interaction and the binding to single-stranded DNA as part of the Replication Protein A complex?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0

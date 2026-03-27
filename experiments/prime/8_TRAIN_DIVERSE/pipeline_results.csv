@@ -1,8 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-3650,What mandibular diseases related to odontogenic tumors should I include in the differential diagnosis for a suspected lesion?,3,0,3,0.0,0.0,0.0,0.0,0.0,1.0
-805,What are some related conditions to thyroiditis that cause extensive scarring in the thyroid region and impact surrounding tissues?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
-1273,Could cerebral amyloid angiopathy be linked to any diseases that cause memory lapses or cognitive issues akin to dementia?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-6912,"Could you provide information on drugs that interact with genes or proteins linked to signaling adaptor activities by converting disulfides into dithiols, ultimately influencing cell signaling processes?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
-2734,What is the anxiety disorder subtype associated with the NR3C1 gene?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
-3338,"What are the compounds that directly target the OPRM1 receptor, work synergistically with Ampicillin, and are used to treat opioid-induced constipation?",2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
-896,"Could you suggest any medications that might lead to stretch marks as a side effect? Additionally, I'm in need of a topical cream or ointment to alleviate localized redness, itching, and swelling.",20,0,20,0.0,0.0,0.0,0.0,0.0,0.0

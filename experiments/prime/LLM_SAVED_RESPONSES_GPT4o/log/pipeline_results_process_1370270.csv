@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-2998,Could you recommend any appetite suppressants that are effective for weight control?,14,2,12,0.14285714285714285,0.14285714285714285,1.0,1.0,1.0,0.42857142857142855

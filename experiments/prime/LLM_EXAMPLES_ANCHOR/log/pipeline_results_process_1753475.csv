@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
-4948,Could you suggest medications that are compatible with Pegamotecan and Pegaptanib to enhance their efficacy and also help increase my neutrophil levels?,3,3,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0

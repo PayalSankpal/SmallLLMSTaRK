@@ -1,5 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
-7047,"Is there an interaction between the gene/protein responsible for actin binding and disassembly, mediated by actin depolymerization factor 2, and the gene/protein implicated in the synthesis of 5-Phosphoribose 1-diphosphate?",2,1,1,0.5,0.5,0.0,1.0,0.2,0.5,0.5,0.06666666666666667,0.0
-6434,"Could you identify a medication facilitated by genetic or proteomic agents that engage with the endoplasmic reticulum and exhibits a half-life ranging from 12 to 17 hours, which plays a role in controlling the intracellular protein processing and trafficking?",14,0,14,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-3501,"Which gene on chromosome 4, known to interact with PALS2 protein and expressed in multicellular organisms, encodes a protein located between 69,969 and 70,151 base pairs?",2,1,1,0.5,0.5,1.0,1.0,1.0,0.5,0.5,1.0,1.0
-10076,Which medications are associated with genes or proteins that engage with the Golgi apparatus interior?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0,1.0,1.0,1.0

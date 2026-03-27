@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
-6155,"Which gene or protein, essential for regulating skeletal muscle contraction, is present in neuronal tissue but not in the decidua?",4,0,4,0.0,0.0,0.0,0.0,0.0,0.25,0.25,0.16666666666666666,0.0

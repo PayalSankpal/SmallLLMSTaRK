@@ -1,6 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-2855,What genetic disorder associated with the PMP22 gene manifests symptoms similar to acute sensory ataxic neuropathy?,1,1,0,1.0,1.0,0.0,0.0,0.1,1.0
-8602,Identify common genetic targets modulated by both 2-Methoxyestradiol and Hydrocortisone probutate.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-10675,What are the observed effects or phenotypes associated with the subtype of gastritis induced by alcohol consumption?,4,0,4,0.0,0.0,0.0,0.0,0.0,1.0
-3426,"Could you find genes or proteins that bind to integrins, are involved in Syndecan signaling, and play a role in pyloric atresia onset or progression?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-7867,Which anatomical structures lack the expression of genes or proteins that play a role in the interaction with the development of the metanephric nephron?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0

@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-1634,Which drugs interact with the SLC22A5 transporter and also act upon the SLC6A8 gene/protein in their pharmacodynamics?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0

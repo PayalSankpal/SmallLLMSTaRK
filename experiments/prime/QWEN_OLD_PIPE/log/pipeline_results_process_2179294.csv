@@ -1,8 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-7320,"Can you provide a list of long-acting beta-2 agonists that, when combined with Oxitropium, demonstrate a synergistic effect in the treatment of bronchospasm for a condition both medications are prescribed for?",3,0,3,0.0,0.0,0.0,0.0,0.0,1.0
-10929,Find health conditions linked to the HSP90AA1 protein that should not be treated with Dihydrocodeine.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-2748,"What diseases are associated with NUDT15 gene mutations, and how do these links affect disease presentation and treatment efficacy?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
-5215,"What disease is a subtype of glycogen storage disease caused by branching enzyme deficiency, characterized by abnormal glycogen buildup, affecting enzymes involved in glycogen metabolism?",9,0,9,0.0,0.0,0.0,0.0,0.0,1.0
-2998,Could you recommend any appetite suppressants that are effective for weight control?,14,0,14,0.0,0.0,0.0,0.0,0.0,0.7857142857142857
-9696,Which anatomical structures lack the expression of genes or proteins that engage in interaction with peptidyl-lysine acetylation processes?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-10383,Which gene or protein is lacking in the tissues of both the lymph node and the heart muscle?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-10947,Which cellular structures are engaged in interactions with genes or proteins that Aeruginosin 98-B affects?,4,0,4,0.0,0.0,0.0,0.0,0.0,0.0

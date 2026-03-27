@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-3650,What mandibular diseases related to odontogenic tumors should I include in the differential diagnosis for a suspected lesion?,3,0,3,0.0,0.0,0.0,0.0,0.0,1.0

@@ -1,7 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-10489,Search for a biological pathway associated with the activation of gene expression by RORA that also involves an interaction with a common gene or protein.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-4318,"Can you recommend medications effective against both amoebiasis, caused by Entamoeba histolytica, and helminthiasis?",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
-2511,"Please locate genes or proteins that are involved in functional interactions with the Class C/3 signaling pathway, exhibit GPCR activity, are expressed in both smooth muscle and taste bud cells, and belong to the bitter taste receptor family.",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
-363,What disease stems from Ascaridida infection and leads to blockage or rupture in the intestines?,2,2,0,1.0,1.0,0.0,1.0,0.5,1.0
-7923,Which pharmacological agent interacts with genes or proteins prevalent in gallbladder tissue to facilitate less invasive staging procedures?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-6533,"Which medication, sharing a similar transporter protein or gene as Levocetirizine, specifically targets and inhibits the nuclear enzyme DNA topoisomerase I?",2,0,2,0.0,0.0,0.0,0.0,0.0,0.5

@@ -1,9 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
-6572,Which biological process shares a characteristic interaction pattern with genes or proteins similar to the regulation of recycling endosome positioning in the postsynaptic region?,4,2,2,0.5,0.5,1.0,1.0,1.0,0.5,0.5,1.0,1.0
-2041,Could you provide a list of medications effective for treating both acquired polycythemia vera and myelofibrosis?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
-1075,Could you list experimental drugs targeting triosephosphate isomerase (TPI1)?,14,14,0,1.0,1.0,1.0,1.0,1.0,0.9285714285714286,0.9285714285714286,0.5,0.0
-10573,Which anatomical structures lack expression of genes or proteins that play a role in chemorepellent-induced interneuron migration from the subpallium to the cerebral cortex?,8,1,7,0.125,0.0,0.0,0.0,0.012658227848101266,0.0,0.0,0.0,0.0
-749,Which illness is associated with the SRD5A2 gene and could be treated using Megestrol acetate?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.0
-3738,"Which pathway works alongside PSEN1 and serves as part of the ""Signaling by NOTCH1 HD+PEST Domain Mutants in Cancer"" cascade?",1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0,1.0,0.5,0.0
-11087,What are the common gene targets associated with the binding of Meclofenamic acid and Ethotoin?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.0
-9753,"Which illnesses linked to Complement Factor B (CFB) contraindicate the use of Ramipril and exhibit inflammatory symptoms in any organ system with an early onset before adulthood, manifesting a wide range of symptoms that are more severe and involve major organs more frequently compared to adult-onset systemic lupus erythematosus, thereby posing a greater risk of multisystem organ damage?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0

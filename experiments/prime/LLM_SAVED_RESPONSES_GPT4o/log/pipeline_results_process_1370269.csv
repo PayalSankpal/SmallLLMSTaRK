@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-2236,Could you find any drugs that target the CHRNA3 receptor and have a half-life ranging from 1 to 16 days?,2,2,0,1.0,1.0,0.0,1.0,0.2,1.0

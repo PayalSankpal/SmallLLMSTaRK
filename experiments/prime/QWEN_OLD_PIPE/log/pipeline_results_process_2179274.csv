@@ -1,8 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-6572,Which biological process shares a characteristic interaction pattern with genes or proteins similar to the regulation of recycling endosome positioning in the postsynaptic region?,4,0,4,0.0,0.0,0.0,0.0,0.0,0.5
-2041,Could you provide a list of medications effective for treating both acquired polycythemia vera and myelofibrosis?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-1075,Could you list experimental drugs targeting triosephosphate isomerase (TPI1)?,14,0,14,0.0,0.0,0.0,0.0,0.0,0.14285714285714285
-10573,Which anatomical structures lack expression of genes or proteins that play a role in chemorepellent-induced interneuron migration from the subpallium to the cerebral cortex?,8,0,8,0.0,0.0,0.0,0.0,0.0,0.0
-749,Which illness is associated with the SRD5A2 gene and could be treated using Megestrol acetate?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-3738,"Which pathway works alongside PSEN1 and serves as part of the ""Signaling by NOTCH1 HD+PEST Domain Mutants in Cancer"" cascade?",1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
-2860,Please list genes and proteins associated with chromatin binding that also play a role in meiotic synapsis.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

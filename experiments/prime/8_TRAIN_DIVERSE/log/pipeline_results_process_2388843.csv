@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-1273,Could cerebral amyloid angiopathy be linked to any diseases that cause memory lapses or cognitive issues akin to dementia?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

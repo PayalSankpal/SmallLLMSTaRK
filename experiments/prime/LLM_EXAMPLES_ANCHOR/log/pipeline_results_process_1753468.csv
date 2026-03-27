@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
-1109,"What possible diseases could I have that are linked to lymphatic system problems, such as swollen glands, and also associated with facial or neck abnormalities, as seen in syndromes or congenital conditions?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

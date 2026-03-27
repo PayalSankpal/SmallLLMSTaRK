@@ -1,8 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
-2860,Please list genes and proteins associated with chromatin binding that also play a role in meiotic synapsis.,1,1,0,1.0,1.0,0.0,0.0,0.06666666666666667,0.0,0.0,0.0,0.0
-179,"What condition is associated with the TBX4 gene and presents with persistent seizures involving multiple muscle groups, primarily in the legs and torso?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.5,0.0
-5066,"Can you give me a rundown of conditions similar to or falling under the category of benign eye neoplasms, especially those affecting the lacrimal gland?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
-5659,What conditions are related to and might follow or fall under hemicrania continua in patients showing its symptoms?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.125,0.0
-2807,What drugs are presently recognized to primarily target the protein kinase M (PKM) gene in their mechanism of action?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0,1.0,0.05555555555555555,0.0
-2766,What is the name of the gene or protein that both regulates MUC1 synthesis and directly interacts with the Cytosolic tRNA aminoacylation pathway?,1,1,0,1.0,1.0,0.0,0.0,0.125,1.0,1.0,0.1,0.0
-11087,What are the common gene targets associated with the binding of Meclofenamic acid and Ethotoin?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.25,0.0

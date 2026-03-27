@@ -1,5 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
-2354,"What related conditions or potential diseases might be associated with ""benign neoplasm of hard palate"" and ""oral cavity neoplasm""? Can you provide a hierarchy or connections of these illnesses?",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0,1.0,0.3333333333333333,0.0
-10857,Which genes or proteins are found to be expressed in cartilage but not detected in the parietal lobe of the brain?,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0,1.0,1.0,1.0
-6655,Which anatomical structures lack the genetic or proteomic expression linked to infertility?,5,2,3,0.4,0.2,0.0,0.0,0.05,0.0,0.0,0.0,0.0
-6280,Which pharmaceutical compounds are designed to modulate gene or protein activities associated with SUMO-conjugation system interactions?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

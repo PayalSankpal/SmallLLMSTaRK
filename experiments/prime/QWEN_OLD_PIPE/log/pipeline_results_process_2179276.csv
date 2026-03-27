@@ -1,7 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-2085,What is the common upstream or downstream biological pathway shared by the 'Biosynthesis of DHA-derived SPMs' and the 'Biosynthesis of maresin conjugates in tissue regeneration (MCTR)'?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
-6632,Search for illnesses that have no drugs indicated for treatment and are related to the presence of Wormian bones.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-3478,What are the diseases similar or linked to Paradas congenital myopathy that also present with progressive muscle weakness?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
-2215,"What condition associated with the GPR68 gene could cause symptoms like long-term abdominal pain, consistent nausea, vomiting, and notable weight loss, coupled with ongoing inflammation and damage to the stomach lining?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-7684,Identify proteins or genes that interact with Glycophorin A (GYPA) and are linked to a common disease.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-7107,Search for pathologies linked to cholecystokinin (CCK) that should not be treated with Tacrine.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

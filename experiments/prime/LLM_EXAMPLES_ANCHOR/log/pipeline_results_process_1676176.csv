@@ -1,9 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
-3222,What are the solid-form drugs known to target the lysozyme (LYZ) gene or its protein?,13,13,0,1.0,1.0,1.0,1.0,1.0,0.9230769230769231,0.9230769230769231,0.16666666666666666,0.0
-2937,"Can you supply a list of conditions that are related to both partial monosomy of chromosome 20p and Alagille syndrome, showing how they are connected or branched from these two disorders?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
-10930,Which anatomical parts lack expression of genes or proteins implicated in the development of Ureteropelvic Junction Obstruction?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-8278,Which gene encodes the neuropeptide FF receptor 1 that is not expressed in the corpus callosum and parietal lobe regions of the brain?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
-6550,"Can someone provide information on any genes or proteins that engage in interactions with partners associated with the TET family (TET1, TET2, TET3) and TDG in the context of DNA demethylation, and also play a role in the regulation of nuclear cell division?",6,0,6,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-10489,Search for a biological pathway associated with the activation of gene expression by RORA that also involves an interaction with a common gene or protein.,1,1,0,1.0,1.0,0.0,1.0,0.2,1.0,1.0,0.08333333333333333,0.0
-4318,"Can you recommend medications effective against both amoebiasis, caused by Entamoeba histolytica, and helminthiasis?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.5,0.0
-2511,"Please locate genes or proteins that are involved in functional interactions with the Class C/3 signaling pathway, exhibit GPCR activity, are expressed in both smooth muscle and taste bud cells, and belong to the bitter taste receptor family.",1,1,0,1.0,1.0,0.0,0.0,0.1,1.0,1.0,0.2,0.0

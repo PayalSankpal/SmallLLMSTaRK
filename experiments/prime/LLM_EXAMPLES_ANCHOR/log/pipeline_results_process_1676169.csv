@@ -1,9 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
-5820,"Identify the common genetic targets that interact with both 3',5'-Dinitro-N-Acetyl-L-Thyronine and 3-({[(1Z)-(2-methoxyphenyl)methylidene]amino}oxy)propanoic acid.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
-5376,Can you find a pathway influencing organelle acid-base balance that operates before or after the 'Transport of inorganic cations/anions and amino acids/oligopeptides' pathway?,1,1,0,1.0,0.0,0.0,0.0,0.022222222222222223,0.0,0.0,0.0,0.0
-8511,Could you identify any stable compounds listed in DrugBank with experimental evidence that act upon genes or proteins associated with peptidyl-asparagine 3-dioxygenase enzymatic function?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-4176,What condition could link cicatricial and paralytic lagophthalmos? I'm experiencing symptoms that seem connected.,1,1,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0,1.0,1.0,1.0
-1610,"Please list diseases linked to the DYNC2LI1 gene with symptoms including metaphyseal anomalies and a rigid, narrow thoracic cage causing breathing difficulties.",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.5,0.0
-3602,What is the parent disease of breast secretory carcinoma associated with abdominal pain and diarrhea?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.5,0.0
-952,"What potential medical condition could share a connection with both dystransthyretinemic hyperthyroxinemia and familial dysalbuminemic hyperthyroxinemia, considering their similarities?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
-5380,"What is the autoimmune disease characterized by necrotizing vasculitis affecting small and medium-sized vessels, notable for minimal or no immune complex deposits in the vessels?",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0,1.0,0.5,0.0

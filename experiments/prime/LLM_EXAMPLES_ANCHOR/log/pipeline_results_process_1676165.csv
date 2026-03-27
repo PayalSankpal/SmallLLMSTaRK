@@ -1,4 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged,recall@20_reranked,mrr_reranked,hit@1_reranked
-1755,"Please find a metabolic process that either precedes or follows hyaluronan absorption and breakdown, and is involved in its metabolism or signaling cascades.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-5686,Please find genes or proteins that bind to clathrin and also interact with the FAT3 protein.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.16666666666666666,0.0
-7969,Which biological process shares a similar interaction pattern with genes or proteins to that of 7-methylguanosine cap hypermethylation?,5,2,3,0.4,0.4,1.0,1.0,1.0,0.4,0.4,0.25,0.0

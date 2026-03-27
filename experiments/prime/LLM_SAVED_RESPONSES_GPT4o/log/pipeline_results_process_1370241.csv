@@ -1,2 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-10271,Identify a medication that shares a similar gene or protein carrier with Pegaspargase and is indicated for the treatment of neurological conditions.,6,0,6,0.0,0.0,0.0,0.0,0.0,0.0

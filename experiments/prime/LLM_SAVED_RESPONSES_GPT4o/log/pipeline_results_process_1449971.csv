@@ -1,3 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-2803,Could you recommend any medications that target the TUBB1 gene/protein and inform me about potential side effects like myelosuppression or neurotoxicity?,3,3,0,1.0,1.0,0.0,1.0,0.3333333333333333,1.0
-583,"Could you find a gene or protein that interacts with the ATR activation pathway during replication stress, has significant homology with fission yeast's Rad9, and possesses 3' to 5' exonuclease activity linked to DNA damage detection and repair?",1,1,0,1.0,1.0,0.0,1.0,0.5,1.0

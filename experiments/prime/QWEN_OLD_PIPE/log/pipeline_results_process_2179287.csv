@@ -1,8 +1,0 @@
-query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
-8753,Are there any pharmacological agents that act as electron donors in metabolic processes through reversible oxidation and reduction and influence genes or proteins associated with L-aminoadipate-semialdehyde dehydrogenase enzymatic function?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
-6117,"Could you identify the common genetic targets for both N-(M-Trifluoromethylphenyl) Phenoxazine-4,6-Dicarboxylic Acid and (2S)-3-[(9H-fluoren-9-ylideneamino)oxy]-2-methylpropanoic acid?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-5285,"Please find genes or proteins with structural molecular activity linked to the basal body-plasma membrane anchoring pathway, particularly those interacting with NPHP1, suggesting involvement in a common signaling pathway.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-1722,What could be a related disease if someone has oromandibular-limb hypogenesis syndrome and a fibrous band linking their tongue to the palate or gingival ridge?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
-9257,What are the common genetic targets of Meclofenamic acid and Escherichia coli-derived Asparaginase?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
-5881,"What are the common genetic targets associated with the action of both 2',4'-Dichloro-4-hydroxy-1,1'-biphenyl-3-carboxylic acid and Liotrix?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
-5236,Could you supply a list of gene or protein regulators involved in ATPase activity that are also associated with the development of autism?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
