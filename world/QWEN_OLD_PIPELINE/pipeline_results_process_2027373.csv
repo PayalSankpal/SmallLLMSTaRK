@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+6960,Which gene or protein is not expressed in either the salivary glands or the renal nephron's tubular structures?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+8511,Could you identify any stable compounds listed in DrugBank with experimental evidence that act upon genes or proteins associated with peptidyl-asparagine 3-dioxygenase enzymatic function?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0

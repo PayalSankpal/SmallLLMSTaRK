@@ -1,0 +1,8 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+4710,"What is the diagnosis for a condition involving chronic neuroinflammation, specifically a form of encephalitis with ongoing inflammation in the brain?",4,0,4,0.0,0.0,0.0,0.0,0.0,0.5
+1471,What is the name of the condition associated with cervical cancer that involves cysts with both columnar and squamous cells in the cervix?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5323,"What possible conditions could I have that involve persistent fatigue and weakness, considering my family history of thrombocytopenia with congenital dyserythropoietic anemia? Are there hereditary diseases related to these symptoms?",2,2,0,1.0,1.0,1.0,1.0,1.0,1.0
+228,Could you identify genes or proteins that interact with RTL10 and are also associated with chromatin organization?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+10512,Identify pathways associated with the autointegration process resulting in circular viral DNA and its interaction with common genes/proteins.,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+634,Which drugs interact with the SERPINA1 gene/protein as carriers?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+8681,"Which pharmaceutical agents not only exhibit a synergistic effect when combined with Incadronic acid but are also approved for treating the same condition, and possess an extended half-life ensuring prolonged therapeutic impact within the body?",5,0,5,0.0,0.0,0.0,0.0,0.0,1.0

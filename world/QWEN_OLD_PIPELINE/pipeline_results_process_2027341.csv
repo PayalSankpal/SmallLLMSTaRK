@@ -1,0 +1,2 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+6517,Which cell structures are involved in interaction with genes or proteins that are influenced by the medication Travoprost?,4,0,4,0.0,0.0,0.0,0.0,0.0,0.0

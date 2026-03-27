@@ -1,0 +1,8 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+5527,Can you supply a selection of tablet or capsule medications designed to inhibit or interact with the MMP1 gene/protein?,6,6,0,1.0,1.0,1.0,1.0,1.0,1.0
+2673,What is the subtype of juvenile polyposis syndrome that includes refractory anemia as a symptom?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+3598,Which pathway is a subordinate in the hierarchy to the Visual phototransduction pathway and functionally interacts with the HSD17B6 gene/protein?,1,1,0,1.0,1.0,0.0,1.0,0.25,1.0
+6083,Which medications are designed to influence genes or proteins associated with the enzymatic activity of dITP diphosphatase?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+2416,Which diseases are considered subtypes or are directly related to intracranial arachnoid cysts?,1,1,0,1.0,1.0,0.0,1.0,0.5,1.0
+1792,"Seeking the gene that encodes for a type IV collagen subunit strengthening the extracellular matrix and shares a head-to-head configuration with a distinct type IV collagen gene, unified by a single promoter.",5,1,4,0.2,0.2,1.0,1.0,1.0,1.0
+6213,Identify genes or proteins that interact with WIPF1 and are also linked to a common disease.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

@@ -2,9 +2,9 @@
   "experiment": {
     "dataset": "prime",
     "split": "test",
-    "exp_name": "QWEN_OLD_PIPE",
+    "exp_name": "QWEN_OLD_PIPELINE",
     "test_run": false,
-    "output_base_dir": "./experiments/prime",
+    "output_base_dir": "./world/",
     "logging_level": "INFO"
   },
   "pipeline": {
@@ -14,9 +14,9 @@
   },
   "models": {
     "llm_name": "qwen/qwen2.5-7b-instruct",
-    "llm_config_path": "configs/configs.json",
+    "llm_config_path": "configs.json",
     "embedding_model": "text-embedding-ada-002",
-    "embedding_base_path": "../BtechProject/stark/emb"
+    "embedding_base_path": "./BtechProject/stark/emb/"
   },
   "retrieval_params": {
     "step3_candidate_generation": {
@@ -38,17 +38,8 @@
   },
   "data_paths": {
     "use_saved_llm_responses": false,
-    "llm_responses_file": "llm_responses/llm_response_dataset_prime.csv",
+    "llm_responses_file": "llm_response_dataset_prime.csv",
     "use_saved_vss_candidates": false,
     "vss_candidates_json_path": "vss_candidates.json"
-  },
-  "pipeline_v2": {
-    "use_anchor_verification": true,
-    "use_answer_direct_vss": true,
-    "answer_direct_vss_k": 100,
-    "grounding_min_threshold": 5,
-    "use_llm_reranking": true,
-    "rerank_pool_size": 50,
-    "rerank_top_k": 20
   }
 }

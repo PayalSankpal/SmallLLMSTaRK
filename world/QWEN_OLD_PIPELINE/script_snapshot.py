@@ -7,6 +7,7 @@ import pandas as pd
 from stark_qa import load_skb, load_qa
 import regex as re
 import ast
+import vss
 import sys
 import os
 import time
@@ -25,7 +26,6 @@ import glob
 import shutil  # Added for copying files
 
 # Custom imports (assumed available in environment)
-import custom_pipeline.vss
 from custom_pipeline.entity_parsing import *
 from custom_pipeline.relation_parsing import *
 from custom_pipeline.llm_bridge import LlmBridge
@@ -33,7 +33,7 @@ from custom_pipeline.query import Query
 from custom_pipeline.prompt_generator import get_entity_extraction_prompt, get_relation_extraction_prompt, get_query_expansion_prompt
 from custom_pipeline.vss_retreiver import VSSRetriever
 from custom_pipeline.candidate_context import CandidateContext
-from custom_pipeline.grounders.priority_queue_grounder import PriorityQueueGrounding
+from custom_pipeline.grounders.grounder3 import PriorityQueueGrounding
 from custom_pipeline.thread_safe_writers import ThreadSafeCSVWriter
 
 # --- CONFIGURATION CONSTANTS ---
@@ -45,80 +45,48 @@ class TimeoutException(Exception):
     pass
 
 class PipelineStepFailed(Exception):
-    """Custom exception for when LLM fails Step 1 or Step 2 with a hard error."""
+    """Custom exception for when LLM fails Step 1 or Step 2."""
     pass
-
-class PipelineSkipped(Exception):
-    """Raised when a query is intentionally skipped (LLM parse failed after MAX_LLM_RETRIES)."""
-    pass
-
-MAX_LLM_RETRIES = 3   # Max attempts per step before marking query as SKIPPED
 
 def get_llm_response(prompt, llm_bridge):
     response = llm_bridge.ask_llm_batch([prompt])
-    print(response)
     return response[0][0]
 
 def step1_identify_entities(query: Query, llm_bridge: LlmBridge, dataset_name: str, use_saved: bool = False, saved_response: Optional[Dict] = None):
     if use_saved and saved_response is not None:
         response_string = saved_response.get('entities', "")
-        query.entity_id_response = response_string
-        if response_string == '':
-            query.status = "FAILED"
-            return
-        try:
-            query.entities = parse_entity_response(response_string)
-        except ValueError:
-            query.status = "FAILED"
-        return
-
-    prompt = get_entity_extraction_prompt(query.query, dataset_name)
-    for attempt in range(MAX_LLM_RETRIES):
+    else:
+        prompt = get_entity_extraction_prompt(query.query, dataset_name)
         response_string = get_llm_response(prompt, llm_bridge)
-        if not response_string:
-            print(f"[Step1 RETRY] Attempt {attempt+1}/{MAX_LLM_RETRIES}: empty response, retrying...")
-            continue
+
+    query.entity_id_response = response_string
+    
+    if response_string == '':
+        query.status = "FAILED"
+        return
+    else:
         try:
             identified_entities = parse_entity_response(response_string)
-            query.entity_id_response = response_string
             query.entities = identified_entities
-            return
         except ValueError as e:
-            print(f"[Step1 RETRY] Attempt {attempt+1}/{MAX_LLM_RETRIES}: parse failed ({e}), retrying...")
-
-    print(f"[Step1 SKIPPED] Query {query.id}: all {MAX_LLM_RETRIES} attempts failed — marking as SKIPPED.")
-    query.entity_id_response = response_string
-    query.status = "SKIPPED"
+            query.status = "FAILED"
+            return
         
 def step2_identify_relations(query: Query, llm_bridge: LlmBridge, dataset_name: str, use_saved: bool = False, saved_response: Optional[Dict] = None):
     if use_saved and saved_response is not None:
         response_string = saved_response.get("relations", "")
-        query.relations_id_response = response_string
-        if response_string == '' or response_string == '{}':
-            query.status = "FAILED"
-            query.relations = {}
-            return
-        try:
-            identified_relations = parse_relation_string(response_string)
-            query.relations = identified_relations
-        except ValueError:
-            query.status = "FAILED"
-            query.relations = {}
-        return
-
-    prompt = get_relation_extraction_prompt(dataset_name, query.query, query.entity_id_response)
-    for attempt in range(MAX_LLM_RETRIES):
+    else:
+        prompt = get_relation_extraction_prompt(dataset_name , query.query, query.entity_id_response)
         response_string = get_llm_response(prompt, llm_bridge)
-        if not response_string or response_string == '{}':
-            print(f"[Step2 RETRY] Attempt {attempt+1}/{MAX_LLM_RETRIES}: empty response, retrying...")
-            continue
+    query.relations_id_response = response_string
+
+    if response_string == '' or response_string == '{}':
+        query.status = "FAILED"
+        query.relations = {}
+        return
+    else:
         try:
             identified_relations = parse_relation_string(response_string)
-            # Validate: all values must be lists (not nested dicts)
-            for k, v in identified_relations.items():
-                if not isinstance(v, list):
-                    raise ValueError(f"Relation value for key {k!r} is not a list (got {type(v).__name__}). LLM may have returned nested-dict format.")
-            query.relations_id_response = response_string
             query.relations = identified_relations
             edge_type_dict = {
                 'affiliated_with': 'author___affiliated_with___institution',
@@ -128,19 +96,13 @@ def step2_identify_relations(query: Query, llm_bridge: LlmBridge, dataset_name: 
             } 
             for pair in query.relations:
                 rels = query.relations[pair]
-                if not isinstance(rels, list):
-                    continue  # safety guard; should not reach here after validation above
                 for i in range(len(rels)):
                     if rels[i] in edge_type_dict:
                         rels[i] = edge_type_dict[rels[i]]
-            return
         except ValueError as e:
-            print(f"[Step2 RETRY] Attempt {attempt+1}/{MAX_LLM_RETRIES}: parse failed ({e}), retrying...")
-
-    print(f"[Step2 SKIPPED] Query {query.id}: all {MAX_LLM_RETRIES} attempts failed — marking as SKIPPED.")
-    query.relations_id_response = response_string
-    query.relations = {}
-    query.status = "SKIPPED"
+            query.status = "FAILED"
+            query.relations = {}
+            return
 
 def get_initial_candidates_for_entity(entity_info, entity_key, kb, retriever, limit=25, cutoff=0.65):
     candidates = []
@@ -426,12 +388,10 @@ def pipeline_worker(query, llm_bridge, kb, retriever, dataset_name,
     print(f"--- Processing Query {query.id} ---")
     
     step1_identify_entities(query, llm_bridge, dataset_name, use_saved, saved_response)
-    if query.status == "SKIPPED": raise PipelineSkipped("Step 1 Skipped (Entity Extraction parse failed)")
-    if query.status == "FAILED":  raise PipelineStepFailed("Step 1 Failed (Entity Extraction)")
+    if query.status == "FAILED": raise PipelineStepFailed("Step 1 Failed (Entity Extraction)")
     
     step2_identify_relations(query, llm_bridge, dataset_name, use_saved, saved_response)
-    if query.status == "SKIPPED": raise PipelineSkipped("Step 2 Skipped (Relation Extraction parse failed)")
-    if query.status == "FAILED":  raise PipelineStepFailed("Step 2 Failed (Relation Extraction)")
+    if query.status == "FAILED": raise PipelineStepFailed("Step 2 Failed (Relation Extraction)")
     
     step3_get_initial_candidates(query, kb, retriever, config)
     step4_grounding(query, kb, retriever, config)
@@ -484,7 +444,7 @@ def process_batch(batch_queries, config, dataset_name, model_config, data_config
             qa_dataset=qa_dataset, 
             dataset_name=config['experiment']['split'], 
             use_vss=True, 
-            use_gpu=False
+            use_gpu=True
         )
         
         vss_candidates = {}
@@ -505,7 +465,7 @@ def process_batch(batch_queries, config, dataset_name, model_config, data_config
             csv_path=f"{output_base}/{exp_name}/pipeline_results_process_{process_id}.csv",
             fieldnames=csv_fieldnames
         )
-        print("hello")        
+        
         for i, query_data in enumerate(batch_queries):
             current_query = Query(id=query_data[1], query=query_data[0], ground_truths=query_data[2])
             
@@ -515,10 +475,7 @@ def process_batch(batch_queries, config, dataset_name, model_config, data_config
                 if llm_response_rows: llm_response = llm_response_rows[0]
             
             success = False
-            skipped = False
             last_error = ""
-            
-            print("hhhhhhhhhelli")
 
             # --- RETRY LOOP ---
             for attempt in range(MAX_RETRIES):
@@ -532,15 +489,6 @@ def process_batch(batch_queries, config, dataset_name, model_config, data_config
                     success = True
                     break # Success! Exit retry loop.
 
-                except PipelineSkipped as e:
-                    # LLM parse failed after MAX_LLM_RETRIES — record as SKIPPED, no fallback
-                    print(f"[SKIPPED] Query {current_query.id}: {e}")
-                    current_query.status = "SKIPPED"
-                    current_query.failure_reason = str(e)
-                    batch_results_buffer.append(current_query)  # saved to dump, NOT to metrics CSV
-                    skipped = True
-                    break
-
                 except (PipelineStepFailed, TimeoutException) as e:
                     last_error = str(e)
                     print(f"[WARNING] Query {current_query.id} failed attempt {attempt+1}/{MAX_RETRIES}: {e}")
@@ -551,8 +499,8 @@ def process_batch(batch_queries, config, dataset_name, model_config, data_config
                     traceback.print_exc()
                     # Continue to next retry
 
-            # If all retries failed (not skipped), trigger Fallback
-            if not success and not skipped:
+            # If all retries failed, trigger Fallback
+            if not success:
                 print(f"[CRITICAL] Query {current_query.id} failed {MAX_RETRIES} attempts. Triggering Fallback.")
                 try:
                     fallback_result = run_fallback_strategy(
@@ -633,9 +581,6 @@ def main():
     parser.add_argument("--num_workers", type=int, default=None, help="Override max workers")
 
     parser.add_argument("--split", type=str, default=None, help="Override data split (validation/test)")
-    parser.add_argument("--retry", action="store_true", help="Re-run only queries that have FAILED or FALLBACK status in the existing dump")
-    parser.add_argument("--run_skipped", action="store_true", help="Re-run only queries that have SKIPPED status in the existing dump files")
-    parser.add_argument("--query_ids", type=str, default=None, help="Comma-separated list of query IDs to run (e.g. 5883,10405,1109). Overrides skip/retry logic.")
 
     args = parser.parse_args()
 
@@ -688,17 +633,7 @@ def main():
         shutil.copy(args.config_path, f"{exp_dir}/config_snapshot.json")
         # Copy Script
         shutil.copy(__file__, f"{exp_dir}/script_snapshot.py")
-        # Copy prompt templates (so we always know which prompts produced these results)
-        for dataset_p_name in [dataset_name, 'prime', 'mag', 'amazon']:
-            for prompt_kind in ['entity', 'relation']:
-                src = f"custom_pipeline/prompt_examples/{prompt_kind}_{dataset_p_name}.txt"
-                if os.path.exists(src):
-                    shutil.copy(src, f"{exp_dir}/{prompt_kind}_{dataset_p_name}_prompt.txt")
-        # Also copy prompt_generator.py
-        pg_src = "custom_pipeline/prompt_generator.py"
-        if os.path.exists(pg_src):
-            shutil.copy(pg_src, f"{exp_dir}/prompt_generator_snapshot.py")
-        print(f"[Archived] Config, Code, and Prompts saved to {exp_dir}", file=sys.__stdout__)
+        print(f"[Archived] Config and Code saved to {exp_dir}", file=sys.__stdout__)
     except Exception as e:
         print(f"[Warning] Failed to archive files: {e}", file=sys.__stdout__)
 
@@ -715,55 +650,14 @@ def main():
         
         completed_ids = set()
         main_dump = f"{exp_dir}/full_data_dump.csv"
+        if os.path.exists(main_dump):
+            try: completed_ids.update(pd.read_csv(main_dump)['id'].astype(str).tolist())
+            except: pass
+        for f in glob.glob(f"{exp_dir}/full_dump_process_*.csv"):
+            try: completed_ids.update(pd.read_csv(f)['id'].astype(str).tolist())
+            except: pass
 
-        if args.query_ids:
-            # Run ONLY the explicitly specified query IDs
-            target_ids = set(str(x.strip()) for x in args.query_ids.split(',') if x.strip())
-            test_queries = [q for q in all_test_queries if str(q[1]) in target_ids]
-            print(f"[query_ids] Running {len(test_queries)} specified queries: {sorted(target_ids)}", file=sys.__stdout__)
-        elif args.retry:
-            # Collect IDs that have FAILED or FALLBACK status — these need to be re-run
-            retry_ids = set()
-            for dump_path in [main_dump] + glob.glob(f"{exp_dir}/full_dump_process_*.csv"):
-                if os.path.exists(dump_path):
-                    try:
-                        dump_df = pd.read_csv(dump_path)
-                        if 'status' in dump_df.columns:
-                            bad = dump_df[dump_df['status'].isin(['FAILED', 'FALLBACK'])]['id'].astype(str)
-                            retry_ids.update(bad.tolist())
-                            # Mark the rest (good ones) as already completed
-                            good = dump_df[~dump_df['status'].isin(['FAILED', 'FALLBACK'])]['id'].astype(str)
-                            completed_ids.update(good.tolist())
-                    except Exception as e:
-                        print(f"[Retry] Could not read {dump_path}: {e}", file=sys.__stdout__)
-            print(f"[Retry mode] Re-running {len(retry_ids)} FAILED/FALLBACK queries.", file=sys.__stdout__)
-            print(f"[Retry mode] Query IDs: {sorted(retry_ids)}", file=sys.__stdout__)
-            test_queries = [q for q in all_test_queries if str(q[1]) in retry_ids]
-        elif args.run_skipped:
-            # Collect IDs with SKIPPED status — re-run them, treat everything else as done
-            skipped_ids = set()
-            for dump_path in [main_dump] + glob.glob(f"{exp_dir}/full_dump_process_*.csv"):
-                if os.path.exists(dump_path):
-                    try:
-                        dump_df = pd.read_csv(dump_path)
-                        if 'status' in dump_df.columns:
-                            skipped = dump_df[dump_df['status'] == 'SKIPPED']['id'].astype(str)
-                            skipped_ids.update(skipped.tolist())
-                            done = dump_df[dump_df['status'] != 'SKIPPED']['id'].astype(str)
-                            completed_ids.update(done.tolist())
-                    except Exception as e:
-                        print(f"[run_skipped] Could not read {dump_path}: {e}", file=sys.__stdout__)
-            print(f"[run_skipped] Re-running {len(skipped_ids)} SKIPPED queries.", file=sys.__stdout__)
-            print(f"[run_skipped] Query IDs: {sorted(skipped_ids)}", file=sys.__stdout__)
-            test_queries = [q for q in all_test_queries if str(q[1]) in skipped_ids]
-        else:
-            if os.path.exists(main_dump):
-                try: completed_ids.update(pd.read_csv(main_dump)['id'].astype(str).tolist())
-                except: pass
-            for f in glob.glob(f"{exp_dir}/full_dump_process_*.csv"):
-                try: completed_ids.update(pd.read_csv(f)['id'].astype(str).tolist())
-                except: pass
-            test_queries = [q for q in all_test_queries if str(q[1]) not in completed_ids]
+        test_queries = [q for q in all_test_queries if str(q[1]) not in completed_ids]
         sys.stderr.write(f"Starting {len(test_queries)} queries (Skipped {len(completed_ids)}).\n")
 
         if test_queries:
@@ -807,7 +701,7 @@ def main():
             except: pass
             
         if dfs:
-            full_metrics = pd.concat(dfs, ignore_index=True).drop_duplicates(subset=['query_id'], keep='last')
+            full_metrics = pd.concat(dfs, ignore_index=True).drop_duplicates(subset=['query_id'])
             full_metrics.to_csv(final_metrics_path, index=False)
             print_aggregate_report(final_metrics_path)
 
@@ -823,8 +717,7 @@ def main():
             except: pass
 
         if dump_dfs:
-            # keep='last' ensures re-run results (appended last) override old SKIPPED/FAILED records
-            full_dump = pd.concat(dump_dfs, ignore_index=True).drop_duplicates(subset=['id'], keep='last')
+            full_dump = pd.concat(dump_dfs, ignore_index=True).drop_duplicates(subset=['id'])
             full_dump.to_csv(final_dump_path, index=False)
 
     except Exception as e:
@@ -832,25 +725,6 @@ def main():
         traceback.print_exc()
     finally:
         sys.stdout.close()
-        
-        try:
-            log_dir = os.path.join(exp_dir, "log")
-            config_dir = os.path.join(exp_dir, "config")
-            os.makedirs(log_dir, exist_ok=True)
-            os.makedirs(config_dir, exist_ok=True)
-            
-            for pat in ["*_process_*.csv", "*.log"]:
-                for f in glob.glob(os.path.join(exp_dir, pat)):
-                    try: shutil.move(f, os.path.join(log_dir, os.path.basename(f)))
-                    except: pass
-                    
-            for pat in ["*.json", "*.txt", "*.py", "*.pyc"]:
-                for f in glob.glob(os.path.join(exp_dir, pat)):
-                    try: shutil.move(f, os.path.join(config_dir, os.path.basename(f)))
-                    except: pass
-        except Exception as oe:
-            sys.stderr.write(f"Error organizing files: {oe}\n")
-
         sys.stderr.write("Run complete.\n")
 
 if __name__ == "__main__":

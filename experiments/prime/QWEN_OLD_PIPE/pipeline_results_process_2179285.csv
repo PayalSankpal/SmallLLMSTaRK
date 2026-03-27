@@ -1,0 +1,6 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+5449,"I'm looking for a gene or protein that modulates the Glutathione synthesis and recycling pathway, catalyzes the transformation of amino acids into different metabolites, and inhibits the growth of cancer cells, particularly with tumor-suppressing effects in gastric cancer.",3,0,3,0.0,0.0,0.0,0.0,0.0,0.0
+1828,Which autosomal recessive disease is associated with the AEBP1 gene?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+8161,Which genes or proteins are found to be expressed in the nasopharyngeal tissue but not in the parietal lobe of the brain?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+9020,Which disorders linked to Ketosis may lead to cardiomyopathy and hypoketotic hypoglycemia and currently lack any drugs officially sanctioned for treatment?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+9020,Which disorders linked to Ketosis may lead to cardiomyopathy and hypoketotic hypoglycemia and currently lack any drugs officially sanctioned for treatment?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0

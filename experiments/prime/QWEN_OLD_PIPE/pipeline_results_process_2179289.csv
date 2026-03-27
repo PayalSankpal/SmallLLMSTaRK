@@ -1,0 +1,8 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+4948,Could you suggest medications that are compatible with Pegamotecan and Pegaptanib to enhance their efficacy and also help increase my neutrophil levels?,3,0,3,0.0,0.0,0.0,0.0,0.0,1.0
+501,"Please compile a list of genes and proteins involved in the Generic Transcription Pathway by interaction, which are also linked to salivary gland cancer.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+8548,"I'm searching for a biological pathway that plays a role in events associated with Cyclin E during the G1/S transition phase, which also interacts with the same genes or proteins that Cyclin E:Cdk2 complexes do. Additionally, this pathway should involve the phosphorylation of proteins crucial to the G1/S transition, a process mediated by the action of Cyclin E:Cdk2 complexes. Can you identify this pathway for me?",2,0,2,0.0,0.0,0.0,0.0,0.0,0.5
+6522,"Identify genes or proteins that both engage in interactions with CCM2 and are implicated in the same pathological conditions, while also being part of a protein complex with other cerebral cavernous malformation (CCM) gene family constituents.",2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+181,"What are the effective inhibitors of the membrane-bound metalloendopeptidase, or enkephalinase, that interact with the MME gene/protein?",4,4,0,1.0,1.0,1.0,1.0,1.0,1.0
+4045,"Please find diseases linked to the DCLRE1C gene, characterized by severe, recurrent infections, diarrhea, failure to thrive, and heightened sensitivity to ionizing radiation.",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+2625,Which disease falls under malignant histiocytosis and is linked to the SLC29A3 gene/protein?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0

@@ -1,0 +1,8 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+6708,Which phenotypic manifestations or effects are associated with the subtype of acute biphenotypic leukemia?,3,0,3,0.0,0.0,0.0,0.0,0.0,1.0
+5950,Identify conditions unresponsive to medication that correlate with increased liver iron levels.,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+11077,Find medical conditions linked to the gene SLC29A3 that should not be treated with the drug Goserelin.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+4438,"I need to find a gene or protein that interacts with the cis-Golgi network and contributes to the organization of the Golgi apparatus. It should be involved in regulating Golgi structure and function specifically within the Golgi cis cisterna, the Golgi cisterna membrane, and the cis-Golgi network. Can you supply information on any genes or proteins that fit this description?",18,0,18,0.0,0.0,0.0,0.0,0.0,0.16666666666666666
+5928,What are the observed effects or phenotypes associated with the subtype of hereditary papillary renal cell carcinoma?,4,0,4,0.0,0.0,0.0,0.0,0.0,0.25
+8037,Which anatomical structures lack the expression of genes or proteins involved in the interaction with the organization of actin cytoskeleton in postsynaptic terminals?,4,0,4,0.0,0.0,0.0,0.0,0.0,0.0
+4259,"Could you identify enzymes that bind metal ions, are active in protein polyubiquitination, and play a role in both Antigen processing through Ubiquitination and Proteasome degradation?",9,0,9,0.0,0.0,0.0,0.0,0.0,0.0

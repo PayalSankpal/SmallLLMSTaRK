@@ -2,7 +2,7 @@
   "experiment": {
     "dataset": "prime",
     "split": "test",
-    "exp_name": "QWEN_OLD_PIPE",
+    "exp_name": "QWEN_PRIME_OLD",
     "test_run": false,
     "output_base_dir": "./experiments/prime",
     "logging_level": "INFO"
