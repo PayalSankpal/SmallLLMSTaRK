@@ -4,3 +4,6 @@ query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@
 8161,Which genes or proteins are found to be expressed in the nasopharyngeal tissue but not in the parietal lobe of the brain?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
 9020,Which disorders linked to Ketosis may lead to cardiomyopathy and hypoketotic hypoglycemia and currently lack any drugs officially sanctioned for treatment?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
 9020,Which disorders linked to Ketosis may lead to cardiomyopathy and hypoketotic hypoglycemia and currently lack any drugs officially sanctioned for treatment?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+143,"What disease functions as a parent and child condition in the hierarchy of autoinflammatory disorders, linking both pyogenic bacterial infections with amylopectinosis and PLCG2-associated antibody deficiency and immune dysregulation?",1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+4434,Could you recommend a medication for hemorrhoids treatment with a molecular weight near 340 units?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7043,Search for genes or proteins that interact with ATG2B and share an association with a common disease.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
