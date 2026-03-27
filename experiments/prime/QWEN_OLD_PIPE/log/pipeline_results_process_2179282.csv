@@ -1,0 +1,8 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+5086,"What possible medical conditions could be linked to femoral vein thrombophlebitis and phlebitis, considering they are hereditary in my family?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+2827,"Could you provide information on hereditary diseases linked to 'acheiria, unilateral'? I'm wondering if it could explain the symptoms I'm having.",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+9578,"Are there any pharmaceutical agents designed to regulate pH balance that also interact with, or have an effect on, the genes or proteins associated with 6,7-dihydropteridine reductase activity?",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5727,Identify proteins or genes that interact with NEK11 and share an association with a mutual disease.,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+2884,Which disease falls under normal pressure hydrocephalus and is linked to the THAS gene or its protein product?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+6231,"Identify pathways associated with the ""Release of Hedgehog protein without cholesterol"" (Hh-Np) from secreting cells that also interact with a common gene or protein.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+7256,"Is there a shared genetic or protein transporter mechanism between Fluorometholone and Dexamethasone, both being potent corticosteroid medications frequently prescribed in eye care practices?",12,0,12,0.0,0.0,0.0,0.0,0.0,0.0

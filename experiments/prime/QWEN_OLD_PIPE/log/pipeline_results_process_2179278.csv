@@ -1,0 +1,9 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+10930,Which anatomical parts lack expression of genes or proteins implicated in the development of Ureteropelvic Junction Obstruction?,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+8278,Which gene encodes the neuropeptide FF receptor 1 that is not expressed in the corpus callosum and parietal lobe regions of the brain?,1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+8939,Which gene or protein is not expressed in both the fallopian tube and amniotic fluid?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+3085,"Could you recommend treatments for ocular hypertension? Additionally, I'd like to know if respiratory issues are a typical side effect of these medications. Thank you!",12,0,12,0.0,0.0,0.0,0.0,0.0,0.6666666666666666
+3085,"Could you recommend treatments for ocular hypertension? Additionally, I'd like to know if respiratory issues are a typical side effect of these medications. Thank you!",12,0,12,0.0,0.0,0.0,0.0,0.0,0.75
+788,Can you find genes or proteins acting as Rho guanine nucleotide exchange factors involved in the RHOA GTPase cycle and linked to amyotrophic lateral sclerosis pathogenesis? Please generate a list from the database.,2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+2392,"What condition is associated with arthrogryposis multiplex congenita and typically results in persistent bending of the fingers and toes, also known as camptodactyly?",2,0,2,0.0,0.0,0.0,0.0,0.0,0.0
+1634,Which drugs interact with the SLC22A5 transporter and also act upon the SLC6A8 gene/protein in their pharmacodynamics?,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0

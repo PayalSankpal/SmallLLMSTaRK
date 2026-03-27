@@ -7,3 +7,4 @@ query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@
 202,"Identify genes and proteins that enable kinase and tRNA binding, and are involved in selenocysteinyl-tRNA(Sec) synthesis and biosynthesis.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
 202,"Identify genes and proteins that enable kinase and tRNA binding, and are involved in selenocysteinyl-tRNA(Sec) synthesis and biosynthesis.",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
 202,"Identify genes and proteins that enable kinase and tRNA binding, and are involved in selenocysteinyl-tRNA(Sec) synthesis and biosynthesis.",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+8631,Which conditions linked to the SLC40A1 gene lead to symptoms of fatigue and weakness and are adversely affected by the administration of Scopolamine?,2,2,0,1.0,1.0,1.0,1.0,1.0,1.0

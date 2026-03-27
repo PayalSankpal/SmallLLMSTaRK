@@ -184,7 +184,7 @@ api_keys
 
 data/
 emb/
-results
+
 output/
 output_alpha0/
 output_alpha0_val/

@@ -1,0 +1,10 @@
+query_id,query_text,total_answers,retrieved_count,missed_count,recall@50,recall@20,hit@1,hit@5,mrr,recall@20_vss_merged
+6215,Identify pathways associated with NODAL signaling where there is a common gene or protein interaction.,1,1,0,1.0,1.0,1.0,1.0,1.0,1.0
+5271,Which genes or proteins are involved in the RHOBTB1 GTPase cycle and also serve as transcription corepressors?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5271,Which genes or proteins are involved in the RHOBTB1 GTPase cycle and also serve as transcription corepressors?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+5271,Which genes or proteins are involved in the RHOBTB1 GTPase cycle and also serve as transcription corepressors?,1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+952,"What potential medical condition could share a connection with both dystransthyretinemic hyperthyroxinemia and familial dysalbuminemic hyperthyroxinemia, considering their similarities?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+5380,"What is the autoimmune disease characterized by necrotizing vasculitis affecting small and medium-sized vessels, notable for minimal or no immune complex deposits in the vessels?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
+1701,What is the name of the small intestine disease characterized by poor nutrient absorption in the intestine?,2,0,2,0.0,0.0,0.0,0.0,0.0,1.0
+10665,"Identify proteins or genes capable of interacting with EIF4ENIF1, with both sharing an association with a common disease.",1,0,1,0.0,0.0,0.0,0.0,0.0,0.0
+9725,"Could you provide information on any genes or proteins that participate in the DNA repair process and exhibit interactions with elements linked to hereditary megaloblastic anemia type 1, particularly those related to abnormalities in the AMN gene/protein? Additionally, is there any evidence to suggest that BRCA1 contributes to this process via its established role in DNA repair?",1,0,1,0.0,0.0,0.0,0.0,0.0,1.0
